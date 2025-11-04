@@ -139,20 +139,19 @@ export const QuizPage20 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 pb-20">
       <div className="container mx-auto px-4 py-3 max-w-4xl">
-        {/* Header - Una Riga Moderna */}
-        <div className="flex items-center justify-between gap-4 mb-3 bg-white rounded-xl px-4 py-2 shadow-sm">
-          {/* Esci */}
+        {/* Exit Button - Top Right */}
+        <div className="flex justify-end mb-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium text-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 hover:bg-blue-500 text-gray-700 hover:text-white rounded-full shadow-sm transition-all hover:shadow-md hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Esci</span>
+            <span className="text-sm font-medium">Esci</span>
           </button>
+        </div>
 
-          {/* Divider */}
-          <div className="h-6 w-px bg-gray-300"></div>
-
+        {/* Header - Una Riga Moderna */}
+        <div className="flex items-center justify-between gap-4 mb-3 bg-white rounded-xl px-4 py-2 shadow-sm">
           {/* Timer - Compatto */}
           <AdvancedTimer
             duration={1200} // 20 minuti
