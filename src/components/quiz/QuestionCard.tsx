@@ -63,24 +63,20 @@ export const QuestionCard: FC<QuestionCardProps> = ({
   // Forza visibilità del testo domanda e bottoni
   useEffect(() => {
     const forceVisibility = () => {
-      // Testo domanda
+      // Testo domanda - Nuovo stile moderno
       const domandaElement = document.getElementById('testo-domanda-simulazione');
       if (domandaElement) {
-        domandaElement.removeAttribute('class');
-        domandaElement.className = '';
-        domandaElement.style.setProperty('color', 'rgb(250, 204, 21)', 'important');
         domandaElement.style.setProperty('visibility', 'visible', 'important');
         domandaElement.style.setProperty('opacity', '1', 'important');
         domandaElement.style.setProperty('display', 'block', 'important');
-        domandaElement.style.setProperty('font-size', '1.25rem', 'important');
-        domandaElement.style.setProperty('font-weight', '700', 'important');
+        domandaElement.style.setProperty('font-size', '1.5rem', 'important');
+        domandaElement.style.setProperty('font-weight', '800', 'important');
         domandaElement.style.setProperty('text-align', 'center', 'important');
-        domandaElement.style.setProperty('line-height', '1.875rem', 'important');
-        domandaElement.style.setProperty('padding', '1.5rem', 'important');
-        domandaElement.style.setProperty('margin', '0', 'important');
-        domandaElement.style.setProperty('text-shadow', '2px 2px 6px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,0.9), 0 0 20px rgba(250,204,21,0.3)', 'important');
-        domandaElement.style.setProperty('-webkit-text-fill-color', 'rgb(250, 204, 21)', 'important');
-        domandaElement.style.setProperty('background-color', 'rgba(15, 23, 42, 0.98)', 'important');
+        domandaElement.style.setProperty('line-height', '2rem', 'important');
+        domandaElement.style.setProperty('color', 'white', 'important');
+        domandaElement.style.setProperty('font-family', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif', 'important');
+        domandaElement.style.setProperty('text-shadow', '0 2px 8px rgba(0,0,0,0.4)', 'important');
+        domandaElement.style.setProperty('-webkit-text-fill-color', 'white', 'important');
         domandaElement.style.setProperty('backdrop-filter', 'blur(8px)', 'important');
         domandaElement.style.setProperty('border', '3px solid rgba(250, 204, 21, 0.5)', 'important');
         domandaElement.style.setProperty('border-radius', '1rem', 'important');
@@ -177,28 +173,21 @@ export const QuestionCard: FC<QuestionCardProps> = ({
           {question ? (
             <div
               id="testo-domanda-simulazione"
+              className="text-white font-bold text-center px-6 py-5 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl"
               style={{
-                color: 'rgb(250, 204, 21)',
-                fontSize: '1.25rem',
-                lineHeight: '1.875rem',
-                fontWeight: 700,
+                fontSize: '1.5rem',
+                lineHeight: '2rem',
+                fontWeight: 800,
                 textAlign: 'center',
-                padding: '1.5rem',
-                margin: 0,
-                textShadow: '2px 2px 6px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,0.9), 0 0 20px rgba(250,204,21,0.3)',
                 display: 'block',
                 visibility: 'visible',
                 opacity: 1,
-                backgroundColor: 'rgba(15, 23, 42, 0.98)',
-                backdropFilter: 'blur(8px)',
-                borderRadius: '1rem',
-                border: '3px solid rgba(250, 204, 21, 0.5)',
                 maxWidth: '100%',
                 wordWrap: 'break-word',
                 position: 'relative',
                 zIndex: 999,
-                WebkitTextFillColor: 'rgb(250, 204, 21)',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.8), inset 0 1px 0 rgba(250,204,21,0.2)'
+                textShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
               }}
             >
               {question}
