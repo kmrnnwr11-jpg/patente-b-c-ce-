@@ -139,14 +139,14 @@ export const QuizPage20 = () => {
   }).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 pb-20">
       <div className="container mx-auto px-4 py-3 max-w-4xl">
         {/* Header - Una Riga Completa */}
         <div className="flex items-center justify-between gap-4 mb-4 bg-white rounded-xl px-4 py-3 shadow-sm">
           {/* Esci */}
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 hover:bg-blue-500 text-gray-700 hover:text-white rounded-full transition-all hover:shadow-md hover:scale-105 text-sm font-semibold"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 hover:bg-blue-100 text-gray-700 rounded-full transition-all hover:shadow-md hover:scale-105 text-sm font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Esci</span>
@@ -202,13 +202,13 @@ export const QuizPage20 = () => {
           exit={{ opacity: 0, x: -50 }}
           className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-6"
         >
-          {/* Image - Più Grande */}
+          {/* Image - Prima */}
           {currentQuestion.immagine && (
             <div className="relative">
               <img
                 src={currentQuestion.immagine}
                 alt="Quiz"
-                className="w-full max-h-80 object-contain bg-gray-50 rounded-t-3xl"
+                className="w-full max-h-96 object-contain bg-gray-50 rounded-t-3xl"
                 loading="lazy"
               />
               <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium">
@@ -217,16 +217,19 @@ export const QuizPage20 = () => {
             </div>
           )}
 
-          <div className="p-8">
-            {/* Question Text - Più Grande e Spazioso */}
-            <div className="mb-8">
+          {/* Question Text - Sotto l'immagine */}
+          <div className="px-6 pt-6 pb-4">
+            <div className="mb-6">
               <ClickableText
                 text={currentQuestion.domanda}
-                className="text-2xl leading-relaxed text-gray-900 font-semibold"
+                className="text-xl leading-relaxed text-gray-800 font-medium bg-blue-50 p-4 rounded-xl border border-blue-100"
                 selectedLanguages={selectedLanguages}
                 enabled={true}
               />
             </div>
+          </div>
+
+          <div className="px-6 pb-8">
 
             {/* Audio Player + Timer Controls */}
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
