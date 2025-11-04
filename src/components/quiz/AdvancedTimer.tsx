@@ -79,32 +79,36 @@ export const AdvancedTimer = ({
   const circumference = 2 * Math.PI * 56;
   const strokeDashoffset = circumference - (circumference * percentage) / 100;
 
+  const circleRadius = 42;
+  const circleCircumference = 2 * Math.PI * circleRadius;
+  const circleStrokeDashoffset = circleCircumference - (circleCircumference * percentage) / 100;
+
   return (
     <div className="flex flex-col items-center">
-      {/* Circular Timer */}
-      <div className="relative w-32 h-32">
-        <svg className="transform -rotate-90 w-32 h-32">
+      {/* Circular Timer - Compatto */}
+      <div className="relative w-24 h-24">
+        <svg className="transform -rotate-90 w-24 h-24">
           {/* Background circle */}
           <circle
-            cx="64"
-            cy="64"
-            r="56"
+            cx="48"
+            cy="48"
+            r={circleRadius}
             stroke="currentColor"
-            strokeWidth="8"
+            strokeWidth="6"
             fill="transparent"
             className="text-gray-200"
           />
           
           {/* Progress circle */}
           <motion.circle
-            cx="64"
-            cy="64"
-            r="56"
+            cx="48"
+            cy="48"
+            r={circleRadius}
             stroke="currentColor"
-            strokeWidth="8"
+            strokeWidth="6"
             fill="transparent"
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
+            strokeDasharray={circleCircumference}
+            strokeDashoffset={circleStrokeDashoffset}
             strokeLinecap="round"
             className={`transition-colors duration-500 ${
               isCritical
@@ -114,7 +118,7 @@ export const AdvancedTimer = ({
                 : 'text-blue-500'
             }`}
             animate={{
-              strokeDashoffset,
+              strokeDashoffset: circleStrokeDashoffset,
               scale: isCritical ? [1, 1.05, 1] : 1
             }}
             transition={{
@@ -127,7 +131,7 @@ export const AdvancedTimer = ({
         {/* Time Display */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <Clock
-            className={`w-6 h-6 mb-1 transition-colors ${
+            className={`w-4 h-4 mb-0.5 transition-colors ${
               isCritical
                 ? 'text-red-500'
                 : isWarning
@@ -136,7 +140,7 @@ export const AdvancedTimer = ({
             }`}
           />
           <div
-            className={`text-2xl font-bold transition-colors ${
+            className={`text-lg font-bold transition-colors ${
               isCritical
                 ? 'text-red-500'
                 : isWarning

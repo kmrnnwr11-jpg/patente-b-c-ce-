@@ -154,13 +154,11 @@ export const QuizPage20 = () => {
           <div className="h-6 w-px bg-gray-300"></div>
 
           {/* Timer - Compatto */}
-          <div className="scale-75">
-            <AdvancedTimer
-              duration={1200} // 20 minuti
-              onTimeUp={handleTimeUp}
-              autoStart={true}
-            />
-          </div>
+          <AdvancedTimer
+            duration={1200} // 20 minuti
+            onTimeUp={handleTimeUp}
+            autoStart={true}
+          />
 
           {/* Divider */}
           <div className="h-6 w-px bg-gray-300"></div>
