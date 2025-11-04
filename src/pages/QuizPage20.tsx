@@ -138,39 +138,41 @@ export const QuizPage20 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 pb-20">
-      <div className="container mx-auto px-4 py-6 max-w-4xl">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+      <div className="container mx-auto px-4 py-3 max-w-4xl">
+        {/* Header - Compatto */}
+        <div className="flex justify-between items-center mb-3">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition"
+            className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition text-sm"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
             <span className="font-medium">Esci</span>
           </button>
 
-          {/* Timer */}
-          <AdvancedTimer
-            duration={1200} // 20 minuti
-            onTimeUp={handleTimeUp}
-            autoStart={true}
-          />
+          {/* Timer - Compatto */}
+          <div className="scale-75">
+            <AdvancedTimer
+              duration={1200} // 20 minuti
+              onTimeUp={handleTimeUp}
+              autoStart={true}
+            />
+          </div>
 
           <div className="text-right">
-            <div className="text-sm text-gray-600">Errori</div>
-            <div className={`text-2xl font-bold ${errorCount >= 3 ? 'text-red-500' : 'text-gray-800'}`}>
-              {errorCount} / 3
+            <div className="text-xs text-gray-500">Errori</div>
+            <div className={`text-lg font-bold ${errorCount >= 3 ? 'text-red-500' : 'text-gray-800'}`}>
+              {errorCount}/3
             </div>
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-6">
-          <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Domanda {currentQuestionIndex + 1} di {questions.length}</span>
+        {/* Progress Bar - Compatta */}
+        <div className="mb-3">
+          <div className="flex justify-between text-xs text-gray-500 mb-1">
+            <span>Domanda {currentQuestionIndex + 1}/{questions.length}</span>
             <span>{Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+          <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
@@ -188,33 +190,33 @@ export const QuizPage20 = () => {
           exit={{ opacity: 0, x: -50 }}
           className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-6"
         >
-          {/* Image */}
+          {/* Image - Più Grande */}
           {currentQuestion.immagine && (
             <div className="relative">
               <img
                 src={currentQuestion.immagine}
                 alt="Quiz"
-                className="w-full max-h-48 object-contain bg-gray-50 rounded-t-3xl"
+                className="w-full max-h-80 object-contain bg-gray-50 rounded-t-3xl"
                 loading="lazy"
               />
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
+              <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium">
                 {currentQuestion.argomento}
               </div>
             </div>
           )}
 
-          <div className="p-6">
-            {/* Hint */}
-            <div className="mb-4 flex items-start gap-2 text-sm text-blue-600 bg-blue-50 p-3 rounded-lg">
-              <Lightbulb className="w-5 h-5 flex-shrink-0 mt-0.5" />
-              <span>Tocca qualsiasi parola per tradurla nelle tue lingue preferite 👆</span>
+          <div className="p-8">
+            {/* Hint - Compatto */}
+            <div className="mb-3 flex items-center gap-2 text-xs text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg">
+              <Lightbulb className="w-4 h-4 flex-shrink-0" />
+              <span>Tocca una parola per tradurla 👆</span>
             </div>
 
-            {/* Question Text - Clickable */}
+            {/* Question Text - Più Grande */}
             <div className="mb-6">
               <ClickableText
                 text={currentQuestion.domanda}
-                className="text-xl leading-relaxed text-gray-800 font-medium"
+                className="text-2xl leading-relaxed text-gray-900 font-semibold"
                 selectedLanguages={selectedLanguages}
                 enabled={true}
               />
