@@ -145,10 +145,10 @@ export const QuizPage20 = () => {
         <div className="flex justify-end mb-4">
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 hover:bg-blue-500 text-gray-700 hover:text-white rounded-full shadow-sm transition-all hover:shadow-md hover:scale-105"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 hover:bg-blue-500 text-gray-700 hover:text-white rounded-full shadow-md transition-all hover:shadow-lg hover:scale-105 text-base font-semibold"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-medium">Esci</span>
+            <ArrowLeft className="w-5 h-5" />
+            <span>Esci</span>
           </button>
         </div>
 
