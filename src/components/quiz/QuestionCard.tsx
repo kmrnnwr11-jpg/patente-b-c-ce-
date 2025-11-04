@@ -225,9 +225,10 @@ export const QuestionCard: FC<QuestionCardProps> = ({
             <img
               src={image}
               alt="Immagine domanda"
-              className={`w-full h-auto max-h-[280px] object-contain transition-opacity duration-300 ${
+              className={`w-full h-auto max-h-48 object-contain transition-opacity duration-300 bg-gray-50 rounded-lg ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
+              loading="lazy"
               onLoad={() => setImageLoaded(true)}
               onError={() => setImageError(true)}
             />

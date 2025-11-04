@@ -34,29 +34,27 @@ export const WordTranslationModal = ({
   selectedLanguages
 }: WordTranslationModalProps) => {
   const [translations, setTranslations] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState(true);
+  const [loadingLangs, setLoadingLangs] = useState<Record<string, boolean>>({});
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    loadTranslations();
-  }, [word]);
+  // NON caricare traduzioni automaticamente - solo quando user clicca!
+  
+  const loadTranslation = async (langCode: string) => {
+    // Se già tradotto, non ricaricare
+    if (translations[langCode]) return;
 
-  const loadTranslations = async () => {
-    setLoading(true);
-    const results: Record<string, string> = {};
+    // Setta loading per questa lingua
+    setLoadingLangs(prev => ({ ...prev, [langCode]: true }));
 
-    for (const lang of selectedLanguages) {
-      try {
-        const translation = await translateWord(word, 'it', lang);
-        results[lang] = translation;
-      } catch (error) {
-        console.error(`Translation error for ${lang}:`, error);
-        results[lang] = '...';
-      }
+    try {
+      const translation = await translateWord(word, 'it', langCode);
+      setTranslations(prev => ({ ...prev, [langCode]: translation }));
+    } catch (error) {
+      console.error(`Translation error for ${langCode}:`, error);
+      setTranslations(prev => ({ ...prev, [langCode]: word }));
+    } finally {
+      setLoadingLangs(prev => ({ ...prev, [langCode]: false }));
     }
-
-    setTranslations(results);
-    setLoading(false);
   };
 
   const playAudio = (text: string, lang: string) => {
@@ -164,54 +162,79 @@ export const WordTranslationModal = ({
 
           {/* Translations Grid */}
           <div className="p-6">
-            {loading ? (
-              <div className="grid grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="animate-pulse">
-                    <div className="h-24 bg-gray-200 rounded-xl"></div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-4">
-                {selectedLanguages.map((langCode) => {
-                  const lang = AVAILABLE_LANGUAGES.find((l) => l.code === langCode);
-                  if (!lang) return null;
+            {/* Hint per l'utente */}
+            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center">
+              <p className="text-sm text-blue-700">
+                👆 <strong>Tocca una lingua</strong> per vedere la traduzione
+              </p>
+            </div>
 
-                  return (
-                    <motion.div
-                      key={langCode}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 }}
-                      className="group"
+            <div className="grid grid-cols-2 gap-4">
+              {selectedLanguages.map((langCode) => {
+                const lang = AVAILABLE_LANGUAGES.find((l) => l.code === langCode);
+                if (!lang) return null;
+
+                const isLoading = loadingLangs[langCode];
+                const translation = translations[langCode];
+                const hasTranslation = !!translation;
+
+                return (
+                  <motion.div
+                    key={langCode}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="group"
+                  >
+                    <button
+                      onClick={() => {
+                        if (!hasTranslation && !isLoading) {
+                          loadTranslation(langCode);
+                        } else if (hasTranslation) {
+                          playAudio(translation, langCode);
+                        }
+                      }}
+                      disabled={isLoading}
+                      className={`w-full bg-gradient-to-br rounded-xl p-4 cursor-pointer
+                                 transition-all duration-200 border-2
+                                 ${hasTranslation 
+                                   ? 'from-blue-50 to-purple-50 border-blue-200 hover:shadow-lg hover:scale-105' 
+                                   : 'from-gray-50 to-gray-100 border-gray-300 hover:border-blue-400'
+                                 }
+                                 ${isLoading ? 'opacity-50 cursor-wait' : 'active:scale-95'}
+                                 disabled:cursor-not-allowed`}
                     >
-                      <button
-                        onClick={() => playAudio(translations[langCode] || '', langCode)}
-                        className="w-full bg-gradient-to-br from-gray-50 to-gray-100 
-                                   rounded-xl p-4 cursor-pointer
-                                   hover:shadow-lg hover:scale-105 active:scale-95
-                                   transition-all duration-200
-                                   border border-gray-200"
-                      >
-                        <div className="text-3xl mb-2 text-center">{lang.flag}</div>
-                        <div className="text-xs text-gray-500 text-center mb-1">
-                          {lang.name}
+                      <div className="text-3xl mb-2 text-center">{lang.flag}</div>
+                      <div className="text-xs text-gray-500 text-center mb-1">
+                        {lang.name}
+                      </div>
+                      
+                      {/* Stato traduzione */}
+                      {isLoading ? (
+                        <div className="flex items-center justify-center gap-2 mt-2">
+                          <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                          <span className="text-sm text-gray-600">Carico...</span>
                         </div>
-                        <div className="text-lg font-bold text-center text-gray-800 break-words">
-                          {translations[langCode] || '...'}
+                      ) : hasTranslation ? (
+                        <>
+                          <div className="text-lg font-bold text-center text-gray-800 break-words">
+                            {translation}
+                          </div>
+                          {/* Audio icon on hover */}
+                          <div className="text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Volume2 className="w-4 h-4 mx-auto text-blue-500" />
+                          </div>
+                        </>
+                      ) : (
+                        <div className="text-sm text-blue-600 text-center font-medium mt-2">
+                          👆 Tocca per tradurre
                         </div>
-                        
-                        {/* Audio icon on hover */}
-                        <div className="text-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <Volume2 className="w-4 h-4 mx-auto text-blue-500" />
-                        </div>
-                      </button>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            )}
+                      )}
+                    </button>
+                  </motion.div>
+                );
+              })}
+            </div>
 
             {/* Definizione italiana */}
             <motion.div

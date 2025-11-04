@@ -194,7 +194,8 @@ export const QuizPage20 = () => {
               <img
                 src={currentQuestion.immagine}
                 alt="Quiz"
-                className="w-full h-64 object-cover"
+                className="w-full max-h-48 object-contain bg-gray-50 rounded-t-3xl"
+                loading="lazy"
               />
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
                 {currentQuestion.argomento}
