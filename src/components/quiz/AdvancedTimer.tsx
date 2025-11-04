@@ -6,19 +6,28 @@ interface AdvancedTimerProps {
   duration: number; // in secondi (1200 per 20 minuti)
   onTimeUp: () => void;
   autoStart?: boolean;
+  variant?: 'circular' | 'linear';
+  isPaused?: boolean;
+  onTogglePause?: (nextPaused: boolean) => void;
+  hideControls?: boolean;
 }
 
 export const AdvancedTimer = ({
   duration,
   onTimeUp,
-  autoStart = true
+  autoStart = true,
+  variant = 'circular',
+  isPaused,
+  onTogglePause,
+  hideControls = false
 }: AdvancedTimerProps) => {
   const [timeLeft, setTimeLeft] = useState(duration);
-  const [isPaused, setIsPaused] = useState(!autoStart);
+  const [internalPaused, setInternalPaused] = useState(!autoStart);
+  const paused = typeof isPaused === 'boolean' ? isPaused : internalPaused;
   const [hasWarned, setHasWarned] = useState(false);
 
   useEffect(() => {
-    if (isPaused || timeLeft <= 0) return;
+    if (paused || timeLeft <= 0) return;
 
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
@@ -31,23 +40,31 @@ export const AdvancedTimer = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isPaused, timeLeft, onTimeUp]);
+  }, [paused, timeLeft, onTimeUp]);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   const percentage = (timeLeft / duration) * 100;
-
   // Warning negli ultimi 5 minuti
   const isWarning = timeLeft <= 300 && timeLeft > 60;
   const isCritical = timeLeft <= 60;
 
+  const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  const safePercentage = Math.max(0, Math.min(percentage, 100));
+  const timerColor = isCritical ? 'text-red-500' : isWarning ? 'text-orange-500' : 'text-gray-800';
+  const barGradient = isCritical
+    ? 'from-red-500 to-red-400'
+    : isWarning
+    ? 'from-orange-500 to-amber-400'
+    : 'from-blue-500 to-purple-500';
+
   // Suono di avviso a 5 minuti
   useEffect(() => {
-    if (isWarning && !hasWarned && !isPaused) {
+    if (isWarning && !hasWarned && !paused) {
       setHasWarned(true);
       playWarningSound();
     }
-  }, [isWarning, hasWarned, isPaused]);
+  }, [isWarning, hasWarned, paused]);
 
   const playWarningSound = () => {
     try {
@@ -72,8 +89,15 @@ export const AdvancedTimer = ({
     }
   };
 
-  const togglePause = () => {
-    setIsPaused(!isPaused);
+  const handleTogglePause = () => {
+    const next = !paused;
+
+    if (typeof isPaused === 'boolean') {
+      onTogglePause?.(next);
+    } else {
+      setInternalPaused(next);
+      onTogglePause?.(next);
+    }
   };
 
   const circumference = 2 * Math.PI * 56;
@@ -82,6 +106,72 @@ export const AdvancedTimer = ({
   const circleRadius = 42;
   const circleCircumference = 2 * Math.PI * circleRadius;
   const circleStrokeDashoffset = circleCircumference - (circleCircumference * percentage) / 100;
+
+  if (variant === 'linear') {
+    return (
+      <div className="w-full">
+        <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+          <span className={`text-sm font-semibold ${timerColor}`}>{formattedTime}</span>
+          <span className="text-xs font-medium text-gray-400">{Math.max(0, Math.round(safePercentage))}%</span>
+        </div>
+
+        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <motion.div
+            initial={{ width: '100%' }}
+            animate={{ width: `${safePercentage}%` }}
+            className={`h-full bg-gradient-to-r ${barGradient}`}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          />
+        </div>
+
+        {isWarning && !paused && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`mt-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium ${
+              isCritical ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'
+            }`}
+          >
+            <AlertCircle className="w-3 h-3" />
+            <span>{isCritical ? 'ULTIMI 60 SECONDI!' : 'Meno di 5 minuti'}</span>
+          </motion.div>
+        )}
+
+        {!hideControls && (
+          <button
+            onClick={handleTogglePause}
+            className={`mt-3 px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+              paused
+                ? 'bg-green-500 hover:bg-green-600 text-white'
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+            }`}
+          >
+            {paused ? (
+              <>
+                <Play className="w-4 h-4" />
+                <span>Riprendi</span>
+              </>
+            ) : (
+              <>
+                <Pause className="w-4 h-4" />
+                <span>Pausa</span>
+              </>
+            )}
+          </button>
+        )}
+
+        {paused && !hideControls && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-2 text-xs text-gray-500"
+          >
+            Timer in pausa
+          </motion.div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -148,13 +238,13 @@ export const AdvancedTimer = ({
                 : 'text-gray-800'
             }`}
           >
-            {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+            {formattedTime}
           </div>
         </div>
       </div>
 
       {/* Warning Messages */}
-      {isWarning && !isPaused && (
+      {isWarning && !paused && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -172,28 +262,30 @@ export const AdvancedTimer = ({
       )}
 
       {/* Pause/Resume Button */}
-      <button
-        onClick={togglePause}
-        className={`mt-3 px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
-          isPaused
-            ? 'bg-green-500 hover:bg-green-600 text-white'
-            : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
-        }`}
-      >
-        {isPaused ? (
-          <>
-            <Play className="w-4 h-4" />
-            <span>Riprendi</span>
-          </>
-        ) : (
-          <>
-            <Pause className="w-4 h-4" />
-            <span>Pausa</span>
-          </>
-        )}
-      </button>
+      {!hideControls && (
+        <button
+          onClick={handleTogglePause}
+          className={`mt-3 px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+            paused
+              ? 'bg-green-500 hover:bg-green-600 text-white'
+              : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+          }`}
+        >
+          {paused ? (
+            <>
+              <Play className="w-4 h-4" />
+              <span>Riprendi</span>
+            </>
+          ) : (
+            <>
+              <Pause className="w-4 h-4" />
+              <span>Pausa</span>
+            </>
+          )}
+        </button>
+      )}
 
-      {isPaused && (
+      {paused && !hideControls && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

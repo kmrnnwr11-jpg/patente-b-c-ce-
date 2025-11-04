@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, PauseCircle, PlayCircle } from 'lucide-react';
 import { ClickableText } from '@/components/translation/ClickableText';
 import { LanguageSelector } from '@/components/translation/LanguageSelector';
 import { AdvancedAudioPlayer } from '@/components/audio/AdvancedAudioPlayer';
@@ -19,6 +19,7 @@ export const QuizPage20 = () => {
   const [userAnswers, setUserAnswers] = useState<Record<number, boolean>>({});
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isTimerPaused, setIsTimerPaused] = useState(false);
 
   useEffect(() => {
     initQuiz();
@@ -103,6 +104,7 @@ export const QuizPage20 = () => {
   const currentQuestion = questions[currentQuestionIndex];
   const hasAnswered = userAnswers[currentQuestionIndex] !== undefined;
   const isCorrect = hasAnswered && userAnswers[currentQuestionIndex] === currentQuestion?.risposta;
+  const questionProgress = Math.round(((currentQuestionIndex + 1) / questions.length) * 100);
 
   if (loading) {
     return (
@@ -150,39 +152,37 @@ export const QuizPage20 = () => {
           </button>
         </div>
 
-        {/* Header - Una Riga Moderna */}
-        <div className="flex items-center justify-between gap-4 mb-3 bg-white rounded-xl px-4 py-2 shadow-sm">
-          {/* Timer - Compatto */}
+        {/* Quiz Overview */}
+        <div className="mb-6 space-y-3">
+          <div className="flex items-center justify-between text-xs sm:text-sm text-gray-600">
+            <span className="font-semibold text-gray-800">
+              Domanda {currentQuestionIndex + 1}/{questions.length}
+            </span>
+            <span className={`font-semibold ${errorCount >= 3 ? 'text-red-500' : 'text-green-600'}`}>
+              Errori: {errorCount}/3
+            </span>
+          </div>
+
           <AdvancedTimer
             duration={1200} // 20 minuti
             onTimeUp={handleTimeUp}
             autoStart={true}
+            isPaused={isTimerPaused}
+            onTogglePause={(next) => setIsTimerPaused(next)}
+            hideControls
+            variant="linear"
           />
 
-          {/* Divider */}
-          <div className="h-6 w-px bg-gray-300"></div>
-
-          {/* Errori */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-500 font-medium">Errori:</span>
-            <span className={`text-lg font-bold ${errorCount >= 3 ? 'text-red-500' : 'text-green-600'}`}>
-              {errorCount}/3
-            </span>
-          </div>
-        </div>
-
-        {/* Progress Bar - Compatta */}
-        <div className="mb-3">
-          <div className="flex justify-between text-xs text-gray-500 mb-1">
-            <span>Domanda {currentQuestionIndex + 1}/{questions.length}</span>
-            <span>{Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}%</span>
+          <div className="flex items-center justify-between text-xs text-gray-500">
+            <span>Progresso quiz</span>
+            <span>{questionProgress}%</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
-              transition={{ duration: 0.3 }}
+              animate={{ width: `${questionProgress}%` }}
+              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
+              transition={{ duration: 0.4, ease: 'easeOut' }}
             />
           </div>
         </div>
@@ -221,12 +221,35 @@ export const QuizPage20 = () => {
               />
             </div>
 
-            {/* Audio Player */}
-            <div className="mb-6">
-              <AdvancedAudioPlayer
-                text={currentQuestion.domanda}
-                language="it"
-              />
+            {/* Audio Player + Timer Controls */}
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex-1 w-full">
+                <AdvancedAudioPlayer
+                  text={currentQuestion.domanda}
+                  language="it"
+                />
+              </div>
+
+              <button
+                onClick={() => setIsTimerPaused((prev) => !prev)}
+                className={`w-full sm:w-auto px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all shadow-sm ${
+                  isTimerPaused
+                    ? 'bg-green-500 hover:bg-green-600 text-white'
+                    : 'bg-white hover:bg-blue-50 text-gray-700 hover:text-blue-600'
+                }`}
+              >
+                {isTimerPaused ? (
+                  <>
+                    <PlayCircle className="w-5 h-5" />
+                    <span>Riprendi timer</span>
+                  </>
+                ) : (
+                  <>
+                    <PauseCircle className="w-5 h-5" />
+                    <span>Pausa timer</span>
+                  </>
+                )}
+              </button>
             </div>
 
             {/* Answer Buttons */}
