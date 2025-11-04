@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Download, Loader } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Loader } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface AdvancedAudioPlayerProps {
@@ -88,12 +88,6 @@ export const AdvancedAudioPlayer = ({
     setIsPlaying(false);
   };
 
-  const handleDownload = async () => {
-    // Per il download audio, servirebbe ElevenLabs API
-    // Qui mostriamo un placeholder
-    alert('Feature Premium: Scarica audio con voce naturale!\nDisponibile con abbonamento Premium.');
-  };
-
   const toggleMute = () => {
     setIsMuted(!isMuted);
     if (utteranceRef.current) {
@@ -179,14 +173,6 @@ export const AdvancedAudioPlayer = ({
             ) : (
               <Volume2 className="w-4 h-4 text-gray-600" />
             )}
-          </button>
-          
-          <button
-            onClick={handleDownload}
-            className="p-2 rounded-lg bg-white hover:bg-gray-100 transition-colors"
-            title="Download audio (Premium)"
-          >
-            <Download className="w-4 h-4 text-gray-600" />
           </button>
         </div>
       </div>
