@@ -245,7 +245,7 @@ export const QuizPage20 = () => {
                 className={`w-full sm:w-auto px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all shadow-sm ${
                   isTimerPaused
                     ? 'bg-green-500 hover:bg-green-600 text-white'
-                    : 'bg-white hover:bg-blue-50 text-gray-700 hover:text-blue-600'
+                    : 'bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-600'
                 }`}
               >
                 {isTimerPaused ? (
@@ -347,7 +347,7 @@ export const QuizPage20 = () => {
           <button
             onClick={() => setCurrentQuestionIndex(Math.max(0, currentQuestionIndex - 1))}
             disabled={currentQuestionIndex === 0}
-            className="px-6 py-3 bg-white rounded-xl font-medium text-gray-700 hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-gray-700 hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
