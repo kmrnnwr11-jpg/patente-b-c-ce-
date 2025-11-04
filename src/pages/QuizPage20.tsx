@@ -139,14 +139,14 @@ export const QuizPage20 = () => {
   }).length;
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="container mx-auto px-4 py-3 max-w-4xl">
-        {/* Header - Una Riga Completa */}
-        <div className="flex items-center justify-between gap-4 mb-4 bg-white rounded-xl px-4 py-3 shadow-sm">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 pb-20">
+      <div className="container mx-auto px-4 py-6 max-w-4xl">
+        {/* Header - Glassmorphism */}
+        <div className="flex items-center justify-between gap-4 mb-6 bg-white/10 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-2xl border border-white/20">
           {/* Esci */}
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 hover:bg-blue-100 text-gray-700 rounded-full transition-all hover:shadow-md hover:scale-105 text-sm font-semibold"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 backdrop-blur-lg hover:bg-white/30 text-white rounded-full transition-all hover:shadow-lg hover:scale-105 text-sm font-semibold border border-white/30"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Esci</span>
@@ -154,21 +154,21 @@ export const QuizPage20 = () => {
 
           {/* Domanda */}
           <div className="flex-1 text-center">
-            <span className="text-sm font-semibold text-gray-800">
+            <span className="text-sm font-bold text-white drop-shadow-lg">
               Domanda {currentQuestionIndex + 1}/{questions.length}
             </span>
           </div>
 
           {/* Errori */}
           <div className="text-right">
-            <span className={`text-sm font-semibold ${errorCount >= 3 ? 'text-red-500' : 'text-green-600'}`}>
+            <span className={`text-sm font-bold drop-shadow-lg ${errorCount >= 3 ? 'text-red-300' : 'text-green-300'}`}>
               Errori: {errorCount}/3
             </span>
           </div>
         </div>
 
-        {/* Quiz Overview */}
-        <div className="mb-6 space-y-3">
+        {/* Quiz Overview - Glassmorphism */}
+        <div className="mb-6 space-y-4 bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-2xl border border-white/20">
 
           <AdvancedTimer
             duration={1200} // 20 minuti
@@ -180,49 +180,50 @@ export const QuizPage20 = () => {
             variant="linear"
           />
 
-          <div className="flex items-center justify-between text-xs text-gray-500">
+          <div className="flex items-center justify-between text-xs text-white font-semibold">
             <span>Progresso quiz</span>
             <span>{questionProgress}%</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden backdrop-blur-sm">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${questionProgress}%` }}
-              className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"
+              className="h-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 rounded-full shadow-lg"
               transition={{ duration: 0.4, ease: 'easeOut' }}
             />
           </div>
         </div>
 
-        {/* Main Quiz Card */}
+        {/* Main Quiz Card - Glassmorphism */}
         <motion.div
           key={currentQuestionIndex}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-6"
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -20, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
+          className="bg-white/15 backdrop-blur-2xl rounded-3xl shadow-2xl overflow-hidden mb-6 border border-white/30"
         >
           {/* Image - Prima */}
           {currentQuestion.immagine && (
-            <div className="relative">
+            <div className="relative p-4">
               <img
                 src={currentQuestion.immagine}
                 alt="Quiz"
-                className="w-full max-h-96 object-contain bg-gray-50 rounded-t-3xl"
+                className="w-full max-h-96 object-contain bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-white/20"
                 loading="lazy"
               />
-              <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium">
+              <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-lg px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/30">
                 {currentQuestion.argomento}
               </div>
             </div>
           )}
 
           {/* Question Text - Sotto l'immagine */}
-          <div className="px-6 pt-6 pb-4">
+          <div className="px-6 pt-2 pb-4">
             <div className="mb-6">
               <ClickableText
                 text={currentQuestion.domanda}
-                className="text-xl leading-relaxed text-yellow-400 font-bold text-center p-6 bg-gray-900 rounded-xl border-2 border-yellow-500 shadow-lg"
+                className="text-xl leading-relaxed text-white font-bold text-center p-6 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl"
                 selectedLanguages={selectedLanguages}
                 enabled={true}
               />
@@ -242,10 +243,10 @@ export const QuizPage20 = () => {
 
               <button
                 onClick={() => setIsTimerPaused((prev) => !prev)}
-                className={`w-full sm:w-auto px-4 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all shadow-sm ${
+                className={`w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all backdrop-blur-xl border-2 ${
                   isTimerPaused
-                    ? 'bg-green-500 hover:bg-green-600 text-white'
-                    : 'bg-gray-100 hover:bg-blue-100 text-gray-700 hover:text-blue-600'
+                    ? 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 shadow-xl shadow-green-500/30'
+                    : 'bg-white/20 hover:bg-white/30 text-white border-white/30 shadow-xl'
                 }`}
               >
                 {isTimerPaused ? (
@@ -262,19 +263,19 @@ export const QuizPage20 = () => {
               </button>
             </div>
 
-            {/* Answer Buttons */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            {/* Answer Buttons - Glassmorphism */}
+            <div className="grid grid-cols-2 gap-5 mb-6">
               <button
                 onClick={() => handleAnswer(true)}
                 disabled={hasAnswered}
-                className={`h-16 text-xl font-bold rounded-xl transition-all ${
+                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${
                   hasAnswered
                     ? currentQuestion.risposta === true
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
                       : userAnswers[currentQuestionIndex] === true
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-200 text-gray-400'
-                    : 'bg-green-500 hover:bg-green-600 text-white hover:shadow-lg hover:scale-105 active:scale-95'
+                      ? 'bg-red-500/80 text-white border-red-300 shadow-2xl shadow-red-500/50'
+                      : 'bg-white/10 text-white/40 border-white/20'
+                    : 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 hover:shadow-2xl hover:shadow-green-500/50 hover:scale-105 active:scale-95'
                 } disabled:cursor-not-allowed`}
               >
                 VERO
@@ -283,14 +284,14 @@ export const QuizPage20 = () => {
               <button
                 onClick={() => handleAnswer(false)}
                 disabled={hasAnswered}
-                className={`h-16 text-xl font-bold rounded-xl transition-all ${
+                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${
                   hasAnswered
                     ? currentQuestion.risposta === false
-                      ? 'bg-green-500 text-white'
+                      ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
                       : userAnswers[currentQuestionIndex] === false
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-200 text-gray-400'
-                    : 'bg-red-500 hover:bg-red-600 text-white hover:shadow-lg hover:scale-105 active:scale-95'
+                      ? 'bg-red-500/80 text-white border-red-300 shadow-2xl shadow-red-500/50'
+                      : 'bg-white/10 text-white/40 border-white/20'
+                    : 'bg-red-500/70 hover:bg-red-500/90 text-white border-red-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95'
                 } disabled:cursor-not-allowed`}
               >
                 FALSO
