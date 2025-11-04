@@ -21,7 +21,7 @@ const LANGUAGE_FLAGS: Record<string, string> = {
   en: '🇬🇧',
   ur: '🇵🇰',
   hi: '🇮🇳',
-  pa: '🏴'
+  pa: '🟠'
 };
 
 export const AdvancedAudioPlayer = ({

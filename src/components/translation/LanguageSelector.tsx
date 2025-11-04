@@ -6,7 +6,7 @@ const AVAILABLE_LANGUAGES = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
   { code: 'ur', name: 'اردو', flag: '🇵🇰' },
   { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
-  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🏴' }
+  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🟠' }
 ];
 
 interface LanguageSelectorProps {
