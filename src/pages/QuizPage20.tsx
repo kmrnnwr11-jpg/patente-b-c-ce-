@@ -222,7 +222,7 @@ export const QuizPage20 = () => {
             <div className="mb-6">
               <ClickableText
                 text={currentQuestion.domanda}
-                className="text-xl leading-relaxed text-gray-800 font-medium bg-blue-50 p-4 rounded-xl border border-blue-100"
+                className="text-xl leading-relaxed text-yellow-400 font-bold text-center p-6 bg-gray-900 rounded-xl border-2 border-yellow-500 shadow-lg"
                 selectedLanguages={selectedLanguages}
                 enabled={true}
               />
