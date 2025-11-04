@@ -99,9 +99,9 @@ export const PaywallModal: FC<PaywallModalProps> = ({
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all z-10"
+            className="absolute top-2 right-2 p-3 rounded-full bg-white/10 hover:bg-white/30 transition-all hover:scale-110 active:scale-95 z-50"
           >
-            <X className="w-5 h-5 text-white" />
+            <X className="w-7 h-7 text-white" />
           </button>
 
           {/* Header */}

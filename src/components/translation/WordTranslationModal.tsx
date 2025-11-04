@@ -111,10 +111,10 @@ export const WordTranslationModal = ({
           <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white relative">
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-colors"
+              className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/30 rounded-full transition-all hover:scale-110 active:scale-95 z-50"
               aria-label="Chiudi"
             >
-              <X className="w-5 h-5" />
+              <X className="w-7 h-7" />
             </button>
 
             <div className="text-center">

@@ -105,9 +105,9 @@ export const OnboardingTour: FC = () => {
         {/* Close Button */}
         <button
           onClick={handleSkip}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 transition-colors"
+          className="absolute top-2 right-2 p-3 rounded-full bg-white/10 hover:bg-white/30 transition-all hover:scale-110 active:scale-95 z-50"
         >
-          <X className="w-5 h-5 text-white/70" />
+          <X className="w-7 h-7 text-white" />
         </button>
 
         {/* Progress Bar */}
