@@ -139,7 +139,7 @@ export const QuizPage20 = () => {
   }).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50 pb-20">
       <div className="container mx-auto px-4 py-3 max-w-4xl">
         {/* Header - Una Riga Completa */}
         <div className="flex items-center justify-between gap-4 mb-4 bg-white rounded-xl px-4 py-3 shadow-sm">
