@@ -254,7 +254,7 @@ export const QuizContainer: FC<QuizContainerProps> = ({
   // Mostra modale di resume
   if (showResumeModal && savedQuizData) {
     return (
-      <div className="min-h-screen bg-gradient-primary flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center">
         <ResumeQuizModal
           totalQuestions={savedQuizData.questions.length}
           currentQuestion={savedQuizData.currentQuestion}
@@ -295,7 +295,7 @@ export const QuizContainer: FC<QuizContainerProps> = ({
   ) : null;
 
   return (
-    <div className="min-h-screen bg-gradient-quiz bg-pattern p-4 md:p-8 pb-24">
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-4 md:p-8 pb-24">
       <div className="max-w-4xl mx-auto pt-8 pb-20">
         {/* Question Card */}
         <QuestionCard
@@ -317,14 +317,14 @@ export const QuizContainer: FC<QuizContainerProps> = ({
           timerSlot={timerElement}
         />
 
-        {/* Navigation Card */}
-        <div className="mt-6 animate-fade-in bg-slate-900/95 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-xl">
+        {/* Navigation Card - Glassmorphism */}
+        <div className="mt-6 animate-fade-in bg-white/10 backdrop-blur-2xl border border-white/30 rounded-3xl p-6 shadow-2xl">
           <div className="flex justify-between gap-4">
             <Button
               onClick={handlePrevious}
               disabled={currentQuestion === 0}
               variant="ghost"
-              className="text-white"
+              className="text-white bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-3 transition-all hover:scale-105 disabled:opacity-40"
             >
               <ArrowLeft size={20} className="mr-2" />
               Precedente
@@ -333,7 +333,7 @@ export const QuizContainer: FC<QuizContainerProps> = ({
               onClick={handleNext}
               disabled={showResults}
               variant="ghost"
-              className="text-white"
+              className="text-white bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-3 transition-all hover:scale-105"
             >
               Successiva
               <ArrowRight size={20} className="ml-2" />
@@ -342,29 +342,29 @@ export const QuizContainer: FC<QuizContainerProps> = ({
         </div>
       </div>
 
-      {/* Bottom Navigation Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-xl border-t border-white/20 shadow-2xl">
-        <div className="flex items-center justify-around px-4 py-2.5 max-w-4xl mx-auto">
+      {/* Bottom Navigation Bar - Glassmorphism */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-2xl border-t border-white/30 shadow-2xl">
+        <div className="flex items-center justify-around px-4 py-3.5 max-w-4xl mx-auto">
           <button
             onClick={handleExit}
-            className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+            className="flex flex-col items-center gap-1.5 text-white/80 hover:text-white hover:scale-110 transition-all"
           >
-            <Home className="w-5 h-5" />
-            <span className="text-[11px] font-medium">Home</span>
+            <Home className="w-6 h-6" />
+            <span className="text-xs font-semibold">Home</span>
           </button>
           <button
             onClick={() => navigate('/bookmarks')}
-            className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+            className="flex flex-col items-center gap-1.5 text-white/80 hover:text-white hover:scale-110 transition-all"
           >
-            <Bookmark className="w-5 h-5" />
-            <span className="text-[11px] font-medium">Salvate</span>
+            <Bookmark className="w-6 h-6" />
+            <span className="text-xs font-semibold">Salvate</span>
           </button>
           <button
             onClick={finalizeQuiz}
-            className="flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors"
+            className="flex flex-col items-center gap-1.5 text-white/80 hover:text-white hover:scale-110 transition-all"
           >
-            <BookOpen className="w-5 h-5" />
-            <span className="text-[11px] font-medium">Termina</span>
+            <BookOpen className="w-6 h-6" />
+            <span className="text-xs font-semibold">Termina</span>
           </button>
         </div>
       </div>

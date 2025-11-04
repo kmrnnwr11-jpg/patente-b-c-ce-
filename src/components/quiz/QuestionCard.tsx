@@ -1,6 +1,5 @@
 import { FC, useState, useEffect, ReactNode } from 'react';
 import { Volume2, Image as ImageIcon, Sparkles } from 'lucide-react';
-import { GlassCard } from '@/components/ui/GlassCard';
 import { BookmarkButton } from './BookmarkButton';
 import { AIExplanationPanel } from '@/components/ai/AIExplanationPanel';
 import type { QuizQuestion } from '@/types/quiz';
@@ -127,11 +126,9 @@ export const QuestionCard: FC<QuestionCardProps> = ({
 
   return (
     <>
-      <GlassCard className="w-full max-w-3xl mx-auto overflow-hidden quiz-card">
-      {/* Header con numero domanda */}
-      <div className="relative px-6 py-5 border-b border-white/10" style={{
-        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.18) 0%, rgba(139, 92, 246, 0.18) 100%)'
-      }}>
+      <div className="w-full max-w-3xl mx-auto overflow-hidden bg-white/15 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/30 quiz-card">
+      {/* Header con numero domanda - Glassmorphism */}
+      <div className="relative px-6 py-5 border-b border-white/20 bg-white/10 backdrop-blur-xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg">
@@ -398,7 +395,7 @@ export const QuestionCard: FC<QuestionCardProps> = ({
           </div>
         )}
       </div>
-    </GlassCard>
+    </div>
 
       {/* AI Explanation Panel */}
       {fullQuestion && (

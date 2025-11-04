@@ -22,10 +22,13 @@ export const QuizTestPage: FC = () => {
 
   if (isLoading || questions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-primary flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center">
         <SEO {...SEO_PRESETS.quiz} />
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 text-white shadow-xl">
-          <div className="text-xl">Caricamento quiz...</div>
+        <div className="bg-white/15 backdrop-blur-2xl border border-white/30 rounded-3xl p-10 text-white shadow-2xl">
+          <div className="text-2xl font-bold text-center">Caricamento quiz...</div>
+          <div className="mt-4 flex justify-center">
+            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+          </div>
         </div>
       </div>
     );
