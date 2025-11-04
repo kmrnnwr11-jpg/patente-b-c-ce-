@@ -13,7 +13,7 @@ Le lingue di traduzione e ascolto sono state aggiornate alle **4 lingue principa
 | **Inglese** | `en` | 🇬🇧 | English |
 | **Urdu** | `ur` | 🇵🇰 | اردو |
 | **Hindi** | `hi` | 🇮🇳 | हिंदी |
-| **Punjabi** | `pa` | 🏴 | ਪੰਜਾਬੀ |
+| **Punjabi** | `pa` | ☬ | ਪੰਜਾਬੀ |
 
 ---
 
