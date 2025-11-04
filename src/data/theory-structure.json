@@ -1,0 +1,400 @@
+{
+  "chapters": [
+    {
+      "id": "segnali-pericolo",
+      "title": "Segnali di Pericolo",
+      "icon": "AlertTriangle",
+      "order": 1,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche dei segnali di pericolo",
+          "content": "I segnali di pericolo hanno forma triangolare con vertice verso l'alto, bordo rosso e sfondo bianco. Preavvisano l'esistenza di pericoli e prescrivono comportamenti prudenti."
+        },
+        {
+          "id": "distanza",
+          "title": "Distanza di collocazione",
+          "content": "Sono collocati a 150 metri dal pericolo che segnalano fuori dai centri abitati, e a distanza minore nei centri abitati."
+        }
+      ]
+    },
+    {
+      "id": "segnali-precedenza",
+      "title": "Segnali di Precedenza",
+      "icon": "AlertCircle",
+      "order": 2,
+      "sections": [
+        {
+          "id": "stop",
+          "title": "Segnale di STOP",
+          "content": "Il segnale di STOP impone l'arresto del veicolo in corrispondenza della striscia trasversale di arresto. Il conducente deve dare la precedenza ai veicoli provenienti sia da destra che da sinistra."
+        },
+        {
+          "id": "dare-precedenza",
+          "title": "Dare precedenza",
+          "content": "Il segnale triangolare con vertice in basso impone di dare la precedenza ai veicoli provenienti dalla strada che si incrocia."
+        }
+      ]
+    },
+    {
+      "id": "segnali-divieto",
+      "title": "Segnali di Divieto",
+      "icon": "Ban",
+      "order": 3,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche",
+          "content": "I segnali di divieto hanno forma circolare con bordo rosso su fondo bianco o azzurro. Vietano determinate manovre o comportamenti."
+        }
+      ]
+    },
+    {
+      "id": "segnali-obbligo",
+      "title": "Segnali di Obbligo",
+      "icon": "Shield",
+      "order": 4,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche",
+          "content": "I segnali di obbligo hanno forma circolare con pittogramma bianco su fondo azzurro. Prescrivono un determinato comportamento."
+        }
+      ]
+    },
+    {
+      "id": "segnali-indicazione",
+      "title": "Segnali di Indicazione",
+      "icon": "Eye",
+      "order": 5,
+      "sections": [
+        {
+          "id": "tipologie",
+          "title": "Tipologie",
+          "content": "I segnali di indicazione forniscono informazioni utili per la guida. Possono essere di preavviso, direzione, conferma, località e nome strada."
+        }
+      ]
+    },
+    {
+      "id": "norme-precedenza",
+      "title": "Norme sulla Precedenza",
+      "icon": "Users",
+      "order": 6,
+      "sections": [
+        {
+          "id": "regola-base",
+          "title": "Regola generale",
+          "content": "Negli incroci, in assenza di segnaletica, vale la regola della precedenza a destra. Il veicolo che proviene da destra ha la precedenza."
+        },
+        {
+          "id": "rotonde",
+          "title": "Rotatorie",
+          "content": "Nelle rotatorie, i veicoli che circolano all'interno hanno la precedenza su quelli che devono immettersi."
+        }
+      ]
+    },
+    {
+      "id": "limiti-velocita",
+      "title": "Limiti di Velocità",
+      "icon": "Gauge",
+      "order": 7,
+      "sections": [
+        {
+          "id": "autostrade",
+          "title": "Autostrade",
+          "content": "In autostrada il limite massimo è 130 km/h (110 km/h in caso di pioggia). Il limite minimo è 60 km/h."
+        },
+        {
+          "id": "extraurbane",
+          "title": "Strade extraurbane principali",
+          "content": "Sulle strade extraurbane principali il limite è 110 km/h (90 km/h in caso di pioggia)."
+        },
+        {
+          "id": "extraurbane-secondarie",
+          "title": "Strade extraurbane secondarie",
+          "content": "Sulle strade extraurbane secondarie il limite è 90 km/h."
+        },
+        {
+          "id": "urbane",
+          "title": "Centri abitati",
+          "content": "Nei centri abitati il limite è 50 km/h."
+        }
+      ]
+    },
+    {
+      "id": "distanza-sicurezza",
+      "title": "Distanza di Sicurezza",
+      "icon": "Scale",
+      "order": 8,
+      "sections": [
+        {
+          "id": "calcolo",
+          "title": "Come calcolarla",
+          "content": "La distanza di sicurezza deve essere tale da permettere di arrestare il veicolo evitando la collisione con quello che precede. Dipende da velocità, condizioni del veicolo, della strada e del traffico."
+        }
+      ]
+    },
+    {
+      "id": "sorpasso",
+      "title": "Sorpasso",
+      "icon": "Target",
+      "order": 9,
+      "sections": [
+        {
+          "id": "quando-vietato",
+          "title": "Quando è vietato",
+          "content": "Il sorpasso è vietato in corrispondenza di curve, dossi, passaggi a livello, incroci e attraversamenti pedonali."
+        },
+        {
+          "id": "come-effettuarlo",
+          "title": "Come effettuarlo",
+          "content": "Prima di sorpassare bisogna accertarsi di avere spazio sufficiente e che nessuno stia già sorpassando. Si deve segnalare la manovra con l'indicatore di direzione."
+        }
+      ]
+    },
+    {
+      "id": "fermata-sosta",
+      "title": "Fermata, Sosta e Arresto",
+      "icon": "Clock",
+      "order": 10,
+      "sections": [
+        {
+          "id": "definizioni",
+          "title": "Definizioni",
+          "content": "FERMATA: sospensione della marcia del veicolo protratta nel tempo strettamente necessario per far salire o scendere persone o per operazioni di carico/scarico. SOSTA: sospensione della marcia del veicolo che si protrae nel tempo, con possibilità per il conducente di allontanarsi."
+        },
+        {
+          "id": "divieti",
+          "title": "Dove è vietata",
+          "content": "Fermata e sosta sono vietate sui binari del tram, sulle piste ciclabili, nei sottopassaggi, in corrispondenza e in prossimità di dossi e curve."
+        }
+      ]
+    },
+    {
+      "id": "norme-circolazione",
+      "title": "Norme di Circolazione",
+      "icon": "Road",
+      "order": 11,
+      "sections": [
+        {
+          "id": "marcia-destra",
+          "title": "Marcia sulla destra",
+          "content": "I veicoli devono circolare sulla parte destra della carreggiata e in prossimità del margine destro della stessa."
+        }
+      ]
+    },
+    {
+      "id": "segnaletica-orizzontale",
+      "title": "Segnaletica Orizzontale",
+      "icon": "Road",
+      "order": 12,
+      "sections": [
+        {
+          "id": "strisce",
+          "title": "Strisce longitudinali",
+          "content": "Le strisce continue non possono essere superate né valicate. Le strisce discontinue possono essere superate."
+        }
+      ]
+    },
+    {
+      "id": "semafori",
+      "title": "Semafori e Segnali dei Vigili",
+      "icon": "Timer",
+      "order": 13,
+      "sections": [
+        {
+          "id": "luci",
+          "title": "Significato delle luci",
+          "content": "VERDE: via libera. GIALLO: sgomberare l'incrocio se già impegnato, altrimenti arrestarsi. ROSSO: arresto."
+        }
+      ]
+    },
+    {
+      "id": "luci-veicoli",
+      "title": "Luci e Dispositivi Acustici",
+      "icon": "Headphones",
+      "order": 14,
+      "sections": [
+        {
+          "id": "anabbaglianti",
+          "title": "Luci anabbaglianti",
+          "content": "Devono essere accese da mezz'ora dopo il tramonto a mezz'ora prima dell'alba e di giorno fuori dai centri abitati."
+        },
+        {
+          "id": "abbaglianti",
+          "title": "Luci abbaglianti",
+          "content": "Devono essere spente quando si incrocia un altro veicolo o si segue un veicolo a breve distanza."
+        }
+      ]
+    },
+    {
+      "id": "cinture-casco",
+      "title": "Cinture di Sicurezza e Casco",
+      "icon": "Briefcase",
+      "order": 15,
+      "sections": [
+        {
+          "id": "obbligo-cinture",
+          "title": "Obbligo cinture",
+          "content": "Le cinture di sicurezza devono essere indossate anche nei sedili posteriori se il veicolo ne è provvisto."
+        },
+        {
+          "id": "obbligo-casco",
+          "title": "Obbligo casco",
+          "content": "Il casco è obbligatorio per conducenti e passeggeri di ciclomotori e motocicli."
+        }
+      ]
+    },
+    {
+      "id": "elementi-veicolo",
+      "title": "Elementi del Veicolo e Manutenzione",
+      "icon": "Car",
+      "order": 16,
+      "sections": [
+        {
+          "id": "pneumatici",
+          "title": "Pneumatici",
+          "content": "Gli pneumatici devono avere un battistrada con profondità minima di 1,6 mm. La pressione deve essere quella indicata dalla casa costruttrice."
+        },
+        {
+          "id": "freni",
+          "title": "Impianto frenante",
+          "content": "Il veicolo deve essere dotato di due sistemi frenanti indipendenti: freno di servizio e freno di stazionamento."
+        }
+      ]
+    },
+    {
+      "id": "patente-documenti",
+      "title": "Patente, Punti e Documenti",
+      "icon": "FileText",
+      "order": 17,
+      "sections": [
+        {
+          "id": "patente-punti",
+          "title": "Sistema a punti",
+          "content": "La patente ha un punteggio iniziale di 20 punti. Si perdono punti per infrazioni gravi. Con 0 punti la patente viene revocata."
+        },
+        {
+          "id": "documenti-obbligatori",
+          "title": "Documenti da portare",
+          "content": "Bisogna avere con sé: patente di guida, certificato di assicurazione, certificato di circolazione (libretto)."
+        }
+      ]
+    },
+    {
+      "id": "alcool-droga",
+      "title": "Alcool, Droga e Primo Soccorso",
+      "icon": "Pill",
+      "order": 18,
+      "sections": [
+        {
+          "id": "limiti-alcool",
+          "title": "Limiti alcolici",
+          "content": "Il tasso alcolemico massimo consentito è 0,5 g/l. Per neopatentati (primi 3 anni) è 0 g/l."
+        },
+        {
+          "id": "primo-soccorso",
+          "title": "Primo soccorso",
+          "content": "In caso di incidente bisogna prestare assistenza agli eventuali feriti e chiamare i soccorsi (112 o 118)."
+        }
+      ]
+    },
+    {
+      "id": "incidenti",
+      "title": "Incidenti Stradali e Comportamenti",
+      "icon": "AlertCircle",
+      "order": 19,
+      "sections": [
+        {
+          "id": "cosa-fare",
+          "title": "Cosa fare in caso di incidente",
+          "content": "Fermarsi immediatamente, prestare soccorso, segnalare il pericolo con il triangolo, chiamare le autorità se ci sono feriti."
+        }
+      ]
+    },
+    {
+      "id": "responsabilita-assicurazione",
+      "title": "Responsabilità Civile e Assicurazione",
+      "icon": "Scale",
+      "order": 20,
+      "sections": [
+        {
+          "id": "rca",
+          "title": "Assicurazione RCA",
+          "content": "L'assicurazione per la responsabilità civile auto (RCA) è obbligatoria. Copre i danni causati a terzi."
+        }
+      ]
+    },
+    {
+      "id": "ambiente",
+      "title": "Consumi, Ambiente e Inquinamento",
+      "icon": "Lightbulb",
+      "order": 21,
+      "sections": [
+        {
+          "id": "guida-ecologica",
+          "title": "Guida ecologica",
+          "content": "Per ridurre consumi ed emissioni: mantenere velocità costante, evitare accelerazioni brusche, spegnere il motore in caso di sosta prolungata."
+        }
+      ]
+    },
+    {
+      "id": "autostrade",
+      "title": "Norme Varie e Autostrade",
+      "icon": "Highway",
+      "order": 22,
+      "sections": [
+        {
+          "id": "pedaggi",
+          "title": "Pedaggi autostradali",
+          "content": "In autostrada è obbligatorio pagare il pedaggio. Si può pagare in contanti, con carta o con Telepass."
+        }
+      ]
+    },
+    {
+      "id": "segnali-cantiere",
+      "title": "Segnali Complementari e Cantieri",
+      "icon": "TrafficCone",
+      "order": 23,
+      "sections": [
+        {
+          "id": "pannelli",
+          "title": "Pannelli integrativi",
+          "content": "I pannelli integrativi completano il significato dei segnali verticali fornendo indicazioni su distanza, estensione del pericolo, categoria di veicoli interessati."
+        }
+      ]
+    },
+    {
+      "id": "definizioni-stradali",
+      "title": "Definizioni Stradali e di Traffico",
+      "icon": "Circle",
+      "order": 24,
+      "sections": [
+        {
+          "id": "carreggiata",
+          "title": "Carreggiata",
+          "content": "Parte della strada destinata allo scorrimento dei veicoli. Può essere a senso unico o a doppio senso di circolazione."
+        },
+        {
+          "id": "corsia",
+          "title": "Corsia",
+          "content": "Parte longitudinale della carreggiata di larghezza sufficiente a permettere il transito di una sola fila di veicoli."
+        }
+      ]
+    },
+    {
+      "id": "pannelli-integrativi",
+      "title": "Pannelli Integrativi dei Segnali",
+      "icon": "Info",
+      "order": 25,
+      "sections": [
+        {
+          "id": "funzione",
+          "title": "Funzione",
+          "content": "I pannelli integrativi sono posti sotto i segnali verticali per fornire indicazioni complementari come distanza, estensione, orari di validità."
+        }
+      ]
+    }
+  ]
+}
+
