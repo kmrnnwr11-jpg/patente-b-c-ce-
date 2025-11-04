@@ -4,15 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const AVAILABLE_LANGUAGES = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
   { code: 'ur', name: 'اردو', flag: '🇵🇰' },
   { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
-  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🏴' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'ro', name: 'Română', flag: '🇷🇴' },
+  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🏴' }
 ];
 
 interface LanguageSelectorProps {

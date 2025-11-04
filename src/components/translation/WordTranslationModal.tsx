@@ -17,15 +17,9 @@ interface Language {
 
 const AVAILABLE_LANGUAGES: Language[] = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
   { code: 'ur', name: 'اردو', flag: '🇵🇰' },
   { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
-  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🏴' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'ro', name: 'Română', flag: '🇷🇴' },
+  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🏴' }
 ];
 
 export const WordTranslationModal = ({
@@ -64,15 +58,9 @@ export const WordTranslationModal = ({
       // Mappa codici lingua per Speech API
       const langMap: Record<string, string> = {
         en: 'en-GB',
-        ar: 'ar-SA',
         ur: 'ur-PK',
         hi: 'hi-IN',
         pa: 'pa-IN',
-        fr: 'fr-FR',
-        de: 'de-DE',
-        es: 'es-ES',
-        zh: 'zh-CN',
-        ro: 'ro-RO',
         it: 'it-IT'
       };
 

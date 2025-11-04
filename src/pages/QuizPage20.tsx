@@ -15,7 +15,7 @@ export const QuizPage20 = () => {
   
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedLanguages, setSelectedLanguages] = useState<string[]>(['en', 'ar', 'ur', 'hi']);
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>(['en', 'ur', 'hi', 'pa']);
   const [userAnswers, setUserAnswers] = useState<Record<number, boolean>>({});
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);

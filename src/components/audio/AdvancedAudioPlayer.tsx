@@ -11,29 +11,17 @@ interface AdvancedAudioPlayerProps {
 const LANGUAGE_VOICES: Record<string, string> = {
   it: 'it-IT',
   en: 'en-GB',
-  ar: 'ar-SA',
   ur: 'ur-PK',
   hi: 'hi-IN',
-  pa: 'pa-IN',
-  fr: 'fr-FR',
-  de: 'de-DE',
-  es: 'es-ES',
-  zh: 'zh-CN',
-  ro: 'ro-RO'
+  pa: 'pa-IN'
 };
 
 const LANGUAGE_FLAGS: Record<string, string> = {
   it: '🇮🇹',
   en: '🇬🇧',
-  ar: '🇸🇦',
   ur: '🇵🇰',
   hi: '🇮🇳',
-  pa: '🏴',
-  fr: '🇫🇷',
-  de: '🇩🇪',
-  es: '🇪🇸',
-  zh: '🇨🇳',
-  ro: '🇷🇴'
+  pa: '🏴'
 };
 
 export const AdvancedAudioPlayer = ({

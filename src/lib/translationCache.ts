@@ -131,87 +131,45 @@ const getLocalTranslation = (word: string, targetLang: string): string | null =>
   const dictionary: Record<string, Record<string, string>> = {
     'conducente': {
       en: 'driver',
-      ar: 'سائق',
       ur: 'ڈرائیور',
       hi: 'चालक',
-      pa: 'ਡਰਾਈਵਰ',
-      fr: 'conducteur',
-      de: 'Fahrer',
-      es: 'conductor',
-      zh: '司机',
-      ro: 'șofer'
+      pa: 'ਡਰਾਈਵਰ'
     },
     'veicolo': {
       en: 'vehicle',
-      ar: 'مركبة',
       ur: 'گاڑی',
       hi: 'वाहन',
-      pa: 'ਵਾਹਨ',
-      fr: 'véhicule',
-      de: 'Fahrzeug',
-      es: 'vehículo',
-      zh: '车辆',
-      ro: 'vehicul'
+      pa: 'ਵਾਹਨ'
     },
     'strada': {
       en: 'road',
-      ar: 'طريق',
       ur: 'سڑک',
       hi: 'सड़क',
-      pa: 'ਸੜਕ',
-      fr: 'route',
-      de: 'Straße',
-      es: 'carretera',
-      zh: '道路',
-      ro: 'drum'
+      pa: 'ਸੜਕ'
     },
     'velocità': {
       en: 'speed',
-      ar: 'سرعة',
       ur: 'رفتار',
       hi: 'गति',
-      pa: 'ਗਤੀ',
-      fr: 'vitesse',
-      de: 'Geschwindigkeit',
-      es: 'velocidad',
-      zh: '速度',
-      ro: 'viteză'
+      pa: 'ਗਤੀ'
     },
     'limite': {
       en: 'limit',
-      ar: 'حد',
       ur: 'حد',
       hi: 'सीमा',
-      pa: 'ਸੀਮਾ',
-      fr: 'limite',
-      de: 'Grenze',
-      es: 'límite',
-      zh: '限制',
-      ro: 'limită'
+      pa: 'ਸੀਮਾ'
     },
     'segnale': {
       en: 'sign',
-      ar: 'إشارة',
       ur: 'نشان',
       hi: 'संकेत',
-      pa: 'ਸੰਕੇਤ',
-      fr: 'signal',
-      de: 'Zeichen',
-      es: 'señal',
-      zh: '标志',
-      ro: 'semn'
+      pa: 'ਸੰਕੇਤ'
     },
     'pericolo': {
       en: 'danger',
-      ar: 'خطر',
       ur: 'خطرہ',
       hi: 'खतरा',
-      pa: 'ਖ਼ਤਰਾ',
-      fr: 'danger',
-      de: 'Gefahr',
-      es: 'peligro',
-      zh: '危险',
-      ro: 'pericol'
+      pa: 'ਖ਼ਤਰਾ'
     }
   };
 

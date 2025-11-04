@@ -11,7 +11,7 @@ interface ClickableTextProps {
 export const ClickableText = ({
   text,
   className = '',
-  selectedLanguages = ['en', 'ar', 'ur', 'hi'],
+  selectedLanguages = ['en', 'ur', 'hi', 'pa'],
   enabled = true
 }: ClickableTextProps) => {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
