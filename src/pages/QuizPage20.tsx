@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Lightbulb } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { ClickableText } from '@/components/translation/ClickableText';
 import { LanguageSelector } from '@/components/translation/LanguageSelector';
 import { AdvancedAudioPlayer } from '@/components/audio/AdvancedAudioPlayer';
@@ -139,15 +139,19 @@ export const QuizPage20 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 pb-20">
       <div className="container mx-auto px-4 py-3 max-w-4xl">
-        {/* Header - Compatto */}
-        <div className="flex justify-between items-center mb-3">
+        {/* Header - Una Riga Moderna */}
+        <div className="flex items-center justify-between gap-4 mb-3 bg-white rounded-xl px-4 py-2 shadow-sm">
+          {/* Esci */}
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-1 text-gray-700 hover:text-gray-900 transition text-sm"
+            className="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="font-medium">Esci</span>
+            <span>Esci</span>
           </button>
+
+          {/* Divider */}
+          <div className="h-6 w-px bg-gray-300"></div>
 
           {/* Timer - Compatto */}
           <div className="scale-75">
@@ -158,11 +162,15 @@ export const QuizPage20 = () => {
             />
           </div>
 
-          <div className="text-right">
-            <div className="text-xs text-gray-500">Errori</div>
-            <div className={`text-lg font-bold ${errorCount >= 3 ? 'text-red-500' : 'text-gray-800'}`}>
+          {/* Divider */}
+          <div className="h-6 w-px bg-gray-300"></div>
+
+          {/* Errori */}
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-gray-500 font-medium">Errori:</span>
+            <span className={`text-lg font-bold ${errorCount >= 3 ? 'text-red-500' : 'text-green-600'}`}>
               {errorCount}/3
-            </div>
+            </span>
           </div>
         </div>
 
@@ -206,14 +214,8 @@ export const QuizPage20 = () => {
           )}
 
           <div className="p-8">
-            {/* Hint - Compatto */}
-            <div className="mb-3 flex items-center gap-2 text-xs text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg">
-              <Lightbulb className="w-4 h-4 flex-shrink-0" />
-              <span>Tocca una parola per tradurla 👆</span>
-            </div>
-
-            {/* Question Text - Più Grande */}
-            <div className="mb-6">
+            {/* Question Text - Più Grande e Spazioso */}
+            <div className="mb-8">
               <ClickableText
                 text={currentQuestion.domanda}
                 className="text-2xl leading-relaxed text-gray-900 font-semibold"
