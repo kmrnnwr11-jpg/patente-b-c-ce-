@@ -82,14 +82,90 @@
       "order": 6,
       "sections": [
         {
-          "id": "regola-base",
-          "title": "Regola generale",
-          "content": "Negli incroci, in assenza di segnaletica, vale la regola della precedenza a destra. Il veicolo che proviene da destra ha la precedenza."
+          "id": "introduzione",
+          "title": "Introduzione alle Norme sulla Precedenza",
+          "content": "Le norme sulla precedenza regolano l'ordine di passaggio dei veicoli negli incroci e nelle situazioni di traffico complesso. Rispettare la precedenza è fondamentale per evitare incidenti, specialmente agli incroci dove avvengono il 25% degli incidenti stradali.",
+          "importante": "🚨 FONDAMENTALE: La precedenza non è un diritto assoluto! Anche se hai la precedenza, devi assicurarti che gli altri veicoli ti lascino passare prima di impegnare l'incrocio."
+        },
+        {
+          "id": "gerarchia",
+          "title": "📋 Gerarchia delle Precedenze",
+          "content": "Esiste un ordine preciso da seguire: 1) SEGNALI DEI VIGILI (hanno priorità su tutto) | 2) SEMAFORI (precedono i segnali stradali) | 3) SEGNALI VERTICALI (STOP, Dare Precedenza) | 4) SEGNALETICA ORIZZONTALE (strisce, zebrature) | 5) NORME GENERALI (regola della destra).",
+          "trucco": "💡 TRUCCO PER RICORDARE: 'Vigile batte Semaforo, Semaforo batte Segnale, Segnale batte Riga, Riga batte Regola'. Come carta-forbice-sasso!",
+          "esempio": "Esempio pratico: Se c'è un vigile che dirige il traffico con semaforo verde, SEGUI IL VIGILE (ha priorità sul semaforo)."
+        },
+        {
+          "id": "regola-destra",
+          "title": "➡️ Regola della Precedenza a Destra",
+          "content": "Negli incroci SENZA segnaletica (né semafori, né cartelli), vale la regola: CHI ARRIVA DA DESTRA HA LA PRECEDENZA. Questa è la regola base, ma la più semplice da ricordare.",
+          "dettagli": "📌 IMPORTANTE: Si applica solo quando: NON ci sono segnali | NON ci sono semafori | NON ci sono strisce di precedenza | L'incrocio è tra strade di pari importanza.",
+          "esempio": "Esempio: Arrivi a un incrocio senza cartelli. Guarda a destra: se arriva un veicolo, DEVI dare precedenza. Se non arriva nessuno da destra, puoi passare (ma controlla comunque a sinistra!).",
+          "errore": "❌ ERRORE COMUNE: Pensare che la precedenza a destra valga SEMPRE. NO! Vale solo senza segnaletica. Se c'è STOP o Dare Precedenza, quelli hanno priorità!"
+        },
+        {
+          "id": "segnali-precedenza",
+          "title": "🛑 Segnali di Precedenza: STOP e Dare Precedenza",
+          "content": "STOP (ottagono rosso): Impone l'ARRESTO TOTALE alla striscia bianca. Devi fermarti SEMPRE, anche se non vedi veicoli. Poi dai precedenza a destra E sinistra. | DARE PRECEDENZA (triangolo rovesciato): Devi rallentare e dare precedenza, ma NON sei obbligato a fermarti se la strada è libera.",
+          "differenza": "🔍 DIFFERENZA CHIAVE: STOP = fermarsi sempre | Dare Precedenza = rallentare, fermarsi solo se necessario.",
+          "trucco": "💡 MEMORIA: STOP ha 4 lettere come le 4 direzioni da controllare (avanti, destra, sinistra, dietro). Dare Precedenza ha la punta in GIÙ = tu vai giù di velocità.",
+          "sanzione": "⚖️ SANZIONI: Non fermarsi allo STOP: multa 167-665€ + 6 punti! | Non dare precedenza: multa 167-665€ + 5 punti."
+        },
+        {
+          "id": "semafori",
+          "title": "🚦 Precedenza con Semafori",
+          "content": "VERDE: Puoi passare, MA controlla che l'incrocio sia libero. GIALLO: STOP se puoi fermarti in sicurezza. Se hai già impegnato l'incrocio, sgomberalo. ROSSO: STOP assoluto. | SEMAFORO SPENTO: Vale come incrocio senza segnaletica (precedenza a destra) OPPURE seguire i cartelli se presenti.",
+          "importante": "🚨 ATTENZIONE: Anche con il verde, devi assicurarti che l'incrocio sia libero. Se c'è ancora un veicolo che sta sgomberando con il giallo, ASPETTA!",
+          "trucco": "💡 GIALLO DOMANDA: 'Posso fermarmi in sicurezza?' SÌ → fermati | NO (sei troppo vicino) → passa velocemente sgomberando l'incrocio.",
+          "errore": "❌ ERRORE MORTALE: Partire di scatto appena scatta il verde senza guardare. Sempre più incidenti avvengono con il verde per veicoli che passano con il rosso!"
         },
         {
           "id": "rotonde",
-          "title": "Rotatorie",
-          "content": "Nelle rotatorie, i veicoli che circolano all'interno hanno la precedenza su quelli che devono immettersi."
+          "title": "🔄 Rotatorie (Rotonde)",
+          "content": "Regola: Chi CIRCOLA DENTRO la rotonda ha SEMPRE la precedenza su chi ENTRA. Quando entri: rallenta, guarda a sinistra, dai precedenza a chi è già dentro. Quando esci: metti la freccia a destra prima di uscire.",
+          "dettagli": "📌 COME COMPORTARSI: 1) Avvicinandoti: rallenta, guarda il segnale (rotonda) 2) All'ingresso: STOP se c'è traffico nella rotonda 3) Dentro: mantieni la corsia, non zigzagare 4) All'uscita: freccia destra PRIMA dell'uscita.",
+          "trucco": "💡 TRUCCO VISIVO: La rotonda è come un fiume circolare. Tu sei sulla sponda: devi aspettare che passi il flusso prima di entrare!",
+          "errore": "❌ ERRORI COMUNI: Non dare precedenza entrando (causa incidenti!) | Non mettere la freccia in uscita (gli altri non capiscono) | Fermarsi DENTRO la rotonda per far entrare altri (NO! Chi è dentro ha precedenza sempre!)."
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚑 Precedenza ai Veicoli di Emergenza",
+          "content": "Veicoli con sirena e lampeggiante accesi (ambulanza, polizia, vigili del fuoco) hanno SEMPRE la precedenza. Devi accostare a destra e fermarti per farli passare. | TRAM: Ha sempre precedenza sui veicoli normali, tranne quando esce dal deposito.",
+          "comportamento": "🚨 COSA FARE: 1) Senti sirena → guarda negli specchietti 2) Individua da dove arriva 3) Accosta a DESTRA (mai a sinistra!) 4) Fermati se necessario 5) Riparti solo quando è passato.",
+          "importante": "📋 TRAM: Può circolare in entrambi i sensi sulla sua corsia. Quando un tram è fermo per far scendere passeggeri, i veicoli dietro devono FERMARSI (i passeggeri potrebbero attraversare).",
+          "sanzione": "⚖️ Non dare precedenza a ambulanza/polizia: multa 328-1.314€ + 9 punti + sospensione patente fino a 6 mesi!"
+        },
+        {
+          "id": "casi-speciali",
+          "title": "⚠️ Incroci e Casi Particolari",
+          "content": "INCROCIO CON 4 VEICOLI (tutti da direzioni diverse): Si applica la precedenza a destra in sequenza. Il veicolo senza nessuno a destra passa per primo. | STRADE IN SALITA/DISCESA STRETTE: Chi sale ha la precedenza (più difficile ripartire in salita). Se più comodo, chi scende può fare retromarcia.",
+          "esempio": "🔍 INCROCIO 4 AUTO: Immagina 4 auto A, B, C, D. A ha B a destra, B ha C a destra, C ha D a destra, D ha A a destra. Chi passa? Nessuno ha precedenza assoluta! Soluzione: contatto visivo, passa chi ha strada più libera alla sua destra, poi gli altri seguono.",
+          "montagna": "🏔️ STRADE STRETTE DI MONTAGNA: Chi SALE ha precedenza su chi SCENDE. Chi scende deve fare retromarcia se necessario fino a uno slargo. Ragione: in salita è difficile ripartire e fare retromarcia.",
+          "trucco": "💡 RICORDA: In montagna, se SCENDI devi fare PIÙ FATICA (retromarcia). Chi SALE ha già fatica a salire!"
+        },
+        {
+          "id": "attraversamenti",
+          "title": "🚶 Precedenza ai Pedoni e Biciclette",
+          "content": "STRISCE PEDONALI (zebre): I pedoni hanno SEMPRE precedenza assoluta quando sono sulle strisce o stanno per attraversare. Devi FERMARTI completamente. | PISTE CICLABILI: Quando attraversi una pista ciclabile (es. per entrare in un parcheggio), devi dare precedenza alle biciclette.",
+          "dettagli": "📌 IMPORTANTE: 'Stanno per attraversare' significa: il pedone è sul marciapiede vicino alle strisce e manifesta l'intenzione di attraversare (si avvicina, guarda verso le strisce).",
+          "comportamento": "👁️ COSA FARE: 1) Vedi strisce pedonali avanti 2) Rallenta 3) Guarda se ci sono pedoni 4) Se sì, FERMATI completamente 5) Fai segno di passare 6) Riparti solo quando hanno attraversato.",
+          "sanzione": "⚖️ Non dare precedenza al pedone: multa 167-665€ + 8 punti + sospensione 1 mese (se recidivo 3 mesi)! È una delle infrazioni PIÙ GRAVI.",
+          "errore": "❌ ERRORE COMUNE: Rallentare ma non fermarsi. NO! Devi FERMARTI completamente se il pedone sta attraversando o sta per farlo."
+        },
+        {
+          "id": "svolta-destra-sinistra",
+          "title": "↩️ Precedenza in Svolta",
+          "content": "SVOLTA A DESTRA: Dai precedenza ai pedoni che attraversano la strada dove stai svoltando. Dai precedenza ai veicoli che provengono da sinistra. | SVOLTA A SINISTRA: Dai precedenza ai veicoli che arrivano di fronte e a quelli da destra. Poi ai pedoni che attraversano.",
+          "regola": "📋 REGOLA SEMPLICE: Quando svolti (destra o sinistra), dai precedenza a: 1) Veicoli che proseguono dritto 2) Veicoli dalla tua destra 3) Pedoni sulle strisce che attraversi.",
+          "esempio": "Esempio svolta sinistra: Sei a un incrocio con verde, vuoi svoltare a sinistra. Devi aspettare: 1) I veicoli che arrivano di fronte dritti 2) I veicoli di fronte che svoltano a destra 3) Solo dopo puoi svoltare.",
+          "trucco": "💡 MEMORIA: In svolta, chi VA DRITTO ha precedenza su chi GIRA. Ragione: chi va dritto ha meno tempo per reagire!"
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Consigli per l'Esame",
+          "content": "Domande frequenti: Differenza STOP vs Dare Precedenza | Precedenza a destra (quando si applica?) | Gerarchia (vigile > semaforo > segnale > regola) | Rotonde (chi è dentro ha precedenza) | Pedoni (sempre precedenza) | Veicoli emergenza (sempre precedenza) | Tram (ha precedenza).",
+          "verofalso": "✅ VERO/FALSO TIPICI: 'Allo STOP devo fermarmi sempre' = VERO | 'Con semaforo verde posso passare senza guardare' = FALSO (devo comunque controllare) | 'In rotonda do precedenza entrando' = VERO | 'Precedenza a destra vale sempre' = FALSO (solo senza segnali).",
+          "trucco": "💡 TRUCCHI FINALI: Se hai dubbi in un incrocio, guarda A DESTRA per primo | Semaforo spento = precedenza a destra | Chi svolta dà precedenza a chi va dritto | Pedoni e ambulanze = precedenza SEMPRE!",
+          "errori": "❌ ERRORI NEI QUIZ: Confondere 'rallentare' con 'fermarsi' | Pensare che il verde dia precedenza assoluta | Dimenticare che il vigile ha priorità su tutto | Confondere precedenza in montagna (chi sale ha precedenza)."
         }
       ]
     },
@@ -175,9 +251,7 @@
           "id": "definizione",
           "title": "📏 Cos'è la Distanza di Sicurezza",
           "content": "La distanza di sicurezza è lo spazio minimo che deve separare il tuo veicolo da quello che ti precede. Deve essere tale da permetterti di arrestare completamente il veicolo evitando la collisione, anche se il veicolo davanti frena bruscamente.",
-          "importante": "🚨 FONDAMENTALE: Non mantenere la distanza di sicurezza è una delle cause principali di tamponamenti. È più importante del limit
-
-e di velocità stesso!"
+          "importante": "🚨 FONDAMENTALE: Non mantenere la distanza di sicurezza è una delle cause principali di tamponamenti. È più importante del limite di velocità stesso!"
         },
         {
           "id": "fattori",
@@ -202,7 +276,7 @@ e di velocità stesso!"
         {
           "id": "condizioni-meteo",
           "title": "🌧️ Distanza con Maltempo",
-          "content": "PIOGGIA: Raddoppia la distanza normale. L'asfalto bagnato riduce l'aderenza del 50%. NEVE: Triplic a o quadruplica la distanza. GHIACCIO: Aumenta di 8-10 volte! Praticamente impossibile fermarsi. NEBBIA: Anche con buona aderenza, serve più distanza per vedere il pericolo in tempo.",
+          "content": "PIOGGIA: Raddoppia la distanza normale. L'asfalto bagnato riduce l'aderenza del 50%. NEVE: Triplica o quadruplica la distanza. GHIACCIO: Aumenta di 8-10 volte! Praticamente impossibile fermarsi. NEBBIA: Anche con buona aderenza, serve più distanza per vedere il pericolo in tempo.",
           "regola": "📏 REGOLA PRATICA: Con pioggia conta 4 secondi invece di 2 | Con neve conta 6-8 secondi | Con ghiaccio mantieni 10+ secondi (o non guidare!).",
           "consiglio": "💡 CONSIGLIO: Con maltempo, riduci SEMPRE la velocità anche se sei nei limiti. Non serve a nulla andare al limite se poi non riesci a fermarti!"
         },

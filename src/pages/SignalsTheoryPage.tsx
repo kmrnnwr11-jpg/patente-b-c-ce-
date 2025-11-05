@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, AlertCircle, Ban, Shield, Eye, Languages } from 'lucide-react';
 import { WordTranslationModal } from '@/components/translation/WordTranslationModal';
+import { useStudyProgress } from '@/hooks/useStudyProgress';
 import theoryData from '../data/theory-segnali-completo.json';
 
 type Signal = {
@@ -66,9 +67,11 @@ const ClickableText: FC<{ text: string; onWordClick: (word: string) => void }> =
 export const SignalsTheoryPage: FC = () => {
   const navigate = useNavigate();
   const { chapterId } = useParams<{ chapterId: string }>();
+  const { visitChapter, addStudyTime } = useStudyProgress();
   const [chapter, setChapter] = useState<Chapter | null>(null);
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [showTranslation, setShowTranslation] = useState(false);
+  const [startTime] = useState(Date.now());
 
   useEffect(() => {
     const foundChapter = theoryData.chapters.find(
@@ -76,8 +79,22 @@ export const SignalsTheoryPage: FC = () => {
     );
     if (foundChapter) {
       setChapter(foundChapter);
+      // Registra visita al capitolo
+      if (chapterId) {
+        visitChapter(chapterId);
+      }
     }
-  }, [chapterId]);
+  }, [chapterId, visitChapter]);
+
+  // Registra tempo speso quando l'utente lascia la pagina
+  useEffect(() => {
+    return () => {
+      if (chapterId) {
+        const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+        addStudyTime(chapterId, timeSpent);
+      }
+    };
+  }, [chapterId, startTime, addStudyTime]);
 
   const handleWordClick = (word: string) => {
     setSelectedWord(word);

@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeft, BookOpen, ChevronRight, ArrowLeft } from 'lucide-react';
+import { useStudyProgress } from '@/hooks/useStudyProgress';
 import theoryData from '@/data/theory-structure.json';
 
 interface TheoryChapter {
@@ -18,10 +19,12 @@ interface TheoryChapter {
 export const LessonDetailPage: FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
+  const { visitChapter, addStudyTime } = useStudyProgress();
   
   const [chapter, setChapter] = useState<TheoryChapter | null>(null);
   const [prevChapter, setPrevChapter] = useState<TheoryChapter | null>(null);
   const [nextChapter, setNextChapter] = useState<TheoryChapter | null>(null);
+  const [startTime] = useState(Date.now());
 
   useEffect(() => {
     const data = typeof theoryData === 'string' ? JSON.parse(theoryData) : theoryData;
@@ -30,6 +33,11 @@ export const LessonDetailPage: FC = () => {
     const foundChapter = chapters.find((ch: TheoryChapter) => ch.id === id);
     if (foundChapter) {
       setChapter(foundChapter);
+      
+      // Registra visita al capitolo
+      if (id) {
+        visitChapter(id);
+      }
       
       // Trova capitolo precedente
       const prevIndex = chapters.findIndex((ch: TheoryChapter) => ch.id === id) - 1;
@@ -49,7 +57,17 @@ export const LessonDetailPage: FC = () => {
     } else {
       setChapter(null);
     }
-  }, [id]);
+  }, [id, visitChapter]);
+
+  // Registra tempo speso quando l'utente lascia la pagina
+  useEffect(() => {
+    return () => {
+      if (id) {
+        const timeSpent = Math.floor((Date.now() - startTime) / 1000);
+        addStudyTime(id, timeSpent);
+      }
+    };
+  }, [id, startTime, addStudyTime]);
 
   if (!chapter) {
     return (

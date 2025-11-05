@@ -21,6 +21,7 @@ const TheoryPage = lazy(() => import('@/pages/TheoryPage').then(m => ({ default:
 const LessonDetailPage = lazy(() => import('@/pages/teoria/LessonDetailPage').then(m => ({ default: m.LessonDetailPage })));
 const SignalsTheoryPage = lazy(() => import('@/pages/SignalsTheoryPage').then(m => ({ default: m.SignalsTheoryPage })));
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage').then(m => ({ default: m.FlashcardsPage })));
+const QuickQuizPage = lazy(() => import('@/pages/QuickQuizPage').then(m => ({ default: m.QuickQuizPage })));
 const BookmarkedQuestionsPage = lazy(() => import('@/pages/BookmarkedQuestionsPage').then(m => ({ default: m.BookmarkedQuestionsPage })));
 const SmartReviewPage = lazy(() => import('@/pages/SmartReviewPage').then(m => ({ default: m.SmartReviewPage })));
 const AchievementsPage = lazy(() => import('@/pages/AchievementsPage').then(m => ({ default: m.AchievementsPage })));
@@ -65,6 +66,8 @@ const App: FC = () => {
             <Route path="/theory/signals/:chapterId" element={<SignalsTheoryPage />} />
             <Route path="/study/flashcards" element={<FlashcardsPage />} />
             <Route path="/study/flashcards/:category" element={<FlashcardsPage />} />
+            <Route path="/study/quick-quiz" element={<QuickQuizPage />} />
+            <Route path="/study/quick-quiz/:category" element={<QuickQuizPage />} />
             <Route path="/bookmarks" element={<BookmarkedQuestionsPage />} />
             <Route path="/smart-review" element={<SmartReviewPage />} />
             <Route path="/achievements" element={<AchievementsPage />} />

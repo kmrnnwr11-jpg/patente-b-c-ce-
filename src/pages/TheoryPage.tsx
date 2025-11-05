@@ -22,9 +22,11 @@ import {
   Users,
   FileText,
   Lightbulb,
-  Target
+  Target,
+  TrendingUp
 } from 'lucide-react';
 import { getTopics } from '@/lib/quizLoader';
+import { ProgressDashboard } from '@/components/study/ProgressDashboard';
 
 type TheoryTopic = {
   name: string;
@@ -83,6 +85,7 @@ const fallbackIconMap: Record<string, any> = {
 export const TheoryPage: FC = () => {
   const navigate = useNavigate();
   const [topics, setTopics] = useState<TheoryTopic[]>([]);
+  const [showProgress, setShowProgress] = useState(false);
 
   const chapterIdMap: Record<string, string> = {
     'definizioni stradali e di traffico': 'definizioni-stradali',
@@ -154,8 +157,9 @@ export const TheoryPage: FC = () => {
         </div>
       </div>
 
-      {/* Pulsante Flashcard */}
-      <div className="px-6 mb-8">
+      {/* Pulsanti Studio */}
+      <div className="px-6 mb-8 space-y-4">
+        {/* Pulsante Flashcard */}
         <button
           onClick={() => navigate('/study/flashcards')}
           className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
@@ -175,7 +179,63 @@ export const TheoryPage: FC = () => {
             </svg>
           </div>
         </button>
+
+        {/* Pulsante Quiz Rapido */}
+        <button
+          onClick={() => navigate('/study/quick-quiz')}
+          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <span className="text-3xl">⚡</span>
+              </div>
+              <div className="text-left">
+                <h3 className="text-white font-bold text-xl mb-1">Quiz Rapido</h3>
+                <p className="text-white/90 text-sm">Metti alla prova le tue conoscenze</p>
+              </div>
+            </div>
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </button>
+
+        {/* Pulsante Progresso */}
+        <button
+          onClick={() => setShowProgress(!showProgress)}
+          className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <TrendingUp className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-left">
+                <h3 className="text-white font-bold text-xl mb-1">Il Mio Progresso</h3>
+                <p className="text-white/90 text-sm">Visualizza le tue statistiche di studio</p>
+              </div>
+            </div>
+            <svg 
+              className={`w-6 h-6 text-white transition-transform ${showProgress ? 'rotate-90' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </button>
       </div>
+
+      {/* Dashboard Progresso (collapsibile) */}
+      {showProgress && (
+        <div className="px-6 mb-8">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20">
+            <ProgressDashboard />
+          </div>
+        </div>
+      )}
 
       {/* Sezione Segnali Stradali */}
       <div className="px-6 mb-8">
