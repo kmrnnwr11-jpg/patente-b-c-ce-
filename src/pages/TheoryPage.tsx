@@ -154,6 +154,29 @@ export const TheoryPage: FC = () => {
         </div>
       </div>
 
+      {/* Pulsante Flashcard */}
+      <div className="px-6 mb-8">
+        <button
+          onClick={() => navigate('/study/flashcards')}
+          className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 rounded-3xl p-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center">
+                <span className="text-3xl">📇</span>
+              </div>
+              <div className="text-left">
+                <h3 className="text-white font-bold text-xl mb-1">Modalità Flashcard</h3>
+                <p className="text-white/90 text-sm">Studia i segnali con le carte interattive</p>
+              </div>
+            </div>
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </button>
+      </div>
+
       {/* Sezione Segnali Stradali */}
       <div className="px-6 mb-8">
         <h2 className="text-lg font-bold text-white mb-4">🚦 Segnali Stradali</h2>
