@@ -100,24 +100,68 @@
       "order": 7,
       "sections": [
         {
+          "id": "introduzione",
+          "title": "Introduzione ai Limiti di Velocità",
+          "content": "I limiti di velocità sono fondamentali per la sicurezza stradale. Variano in base al tipo di strada, condizioni meteo, tipo di veicolo e esperienza del conducente. Il loro rispetto riduce drasticamente il rischio di incidenti e la loro gravità."
+        },
+        {
           "id": "autostrade",
-          "title": "Autostrade",
-          "content": "In autostrada il limite massimo è 130 km/h (110 km/h in caso di pioggia). Il limite minimo è 60 km/h."
+          "title": "🛣️ Autostrade",
+          "content": "Limite massimo: 130 km/h (con tempo asciutto) | 110 km/h (in caso di pioggia o neve) | Limite minimo: 60 km/h. Le autostrade sono strade a carreggiate separate, riservate alla circolazione dei veicoli a motore.",
+          "dettagli": "📌 IMPORTANTE: Il limite minimo di 60 km/h si applica solo alla corsia di sinistra (sorpasso). Non c'è limite minimo sulla corsia di destra, ma bisogna comunque mantenere una velocità che non intralci il traffico.",
+          "trucco": "💡 TRUCCO PER RICORDARE: In autostrada pensa '130 - 110 - 60': 130 normale, 110 con pioggia (-20), 60 minimo."
         },
         {
           "id": "extraurbane",
-          "title": "Strade extraurbane principali",
-          "content": "Sulle strade extraurbane principali il limite è 110 km/h (90 km/h in caso di pioggia)."
+          "title": "🛤️ Strade Extraurbane Principali",
+          "content": "Limite: 110 km/h (tempo asciutto) | 90 km/h (con pioggia). Sono le strade a scorrimento veloce con almeno 2 corsie per senso di marcia separate da spartitraffico.",
+          "esempi": "Esempi: Superstrade, tangenziali, raccordi autostradali senza pedaggio. Riconoscimento: cartello blu con scritta bianca.",
+          "errore": "❌ ERRORE COMUNE: Molti confondono le extraurbane principali (110 km/h) con quelle secondarie (90 km/h). La differenza: le principali hanno 2+ corsie per senso!"
         },
         {
           "id": "extraurbane-secondarie",
-          "title": "Strade extraurbane secondarie",
-          "content": "Sulle strade extraurbane secondarie il limite è 90 km/h."
+          "title": "🏞️ Strade Extraurbane Secondarie",
+          "content": "Limite: 90 km/h. Sono le strade provinciali e comunali extraurbane, con una corsia per senso di marcia.",
+          "dettagli": "Caratteristiche: Possono avere incroci a raso (allo stesso livello), accessi da strade laterali, attraversamenti pedonali. Non hanno spartitraffico centrale.",
+          "trucco": "💡 RICORDA: 'Secondarie = 90' | Se la strada ha solo 1 corsia per senso, è secondaria = 90 km/h massimo."
         },
         {
           "id": "urbane",
-          "title": "Centri abitati",
-          "content": "Nei centri abitati il limite è 50 km/h."
+          "title": "🏙️ Centri Abitati",
+          "content": "Limite: 50 km/h all'interno dei centri abitati, salvo diversa indicazione. Il limite inizia dal cartello 'Inizio centro abitato' (con nome della località su sfondo bianco) e termina con 'Fine centro abitato' (nome barrato).",
+          "dettagli": "⚠️ ATTENZIONE: Anche su strade larghe e scorrevoli dentro il centro abitato, il limite resta 50 km/h se non diversamente indicato. La larghezza della strada non cambia il limite!",
+          "esempi": "Zone speciali nei centri abitati: Zone residenziali 30 km/h | Zone scolastiche 30 km/h (negli orari indicati) | Alcune vie possono avere limiti diversi (segnalati)."
+        },
+        {
+          "id": "casi-speciali",
+          "title": "⚡ Limiti Speciali e Particolari",
+          "content": "Zone residenziali: 30 km/h | Zone a traffico limitato (ZTL): variabile, sempre segnalato | Presenza di lavori: seguire segnaletica temporanea | Condizioni di scarsa visibilità: adeguare comunque la velocità.",
+          "importante": "🚨 FONDAMENTALE: In caso di nebbia fitta, pioggia forte o neve, DEVI comunque ridurre la velocità anche se sotto il limite massimo consentito. La velocità deve sempre essere adeguata alle condizioni."
+        },
+        {
+          "id": "neopatentati",
+          "title": "👤 Limiti per Neopatentati",
+          "content": "Per i primi 3 anni dalla patente, i neopatentati hanno limiti ridotti: Autostrada: 100 km/h (invece di 130) | Extraurbane principali: 90 km/h (invece di 110).",
+          "dettagli": "Si applicano solo a: Neopatentati con patente B conseguita da meno di 3 anni. NON si applicano a chi ha avuto patente A prima della B.",
+          "trucco": "💡 CALCOLO FACILE: Neopatentati = limiti normali -30 km/h (130→100, 110→90)"
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚛 Limiti per Veicoli Particolari",
+          "content": "Autocarri oltre 3,5t: Autostrada 80 km/h | Extraurbane 70 km/h | Centri abitati 50 km/h. Auto con rimorchio: Autostrada 80 km/h | Extraurbane 70 km/h. Autobus: Autostrada 100 km/h | Extraurbane 80 km/h.",
+          "nota": "📋 I ciclomotori (50cc) non possono circolare in autostrada e sulle strade extraurbane principali. Limite massimo: 45 km/h."
+        },
+        {
+          "id": "sanzioni",
+          "title": "⚖️ Sanzioni per Eccesso di Velocità",
+          "content": "Superamento fino a 10 km/h: multa 42-173€ | Da 10 a 40 km/h: multa 173-695€ + 3 punti | Da 40 a 60 km/h: multa 543-2.170€ + 6 punti + sospensione 1-3 mesi | Oltre 60 km/h: multa 845-3.382€ + 10 punti + sospensione 6-12 mesi + possibile revoca patente.",
+          "aggravanti": "🚨 AGGRAVANTI: Infrazioni notturne (22:00-7:00): sanzioni aumentate di 1/3. Recidiva: se commetti 2 infrazioni gravi in 2 anni, sospensione automatica."
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Consigli per l'Esame",
+          "content": "Quiz frequenti: Differenza tra extraurbane principali e secondarie | Limiti con pioggia | Limiti neopatentati | Limite minimo in autostrada (60 km/h solo corsia sinistra!) | Ricorda: con neve, nebbia, pioggia forte bisogna ridurre anche se sotto il limite.",
+          "errori": "❌ ERRORI DA EVITARE: Confondere 110 e 90 (principale vs secondaria) | Pensare che il limite minimo in autostrada sia ovunque (è solo corsia sinistra!) | Dimenticare il -20 km/h con pioggia in autostrada e extraurbane."
         }
       ]
     },
@@ -128,9 +172,73 @@
       "order": 8,
       "sections": [
         {
-          "id": "calcolo",
-          "title": "Come calcolarla",
-          "content": "La distanza di sicurezza deve essere tale da permettere di arrestare il veicolo evitando la collisione con quello che precede. Dipende da velocità, condizioni del veicolo, della strada e del traffico."
+          "id": "definizione",
+          "title": "📏 Cos'è la Distanza di Sicurezza",
+          "content": "La distanza di sicurezza è lo spazio minimo che deve separare il tuo veicolo da quello che ti precede. Deve essere tale da permetterti di arrestare completamente il veicolo evitando la collisione, anche se il veicolo davanti frena bruscamente.",
+          "importante": "🚨 FONDAMENTALE: Non mantenere la distanza di sicurezza è una delle cause principali di tamponamenti. È più importante del limit
+
+e di velocità stesso!"
+        },
+        {
+          "id": "fattori",
+          "title": "⚙️ Fattori che Influenzano la Distanza",
+          "content": "La distanza di sicurezza dipende da: VELOCITÀ (più vai veloce, più distanza serve) | CONDIZIONI METEO (pioggia, nebbia, neve richiedono più distanza) | STATO DEL VEICOLO (freni, pneumatici) | STATO DELLA STRADA (asciutta, bagnata, ghiacciata) | TRAFFICO (intenso o scorrevole) | TUO STATO FISICO (stanchezza, riflessi).",
+          "regola": "📌 REGOLA ORO: In autostrada, mantieni almeno la distanza equivalente ai metri della velocità. Esempio: 130 km/h = almeno 130 metri di distanza."
+        },
+        {
+          "id": "calcolo-pratico",
+          "title": "🧮 Come Calcolarla in Pratica",
+          "content": "METODO DEI SECONDI: Quando il veicolo davanti passa un punto di riferimento (cartello, ponte), inizia a contare 'milleuno, milledue, milletre'. Dovresti impiegare ALMENO 2-3 secondi prima di passare lo stesso punto. Con pioggia: 4 secondi | Con neve/ghiaccio: 6-8 secondi.",
+          "trucco": "💡 TRUCCO VISIVO: In autostrada, usa i cartelli di distanza (strisce laterali ogni 50m). A 130 km/h dovresti vedere 2-3 strisce tra te e l'auto davanti.",
+          "esempio": "Esempio pratico: A 50 km/h in città = circa 25-30 metri (6-7 lunghezze d'auto) | A 90 km/h extraurbana = circa 50-60 metri (12-15 auto) | A 130 km/h autostrada = circa 70-100 metri (20-25 auto)."
+        },
+        {
+          "id": "tempo-reazione",
+          "title": "⏱️ Tempo di Reazione e Frenata",
+          "content": "TEMPO DI REAZIONE: Circa 1 secondo (tempo tra vedere il pericolo e iniziare a frenare). In questo tempo percorri: 50 km/h = 14 metri | 90 km/h = 25 metri | 130 km/h = 36 metri. SPAZIO DI FRENATA: Dipende da velocità, strada, freni. Formula approssimativa: (Velocità/10)² metri.",
+          "calcoli": "📊 SPAZI DI FRENATA (strada asciutta): 50 km/h = 25 m | 90 km/h = 81 m | 130 km/h = 169 m | CON PIOGGIA: raddoppiano! | CON GHIACCIO: 8-10 volte di più!",
+          "allerta": "⚠️ ATTENZIONE: Lo spazio totale di arresto = tempo reazione + spazio frenata. A 130 km/h serve oltre 200 metri per fermarsi!"
+        },
+        {
+          "id": "condizioni-meteo",
+          "title": "🌧️ Distanza con Maltempo",
+          "content": "PIOGGIA: Raddoppia la distanza normale. L'asfalto bagnato riduce l'aderenza del 50%. NEVE: Triplic a o quadruplica la distanza. GHIACCIO: Aumenta di 8-10 volte! Praticamente impossibile fermarsi. NEBBIA: Anche con buona aderenza, serve più distanza per vedere il pericolo in tempo.",
+          "regola": "📏 REGOLA PRATICA: Con pioggia conta 4 secondi invece di 2 | Con neve conta 6-8 secondi | Con ghiaccio mantieni 10+ secondi (o non guidare!).",
+          "consiglio": "💡 CONSIGLIO: Con maltempo, riduci SEMPRE la velocità anche se sei nei limiti. Non serve a nulla andare al limite se poi non riesci a fermarti!"
+        },
+        {
+          "id": "autostrada",
+          "title": "🛣️ Distanza in Autostrada",
+          "content": "In autostrada la distanza è CRUCIALE per l'alta velocità. REGOLA MINIMA: Mantieni almeno 100 metri (2 bande colorate sul guard-rail). MEGLIO: 130-150 metri a 130 km/h. USA I RIFERIMENTI: Strisce laterali ogni 50m, cartelli ogni 1 km.",
+          "trucco": "💡 TRUCCO AUTOSTRADA: Se vedi bene il numero di targa dell'auto davanti, sei TROPPO VICINO! Dovresti vedere solo la sagoma del veicolo.",
+          "errore": "❌ ERRORE MORTALE: Attaccarsi al veicolo davanti per 'sfruttare la scia' o perché 'sei di fretta'. È la causa #1 di tamponamenti a catena in autostrada!"
+        },
+        {
+          "id": "traffico-intenso",
+          "title": "🚗 Traffico Intenso e Code",
+          "content": "Anche nel traffico intenso DEVI mantenere distanza di sicurezza. In coda: almeno 3-5 metri (vedi le ruote dell'auto davanti e un pezzo di asfalto). PERICOLO CODE: Quando arrivi in coda, rallenta gradualmente e accendi le emergenze per avvisare chi viene dietro.",
+          "importante": "🚨 In caso di coda improvvisa in autostrada: 1) Rallenta gradualmente 2) Accendi 4 frecce 3) Controlla specchietto 4) Lascia spazio di fuga 5) Non fermarti all'ultimo metro!",
+          "consiglio": "👁️ Guarda sempre 2-3 auto avanti, non solo quella immediatamente davanti. Così vedi prima se sta succedendo qualcosa."
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚛 Distanza da Veicoli Particolari",
+          "content": "AUTOCARRI/CAMION: Mantieni distanza MAGGIORE. Possono frenare improvvisamente, nascondono la visuale, possono perdere carico. MOTO: Mantieni più distanza, sono più instabili e possono frenare più bruscamente. BICICLETTE: Almeno 1,5 metri laterali quando sorpassi.",
+          "attenzione": "⚠️ CAMION: Non metterti troppo vicino, il camionista non ti vede negli specchietti! Se non vedi i suoi specchietti, lui non vede te.",
+          "divieto": "🚫 VIETATO: Seguire troppo da vicino (tailgating) è punito con multa 41-168€ + 2 punti dalla patente."
+        },
+        {
+          "id": "sanzioni",
+          "title": "⚖️ Sanzioni e Responsabilità",
+          "content": "Mancato rispetto distanza di sicurezza: Multa 41-168€ + 2 punti patente. In caso di tamponamento: Quasi sempre responsabile chi sta dietro (presunzione di non aver mantenuto distanza). Recidiva (2 infrazioni in 2 anni): Sospensione patente 15-30 giorni.",
+          "importante": "📋 RESPONSABILITÀ: In un tamponamento, chi tampona è quasi sempre ritenuto responsabile. L'unica eccezione: dimostri che l'altro ha frenato senza motivo per farti tamponare (quasi impossibile)."
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Tips per l'Esame",
+          "content": "Domande frequenti: Distanza minima in autostrada | Fattori che influenzano la distanza | Cosa fare con pioggia/neve | Tempo di reazione (circa 1 secondo) | Formula '2 secondi' per il calcolo. VERO/FALSO tipici: 'Con pioggia devo raddoppiare' = VERO | 'A 130 km/h bastano 50 metri' = FALSO | 'Il tempo di reazione è sempre uguale' = FALSO.",
+          "trucco": "💡 RICORDA: Più velocità = più distanza | Più maltempo = più distanza | Più stanchezza = più distanza | Nel dubbio: PIÙ DISTANZA!",
+          "errori": "❌ ERRORI COMUNI NEI QUIZ: Confondere spazio di reazione con spazio di frenata | Pensare che in autostrada 50m bastino | Dimenticare che col ghiaccio serve 8-10 volte più spazio."
         }
       ]
     },
