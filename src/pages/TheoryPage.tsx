@@ -154,6 +154,67 @@ export const TheoryPage: FC = () => {
         </div>
       </div>
 
+      {/* Sezione Segnali Stradali */}
+      <div className="px-6 mb-8">
+        <h2 className="text-lg font-bold text-white mb-4">🚦 Segnali Stradali</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => navigate('/theory/signals/segnali-pericolo')}
+            className="backdrop-blur-md rounded-3xl p-6 bg-red-500/30 border border-white/20 flex flex-col items-center justify-center gap-3 min-h-[140px] hover:scale-105 hover:brightness-110 active:scale-95 transition-all duration-300"
+          >
+            <AlertTriangle className="w-12 h-12 text-white" strokeWidth={1.5} />
+            <span className="text-white text-center font-medium text-sm leading-tight">
+              Segnali di Pericolo
+            </span>
+          </button>
+
+          <button
+            onClick={() => navigate('/theory/signals/segnali-precedenza')}
+            className="backdrop-blur-md rounded-3xl p-6 bg-yellow-500/30 border border-white/20 flex flex-col items-center justify-center gap-3 min-h-[140px] hover:scale-105 hover:brightness-110 active:scale-95 transition-all duration-300"
+          >
+            <AlertCircle className="w-12 h-12 text-white" strokeWidth={1.5} />
+            <span className="text-white text-center font-medium text-sm leading-tight">
+              Segnali di Precedenza
+            </span>
+          </button>
+
+          <button
+            onClick={() => navigate('/theory/signals/segnali-divieto')}
+            className="backdrop-blur-md rounded-3xl p-6 bg-red-600/30 border border-white/20 flex flex-col items-center justify-center gap-3 min-h-[140px] hover:scale-105 hover:brightness-110 active:scale-95 transition-all duration-300"
+          >
+            <Ban className="w-12 h-12 text-white" strokeWidth={1.5} />
+            <span className="text-white text-center font-medium text-sm leading-tight">
+              Segnali di Divieto
+            </span>
+          </button>
+
+          <button
+            onClick={() => navigate('/theory/signals/segnali-obbligo')}
+            className="backdrop-blur-md rounded-3xl p-6 bg-blue-500/30 border border-white/20 flex flex-col items-center justify-center gap-3 min-h-[140px] hover:scale-105 hover:brightness-110 active:scale-95 transition-all duration-300"
+          >
+            <Shield className="w-12 h-12 text-white" strokeWidth={1.5} />
+            <span className="text-white text-center font-medium text-sm leading-tight">
+              Segnali di Obbligo
+            </span>
+          </button>
+
+          <button
+            onClick={() => navigate('/theory/signals/segnali-indicazione')}
+            className="backdrop-blur-md rounded-3xl p-6 bg-green-500/30 border border-white/20 flex flex-col items-center justify-center gap-3 min-h-[140px] hover:scale-105 hover:brightness-110 active:scale-95 transition-all duration-300 col-span-2"
+          >
+            <Eye className="w-12 h-12 text-white" strokeWidth={1.5} />
+            <span className="text-white text-center font-medium text-sm leading-tight">
+              Segnali di Indicazione
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Altre lezioni di Teoria */}
+      <div className="px-6 mb-4">
+        <h2 className="text-lg font-bold text-white mb-4">📚 Altre Lezioni di Teoria</h2>
+      </div>
+
       {/* Topics Grid */}
       <div className="px-6">
         <div className="grid grid-cols-2 gap-4">

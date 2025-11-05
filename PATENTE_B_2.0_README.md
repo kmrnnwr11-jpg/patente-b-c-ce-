@@ -259,3 +259,5 @@ A: Usa `setInterval` con precisione 1000ms. Considera l'uso di `requestAnimation
 
 🚀 Buon studio per la patente! 🚗
 
+
+
