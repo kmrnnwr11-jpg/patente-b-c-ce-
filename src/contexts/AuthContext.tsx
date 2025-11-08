@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInAnonymously,
   signOut,
   onAuthStateChanged,
   sendPasswordResetEmail,
@@ -145,6 +146,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         await createUserDocument(user);
       } else {
         setUserData(null);
+        // Effettua l'accesso anonimo per abilitare l'accesso a Firestore/Storage protetti
+        try {
+          await signInAnonymously(auth);
+        } catch (err) {
+          // Ignora errori anonimi (es. già in corso)
+          console.error('Anonymous sign-in failed', err);
+        }
       }
       
       setLoading(false);

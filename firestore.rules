@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cache traduzioni parole
+    match /word_translations/{id} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Users (esempio basilare)
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+
