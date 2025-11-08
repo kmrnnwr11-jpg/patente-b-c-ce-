@@ -6,6 +6,8 @@ import type { QuizQuestion } from '@/types/quiz';
 import { Button } from '@/components/ui/Button';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { AudioButton } from '@/components/quiz/AudioButton';
+import { ClickableText } from '@/components/translation/ClickableText';
+import { LanguageSelector } from '@/components/translation/LanguageSelector';
 import { QuizResults, type QuizResultSummary } from '@/components/quiz/QuizResults';
 
 export const TopicQuizPage: FC = () => {
@@ -19,10 +21,29 @@ export const TopicQuizPage: FC = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<boolean | null>(null);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const [selectedLanguages, setSelectedLanguages] = useState<string[]>(['en', 'ur', 'hi', 'pa']);
   const autoNextTimeout = useRef<number | null>(null);
   const [quizStartTime, setQuizStartTime] = useState<number>(Date.now());
   const [showResults, setShowResults] = useState(false);
   const [resultsSummary, setResultsSummary] = useState<QuizResultSummary | null>(null);
+
+  // Carica lingue preferite da localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('preferred_languages');
+    if (saved) {
+      try {
+        setSelectedLanguages(JSON.parse(saved));
+      } catch (error) {
+        console.error('Errore caricamento lingue:', error);
+      }
+    }
+  }, []);
+
+  // Salva lingue preferite a localStorage
+  const handleLanguagesChange = (languages: string[]) => {
+    setSelectedLanguages(languages);
+    localStorage.setItem('preferred_languages', JSON.stringify(languages));
+  };
 
   useEffect(() => {
     if (!topicName) {
@@ -268,10 +289,23 @@ export const TopicQuizPage: FC = () => {
             </div>
           )}
 
-          {/* Domanda */}
-          <p className="text-2xl text-white mb-6 leading-relaxed font-medium text-center">
-            {question.domanda}
-          </p>
+          {/* Language Selector */}
+          <div className="flex justify-center mb-6">
+            <LanguageSelector 
+              selected={selectedLanguages} 
+              onChange={handleLanguagesChange}
+            />
+          </div>
+
+          {/* Domanda con traduzione interattiva */}
+          <div className="mb-6">
+            <ClickableText
+              text={question.domanda}
+              className="text-xl leading-relaxed text-white font-semibold text-center p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl border-2 border-blue-400/50 shadow-xl"
+              selectedLanguages={selectedLanguages}
+              enabled={true}
+            />
+          </div>
 
           {/* Audio Button */}
           <div className="flex justify-center mb-10">
