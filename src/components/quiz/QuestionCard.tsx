@@ -3,6 +3,7 @@ import { Volume2, Image as ImageIcon, Sparkles } from 'lucide-react';
 import { BookmarkButton } from './BookmarkButton';
 import { AIExplanationPanel } from '@/components/ai/AIExplanationPanel';
 import type { QuizQuestion } from '@/types/quiz';
+import { ClickableText } from '@/components/translation/ClickableText';
 
 interface QuestionCardProps {
   questionNumber: number;
@@ -169,29 +170,21 @@ export const QuestionCard: FC<QuestionCardProps> = ({
       {/* Contenuto domanda */}
       <div className="p-6 space-y-6">
         {/* Testo domanda */}
-        <div id="domanda-quiz-simulazione" style={{ marginBottom: '1.5rem', minHeight: '80px', width: '100%', padding: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', visibility: 'visible', opacity: '1', zIndex: 999, position: 'relative' }}>
+        <div id="domanda-quiz-simulazione" style={{ marginBottom: '1.5rem', minHeight: '80px', width: '100%', padding: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {question ? (
-            <div
-              id="testo-domanda-simulazione"
-              className="text-white font-bold text-center px-6 py-5 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl"
-              style={{
-                fontSize: '1.5rem',
-                lineHeight: '2rem',
-                fontWeight: 800,
-                textAlign: 'center',
-                display: 'block',
-                visibility: 'visible',
-                opacity: 1,
-                maxWidth: '100%',
-                wordWrap: 'break-word',
-                position: 'relative',
-                zIndex: 999,
-                textShadow: '0 2px 8px rgba(0,0,0,0.4)',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-              }}
-            >
-              {question}
-            </div>
+            <ClickableText
+              text={question}
+              className="text-2xl leading-relaxed text-white text-center font-semibold"
+              selectedLanguages={(() => {
+                try {
+                  const saved = localStorage.getItem('preferred_languages');
+                  return saved ? JSON.parse(saved) : ['en', 'ur', 'hi', 'pa'];
+                } catch {
+                  return ['en', 'ur', 'hi', 'pa'];
+                }
+              })()}
+              enabled={true}
+            />
           ) : (
             <div className="text-white/60">Caricamento domanda...</div>
           )}
@@ -201,7 +194,7 @@ export const QuestionCard: FC<QuestionCardProps> = ({
         {image && !imageError && (
           <div className="relative rounded-xl overflow-hidden border border-white/10 bg-white/5">
             {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-white/5 backdrop-blur-sm">
+              <div className="absolute inset-0 flex items-center justify-center bg-white/5 backdrop-blur-sm min-h-48">
                 <div className="flex flex-col items-center gap-2 text-white/60">
                   <ImageIcon className="w-8 h-8 animate-pulse" />
                   <span className="text-sm">Caricamento immagine...</span>
@@ -211,13 +204,30 @@ export const QuestionCard: FC<QuestionCardProps> = ({
             <img
               src={image}
               alt="Immagine domanda"
-              className={`w-full h-auto max-h-48 object-contain transition-opacity duration-300 bg-gray-50 rounded-lg ${
+              className={`w-full h-auto max-h-72 object-contain transition-opacity duration-300 bg-gray-100 dark:bg-gray-800 rounded-lg ${
                 imageLoaded ? 'opacity-100' : 'opacity-0'
               }`}
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
-              onError={() => setImageError(true)}
+              onError={() => {
+                console.error('Errore caricamento immagine:', image);
+                setImageError(true);
+              }}
             />
+          </div>
+        )}
+
+        {/* Fallback se immagine non carica */}
+        {image && imageError && (
+          <div className="relative rounded-xl overflow-hidden border border-red-500/30 bg-red-500/5 p-6 text-center">
+            <div className="flex flex-col items-center gap-3 text-red-300">
+              <ImageIcon className="w-8 h-8" />
+              <span className="text-sm">
+                Immagine non disponibile
+                <br/>
+                <span className="text-xs text-red-400">({image})</span>
+              </span>
+            </div>
           </div>
         )}
 

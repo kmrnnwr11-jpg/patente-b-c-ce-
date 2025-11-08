@@ -1,3 +1,16 @@
+export type QuizDatasetVersionId = 'ministeriale-2023' | 'ministeriale-2025';
+
+export interface QuizDatasetMeta {
+  id: QuizDatasetVersionId;
+  label: string;
+  description: string;
+  yearRange: string;
+  badge?: string;
+  isBeta?: boolean;
+  isDefault?: boolean;
+  totalQuestions: number;
+}
+
 export interface QuizQuestion {
   id: number;
   domanda: string;

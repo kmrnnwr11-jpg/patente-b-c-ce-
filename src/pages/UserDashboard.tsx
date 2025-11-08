@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Trophy, 
@@ -14,6 +14,9 @@ import { StatCard } from '@/components/dashboard/StatCard';
 import { ProgressChart } from '@/components/dashboard/ProgressChart';
 import { StreakDisplay } from '@/components/dashboard/StreakDisplay';
 import { GlassCard } from '@/components/ui/GlassCard';
+import { useStore } from '@/store/useStore';
+import { getQuizDatasetMeta, getDefaultQuizDatasetVersion } from '@/lib/quizVersions';
+import type { QuizDatasetVersionId } from '@/types/quiz';
 
 export const UserDashboard: FC = () => {
   const navigate = useNavigate();
@@ -40,6 +43,13 @@ export const UserDashboard: FC = () => {
     { date: 'Dom', quizzes: 8, correctRate: 92 }
   ]);
 
+  const { quizVersion, setQuizVersion } = useStore(state => ({
+    quizVersion: state.quizVersion,
+    setQuizVersion: state.setQuizVersion
+  }));
+  const datasetMeta = useMemo(() => getQuizDatasetMeta(quizVersion), [quizVersion]);
+  const defaultDatasetVersion = useMemo(() => getDefaultQuizDatasetVersion(), []);
+
   const correctRate = Math.round((stats.correctAnswers / stats.totalAnswers) * 100);
 
   const handleLogout = async () => {
@@ -49,6 +59,13 @@ export const UserDashboard: FC = () => {
     } catch (error) {
       console.error('Logout error:', error);
     }
+  };
+
+  const handleStartExam = (version: QuizDatasetVersionId) => {
+    if (quizVersion !== version) {
+      setQuizVersion(version);
+    }
+    navigate('/quiz/exam');
   };
 
   // Redirect se non autenticato
@@ -97,6 +114,21 @@ export const UserDashboard: FC = () => {
           </button>
         </div>
 
+        <div className="mt-4 flex flex-wrap items-center gap-3 text-white/80">
+          <span className="text-xs uppercase tracking-wide">Dataset attivo</span>
+          <span className="rounded-full bg-white/15 px-3 py-1 text-sm font-semibold text-white">
+            {datasetMeta.label}
+          </span>
+          <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium">
+            {datasetMeta.totalQuestions} domande · {datasetMeta.yearRange}
+          </span>
+          {datasetMeta.isBeta && (
+            <span className="rounded-full bg-orange-500/20 px-3 py-1 text-xs font-semibold text-orange-100">
+              Beta
+            </span>
+          )}
+        </div>
+
         {/* Premium Badge */}
         {userData?.isPremium && (
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 font-bold">
@@ -116,7 +148,7 @@ export const UserDashboard: FC = () => {
             icon={BookOpen}
             color="from-blue-500 to-cyan-500"
             trend={{ value: 12, isPositive: true }}
-            onClick={() => navigate('/quiz/exam')}
+            onClick={() => handleStartExam(quizVersion)}
           />
 
           <StatCard
@@ -170,10 +202,16 @@ export const UserDashboard: FC = () => {
           </h3>
           <div className="grid grid-cols-2 gap-3">
             <button
-              onClick={() => navigate('/quiz/exam')}
+              onClick={() => handleStartExam(defaultDatasetVersion)}
               className="p-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium hover:scale-105 transition-all"
             >
               📝 Nuova Simulazione
+            </button>
+            <button
+              onClick={() => handleStartExam('ministeriale-2025')}
+              className="p-4 rounded-xl bg-gradient-to-r from-purple-500 to-blue-600 text-white font-medium hover:scale-105 transition-all"
+            >
+              🚀 Quiz 2025 (Beta)
             </button>
             <button
               onClick={() => navigate('/quiz/topics')}

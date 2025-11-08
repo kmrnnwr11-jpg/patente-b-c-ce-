@@ -1,24 +1,30 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { generateExamQuiz, getQuizStats } from '@/lib/quizLoader';
-import type { QuizQuestion } from '@/types/quiz';
 import { QuizContainer } from '@/components/quiz/QuizContainer';
 import { SEO, SEO_PRESETS } from '@/components/SEO';
+import { useStore } from '@/store/useStore';
+import { generateExamQuiz, getQuizStats } from '@/lib/quizLoader';
+import { getQuizDatasetMeta } from '@/lib/quizVersions';
+import type { QuizQuestion } from '@/types/quiz';
 
 export const QuizTestPage: FC = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const quizVersion = useStore(state => state.quizVersion);
 
   useEffect(() => {
+    setIsLoading(true);
     // Carica statistiche e genera quiz
-    const quizStats = getQuizStats();
+    const quizStats = getQuizStats(quizVersion);
     if (quizStats) {
-      const quiz = generateExamQuiz();
+      const quiz = generateExamQuiz({ version: quizVersion });
       setQuestions(quiz);
       setIsLoading(false);
     }
-  }, []);
+  }, [quizVersion]);
+
+  const datasetMeta = useMemo(() => getQuizDatasetMeta(quizVersion), [quizVersion]);
 
   if (isLoading || questions.length === 0) {
     return (
@@ -38,14 +44,15 @@ export const QuizTestPage: FC = () => {
     <>
       <SEO {...SEO_PRESETS.quiz} />
       <QuizContainer
-      questions={questions}
-      quizType="exam"
-      showTimer={true}
-      timerDuration={1200} // 20 minuti
-      autoAdvanceOnCorrect={true}
-      minCorrectToPass={27} // 27/30 per superare
-      onExit={() => navigate('/dashboard')}
-    />
+        questions={questions}
+        quizType="exam"
+        showTimer={true}
+        timerDuration={1200} // 20 minuti
+        autoAdvanceOnCorrect={true}
+        minCorrectToPass={27} // 27/30 per superare
+        onExit={() => navigate('/dashboard')}
+        datasetMeta={datasetMeta}
+      />
     </>
   );
 };

@@ -1,25 +1,38 @@
-import type { QuizQuestion, QuizFilters, QuizStats } from '@/types/quiz';
-import quizData from '@/data/quiz.json';
+import type {
+  QuizDatasetVersionId,
+  QuizFilters,
+  QuizQuestion,
+  QuizStats
+} from '@/types/quiz';
+import { getQuizQuestionsForVersion } from './quizVersions';
+import { useStore } from '@/store/useStore';
 
-// Cache dei quiz caricati
-let cachedQuestions: QuizQuestion[] | null = null;
+// Cache dei quiz per versione
+const cachedQuestions = new Map<QuizDatasetVersionId, QuizQuestion[]>();
+
+function resolveVersion(version?: QuizDatasetVersionId): QuizDatasetVersionId {
+  if (version) {
+    return version;
+  }
+
+  const state = useStore.getState();
+  return state.quizVersion;
+}
+
+function loadDataset(version: QuizDatasetVersionId): QuizQuestion[] {
+  if (cachedQuestions.has(version)) {
+    return cachedQuestions.get(version)!;
+  }
+
+  const questions = getQuizQuestionsForVersion(version);
+  cachedQuestions.set(version, questions);
+  return questions;
+}
 
 // Carica tutti i quiz (con caching)
-export function loadAllQuestions(): QuizQuestion[] {
-  if (cachedQuestions) {
-    return cachedQuestions;
-  }
-
-  try {
-    // Se Vite ha stringificato il JSON, parsalo
-    const data = typeof quizData === 'string' ? JSON.parse(quizData) : quizData;
-    cachedQuestions = data as QuizQuestion[];
-    console.log('✅ Quiz caricati:', cachedQuestions.length, 'domande');
-    return cachedQuestions;
-  } catch (error) {
-    console.error('❌ Errore caricamento quiz:', error);
-    return [];
-  }
+export function loadAllQuestions(version?: QuizDatasetVersionId): QuizQuestion[] {
+  const resolvedVersion = resolveVersion(version);
+  return loadDataset(resolvedVersion);
 }
 
 // Shuffle array utility (Fisher-Yates)
@@ -32,19 +45,26 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
   }
   
+interface GenerateExamQuizOptions {
+  count?: number;
+  version?: QuizDatasetVersionId;
+}
+
 // Genera quiz esame (30 domande random)
-export function generateExamQuiz(): QuizQuestion[] {
-  const all = loadAllQuestions();
+export function generateExamQuiz(options: GenerateExamQuizOptions = {}): QuizQuestion[] {
+  const { count = 30, version } = options;
+  const all = loadAllQuestions(version);
   const shuffled = shuffleArray(all);
-  return shuffled.slice(0, 30);
+  return shuffled.slice(0, Math.min(count, shuffled.length));
 }
 
 // Genera quiz per argomento
 export function generateTopicQuiz(
   argomento: string,
-  count: number = 10
+  count: number = 10,
+  version?: QuizDatasetVersionId
 ): QuizQuestion[] {
-  const all = loadAllQuestions();
+  const all = loadAllQuestions(version);
   
   // Filtra per argomento (case-insensitive)
   const filtered = all.filter(q => 
@@ -63,9 +83,10 @@ export function generateTopicQuiz(
 // Quiz con filtri avanzati
 export function generateFilteredQuiz(
   filters: QuizFilters,
-  count: number = 30
+  count: number = 30,
+  version?: QuizDatasetVersionId
 ): QuizQuestion[] {
-  let questions = loadAllQuestions();
+  let questions = loadAllQuestions(version);
   
   // Applica filtri
   if (filters.argomento) {
@@ -100,25 +121,25 @@ export function getQuestionById(id: number): QuizQuestion | undefined {
 }
 
 // Ottieni lista argomenti unici (ordinata alfabeticamente)
-export function getTopics(): string[] {
-  const all = loadAllQuestions();
+export function getTopics(version?: QuizDatasetVersionId): string[] {
+  const all = loadAllQuestions(version);
   const topics = [...new Set(all.map(q => q.argomento))];
   return topics.sort();
 }
 
 // Conta domande per argomento
-export function getTopicQuestionCount(argomento: string): number {
-  const all = loadAllQuestions();
+export function getTopicQuestionCount(argomento: string, version?: QuizDatasetVersionId): number {
+  const all = loadAllQuestions(version);
   return all.filter(q => 
     q.argomento.toLowerCase() === argomento.toLowerCase()
   ).length;
 }
 
 // Statistiche dataset completo
-export function getQuizStats(): QuizStats {
-  const all = loadAllQuestions();
+export function getQuizStats(version?: QuizDatasetVersionId): QuizStats {
+  const all = loadAllQuestions(version);
   const withImages = all.filter(q => q.immagine).length;
-  const topics = getTopics();
+  const topics = getTopics(version);
   
   return {
     total: all.length,
@@ -130,8 +151,8 @@ export function getQuizStats(): QuizStats {
 }
 
 // Cerca domande per testo
-export function searchQuestions(query: string): QuizQuestion[] {
-  const all = loadAllQuestions();
+export function searchQuestions(query: string, version?: QuizDatasetVersionId): QuizQuestion[] {
+  const all = loadAllQuestions(version);
   const lowerQuery = query.toLowerCase();
   
   return all.filter(q => 
@@ -143,9 +164,10 @@ export function searchQuestions(query: string): QuizQuestion[] {
 // Ottieni domande random (senza duplicati)
 export function getRandomQuestions(
   count: number,
-  excludeIds: number[] = []
+  excludeIds: number[] = [],
+  version?: QuizDatasetVersionId
 ): QuizQuestion[] {
-  const all = loadAllQuestions();
+  const all = loadAllQuestions(version);
   const filtered = all.filter(q => !excludeIds.includes(q.id));
   const shuffled = shuffleArray(filtered);
   return shuffled.slice(0, Math.min(count, filtered.length));
