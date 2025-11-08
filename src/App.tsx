@@ -62,7 +62,6 @@ const App: FC = () => {
             <Route path="/quiz/topics" element={<TopicsPage />} />
             <Route path="/topic-quiz" element={<TopicQuizPage />} />
             <Route path="/theory" element={<TheoryPage />} />
-            <Route path="/theory-2025" element={<Theory2025Page />} />
             <Route path="/theory/lesson/:id" element={<LessonDetailPage />} />
             <Route path="/theory/signals/:chapterId" element={<SignalsTheoryPage />} />
             <Route path="/study/flashcards" element={<FlashcardsPage />} />
