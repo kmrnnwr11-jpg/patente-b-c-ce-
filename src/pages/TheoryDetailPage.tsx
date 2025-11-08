@@ -2,6 +2,9 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ChevronLeft, BookOpen } from 'lucide-react';
 import theoryData from '@/data/theory-structure.json';
+import { InteractiveTheoryText } from '@/components/theory/InteractiveTheoryText';
+import { TheoryLanguageSelector } from '@/components/theory/TheoryLanguageSelector';
+import { useTheoryTranslation } from '@/hooks/useTheoryTranslation';
 
 interface TheoryChapter {
   id: string;
@@ -19,8 +22,15 @@ export const TheoryDetailPage: FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const chapterId = searchParams.get('chapter');
-  
+
   const [chapter, setChapter] = useState<TheoryChapter | null>(null);
+  const {
+    selectedLang,
+    isEnabled,
+    availableLanguages,
+    toggleTranslation,
+    changeLanguage
+  } = useTheoryTranslation();
 
   useEffect(() => {
     const data = typeof theoryData === 'string' ? JSON.parse(theoryData) : theoryData;
@@ -68,6 +78,16 @@ export const TheoryDetailPage: FC = () => {
         </div>
       </div>
 
+      {/* Language Selector */}
+      <div className="px-6">
+        <TheoryLanguageSelector
+          selectedLang={selectedLang}
+          onLanguageChange={changeLanguage}
+          isEnabled={isEnabled}
+          onToggle={toggleTranslation}
+        />
+      </div>
+
       {/* Content */}
       <div className="px-6 space-y-6">
         {chapter.sections.map((section, index) => (
@@ -84,9 +104,16 @@ export const TheoryDetailPage: FC = () => {
               </h2>
             </div>
             
-            <p className="text-gray-700 leading-relaxed pl-12">
-              {section.content}
-            </p>
+            <div className="text-gray-700 leading-relaxed pl-12">
+              {isEnabled ? (
+                <InteractiveTheoryText
+                  content={section.content}
+                  targetLang={selectedLang}
+                />
+              ) : (
+                <p>{section.content}</p>
+              )}
+            </div>
           </div>
         ))}
       </div>

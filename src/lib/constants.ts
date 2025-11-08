@@ -74,6 +74,10 @@ export const LANGUAGES = [
   { code: 'ar', name: 'العربية', flag: '🇸🇦' },
   { code: 'zh', name: '中文', flag: '🇨🇳' },
   { code: 'ro', name: 'Română', flag: '🇷🇴' },
+  // Nuove lingue per traduzione parola-per-parola
+  { code: 'ur', name: 'اردو', flag: '🇵🇰' },
+  { code: 'hi', name: 'हिंदी', flag: '🇮🇳' },
+  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🇮🇳' },
 ] as const;
 
 // Achievement IDs
