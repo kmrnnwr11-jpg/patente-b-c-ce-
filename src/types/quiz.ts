@@ -1,4 +1,4 @@
-export type QuizDatasetVersionId = 'ministeriale-2023' | 'ministeriale-2025';
+export type QuizDatasetVersionId = 'ministeriale-2023';
 
 export interface QuizDatasetMeta {
   id: QuizDatasetVersionId;

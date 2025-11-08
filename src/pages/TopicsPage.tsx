@@ -63,10 +63,11 @@ export const TopicsPage: FC = () => {
   };
 
   useEffect(() => {
-    const allTopics = getTopics();
+    // Forza l'uso del dataset 2023 completo (ministeriale-2023) per avere TUTTI gli argomenti
+    const allTopics = getTopics('ministeriale-2023');
     const topicsWithCounts = allTopics.map(topic => ({
       name: topic,
-      count: getTopicQuestionCount(topic),
+      count: getTopicQuestionCount(topic, 'ministeriale-2023'),
       icon: getTopicIcon(topic)
     }));
     setTopics(topicsWithCounts);

@@ -208,12 +208,6 @@ export const UserDashboard: FC = () => {
               📝 Nuova Simulazione
             </button>
             <button
-              onClick={() => handleStartExam('ministeriale-2025')}
-              className="p-4 rounded-xl bg-gradient-to-r from-purple-500 to-blue-600 text-white font-medium hover:scale-105 transition-all"
-            >
-              🚀 Quiz 2025 (Beta)
-            </button>
-            <button
               onClick={() => navigate('/quiz/topics')}
               className="p-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-medium hover:scale-105 transition-all"
             >

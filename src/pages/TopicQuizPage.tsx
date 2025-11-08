@@ -31,9 +31,10 @@ export const TopicQuizPage: FC = () => {
     }
 
     try {
-      const totalQuestions = getTopicQuestionCount(topicName);
+      // Forza l'uso del dataset 2023 completo (ministeriale-2023) per avere TUTTI gli argomenti
+      const totalQuestions = getTopicQuestionCount(topicName, 'ministeriale-2023');
       const count = Math.min(20, totalQuestions);
-      const quiz = generateTopicQuiz(topicName, count);
+      const quiz = generateTopicQuiz(topicName, count, 'ministeriale-2023');
       setSampleQuiz(quiz);
       setUserAnswers(new Array(quiz.length).fill(null));
       setQuizStartTime(Date.now());

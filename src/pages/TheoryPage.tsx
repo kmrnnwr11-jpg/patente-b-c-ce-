@@ -121,7 +121,8 @@ export const TheoryPage: FC = () => {
   };
 
   useEffect(() => {
-    const allTopics = getTopics();
+    // Forza l'uso del dataset 2023 completo (ministeriale-2023) per avere TUTTI gli argomenti
+    const allTopics = getTopics('ministeriale-2023');
     const topicsWithIcons: TheoryTopic[] = allTopics.map(topic => {
       const key = normalizeTopic(topic);
       return {

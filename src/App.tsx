@@ -18,7 +18,6 @@ const QuizTestPage = lazy(() => import('@/pages/QuizTestPage').then(m => ({ defa
 const TopicsPage = lazy(() => import('@/pages/TopicsPage').then(m => ({ default: m.TopicsPage })));
 const TopicQuizPage = lazy(() => import('@/pages/TopicQuizPage').then(m => ({ default: m.TopicQuizPage })));
 const TheoryPage = lazy(() => import('@/pages/TheoryPage').then(m => ({ default: m.TheoryPage })));
-const Theory2025Page = lazy(() => import('@/pages/Theory2025Page').then(m => ({ default: m.Theory2025Page })));
 const LessonDetailPage = lazy(() => import('@/pages/teoria/LessonDetailPage').then(m => ({ default: m.LessonDetailPage })));
 const SignalsTheoryPage = lazy(() => import('@/pages/SignalsTheoryPage').then(m => ({ default: m.SignalsTheoryPage })));
 const FlashcardsPage = lazy(() => import('@/pages/FlashcardsPage').then(m => ({ default: m.FlashcardsPage })));

@@ -1,6 +1,5 @@
 import type { QuizDatasetMeta, QuizDatasetVersionId, QuizQuestion } from '@/types/quiz';
 import baseQuizData from '@/data/quiz.json';
-import quiz2025Data from '@/data/quiz-2025.json';
 
 type RawQuizDataset = QuizQuestion[] | string;
 
@@ -19,20 +18,10 @@ const VERSION_DEFINITIONS: Record<QuizDatasetVersionId, QuizVersionDefinition> =
   'ministeriale-2023': {
     id: 'ministeriale-2023',
     label: 'Quiz Ministeriali 2023',
-    description: 'Dataset ufficiale ministeriale in vigore fino al 2024.',
-    yearRange: '2023-2024',
-    badge: 'Classico',
+    description: 'Dataset ufficiale ministeriale.',
+    yearRange: '2023',
     isDefault: true,
     rawData: baseQuizData
-  },
-  'ministeriale-2025': {
-    id: 'ministeriale-2025',
-    label: 'Quiz Ministeriali 2025',
-    description: 'Nuovo dataset 2025. In preparazione: verifica eventuali differenze.',
-    yearRange: '2025',
-    badge: 'Beta',
-    isBeta: true,
-    rawData: quiz2025Data
   }
 };
 
