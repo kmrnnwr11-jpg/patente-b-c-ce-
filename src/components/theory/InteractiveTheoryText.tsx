@@ -91,16 +91,29 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
         })}
       </div>
 
-      {/* Popup Traduzione */}
+      {/* Popup Traduzione - Mobile Optimized */}
       {popup && (
-        <div
-          className="fixed z-50 glass-card p-4 rounded-lg shadow-xl max-w-xs border border-white/20"
-          style={{
-            left: Math.max(10, Math.min(popup.position.x, window.innerWidth - 250)),
-            top: popup.position.y
-          }}
-          onClick={closePopup}
-        >
+        <>
+          {/* Overlay per chiudere */}
+          <div
+            className="fixed inset-0 z-40 bg-black/20"
+            onClick={closePopup}
+          />
+          <div
+            className="fixed z-50 glass-card p-4 sm:p-5 rounded-2xl shadow-2xl w-[90vw] max-w-sm sm:max-w-md border border-white/20"
+            style={{
+              left: '50%',
+              top: popup.position.y > window.innerHeight / 2 
+                ? `${popup.position.y - 10}px`
+                : `${popup.position.y + 30}px`,
+              transform: popup.position.y > window.innerHeight / 2
+                ? 'translate(-50%, -100%)'
+                : 'translate(-50%, 0)',
+              maxHeight: '80vh',
+              overflowY: 'auto'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
           <div className="flex justify-between items-start mb-3">
             <div className="flex-1">
               <div className="font-semibold text-white text-lg mb-1">
@@ -154,14 +167,7 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
             Clicca per chiudere
           </div>
         </div>
-      )}
-
-      {/* Overlay per chiudere popup cliccando altrove */}
-      {popup && (
-        <div
-          className="fixed inset-0 z-40"
-          onClick={closePopup}
-        />
+        </>
       )}
     </>
   );

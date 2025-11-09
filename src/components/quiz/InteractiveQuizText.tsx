@@ -150,14 +150,19 @@ export const InteractiveQuizText: FC<InteractiveQuizTextProps> = ({
             onClick={() => setPopup(null)}
           />
 
-          {/* Popup Card */}
+          {/* Popup Card - Mobile Optimized */}
           <div
-            className="fixed z-50 glass-card p-4 rounded-2xl shadow-2xl max-w-xs w-72"
+            className="fixed z-50 glass-card p-4 sm:p-5 rounded-2xl shadow-2xl w-[90vw] max-w-sm sm:max-w-md"
             style={{
-              left: `${popup.position.x}px`,
-              top: `${popup.position.y - 10}px`,
-              transform: 'translate(-50%, -100%)',
-              minWidth: '280px'
+              left: '50%',
+              top: popup.position.y > window.innerHeight / 2 
+                ? `${popup.position.y - 10}px`
+                : `${popup.position.y + 30}px`,
+              transform: popup.position.y > window.innerHeight / 2
+                ? 'translate(-50%, -100%)'
+                : 'translate(-50%, 0)',
+              maxHeight: '80vh',
+              overflowY: 'auto'
             }}
           >
             {/* Header */}
