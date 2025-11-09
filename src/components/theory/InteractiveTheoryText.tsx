@@ -39,7 +39,9 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
     });
 
     try {
+      console.log(`🔍 Richiesta traduzione per: "${word}" → ${targetLang}`);
       const result = await getOrCreateWordAssets(word, 'it', targetLang);
+      console.log('✅ Traduzione completata:', result);
 
       setPopup({
         word,
@@ -49,10 +51,10 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
         loading: false
       });
     } catch (error) {
-      console.error('Translation error:', error);
+      console.error('❌ Errore traduzione:', error);
       setPopup({
         word,
-        translation: 'Errore traduzione',
+        translation: `Errore: ${error instanceof Error ? error.message : 'Servizio non disponibile'}`,
         audioUrl: null,
         position: { x: rect.left, y: rect.bottom + 5 },
         loading: false

@@ -14,7 +14,7 @@
     "firebase:emulators": "firebase emulators:start",
     "firebase:deploy:rules": "firebase deploy --only firestore:rules,storage",
     "prewarm": "tsx scripts/prewarm-translations.ts",
-    "test:firebase": "tsx -e \"import('./src/lib/firebaseTest.js').then(m => m.testFirebaseConnection())\""
+    "test:firebase": "node scripts/test-firebase.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -42,6 +42,7 @@
     "@typescript-eslint/parser": "^6.18.1",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^17.2.3",
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",

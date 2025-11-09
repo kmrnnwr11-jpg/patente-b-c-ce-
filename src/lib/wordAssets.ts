@@ -74,6 +74,8 @@ async function translateWithLibre(
   sourceLang: string,
   targetLang: string
 ): Promise<string> {
+  console.log(`🌐 Traduzione LibreTranslate: "${text}" (${sourceLang} → ${targetLang})`);
+  
   const response = await fetch('https://libretranslate.com/translate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -86,10 +88,13 @@ async function translateWithLibre(
   });
 
   if (!response.ok) {
+    const errorText = await response.text();
+    console.error('LibreTranslate error:', response.status, errorText);
     throw new Error(`LibreTranslate error: ${response.status}`);
   }
 
   const data = await response.json();
+  console.log('✅ Traduzione ricevuta:', data.translatedText);
   return data.translatedText;
 }
 
