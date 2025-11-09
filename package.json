@@ -14,6 +14,7 @@
     "firebase:emulators": "firebase emulators:start",
     "firebase:deploy:rules": "firebase deploy --only firestore:rules,storage",
     "prewarm": "tsx scripts/prewarm-translations.ts",
+    "prewarm:execute": "tsx scripts/prewarm-execute.ts",
     "test:firebase": "node scripts/test-firebase.mjs"
   },
   "dependencies": {
