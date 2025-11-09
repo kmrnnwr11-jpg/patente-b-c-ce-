@@ -330,11 +330,7 @@ export const QuizPage20 = () => {
           </div>
         </motion.div>
 
-        {/* Language Selector */}
-        <LanguageSelector
-          selected={selectedLanguages}
-          onChange={saveLanguagePreferences}
-        />
+        {/* Language Selector rimosso - usa QuizLanguageSelector sopra */}
 
         {/* Navigation */}
         <div className="flex justify-between mt-6">
