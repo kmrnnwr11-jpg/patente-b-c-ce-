@@ -147,12 +147,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       } else {
         setUserData(null);
         // Effettua l'accesso anonimo per abilitare l'accesso a Firestore/Storage protetti
-        try {
-          await signInAnonymously(auth);
-        } catch (err) {
-          // Ignora errori anonimi (es. già in corso)
-          console.error('Anonymous sign-in failed', err);
-        }
+        // TEMPORANEAMENTE DISABILITATO per debug pagina bianca
+        // try {
+        //   await signInAnonymously(auth);
+        // } catch (err) {
+        //   // Ignora errori anonimi (es. già in corso)
+        //   console.error('Anonymous sign-in failed', err);
+        // }
       }
       
       setLoading(false);
