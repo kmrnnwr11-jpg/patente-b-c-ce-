@@ -90,36 +90,89 @@ export const translateWord = async (
     return localTranslation;
   }
 
-  // 3. Chiama API Google Translate (se disponibile)
+  // 3. Chiama API DeepL (primario) o Google (fallback)
   try {
-    const apiKey = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
+    const deeplKey = import.meta.env.VITE_DEEPL_API_KEY;
+    const googleKey = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
     
-    if (!apiKey) {
-      // Fallback: usa Web Speech API o dizionario base
-      return word; // Ritorna parola originale se no API key
+    // Prova DeepL prima
+    if (deeplKey) {
+      console.log(`🔮 Traduzione DeepL: "${word}" (${sourceLang} → ${targetLang})`);
+      
+      const response = await fetch('https://api-free.deepl.com/v2/translate', {
+        method: 'POST',
+        headers: { 'Authorization': `DeepL-Auth-Key ${deeplKey}` },
+        body: new URLSearchParams({
+          'text': word,
+          'source_lang': sourceLang.toUpperCase(),
+          'target_lang': targetLang.toUpperCase(),
+          'format': 'text'
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const translation = data.translations[0].text;
+        console.log('✅ DeepL traduzione ricevuta:', translation);
+        
+        // Salva in cache
+        await cacheTranslation(word, targetLang, translation);
+        return translation;
+      } else {
+        console.warn('DeepL error:', response.status, await response.text());
+      }
     }
 
-    const response = await fetch(
-      `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          q: word,
-          source: sourceLang,
-          target: targetLang,
-          format: 'text'
-        })
-      }
-    );
+    // Fallback su Google Translate
+    if (googleKey) {
+      console.log(`🌐 Traduzione Google: "${word}" (${sourceLang} → ${targetLang})`);
+      
+      const response = await fetch(
+        `https://translation.googleapis.com/language/translate/v2?key=${googleKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            q: word,
+            source: sourceLang,
+            target: targetLang,
+            format: 'text'
+          })
+        }
+      );
 
-    const data = await response.json();
-    const translation = data.data.translations[0].translatedText;
+      const data = await response.json();
+      const translation = data.data.translations[0].translatedText;
+      console.log('✅ Google traduzione ricevuta:', translation);
 
-    // Salva in cache
-    await cacheTranslation(word, targetLang, translation);
+      // Salva in cache
+      await cacheTranslation(word, targetLang, translation);
+      return translation;
+    }
 
-    return translation;
+    // Se nessuna API disponibile, usa LibreTranslate (gratuito)
+    console.log(`🌐 Traduzione LibreTranslate: "${word}" (${sourceLang} → ${targetLang})`);
+    const response = await fetch('https://libretranslate.com/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        q: word,
+        source: sourceLang,
+        target: targetLang,
+        format: 'text'
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const translation = data.translatedText;
+      console.log('✅ LibreTranslate traduzione ricevuta:', translation);
+      
+      await cacheTranslation(word, targetLang, translation);
+      return translation;
+    }
+
+    throw new Error('Nessuna API disponibile');
   } catch (error) {
     console.error('Translation API error:', error);
     return word; // Ritorna parola originale in caso di errore
@@ -170,6 +223,36 @@ const getLocalTranslation = (word: string, targetLang: string): string | null =>
       ur: 'خطرہ',
       hi: 'खतरा',
       pa: 'ਖ਼ਤਰਾ'
+    },
+    'preavvisa': {
+      en: 'warns',
+      ur: 'خبردار کرتا ہے',
+      hi: 'चेतावनी देता है',
+      pa: 'ਚੇਤਾਵਨੀ ਦਿੰਦਾ ਹੈ'
+    },
+    'curva': {
+      en: 'curve',
+      ur: 'موڑ',
+      hi: 'मोड़',
+      pa: 'ਮੋੜ'
+    },
+    'pericolosa': {
+      en: 'dangerous',
+      ur: 'خطرناک',
+      hi: 'खतरनाक',
+      pa: 'ਖ਼ਤਰਨਾਕ'
+    },
+    'destra': {
+      en: 'right',
+      ur: 'دائیں',
+      hi: 'दाहिना',
+      pa: 'ਸੱਜੇ'
+    },
+    'sinistra': {
+      en: 'left',
+      ur: 'بائیں',
+      hi: 'बायां',
+      pa: 'ਖੱਬੇ'
     }
   };
 

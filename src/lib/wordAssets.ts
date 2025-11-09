@@ -4,6 +4,7 @@ import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
 const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
+const DEEPL_API_KEY = import.meta.env.VITE_DEEPL_API_KEY;
 
 const VOICE_IDS: Record<string, string | undefined> = {
   ur: import.meta.env.VITE_ELEVENLABS_VOICE_UR,
@@ -98,23 +99,53 @@ async function translateWithLibre(
   return data.translatedText;
 }
 
-// Traduzione con fallback automatico
+// Aggiungi dopo translateWithLibre
+async function translateWithDeepL(
+  text: string,
+  sourceLang: string,
+  targetLang: string
+): Promise<string> {
+  if (!DEEPL_API_KEY) {
+    throw new Error('DeepL API key not configured');
+  }
+
+  console.log(`🔮 Traduzione DeepL: "${text}" (${sourceLang} → ${targetLang})`);
+
+  const response = await fetch('https://api-free.deepl.com/v2/translate', {
+    method: 'POST',
+    headers: { 'Authorization': `DeepL-Auth-Key ${DEEPL_API_KEY}` },
+    body: new URLSearchParams({
+      'text': text,
+      'source_lang': sourceLang.toUpperCase(),
+      'target_lang': targetLang.toUpperCase(),
+      'format': 'text'
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('DeepL error:', response.status, errorText);
+    throw new Error(`DeepL error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  console.log('✅ DeepL traduzione ricevuta:', data.translations[0].text);
+  return data.translations[0].text;
+}
+
+// Aggiorna translateText per usare DeepL primario
 async function translateText(
   text: string,
   sourceLang: string,
   targetLang: string
 ): Promise<string> {
   try {
-    // Prova Google prima
-    if (GOOGLE_API_KEY) {
-      return await translateWithGoogle(text, sourceLang, targetLang);
-    }
+    // Prova DeepL prima
+    return await translateWithDeepL(text, sourceLang, targetLang);
   } catch (error) {
-    console.warn('Google Translate fallito, uso LibreTranslate:', error);
+    console.warn('DeepL fallito, uso LibreTranslate:', error);
+    return await translateWithLibre(text, sourceLang, targetLang);
   }
-
-  // Fallback su LibreTranslate
-  return await translateWithLibre(text, sourceLang, targetLang);
 }
 
 // Genera audio con ElevenLabs
