@@ -2,9 +2,8 @@ import { db, storage } from '@/lib/firebase';
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
 
-const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
-const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
 const DEEPL_API_KEY = import.meta.env.VITE_DEEPL_API_KEY;
+const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
 
 const VOICE_IDS: Record<string, string | undefined> = {
   ur: import.meta.env.VITE_ELEVENLABS_VOICE_UR,
@@ -37,69 +36,7 @@ function getAudioPath(word: string, targetLang: string): string {
   return `audio/words/${targetLang}/${encodeURIComponent(normalizeWord(word))}.mp3`;
 }
 
-// Traduzione con Google Translate (primario)
-async function translateWithGoogle(
-  text: string,
-  sourceLang: string,
-  targetLang: string
-): Promise<string> {
-  if (!GOOGLE_API_KEY) {
-    throw new Error('Google Translate API key not configured');
-  }
-
-  const response = await fetch(
-    `https://translation.googleapis.com/language/translate/v2?key=${GOOGLE_API_KEY}`,
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        q: text,
-        source: sourceLang,
-        target: targetLang,
-        format: 'text'
-      })
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error(`Google Translate error: ${response.status}`);
-  }
-
-  const data = await response.json();
-  return data.data.translations[0].translatedText;
-}
-
-// Traduzione con LibreTranslate (fallback gratuito)
-async function translateWithLibre(
-  text: string,
-  sourceLang: string,
-  targetLang: string
-): Promise<string> {
-  console.log(`🌐 Traduzione LibreTranslate: "${text}" (${sourceLang} → ${targetLang})`);
-  
-  const response = await fetch('https://libretranslate.com/translate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      q: text,
-      source: sourceLang,
-      target: targetLang,
-      format: 'text'
-    })
-  });
-
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error('LibreTranslate error:', response.status, errorText);
-    throw new Error(`LibreTranslate error: ${response.status}`);
-  }
-
-  const data = await response.json();
-  console.log('✅ Traduzione ricevuta:', data.translatedText);
-  return data.translatedText;
-}
-
-// Aggiungi dopo translateWithLibre
+// Traduzione con DeepL (primario, qualità premium)
 async function translateWithDeepL(
   text: string,
   sourceLang: string,
@@ -133,7 +70,37 @@ async function translateWithDeepL(
   return data.translations[0].text;
 }
 
-// Aggiorna translateText per usare DeepL primario
+// Traduzione con LibreTranslate (fallback gratuito)
+async function translateWithLibre(
+  text: string,
+  sourceLang: string,
+  targetLang: string
+): Promise<string> {
+  console.log(`🌐 Traduzione LibreTranslate: "${text}" (${sourceLang} → ${targetLang})`);
+  
+  const response = await fetch('https://libretranslate.com/translate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      q: text,
+      source: sourceLang,
+      target: targetLang,
+      format: 'text'
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('LibreTranslate error:', response.status, errorText);
+    throw new Error(`LibreTranslate error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  console.log('✅ Traduzione ricevuta:', data.translatedText);
+  return data.translatedText;
+}
+
+// Traduzione con fallback automatico (DeepL → LibreTranslate)
 async function translateText(
   text: string,
   sourceLang: string,

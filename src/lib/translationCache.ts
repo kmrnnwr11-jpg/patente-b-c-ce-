@@ -90,12 +90,11 @@ export const translateWord = async (
     return localTranslation;
   }
 
-  // 3. Chiama API DeepL (primario) o Google (fallback)
+  // 3. Chiama API DeepL (primario) con fallback LibreTranslate (gratuito)
   try {
     const deeplKey = import.meta.env.VITE_DEEPL_API_KEY;
-    const googleKey = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
     
-    // Prova DeepL prima
+    // Prova DeepL prima (qualità premium)
     if (deeplKey) {
       console.log(`🔮 Traduzione DeepL: "${word}" (${sourceLang} → ${targetLang})`);
       
@@ -119,39 +118,14 @@ export const translateWord = async (
         await cacheTranslation(word, targetLang, translation);
         return translation;
       } else {
-        console.warn('DeepL error:', response.status, await response.text());
+        const errorText = await response.text();
+        console.warn('⚠️ DeepL error:', response.status, errorText);
+        // Continua con fallback LibreTranslate
       }
     }
 
-    // Fallback su Google Translate
-    if (googleKey) {
-      console.log(`🌐 Traduzione Google: "${word}" (${sourceLang} → ${targetLang})`);
-      
-      const response = await fetch(
-        `https://translation.googleapis.com/language/translate/v2?key=${googleKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            q: word,
-            source: sourceLang,
-            target: targetLang,
-            format: 'text'
-          })
-        }
-      );
-
-      const data = await response.json();
-      const translation = data.data.translations[0].translatedText;
-      console.log('✅ Google traduzione ricevuta:', translation);
-
-      // Salva in cache
-      await cacheTranslation(word, targetLang, translation);
-      return translation;
-    }
-
-    // Se nessuna API disponibile, usa LibreTranslate (gratuito)
-    console.log(`🌐 Traduzione LibreTranslate: "${word}" (${sourceLang} → ${targetLang})`);
+    // Fallback su LibreTranslate (gratuito, sempre disponibile)
+    console.log(`🌐 Traduzione LibreTranslate (fallback): "${word}" (${sourceLang} → ${targetLang})`);
     const response = await fetch('https://libretranslate.com/translate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -170,11 +144,13 @@ export const translateWord = async (
       
       await cacheTranslation(word, targetLang, translation);
       return translation;
+    } else {
+      const errorText = await response.text();
+      console.error('❌ LibreTranslate error:', response.status, errorText);
+      throw new Error(`LibreTranslate error: ${response.status}`);
     }
-
-    throw new Error('Nessuna API disponibile');
   } catch (error) {
-    console.error('Translation API error:', error);
+    console.error('❌ Translation API error:', error);
     return word; // Ritorna parola originale in caso di errore
   }
 };
