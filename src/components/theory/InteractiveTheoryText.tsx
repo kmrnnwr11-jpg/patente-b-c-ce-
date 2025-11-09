@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { translateWordWithCache } from '@/lib/wordTranslation';
+import { getOrCreateWordAssets } from '@/lib/wordAssets';
 
 interface InteractiveTheoryTextProps {
   content: string;
@@ -10,6 +10,7 @@ interface WordPopup {
   word: string;
   translation: string;
   phonetic?: string;
+  audioUrl: string | null;
   position: { x: number; y: number };
   loading: boolean;
 }
@@ -32,17 +33,18 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
     setPopup({
       word,
       translation: '',
+      audioUrl: null,
       position: { x: rect.left, y: rect.bottom + 5 },
       loading: true
     });
 
     try {
-      const result = await translateWordWithCache(word, 'it', targetLang);
+      const result = await getOrCreateWordAssets(word, 'it', targetLang);
 
       setPopup({
         word,
         translation: result.translation,
-        phonetic: result.phonetic,
+        audioUrl: result.audioUrl,
         position: { x: rect.left, y: rect.bottom + 5 },
         loading: false
       });
@@ -51,6 +53,7 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
       setPopup({
         word,
         translation: 'Errore traduzione',
+        audioUrl: null,
         position: { x: rect.left, y: rect.bottom + 5 },
         loading: false
       });
@@ -124,9 +127,25 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
               <span className="ml-2 text-white/70">Traduzione...</span>
             </div>
           ) : (
-            <div className="text-blue-300 font-medium text-base">
-              {popup.translation}
-            </div>
+            <>
+              <div className="text-blue-300 font-medium text-base mb-2">
+                {popup.translation}
+              </div>
+              
+              {popup.audioUrl && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const audio = new Audio(popup.audioUrl!);
+                    audio.play().catch(err => console.error('Audio play error:', err));
+                  }}
+                  className="flex items-center gap-2 px-3 py-2 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg transition-colors text-sm text-white/90"
+                >
+                  <span className="text-lg">🔊</span>
+                  <span>Ascolta pronuncia</span>
+                </button>
+              )}
+            </>
           )}
 
           <div className="text-xs text-white/50 mt-2 text-center">
