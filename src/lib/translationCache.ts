@@ -229,6 +229,181 @@ const getLocalTranslation = (word: string, targetLang: string): string | null =>
       ur: 'بائیں',
       hi: 'बायां',
       pa: 'ਖੱਬੇ'
+    },
+    // Top parole quiz (analisi frequenza)
+    'raffigurato': {
+      en: 'depicted',
+      ur: 'دکھایا گیا',
+      hi: 'दर्शाया गया',
+      pa: 'ਦਰਸਾਇਆ ਗਿਆ'
+    },
+    'indica': {
+      en: 'indicates',
+      ur: 'اشارہ کرتا ہے',
+      hi: 'संकेत करता है',
+      pa: 'ਸੰਕੇਤ ਕਰਦਾ ਹੈ'
+    },
+    'figura': {
+      en: 'figure',
+      ur: 'شکل',
+      hi: 'आकृति',
+      pa: 'ਚਿੱਤਰ'
+    },
+    'precedenza': {
+      en: 'priority',
+      ur: 'ترجیح',
+      hi: 'प्राथमिकता',
+      pa: 'ਤਰਜੀਹ'
+    },
+    'preannuncia': {
+      en: 'announces',
+      ur: 'اعلان کرتا ہے',
+      hi: 'घोषणा करता है',
+      pa: 'ਘੋਸ਼ਣਾ ਕਰਦਾ ਹੈ'
+    },
+    'carreggiata': {
+      en: 'roadway',
+      ur: 'سڑک',
+      hi: 'सड़क मार्ग',
+      pa: 'ਸੜਕ'
+    },
+    'transito': {
+      en: 'transit',
+      ur: 'گزرنا',
+      hi: 'पारगमन',
+      pa: 'ਆਵਾਜਾਈ'
+    },
+    'sosta': {
+      en: 'parking',
+      ur: 'کھڑا کرنا',
+      hi: 'पार्किंग',
+      pa: 'ਪਾਰਕਿੰਗ'
+    },
+    'circolazione': {
+      en: 'circulation',
+      ur: 'گردش',
+      hi: 'परिसंचरण',
+      pa: 'ਸੰਚਾਰ'
+    },
+    'patente': {
+      en: 'license',
+      ur: 'لائسنس',
+      hi: 'लाइसेंस',
+      pa: 'ਲਾਇਸੈਂਸ'
+    },
+    'pannello': {
+      en: 'panel',
+      ur: 'پینل',
+      hi: 'पैनल',
+      pa: 'ਪੈਨਲ'
+    },
+    'guida': {
+      en: 'driving',
+      ur: 'ڈرائیونگ',
+      hi: 'ड्राइविंग',
+      pa: 'ਡਰਾਈਵਿੰਗ'
+    },
+    'consentito': {
+      en: 'allowed',
+      ur: 'اجازت ہے',
+      hi: 'अनुमति है',
+      pa: 'ਇਜਾਜ਼ਤ ਹੈ'
+    },
+    'marcia': {
+      en: 'gear',
+      ur: 'گیئر',
+      hi: 'गियर',
+      pa: 'ਗੀਅਰ'
+    },
+    'corsia': {
+      en: 'lane',
+      ur: 'لین',
+      hi: 'लेन',
+      pa: 'ਲੇਨ'
+    },
+    'motore': {
+      en: 'engine',
+      ur: 'انجن',
+      hi: 'इंजन',
+      pa: 'ਇੰਜਣ'
+    },
+    'sorpasso': {
+      en: 'overtaking',
+      ur: 'اوور ٹیک',
+      hi: 'ओवरटेक',
+      pa: 'ਓਵਰਟੇਕ'
+    },
+    'sicurezza': {
+      en: 'safety',
+      ur: 'حفاظت',
+      hi: 'सुरक्षा',
+      pa: 'ਸੁਰੱਖਿਆ'
+    },
+    'semaforo': {
+      en: 'traffic light',
+      ur: 'ٹریفک لائٹ',
+      hi: 'ट्रैफिक लाइट',
+      pa: 'ਟ੍ਰੈਫਿਕ ਲਾਈਟ'
+    },
+    'vieta': {
+      en: 'prohibits',
+      ur: 'منع کرتا ہے',
+      hi: 'प्रतिबंधित करता है',
+      pa: 'ਪਾਬੰਦੀ ਲਗਾਉਂਦਾ ਹੈ'
+    },
+    'distanza': {
+      en: 'distance',
+      ur: 'فاصلہ',
+      hi: 'दूरी',
+      pa: 'ਦੂਰੀ'
+    },
+    'incrocio': {
+      en: 'intersection',
+      ur: 'چوراہا',
+      hi: 'चौराहा',
+      pa: 'ਚੌਰਾਹਾ'
+    },
+    'traffico': {
+      en: 'traffic',
+      ur: 'ٹریفک',
+      hi: 'यातायात',
+      pa: 'ਟ੍ਰੈਫਿਕ'
+    },
+    'fermata': {
+      en: 'stop',
+      ur: 'رکنا',
+      hi: 'रुकना',
+      pa: 'ਰੁਕਣਾ'
+    },
+    'pedoni': {
+      en: 'pedestrians',
+      ur: 'پیدل چلنے والے',
+      hi: 'पैदल यात्री',
+      pa: 'ਪੈਦਲ ਯਾਤਰੀ'
+    },
+    'obbligatorio': {
+      en: 'mandatory',
+      ur: 'لازمی',
+      hi: 'अनिवार्य',
+      pa: 'ਲਾਜ਼ਮੀ'
+    },
+    'direzione': {
+      en: 'direction',
+      ur: 'سمت',
+      hi: 'दिशा',
+      pa: 'ਦਿਸ਼ਾ'
+    },
+    'vietato': {
+      en: 'forbidden',
+      ur: 'ممنوع',
+      hi: 'निषिद्ध',
+      pa: 'ਮਨ੍ਹਾ'
+    },
+    'divieto': {
+      en: 'prohibition',
+      ur: 'پابندی',
+      hi: 'प्रतिबंध',
+      pa: 'ਪਾਬੰਦੀ'
     }
   };
 
