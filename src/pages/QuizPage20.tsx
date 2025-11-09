@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, PauseCircle, PlayCircle } from 'lucide-react';
-import { ClickableText } from '@/components/translation/ClickableText';
-import { LanguageSelector } from '@/components/translation/LanguageSelector';
+import { InteractiveQuizText } from '@/components/quiz/InteractiveQuizText';
+import { QuizLanguageSelector } from '@/components/quiz/QuizLanguageSelector';
+import { useQuizTranslation } from '@/hooks/useQuizTranslation';
 import { AdvancedAudioPlayer } from '@/components/audio/AdvancedAudioPlayer';
 import { AdvancedTimer } from '@/components/quiz/AdvancedTimer';
 import { AIExplanationPanel } from '@/components/ai/AIExplanationPanel';
@@ -12,10 +13,10 @@ import type { QuizQuestion } from '@/types/quiz';
 
 export const QuizPage20 = () => {
   const navigate = useNavigate();
+  const { isEnabled, selectedLang, toggleTranslation, changeLanguage } = useQuizTranslation();
   
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedLanguages, setSelectedLanguages] = useState<string[]>(['en', 'ur', 'hi', 'pa']);
   const [userAnswers, setUserAnswers] = useState<Record<number, boolean>>({});
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,6 @@ export const QuizPage20 = () => {
 
   useEffect(() => {
     initQuiz();
-    loadUserPreferences();
   }, []);
 
   const initQuiz = async () => {
@@ -38,23 +38,6 @@ export const QuizPage20 = () => {
       console.error('Error loading quiz:', error);
       setLoading(false);
     }
-  };
-
-  const loadUserPreferences = () => {
-    const saved = localStorage.getItem('preferred_languages');
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        setSelectedLanguages(parsed);
-      } catch (error) {
-        console.error('Error loading preferences:', error);
-      }
-    }
-  };
-
-  const saveLanguagePreferences = (langs: string[]) => {
-    setSelectedLanguages(langs);
-    localStorage.setItem('preferred_languages', JSON.stringify(langs));
   };
 
   const handleAnswer = (answer: boolean) => {
@@ -194,6 +177,14 @@ export const QuizPage20 = () => {
           </div>
         </div>
 
+        {/* Selettore Lingua Traduzione */}
+        <QuizLanguageSelector
+          selectedLang={selectedLang}
+          onLanguageChange={changeLanguage}
+          isEnabled={isEnabled}
+          onToggle={toggleTranslation}
+        />
+
         {/* Main Quiz Card - Glassmorphism */}
         <motion.div
           key={currentQuestionIndex}
@@ -220,13 +211,15 @@ export const QuizPage20 = () => {
 
           {/* Question Text - Sotto l'immagine */}
           <div className="px-6 pt-2 pb-4">
-            <div className="mb-6">
-              <ClickableText
-                text={currentQuestion.domanda}
-                className="text-xl leading-relaxed text-white font-bold text-center p-6 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl"
-                selectedLanguages={selectedLanguages}
-                enabled={true}
-              />
+            <div className="mb-6 text-xl leading-relaxed text-white font-bold text-center p-6 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl">
+              {isEnabled ? (
+                <InteractiveQuizText
+                  content={currentQuestion.domanda}
+                  targetLang={selectedLang}
+                />
+              ) : (
+                <p>{currentQuestion.domanda}</p>
+              )}
             </div>
           </div>
 
