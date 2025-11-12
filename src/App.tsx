@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { OfflineIndicator } from '@/components/ui/OfflineIndicator';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { useLoadTranslationsFromFirebase } from '@/hooks/useLoadTranslationsFromFirebase';
 
 // Eager load critical pages
 import { HomePage } from '@/pages/HomePage';
@@ -41,45 +42,55 @@ const PageLoader = () => (
   </div>
 );
 
+// Component interno per caricare traduzioni all'avvio
+const AppContent: FC = () => {
+  // Carica traduzioni da Firebase in memoria all'avvio
+  useLoadTranslationsFromFirebase();
+
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<DashboardHome />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/test-quiz" element={<QuizTestPage />} />
+        <Route path="/quiz/exam" element={<QuizTestPage />} />
+        <Route path="/quiz/topics" element={<TopicsPage />} />
+        <Route path="/topic-quiz" element={<TopicQuizPage />} />
+        <Route path="/theory" element={<TheoryPage />} />
+        <Route path="/theory/lesson/:id" element={<LessonDetailPage />} />
+        <Route path="/theory/signals/:chapterId" element={<SignalsTheoryPage />} />
+        <Route path="/study/flashcards" element={<FlashcardsPage />} />
+        <Route path="/study/flashcards/:category" element={<FlashcardsPage />} />
+        <Route path="/study/quick-quiz" element={<QuickQuizPage />} />
+        <Route path="/study/quick-quiz/:category" element={<QuickQuizPage />} />
+        <Route path="/bookmarks" element={<BookmarkedQuestionsPage />} />
+        <Route path="/smart-review" element={<SmartReviewPage />} />
+        <Route path="/achievements" element={<AchievementsPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/questions" element={<QuestionBrowserPage />} />
+        <Route path="/my-progress" element={<MyProgressPage />} />
+        <Route path="/quiz/2.0" element={<QuizPage20 />} />
+      </Routes>
+    </Suspense>
+  );
+};
+
 const App: FC = () => {
   return (
     <ErrorBoundary>
       <AuthProvider>
         <Router>
           <OfflineIndicator />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/landing" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/dashboard" element={<DashboardHome />} />
-            <Route path="/user-dashboard" element={<UserDashboard />} />
-            <Route path="/profile" element={<UserProfile />} />
-            <Route path="/test-quiz" element={<QuizTestPage />} />
-            <Route path="/quiz/exam" element={<QuizTestPage />} />
-            <Route path="/quiz/topics" element={<TopicsPage />} />
-            <Route path="/topic-quiz" element={<TopicQuizPage />} />
-            <Route path="/theory" element={<TheoryPage />} />
-            <Route path="/theory/lesson/:id" element={<LessonDetailPage />} />
-            <Route path="/theory/signals/:chapterId" element={<SignalsTheoryPage />} />
-            <Route path="/study/flashcards" element={<FlashcardsPage />} />
-            <Route path="/study/flashcards/:category" element={<FlashcardsPage />} />
-            <Route path="/study/quick-quiz" element={<QuickQuizPage />} />
-            <Route path="/study/quick-quiz/:category" element={<QuickQuizPage />} />
-            <Route path="/bookmarks" element={<BookmarkedQuestionsPage />} />
-            <Route path="/smart-review" element={<SmartReviewPage />} />
-            <Route path="/achievements" element={<AchievementsPage />} />
-            <Route path="/leaderboard" element={<LeaderboardPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/questions" element={<QuestionBrowserPage />} />
-            <Route path="/my-progress" element={<MyProgressPage />} />
-            <Route path="/quiz/2.0" element={<QuizPage20 />} />
-          </Routes>
-        </Suspense>
-      </Router>
-    </AuthProvider>
+          <AppContent />
+        </Router>
+      </AuthProvider>
     </ErrorBoundary>
   );
 };

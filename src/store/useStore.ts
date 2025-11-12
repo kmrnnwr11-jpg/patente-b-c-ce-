@@ -3,6 +3,14 @@ import { User, Question, QuizAttempt, ThemeMode } from '@/types';
 import type { QuizDatasetVersionId } from '@/types/quiz';
 import { getDefaultQuizDatasetVersion, isQuizDatasetDefined } from '@/lib/quizVersions';
 
+interface TranslationCacheItem {
+  [language: string]: string;
+}
+
+interface TranslationCache {
+  [contextId: string]: TranslationCacheItem;
+}
+
 interface AppState {
   // User State
   user: User | null;
@@ -36,6 +44,13 @@ interface AppState {
   // Quiz Dataset Version
   quizVersion: QuizDatasetVersionId;
   setQuizVersion: (version: QuizDatasetVersionId) => void;
+
+  // Translations Cache (in memory from Firebase)
+  translationsCache: TranslationCache;
+  setTranslationsCache: (cache: TranslationCache) => void;
+  getTranslation: (contextId: string, language: string) => string | null;
+  isTranslationsCacheLoaded: boolean;
+  setIsTranslationsCacheLoaded: (loaded: boolean) => void;
 }
 
 const FREE_AI_QUOTA = Number(import.meta.env.VITE_FREE_AI_QUOTA_DAILY) || 5;
@@ -61,7 +76,7 @@ const initialQuizVersion: QuizDatasetVersionId = (() => {
   return defaultQuizVersion;
 })();
 
-export const useStore = create<AppState>((set) => ({
+export const useStore = create<AppState>((set, get) => ({
   // User State
   user: null,
   setUser: (user) => set({ user }),
@@ -127,6 +142,18 @@ export const useStore = create<AppState>((set) => ({
         console.warn('useStore: impossibile salvare quizVersion su localStorage', error);
       }
     }
-  }
+  },
+
+  // Translations Cache (in memory from Firebase)
+  translationsCache: {},
+  setTranslationsCache: (cache) => set({ translationsCache: cache }),
+  
+  getTranslation: (contextId: string, language: string) => {
+    const { translationsCache } = get();
+    return translationsCache?.[contextId]?.[language] || null;
+  },
+
+  isTranslationsCacheLoaded: false,
+  setIsTranslationsCacheLoaded: (loaded) => set({ isTranslationsCacheLoaded: loaded }),
 }));
 
