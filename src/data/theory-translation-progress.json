@@ -1,9 +1,9 @@
 {
-  "completedChapters": 2,
-  "completedSignals": 50,
+  "completedChapters": 3,
+  "completedSignals": 55,
   "totalChapters": 5,
   "totalSignals": 76,
   "timestamp": "2025-11-12T22:03:30.495Z",
   "lastChapterId": "segnali-divieto",
-  "lastSignalId": "divieto-transito-motocicli"
+  "lastSignalId": "divieto-inversione"
 }

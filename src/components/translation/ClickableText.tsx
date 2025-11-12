@@ -16,6 +16,15 @@ interface ClickableTextProps {
  * 
  * Versione semplificata senza dipendenze esterne
  */
+// Lingue disponibili per traduzione
+const AVAILABLE_LANGUAGES = [
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+];
+
 const ClickableText: FC<ClickableTextProps> = ({
   text,
   contextId,
@@ -24,9 +33,20 @@ const ClickableText: FC<ClickableTextProps> = ({
   onTranslationFound,
 }) => {
   const [hoveredWord, setHoveredWord] = useState<string>('');
+  
+  // Popup di scelta lingua
+  const [languageSelector, setLanguageSelector] = useState<{
+    word: string;
+    x: number;
+    y: number;
+    visible: boolean;
+  } | null>(null);
+
+  // Popup di traduzione
   const [translationPopup, setTranslationPopup] = useState<{
     word: string;
     translation: string | null;
+    language: string;
     x: number;
     y: number;
     visible: boolean;
@@ -40,47 +60,61 @@ const ClickableText: FC<ClickableTextProps> = ({
     return text.split(/(\s+|[.,!?;:\-—])/);
   }, [text]);
 
+  // Handler per mostrare popup di selezione lingua
   const handleWordClick = useCallback(
     (word: string, event: React.MouseEvent<HTMLSpanElement>) => {
       if (!word.trim()) return;
 
-      // 1. Lookup istantaneo da memoria Zustand (0ms!)
-      const cachedTranslation = getTranslation(contextId, targetLang);
-      
-      if (cachedTranslation) {
-        console.log(`✅ Traduzione trovata in memoria: "${word}" → "${cachedTranslation}"`);
-        
-        // Mostra popup vicino al mouse
-        const rect = event.currentTarget.getBoundingClientRect();
-        setTranslationPopup({
-          word,
-          translation: cachedTranslation,
-          x: rect.left,
-          y: rect.top - 10,
-          visible: true,
-        });
+      // Mostra popup di selezione lingua
+      const rect = event.currentTarget.getBoundingClientRect();
+      setLanguageSelector({
+        word,
+        x: rect.left,
+        y: rect.top - 10,
+        visible: true,
+      });
 
-        onTranslationFound?.(word, cachedTranslation);
-        
-        // Nascondi popup dopo 3 secondi
-        setTimeout(() => setTranslationPopup(null), 3000);
-      } else {
-        console.log(`ℹ️ Traduzione non trovata in memoria per "${word}"`);
-        
-        // Mostra messaggio che non c'è traduzione
-        const rect = event.currentTarget.getBoundingClientRect();
-        setTranslationPopup({
-          word,
-          translation: null,
-          x: rect.left,
-          y: rect.top - 10,
-          visible: true,
-        });
-
-        setTimeout(() => setTranslationPopup(null), 1500);
-      }
+      console.log(`🌐 Mostrando selezione lingua per: "${word}"`);
     },
-    [contextId, targetLang, getTranslation, onTranslationFound]
+    []
+  );
+
+  // Handler per quando l'utente seleziona una lingua
+  const handleLanguageSelect = useCallback(
+    (selectedLang: string) => {
+      if (!languageSelector) return;
+
+      const { word, x, y } = languageSelector;
+
+      // Lookup traduzione nella lingua selezionata
+      const translation = getTranslation(contextId, selectedLang);
+
+      console.log(
+        translation
+          ? `✅ Traduzione trovata in memoria: "${word}" (${selectedLang}) → "${translation}"`
+          : `ℹ️ Traduzione non trovata per "${word}" in ${selectedLang}`
+      );
+
+      // Chiudi selector e mostra traduzione
+      setLanguageSelector(null);
+
+      setTranslationPopup({
+        word,
+        translation: translation || null,
+        language: selectedLang,
+        x,
+        y: y + 50, // Un po' più giù per non coprire il selector
+        visible: true,
+      });
+
+      if (translation) {
+        onTranslationFound?.(word, translation);
+      }
+
+      // Nascondi popup dopo 3 secondi
+      setTimeout(() => setTranslationPopup(null), 3000);
+    },
+    [languageSelector, getTranslation, contextId, onTranslationFound]
   );
 
   return (
@@ -117,7 +151,42 @@ const ClickableText: FC<ClickableTextProps> = ({
         );
       })}
 
-      {/* Popup di traduzione semplice */}
+      {/* Popup di selezione lingua */}
+      {languageSelector?.visible && (
+        <div
+          className="fixed z-50 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3"
+          style={{
+            left: `${languageSelector.x}px`,
+            top: `${languageSelector.y}px`,
+            animation: 'fadeIn 0.2s ease-in',
+            minWidth: '200px',
+          }}
+        >
+          <div className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            🌐 Scegli lingua:
+          </div>
+          <div className="space-y-1">
+            {AVAILABLE_LANGUAGES.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => handleLanguageSelect(lang.code)}
+                className="w-full text-left px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors text-sm"
+              >
+                <span className="mr-2">{lang.flag}</span>
+                <span className="font-medium">{lang.name}</span>
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => setLanguageSelector(null)}
+            className="w-full mt-2 px-3 py-1 text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+          >
+            Chiudi
+          </button>
+        </div>
+      )}
+
+      {/* Popup di traduzione */}
       {translationPopup?.visible && (
         <div
           className="fixed z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-3 max-w-xs"
@@ -128,7 +197,7 @@ const ClickableText: FC<ClickableTextProps> = ({
           }}
         >
           <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
-            {targetLang.toUpperCase()}
+            {translationPopup.language.toUpperCase()}
           </div>
           {translationPopup.translation ? (
             <p className="text-sm font-medium text-gray-900 dark:text-gray-100 break-words">
