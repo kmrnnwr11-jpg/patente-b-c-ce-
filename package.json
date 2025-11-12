@@ -15,7 +15,8 @@
     "firebase:deploy:rules": "firebase deploy --only firestore:rules,storage",
     "prewarm": "tsx scripts/prewarm-translations.ts",
     "prewarm:execute": "tsx scripts/prewarm-execute.ts",
-    "test:firebase": "node scripts/test-firebase.mjs"
+    "test:firebase": "node scripts/test-firebase.mjs",
+    "translate:theory": "tsx scripts/translate-theory-deepl.ts"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
@@ -25,13 +26,17 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "@supabase/supabase-js": "^2.78.0",
+    "axios": "^1.13.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "firebase": "^10.14.1",
     "framer-motion": "^12.23.24",
+    "i18next": "^25.6.2",
+    "i18next-browser-languagedetector": "^8.2.0",
     "lucide-react": "^0.303.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-i18next": "^16.3.1",
     "react-router-dom": "^6.21.1",
     "tailwind-merge": "^2.2.0",
     "zustand": "^4.4.7"

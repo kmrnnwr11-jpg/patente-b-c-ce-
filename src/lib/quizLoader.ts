@@ -4,10 +4,10 @@ import type {
   QuizQuestion,
   QuizStats
 } from '@/types/quiz';
-import { getQuizQuestionsForVersion } from './quizVersions';
+import { getQuizQuestionsForVersion, getQuizQuestionsForVersionAsync } from './quizVersions';
 import { useStore } from '@/store/useStore';
 
-// Cache dei quiz per versione
+// Cache dei quiz per versione (deprecata, usa quella in quizVersions.ts)
 const cachedQuestions = new Map<QuizDatasetVersionId, QuizQuestion[]>();
 
 function resolveVersion(version?: QuizDatasetVersionId): QuizDatasetVersionId {
@@ -29,10 +29,26 @@ function loadDataset(version: QuizDatasetVersionId): QuizQuestion[] {
   return questions;
 }
 
-// Carica tutti i quiz (con caching)
+/**
+ * Carica tutti i quiz in modo sincrono (solo italiano)
+ * @deprecated Use loadAllQuestionsAsync with language parameter
+ */
 export function loadAllQuestions(version?: QuizDatasetVersionId): QuizQuestion[] {
   const resolvedVersion = resolveVersion(version);
   return loadDataset(resolvedVersion);
+}
+
+/**
+ * Carica tutti i quiz in modo asincrono con supporto multilingua
+ * @param language - Codice lingua ('it', 'en', ecc.)
+ * @param version - Versione del dataset (opzionale)
+ */
+export async function loadAllQuestionsAsync(
+  language: string = 'it',
+  version?: QuizDatasetVersionId
+): Promise<QuizQuestion[]> {
+  const resolvedVersion = resolveVersion(version);
+  return getQuizQuestionsForVersionAsync(resolvedVersion, language);
 }
 
 // Shuffle array utility (Fisher-Yates)
