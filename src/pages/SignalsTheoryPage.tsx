@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, AlertCircle, Ban, Shield, Eye, Languages } from 'lucide-react';
-import { WordTranslationModal } from '@/components/translation/WordTranslationModal';
+import { ClickableText } from '@/components/translation/ClickableText';
 import { useStudyProgress } from '@/hooks/useStudyProgress';
 import theoryData from '../data/theory-segnali-completo.json';
 
@@ -35,42 +35,11 @@ const iconMap: Record<string, any> = {
   Eye,
 };
 
-// Componente per rendere il testo cliccabile parola per parola
-const ClickableText: FC<{ text: string; onWordClick: (word: string) => void }> = ({ text, onWordClick }) => {
-  const words = text.split(/(\s+|[.,;:!?]+)/); // Split mantenendo spazi e punteggiatura
-  
-  return (
-    <span>
-      {words.map((word, index) => {
-        const isWord = /\w+/.test(word);
-        if (!isWord) {
-          return <span key={index}>{word}</span>;
-        }
-        return (
-          <span
-            key={index}
-            onClick={(e) => {
-              e.stopPropagation();
-              onWordClick(word.replace(/[.,;:!?]+$/, '')); // Rimuovi punteggiatura finale
-            }}
-            className="cursor-pointer hover:bg-yellow-300/30 hover:underline decoration-dotted rounded px-0.5 transition-all"
-            title="Clicca per tradurre"
-          >
-            {word}
-          </span>
-        );
-      })}
-    </span>
-  );
-};
-
 export const SignalsTheoryPage: FC = () => {
   const navigate = useNavigate();
   const { chapterId } = useParams<{ chapterId: string }>();
   const { visitChapter, addStudyTime } = useStudyProgress();
   const [chapter, setChapter] = useState<Chapter | null>(null);
-  const [selectedWord, setSelectedWord] = useState<string | null>(null);
-  const [showTranslation, setShowTranslation] = useState(false);
   const [startTime] = useState(Date.now());
 
   useEffect(() => {
@@ -95,11 +64,6 @@ export const SignalsTheoryPage: FC = () => {
       }
     };
   }, [chapterId, startTime, addStudyTime]);
-
-  const handleWordClick = (word: string) => {
-    setSelectedWord(word);
-    setShowTranslation(true);
-  };
 
   if (!chapter) {
     return (
@@ -203,9 +167,11 @@ export const SignalsTheoryPage: FC = () => {
                       Descrizione
                     </p>
                   </div>
-                  <p className="text-gray-800 text-base leading-relaxed">
-                    <ClickableText text={signal.descrizione} onWordClick={handleWordClick} />
-                  </p>
+                  <ClickableText 
+                    text={signal.descrizione}
+                    contextId={`signal-${signal.id}-desc`}
+                    className="text-gray-800 text-base leading-relaxed"
+                  />
                 </div>
 
                 <div className="bg-green-50 rounded-2xl p-4">
@@ -215,9 +181,11 @@ export const SignalsTheoryPage: FC = () => {
                       Comportamento da Tenere
                     </p>
                   </div>
-                  <p className="text-gray-800 text-base leading-relaxed">
-                    <ClickableText text={signal.comportamento} onWordClick={handleWordClick} />
-                  </p>
+                  <ClickableText 
+                    text={signal.comportamento}
+                    contextId={`signal-${signal.id}-comp`}
+                    className="text-gray-800 text-base leading-relaxed"
+                  />
                 </div>
               </div>
             </div>
@@ -234,15 +202,6 @@ export const SignalsTheoryPage: FC = () => {
           ← Torna ai Segnali
         </button>
       </div>
-
-      {/* Translation Modal */}
-      {showTranslation && selectedWord && (
-        <WordTranslationModal
-          word={selectedWord}
-          onClose={() => setShowTranslation(false)}
-          selectedLanguages={['en', 'ur', 'hi', 'pa']}
-        />
-      )}
     </div>
   );
 };

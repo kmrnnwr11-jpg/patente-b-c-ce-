@@ -19,10 +19,9 @@ interface ClickableTextProps {
 // Lingue disponibili per traduzione
 const AVAILABLE_LANGUAGES = [
   { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'ur', name: 'اردو', flag: '🇵🇰' },
+  { code: 'pa', name: 'ਪੰਜਾਬੀ', flag: '🇮🇳' },
 ];
 
 const ClickableText: FC<ClickableTextProps> = ({
