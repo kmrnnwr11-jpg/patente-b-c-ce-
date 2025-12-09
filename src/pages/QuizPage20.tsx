@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, PauseCircle, PlayCircle } from 'lucide-react';
 import { InteractiveQuizText } from '@/components/quiz/InteractiveQuizText';
-import { QuizLanguageSelector } from '@/components/quiz/QuizLanguageSelector';
 import { useQuizTranslation } from '@/hooks/useQuizTranslation';
-import { AdvancedAudioPlayer } from '@/components/audio/AdvancedAudioPlayer';
+import { AdvancedAudioPlayer, AdvancedAudioPlayerHandle } from '@/components/audio/AdvancedAudioPlayer';
 import { AdvancedTimer } from '@/components/quiz/AdvancedTimer';
 import { AIExplanationPanel } from '@/components/ai/AIExplanationPanel';
 import { loadAllQuestions } from '@/lib/quizLoader';
@@ -21,10 +20,16 @@ export const QuizPage20 = () => {
   const [showExplanation, setShowExplanation] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
+  const audioRef = useRef<AdvancedAudioPlayerHandle | null>(null);
 
   useEffect(() => {
     initQuiz();
   }, []);
+
+  // Ferma l'audio quando cambia la domanda
+  useEffect(() => {
+    audioRef.current?.stop();
+  }, [currentQuestionIndex]);
 
   const initQuiz = async () => {
     try {
@@ -41,6 +46,9 @@ export const QuizPage20 = () => {
   };
 
   const handleAnswer = (answer: boolean) => {
+    // Ferma la voce corrente quando l'utente risponde
+    audioRef.current?.stop();
+
     setUserAnswers({
       ...userAnswers,
       [currentQuestionIndex]: answer
@@ -135,8 +143,8 @@ export const QuizPage20 = () => {
             <span>Esci</span>
           </button>
 
-          {/* Domanda */}
-          <div className="flex-1 text-center">
+          {/* Domanda - HIDDEN */}
+          <div className="flex-1 text-center" style={{ display: 'none' }}>
             <span className="text-sm font-bold text-white drop-shadow-lg">
               Domanda {currentQuestionIndex + 1}/{questions.length}
             </span>
@@ -177,15 +185,7 @@ export const QuizPage20 = () => {
           </div>
         </div>
 
-        {/* Selettore Lingua Traduzione */}
-        <QuizLanguageSelector
-          selectedLang={selectedLang}
-          onLanguageChange={changeLanguage}
-          isEnabled={isEnabled}
-          onToggle={toggleTranslation}
-        />
-
-        {/* Main Quiz Card - Glassmorphism */}
+{/* Main Quiz Card - Glassmorphism */}
         <motion.div
           key={currentQuestionIndex}
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -203,7 +203,7 @@ export const QuizPage20 = () => {
                 className="w-full max-h-96 object-contain bg-white/10 backdrop-blur-md rounded-2xl shadow-xl border border-white/20"
                 loading="lazy"
               />
-              <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-lg px-3 py-1.5 rounded-full text-xs font-semibold text-white border border-white/30">
+              <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-lg px-4 py-2 rounded-full text-sm font-semibold text-white border border-white/30 max-w-[200px] text-center leading-tight" style={{ display: 'none' }}>
                 {currentQuestion.argomento}
               </div>
             </div>
@@ -229,6 +229,7 @@ export const QuizPage20 = () => {
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex-1 w-full">
                 <AdvancedAudioPlayer
+                  ref={audioRef}
                   text={currentQuestion.domanda}
                   language="it"
                 />
@@ -335,15 +336,18 @@ export const QuizPage20 = () => {
         {/* Navigation */}
         <div className="flex justify-between mt-6">
           <button
-            onClick={() => setCurrentQuestionIndex(Math.max(0, currentQuestionIndex - 1))}
+            onClick={() => {
+              audioRef.current?.stop();
+              setCurrentQuestionIndex(Math.max(0, currentQuestionIndex - 1));
+            }}
             disabled={currentQuestionIndex === 0}
-            className="px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-gray-700 hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+            className="px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl font-medium text-gray-700 hover:shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed">
             <ArrowLeft className="w-5 h-5" />
           </button>
 
           <button
             onClick={() => {
+              audioRef.current?.stop();
               if (currentQuestionIndex < questions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
                 setShowExplanation(false);
