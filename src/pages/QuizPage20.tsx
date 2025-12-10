@@ -12,8 +12,8 @@ import type { QuizQuestion } from '@/types/quiz';
 
 export const QuizPage20 = () => {
   const navigate = useNavigate();
-  const { isEnabled, selectedLang, toggleTranslation, changeLanguage } = useQuizTranslation();
-  
+  const { selectedLang, changeLanguage } = useQuizTranslation();
+
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<number, boolean>>({});
@@ -73,7 +73,7 @@ export const QuizPage20 = () => {
     }, 0);
 
     const passed = errors <= 3;
-    
+
     // Salva risultati
     const results = {
       questions,
@@ -185,7 +185,7 @@ export const QuizPage20 = () => {
           </div>
         </div>
 
-{/* Main Quiz Card - Glassmorphism */}
+        {/* Main Quiz Card - Glassmorphism */}
         <motion.div
           key={currentQuestionIndex}
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -212,14 +212,10 @@ export const QuizPage20 = () => {
           {/* Question Text - Sotto l'immagine */}
           <div className="px-6 pt-2 pb-4">
             <div className="mb-6 text-xl leading-relaxed text-white font-bold text-center p-6 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-xl rounded-2xl border-2 border-yellow-400/50 shadow-2xl">
-              {isEnabled ? (
-                <InteractiveQuizText
-                  content={currentQuestion.domanda}
-                  targetLang={selectedLang}
-                />
-              ) : (
-                <p>{currentQuestion.domanda}</p>
-              )}
+              <InteractiveQuizText
+                content={currentQuestion.domanda}
+                targetLang={selectedLang}
+              />
             </div>
           </div>
 
@@ -232,16 +228,17 @@ export const QuizPage20 = () => {
                   ref={audioRef}
                   text={currentQuestion.domanda}
                   language="it"
+                  selectedLanguage={selectedLang}
+                  onLanguageChange={changeLanguage}
                 />
               </div>
 
               <button
                 onClick={() => setIsTimerPaused((prev) => !prev)}
-                className={`w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all backdrop-blur-xl border-2 ${
-                  isTimerPaused
-                    ? 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 shadow-xl shadow-green-500/30'
-                    : 'bg-white/20 hover:bg-white/30 text-white border-white/30 shadow-xl'
-                }`}
+                className={`w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-all backdrop-blur-xl border-2 ${isTimerPaused
+                  ? 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 shadow-xl shadow-green-500/30'
+                  : 'bg-white/20 hover:bg-white/30 text-white border-white/30 shadow-xl'
+                  }`}
               >
                 {isTimerPaused ? (
                   <>
@@ -262,31 +259,29 @@ export const QuizPage20 = () => {
               <button
                 onClick={() => handleAnswer(true)}
                 disabled={hasAnswered}
-                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${
-                  hasAnswered
-                    ? currentQuestion.risposta === true
-                      ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
-                      : userAnswers[currentQuestionIndex] === true
+                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${hasAnswered
+                  ? currentQuestion.risposta === true
+                    ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
+                    : userAnswers[currentQuestionIndex] === true
                       ? 'bg-red-500/80 text-white border-red-300 shadow-2xl shadow-red-500/50'
                       : 'bg-white/10 text-white/40 border-white/20'
-                    : 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 hover:shadow-2xl hover:shadow-green-500/50 hover:scale-105 active:scale-95'
-                } disabled:cursor-not-allowed`}
+                  : 'bg-green-500/70 hover:bg-green-500/90 text-white border-green-300 hover:shadow-2xl hover:shadow-green-500/50 hover:scale-105 active:scale-95'
+                  } disabled:cursor-not-allowed`}
               >
                 VERO
               </button>
-              
+
               <button
                 onClick={() => handleAnswer(false)}
                 disabled={hasAnswered}
-                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${
-                  hasAnswered
-                    ? currentQuestion.risposta === false
-                      ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
-                      : userAnswers[currentQuestionIndex] === false
+                className={`h-20 text-2xl font-bold rounded-2xl transition-all backdrop-blur-xl border-2 ${hasAnswered
+                  ? currentQuestion.risposta === false
+                    ? 'bg-green-500/80 text-white border-green-300 shadow-2xl shadow-green-500/50'
+                    : userAnswers[currentQuestionIndex] === false
                       ? 'bg-red-500/80 text-white border-red-300 shadow-2xl shadow-red-500/50'
                       : 'bg-white/10 text-white/40 border-white/20'
-                    : 'bg-red-500/70 hover:bg-red-500/90 text-white border-red-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95'
-                } disabled:cursor-not-allowed`}
+                  : 'bg-red-500/70 hover:bg-red-500/90 text-white border-red-300 hover:shadow-2xl hover:shadow-red-500/50 hover:scale-105 active:scale-95'
+                  } disabled:cursor-not-allowed`}
               >
                 FALSO
               </button>
@@ -297,15 +292,13 @@ export const QuizPage20 = () => {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`p-4 rounded-xl mb-4 ${
-                  isCorrect
-                    ? 'bg-green-100 border-2 border-green-500'
-                    : 'bg-red-100 border-2 border-red-500'
-                }`}
+                className={`p-4 rounded-xl mb-4 ${isCorrect
+                  ? 'bg-green-100 border-2 border-green-500'
+                  : 'bg-red-100 border-2 border-red-500'
+                  }`}
               >
-                <div className={`text-center font-bold text-lg ${
-                  isCorrect ? 'text-green-700' : 'text-red-700'
-                }`}>
+                <div className={`text-center font-bold text-lg ${isCorrect ? 'text-green-700' : 'text-red-700'
+                  }`}>
                   {isCorrect ? '✅ Risposta Corretta!' : '❌ Risposta Errata'}
                 </div>
               </motion.div>

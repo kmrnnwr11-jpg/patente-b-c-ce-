@@ -6,6 +6,8 @@ interface AdvancedAudioPlayerProps {
   text: string;
   language?: string;
   className?: string;
+  selectedLanguage?: string;
+  onLanguageChange?: (lang: string) => void;
 }
 
 // Handle esposto al parent per controllare il player
@@ -30,11 +32,14 @@ const LANGUAGE_FLAGS: Record<string, string> = {
 };
 
 export const AdvancedAudioPlayer = forwardRef<AdvancedAudioPlayerHandle, AdvancedAudioPlayerProps>(
-  ({ text, language = 'it', className = '' }, ref) => {
+  ({ text, language = 'it', className = '', selectedLanguage, onLanguageChange }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [speed, setSpeed] = useState(1.0);
-  const [currentLang, setCurrentLang] = useState(language);
+  const [internalLang, setInternalLang] = useState(language);
+  
+  const currentLang = selectedLanguage || internalLang;
+
   const [loading, setLoading] = useState(false);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
@@ -171,7 +176,11 @@ export const AdvancedAudioPlayer = forwardRef<AdvancedAudioPlayerHandle, Advance
             <span className="text-xs text-gray-600 font-medium">Lingua:</span>
             <select
               value={currentLang}
-              onChange={(e) => setCurrentLang(e.target.value)}
+              onChange={(e) => {
+                const newLang = e.target.value;
+                setInternalLang(newLang);
+                onLanguageChange?.(newLang);
+              }}
               className="text-xs px-2 py-1 rounded border border-gray-300 bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
             >
               {Object.entries(LANGUAGE_FLAGS).map(([code, flag]) => (
