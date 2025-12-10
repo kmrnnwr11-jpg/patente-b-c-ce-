@@ -117,6 +117,13 @@ export const QuizContainer: FC<QuizContainerProps> = ({
     setShowFeedback(savedAnswer !== null);
   }, [currentQuestion, userAnswers]);
 
+  // Ferma l'audio quando cambia la domanda
+  useEffect(() => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+  }, [currentQuestion]);
+
   const handleResumeQuiz = () => {
     if (savedQuizData) {
       setUserAnswers(savedQuizData.userAnswers);
@@ -132,6 +139,11 @@ export const QuizContainer: FC<QuizContainerProps> = ({
 
   const handleAnswer = (answer: boolean) => {
     if (showFeedback) return;
+
+    // Ferma la voce quando l'utente risponde
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
 
     setSelectedAnswer(answer);
     setShowFeedback(true);
@@ -164,6 +176,11 @@ export const QuizContainer: FC<QuizContainerProps> = ({
       autoNextTimeout.current = null;
     }
 
+    // Ferma la voce quando si va alla prossima domanda
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -177,12 +194,22 @@ export const QuizContainer: FC<QuizContainerProps> = ({
       autoNextTimeout.current = null;
     }
 
+    // Ferma la voce quando si torna indietro
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
 
   const finalizeQuiz = () => {
+    // Ferma la voce quando termina il quiz
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+
     let correctCount = 0;
     const reviewItems = questions.map((question, index) => {
       const userAnswer = userAnswers[index];
@@ -244,6 +271,11 @@ export const QuizContainer: FC<QuizContainerProps> = ({
   };
 
   const handleExit = () => {
+    // Ferma la voce quando si esce dal quiz
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+
     if (onExit) {
       onExit();
     } else {
@@ -310,6 +342,16 @@ export const QuizContainer: FC<QuizContainerProps> = ({
           fullQuestion={question}
           onAnswer={handleAnswer}
           onSpeak={() => {
+            // Se sta già parlando, fermalo e riparte da capo
+            if (window.speechSynthesis.speaking) {
+              window.speechSynthesis.cancel();
+              setTimeout(() => {
+                const utterance = new SpeechSynthesisUtterance(question.domanda);
+                utterance.lang = 'it-IT';
+                window.speechSynthesis.speak(utterance);
+              }, 100);
+              return;
+            }
             const utterance = new SpeechSynthesisUtterance(question.domanda);
             utterance.lang = 'it-IT';
             window.speechSynthesis.speak(utterance);

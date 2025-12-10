@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { getOrCreateWordAssets } from '@/lib/wordAssets';
 
 interface InteractiveTheoryTextProps {
@@ -91,26 +92,24 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
         })}
       </div>
 
-      {/* Popup Traduzione - Mobile Optimized */}
-      {popup && (
+      {/* Popup Traduzione - REACT PORTAL with ULTIMATE Z-INDEX */}
+      {popup && createPortal(
         <>
           {/* Overlay per chiudere */}
           <div
-            className="fixed inset-0 z-40 bg-black/20"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={closePopup}
+            style={{ zIndex: 9999998 }}
           />
           <div
-            className="fixed z-50 glass-card p-4 sm:p-5 rounded-2xl shadow-2xl w-[90vw] max-w-sm sm:max-w-md border border-white/20"
+            className="fixed glass-card p-4 sm:p-5 rounded-2xl shadow-2xl w-[90vw] max-w-sm sm:max-w-md border border-white/20 bg-gradient-to-br from-gray-800/95 to-gray-900/95"
             style={{
               left: '50%',
-              top: popup.position.y > window.innerHeight / 2 
-                ? `${popup.position.y - 10}px`
-                : `${popup.position.y + 30}px`,
-              transform: popup.position.y > window.innerHeight / 2
-                ? 'translate(-50%, -100%)'
-                : 'translate(-50%, 0)',
-              maxHeight: '80vh',
-              overflowY: 'auto'
+              top: '8%',
+              transform: 'translate(-50%, 0)',
+              maxHeight: '70vh',
+              overflowY: 'auto',
+              zIndex: 9999999
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -167,7 +166,8 @@ export const InteractiveTheoryText: FC<InteractiveTheoryTextProps> = ({
             Clicca per chiudere
           </div>
         </div>
-        </>
+        </>,
+        document.body
       )}
     </>
   );

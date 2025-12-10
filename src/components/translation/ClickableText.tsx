@@ -1,4 +1,5 @@
 import { FC, useState, useCallback, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { useStore } from '@/store/useStore';
 
 interface ClickableTextProps {
@@ -150,49 +151,118 @@ const ClickableText: FC<ClickableTextProps> = ({
         );
       })}
 
-      {/* Popup di selezione lingua */}
-      {languageSelector?.visible && (
+      {/* Popup di selezione lingua - REACT PORTAL */}
+      {languageSelector?.visible && createPortal(
         <div
-          className="fixed z-50 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3"
+          className="fixed rounded-2xl shadow-2xl overflow-hidden backdrop-blur-sm"
           style={{
             left: `${languageSelector.x}px`,
             top: `${languageSelector.y}px`,
-            animation: 'fadeIn 0.2s ease-in',
-            minWidth: '200px',
+            animation: 'fadeInScale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+            minWidth: '280px',
+            maxWidth: '320px',
+            zIndex: 9999999,
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(249,250,251,0.95) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.2)',
           }}
         >
-          <div className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
-            🌐 Scegli lingua:
+          {/* Header con gradiente */}
+          <div 
+            className="px-5 py-4"
+            style={{
+              background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <div 
+                className="flex items-center justify-center rounded-full"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  background: 'rgba(255,255,255,0.25)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <span className="text-2xl">🌐</span>
+              </div>
+              <div>
+                <h3 className="text-white font-bold text-lg tracking-tight">
+                  Scegli lingua:
+                </h3>
+                <p className="text-white/80 text-xs mt-0.5">
+                  Seleziona per tradurre
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="space-y-1">
-            {AVAILABLE_LANGUAGES.map((lang) => (
+
+          {/* Language buttons */}
+          <div className="p-4 space-y-2">
+            {AVAILABLE_LANGUAGES.map((lang, index) => (
               <button
                 key={lang.code}
                 onClick={() => handleLanguageSelect(lang.code)}
-                className="w-full text-left px-3 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors text-sm"
+                className="w-full text-left px-4 py-3.5 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)',
+                  border: '1.5px solid rgba(59, 130, 246, 0.15)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                  animation: `slideIn 0.3s ease-out ${index * 0.05}s backwards`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)';
+                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)';
+                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.15)';
+                  e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                }}
               >
-                <span className="mr-2">{lang.flag}</span>
-                <span className="font-medium">{lang.name}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl">{lang.flag}</span>
+                  <span className="font-semibold text-gray-800 text-base">{lang.name}</span>
+                </div>
               </button>
             ))}
           </div>
-          <button
-            onClick={() => setLanguageSelector(null)}
-            className="w-full mt-2 px-3 py-1 text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-          >
-            Chiudi
-          </button>
-        </div>
+
+          {/* Footer con bottone chiudi */}
+          <div className="px-4 pb-4">
+            <button
+              onClick={() => setLanguageSelector(null)}
+              className="w-full py-2.5 rounded-lg font-medium text-sm transition-all duration-200"
+              style={{
+                background: 'rgba(107, 114, 128, 0.08)',
+                color: '#6b7280',
+                border: '1px solid rgba(107, 114, 128, 0.15)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(107, 114, 128, 0.15)';
+                e.currentTarget.style.color = '#374151';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(107, 114, 128, 0.08)';
+                e.currentTarget.style.color = '#6b7280';
+              }}
+            >
+              Chiudi
+            </button>
+          </div>
+        </div>,
+        document.body
       )}
 
-      {/* Popup di traduzione */}
-      {translationPopup?.visible && (
+      {/* Popup di traduzione - REACT PORTAL */}
+      {translationPopup?.visible && createPortal(
         <div
-          className="fixed z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-3 max-w-xs"
+          className="fixed bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-3 max-w-xs"
           style={{
             left: `${translationPopup.x}px`,
             top: `${translationPopup.y}px`,
             animation: 'fadeIn 0.2s ease-in',
+            zIndex: 9999999,
           }}
         >
           <div className="text-xs text-gray-600 dark:text-gray-400 mb-1">
@@ -210,7 +280,8 @@ const ClickableText: FC<ClickableTextProps> = ({
           <div className="text-xs text-gray-500 mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
             ✨ In memoria
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <style>{`
@@ -222,6 +293,28 @@ const ClickableText: FC<ClickableTextProps> = ({
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
           }
         }
       `}</style>

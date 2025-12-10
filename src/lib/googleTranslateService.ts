@@ -149,6 +149,53 @@ export const getSmartTranslation = async (
 };
 
 /**
+ * TRADUZIONE PER TESTO DI TEORIA
+ * Usa cache locale (per chiave di sezione) + Google API + fallback
+ * @param sectionId - ID univoco della sezione teoria (es: "signals-intro-1")
+ * @param text - Testo italiano da tradurre
+ * @param targetLang - Lingua target (default: 'en')
+ * @param apiKey - Google Translate API key (opzionale)
+ * @returns Testo tradotto o originale se traduzione non disponibile
+ */
+export const getTheoryTranslation = async (
+  sectionId: string,
+  text: string,
+  targetLang: string = 'en',
+  apiKey?: string
+): Promise<string> => {
+  // Crea una chiave hash numerica da sectionId + lingua per riusare translationCache
+  const cacheKeyString = `${sectionId}_${targetLang}`;
+  let cacheKey = 0;
+  for (let i = 0; i < cacheKeyString.length; i++) {
+    cacheKey = (cacheKey * 31 + cacheKeyString.charCodeAt(i)) >>> 0;
+  }
+
+  // 1. Controlla cache locale
+  if ((translationCache as any)[cacheKey]) {
+    console.log('📦 Using cached theory translation for section', sectionId);
+    return (translationCache as any)[cacheKey].en;
+  }
+
+  // 2. Usa Google Translate API se disponibile
+  if (apiKey) {
+    const translated = await translateWithGoogleAPI(text, targetLang, apiKey);
+    if (translated !== text) {
+      (translationCache as any)[cacheKey] = {
+        en: translated,
+        timestamp: Date.now()
+      };
+      saveCacheToStorage();
+      console.log('✅ Cached theory translation for section', sectionId);
+      return translated;
+    }
+  }
+
+  // 3. Fallback: restituisci il testo originale
+  console.log('⚠️ Using original text for theory section', sectionId);
+  return text;
+};
+
+/**
  * UTILITY: Genera file con tutte le traduzioni
  * Utile per pre-tradurre tutte le domande una volta
  */

@@ -1,9 +1,11 @@
 import { db, storage } from '@/lib/firebase';
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore';
 import { ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import { translateWithGoogleAPI } from '@/lib/googleTranslateService';
 
 const DEEPL_API_KEY = import.meta.env.VITE_DEEPL_API_KEY;
 const ELEVENLABS_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY;
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_TRANSLATE_API_KEY;
 
 const VOICE_IDS: Record<string, string | undefined> = {
   ur: import.meta.env.VITE_ELEVENLABS_VOICE_UR,
@@ -100,14 +102,24 @@ async function translateWithLibre(
   return data.translatedText;
 }
 
-// Traduzione con fallback automatico (DeepL → LibreTranslate)
+// Traduzione con fallback automatico (Google → DeepL → LibreTranslate)
 async function translateText(
   text: string,
   sourceLang: string,
   targetLang: string
 ): Promise<string> {
+  // Prova Google Translate prima (se configurato)
+  if (GOOGLE_API_KEY) {
+    try {
+      console.log('🌍 Usando Google Translate API...');
+      return await translateWithGoogleAPI(text, targetLang, GOOGLE_API_KEY);
+    } catch (error) {
+      console.warn('Google Translate fallito, provo DeepL:', error);
+    }
+  }
+
+  // Fallback a DeepL
   try {
-    // Prova DeepL prima
     return await translateWithDeepL(text, sourceLang, targetLang);
   } catch (error) {
     console.warn('DeepL fallito, uso LibreTranslate:', error);
@@ -119,7 +131,7 @@ async function translateText(
 async function generateAudio(
   text: string,
   targetLang: string
-): Promise<string | null> {
+): Promise<Blob | null> {
   const voiceId = VOICE_IDS[targetLang];
   
   if (!ELEVENLABS_API_KEY || !voiceId) {
@@ -199,19 +211,23 @@ export async function getOrCreateWordAssets(
   const docId = getDocId(normWord, targetLang);
   const docRef = doc(db, 'word_translations', docId);
 
-  // 1) Controlla cache Firestore
-  const snap = await getDoc(docRef);
-  
-  if (snap.exists()) {
-    const data = snap.data() as WordAsset;
+  // 1) Controlla cache Firestore (solo se Firebase configurato)
+  try {
+    const snap = await getDoc(docRef);
     
-    // Incrementa usage count
-    setDoc(docRef, { usageCount: data.usageCount + 1 }, { merge: true }).catch(() => {});
-    
-    return {
-      translation: data.translation,
-      audioUrl: data.audioUrl || null
-    };
+    if (snap.exists()) {
+      const data = snap.data() as WordAsset;
+      
+      // Incrementa usage count
+      setDoc(docRef, { usageCount: data.usageCount + 1 }, { merge: true }).catch(() => {});
+      
+      return {
+        translation: data.translation,
+        audioUrl: data.audioUrl || null
+      };
+    }
+  } catch (firebaseError) {
+    console.warn('Firebase non disponibile, salto cache:', firebaseError);
   }
 
   // 2) Non in cache: genera traduzione
@@ -221,30 +237,42 @@ export async function getOrCreateWordAssets(
   let audioUrl: string | null = null;
   
   // Prima controlla se esiste già su Storage
-  audioUrl = await getAudioFromStorage(normWord, targetLang);
+  try {
+    audioUrl = await getAudioFromStorage(normWord, targetLang);
+  } catch {
+    // Storage non disponibile
+  }
   
   if (!audioUrl) {
     // Genera nuovo audio
     const audioBlob = await generateAudio(translation, targetLang);
     
     if (audioBlob) {
-      audioUrl = await saveAudioToStorage(audioBlob, normWord, targetLang);
+      try {
+        audioUrl = await saveAudioToStorage(audioBlob, normWord, targetLang);
+      } catch {
+        console.warn('Impossibile salvare audio su Storage');
+      }
     }
   }
 
-  // 4) Salva tutto in Firestore per riuso
-  const assetData: WordAsset = {
-    word: normWord,
-    sourceLang,
-    targetLang,
-    translation,
-    audioUrl: audioUrl || undefined,
-    createdAt: Timestamp.now(),
-    usageCount: 1,
-    version: 1
-  };
+  // 4) Salva tutto in Firestore per riuso (solo se disponibile)
+  try {
+    const assetData: WordAsset = {
+      word: normWord,
+      sourceLang,
+      targetLang,
+      translation,
+      audioUrl: audioUrl || undefined,
+      createdAt: Timestamp.now(),
+      usageCount: 1,
+      version: 1
+    };
 
-  await setDoc(docRef, assetData);
+    await setDoc(docRef, assetData);
+  } catch {
+    console.warn('Impossibile salvare su Firestore, continuo comunque');
+  }
 
   return { translation, audioUrl };
 }

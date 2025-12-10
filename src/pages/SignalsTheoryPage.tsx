@@ -2,7 +2,9 @@ import { FC, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, AlertTriangle, AlertCircle, Ban, Shield, Eye, Languages } from 'lucide-react';
 import { ClickableText } from '@/components/translation/ClickableText';
+import { InteractiveTheoryText } from '@/components/theory/InteractiveTheoryText';
 import { useStudyProgress } from '@/hooks/useStudyProgress';
+import { useTheoryTranslation } from '@/hooks/useTheoryTranslation';
 import theoryData from '../data/theory-segnali-completo.json';
 
 type Signal = {
@@ -39,6 +41,7 @@ export const SignalsTheoryPage: FC = () => {
   const navigate = useNavigate();
   const { chapterId } = useParams<{ chapterId: string }>();
   const { visitChapter, addStudyTime } = useStudyProgress();
+  const { selectedLang, isEnabled } = useTheoryTranslation();
   const [chapter, setChapter] = useState<Chapter | null>(null);
   const [startTime] = useState(Date.now());
 
@@ -105,7 +108,11 @@ export const SignalsTheoryPage: FC = () => {
         </div>
 
         <p className="text-white/90 text-base leading-relaxed">
-          <ClickableText text={chapter.description} onWordClick={handleWordClick} />
+          {isEnabled ? (
+            <InteractiveTheoryText content={chapter.description} targetLang={selectedLang} />
+          ) : (
+            chapter.description
+          )}
         </p>
       </div>
 
@@ -119,7 +126,11 @@ export const SignalsTheoryPage: FC = () => {
             >
               <h3 className="text-white font-bold text-lg mb-3">{section.title}</h3>
               <p className="text-white/90 text-base leading-relaxed">
-                <ClickableText text={section.content} onWordClick={handleWordClick} />
+                {isEnabled ? (
+                  <InteractiveTheoryText content={section.content} targetLang={selectedLang} />
+                ) : (
+                  section.content
+                )}
               </p>
             </div>
           ))}
@@ -167,11 +178,14 @@ export const SignalsTheoryPage: FC = () => {
                       Descrizione
                     </p>
                   </div>
-                  <ClickableText 
-                    text={signal.descrizione}
-                    contextId={`signal-${signal.id}-desc`}
-                    className="text-gray-800 text-base leading-relaxed"
-                  />
+                  {isEnabled ? (
+                    <InteractiveTheoryText 
+                      content={signal.descrizione}
+                      targetLang={selectedLang}
+                    />
+                  ) : (
+                    <span className="text-gray-800 text-base leading-relaxed">{signal.descrizione}</span>
+                  )}
                 </div>
 
                 <div className="bg-green-50 rounded-2xl p-4">
@@ -181,11 +195,14 @@ export const SignalsTheoryPage: FC = () => {
                       Comportamento da Tenere
                     </p>
                   </div>
-                  <ClickableText 
-                    text={signal.comportamento}
-                    contextId={`signal-${signal.id}-comp`}
-                    className="text-gray-800 text-base leading-relaxed"
-                  />
+                  {isEnabled ? (
+                    <InteractiveTheoryText 
+                      content={signal.comportamento}
+                      targetLang={selectedLang}
+                    />
+                  ) : (
+                    <span className="text-gray-800 text-base leading-relaxed">{signal.comportamento}</span>
+                  )}
                 </div>
               </div>
             </div>

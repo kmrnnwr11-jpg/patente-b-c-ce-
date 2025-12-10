@@ -13,13 +13,21 @@ export const AudioButton: FC<AudioButtonProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleSpeak = () => {
-    // Se sta già parlando, ferma
-    if (isPlaying) {
+    // Se sta già parlando, fermalo e riparte da capo
+    if (isPlaying || window.speechSynthesis.speaking) {
       window.speechSynthesis.cancel();
       setIsPlaying(false);
+      // Piccolo delay e riparte da capo
+      setTimeout(() => {
+        startSpeech();
+      }, 100);
       return;
     }
 
+    startSpeech();
+  };
+
+  const startSpeech = () => {
     // Crea utterance
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language;
@@ -57,7 +65,7 @@ export const AudioButton: FC<AudioButtonProps> = ({
           : 'bg-white/20 text-white hover:bg-white/30'
         }
       `}
-      title={isPlaying ? 'Ferma audio' : 'Ascolta domanda'}
+      title={isPlaying ? 'Riascolta da inizio' : 'Ascolta domanda'}
     >
       {isPlaying ? (
         <VolumeX className="w-5 h-5" />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Volume2, Bookmark, Copy, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { translateWord, getWordDefinition } from '@/lib/translationCache';
@@ -90,15 +91,15 @@ export const WordTranslationModal = ({
     }
   };
 
-  return (
+  return createPortal(
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
         onClick={onClose}
-        style={{ zIndex: 9999 }}
+        style={{ zIndex: 9999998 }}
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -106,16 +107,15 @@ export const WordTranslationModal = ({
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden relative z-[10000]"
-          style={{ zIndex: 10000 }}
+          className="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden relative"
+          style={{ zIndex: 9999999 }}
         >
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white relative">
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/30 rounded-full transition-all hover:scale-110 active:scale-95 z-[10001]"
+              className="absolute top-2 right-2 p-3 bg-white/10 hover:bg-white/30 rounded-full transition-all hover:scale-110 active:scale-95"
               aria-label="Chiudi"
-              style={{ zIndex: 10001 }}
             >
               <X className="w-7 h-7" />
             </button>
@@ -252,7 +252,8 @@ export const WordTranslationModal = ({
           </div>
         </motion.div>
       </motion.div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

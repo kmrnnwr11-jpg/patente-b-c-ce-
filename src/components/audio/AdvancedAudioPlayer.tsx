@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Play, Pause, Volume2, VolumeX, Loader } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -6,6 +6,11 @@ interface AdvancedAudioPlayerProps {
   text: string;
   language?: string;
   className?: string;
+}
+
+// Handle esposto al parent per controllare il player
+export interface AdvancedAudioPlayerHandle {
+  stop: () => void;
 }
 
 const LANGUAGE_VOICES: Record<string, string> = {
@@ -24,11 +29,8 @@ const LANGUAGE_FLAGS: Record<string, string> = {
   pa: '☬'
 };
 
-export const AdvancedAudioPlayer = ({
-  text,
-  language = 'it',
-  className = ''
-}: AdvancedAudioPlayerProps) => {
+export const AdvancedAudioPlayer = forwardRef<AdvancedAudioPlayerHandle, AdvancedAudioPlayerProps>(
+  ({ text, language = 'it', className = '' }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [speed, setSpeed] = useState(1.0);
@@ -37,18 +39,41 @@ export const AdvancedAudioPlayer = ({
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
+    // Ferma l'audio corrente quando il testo cambia (nuova domanda)
     return () => {
       if (speechSynthesis.speaking) {
         speechSynthesis.cancel();
       }
     };
-  }, []);
+  }, [text]);
 
-  const handlePlay = () => {
+  const stopPlayback = () => {
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel();
     }
+    setIsPlaying(false);
+    setLoading(false);
+  };
 
+  useImperativeHandle(ref, () => ({
+    stop: stopPlayback
+  }));
+
+  const handlePlay = () => {
+    // Se sta già parlando, fermalo e riparte da capo
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      // Piccolo delay per assicurarsi che il cancel sia completato
+      setTimeout(() => {
+        startSpeech();
+      }, 100);
+      return;
+    }
+
+    startSpeech();
+  };
+
+  const startSpeech = () => {
     setLoading(true);
 
     try {
@@ -82,10 +107,7 @@ export const AdvancedAudioPlayer = ({
   };
 
   const handlePause = () => {
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-    }
-    setIsPlaying(false);
+    stopPlayback();
   };
 
   const toggleMute = () => {
@@ -186,5 +208,7 @@ export const AdvancedAudioPlayer = ({
       )}
     </motion.div>
   );
-};
+});
+
+AdvancedAudioPlayer.displayName = 'AdvancedAudioPlayer';
 

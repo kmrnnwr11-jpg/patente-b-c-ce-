@@ -52,10 +52,22 @@ export const QuestionCard: FC<QuestionCardProps> = ({
     } else {
       // Fallback: usa Web Speech API
       if ('speechSynthesis' in window && question) {
+        // Se sta già parlando, fermalo prima
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+          // Piccolo delay e riparte da capo
+          setTimeout(() => {
+            const utterance = new SpeechSynthesisUtterance(question);
+            utterance.lang = 'it-IT';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+          }, 100);
+          return;
+        }
+
         const utterance = new SpeechSynthesisUtterance(question);
         utterance.lang = 'it-IT';
         utterance.rate = 0.9;
-        window.speechSynthesis.cancel(); // Ferma eventuali letture precedenti
         window.speechSynthesis.speak(utterance);
       }
     }
@@ -120,6 +132,15 @@ export const QuestionCard: FC<QuestionCardProps> = ({
       clearTimeout(timeoutId3);
     };
   }, [question, showFeedback, selectedAnswer, isCorrect]);
+
+  // Ferma l'audio quando la domanda cambia
+  useEffect(() => {
+    return () => {
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [question]);
 
   return (
     <>

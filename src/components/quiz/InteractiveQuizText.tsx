@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Volume2, X, Copy, Loader2 } from 'lucide-react';
 import { getOrCreateWordAssets } from '@/lib/wordAssets';
 
@@ -82,7 +83,7 @@ export const InteractiveQuizText: FC<InteractiveQuizTextProps> = ({
       setPopup({
         word,
         translation: result.translation,
-        audioUrl: result.audioUrl,
+        audioUrl: result.audioUrl || undefined,
         position,
         loading: false
       });
@@ -141,89 +142,131 @@ export const InteractiveQuizText: FC<InteractiveQuizTextProps> = ({
         })}
       </div>
 
-      {/* Popup Traduzione */}
-      {popup && (
+      {/* Popup Traduzione - REACT PORTAL with ULTIMATE Z-INDEX */}
+      {popup && createPortal(
         <>
-          {/* Overlay per chiudere */}
+          {/* Overlay per chiudere - MAXIMUM PRIORITY */}
           <div
-            className="fixed inset-0 z-40"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setPopup(null)}
+            style={{
+              zIndex: 9999998,
+              animation: 'fadeIn 0.2s ease-out'
+            }}
           />
 
-          {/* Popup Card - Mobile Optimized */}
+          {/* Popup Card - ABSOLUTE MAXIMUM Z-INDEX */}
           <div
-            className="fixed z-50 glass-card p-4 sm:p-5 rounded-2xl shadow-2xl w-[90vw] max-w-sm sm:max-w-md"
+            className="fixed bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-gray-800 dark:via-gray-750 dark:to-gray-700 p-6 rounded-3xl shadow-2xl w-[90vw] max-w-md border-2 border-blue-400"
             style={{
               left: '50%',
-              top: popup.position.y > window.innerHeight / 2 
-                ? `${popup.position.y - 10}px`
-                : `${popup.position.y + 30}px`,
-              transform: popup.position.y > window.innerHeight / 2
-                ? 'translate(-50%, -100%)'
-                : 'translate(-50%, 0)',
-              maxHeight: '80vh',
-              overflowY: 'auto'
+              top: '8%',
+              transform: 'translate(-50%, 0)',
+              maxHeight: '70vh',
+              overflowY: 'auto',
+              zIndex: 9999999,
+              animation: 'slideInFromTop 0.3s ease-out',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.3)',
+              position: 'fixed'
             }}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {popup.word}
-              </h3>
+            {/* Header - ELEGANT DESIGN */}
+            <div className="flex items-center justify-between mb-5 pb-4 border-b-2 border-gradient-to-r from-blue-300 via-purple-300 to-pink-300">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                  {popup.word.charAt(0).toUpperCase()}
+                </div>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                  {popup.word}
+                </h3>
+              </div>
               <button
                 onClick={() => setPopup(null)}
-                className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-full transition-all transform hover:scale-110 hover:rotate-90"
               >
-                <X size={18} className="text-gray-600 dark:text-gray-300" />
+                <X size={22} className="text-gray-600 dark:text-gray-300" />
               </button>
             </div>
 
-            {/* Traduzione */}
+            {/* Traduzione - ELEGANT DISPLAY */}
             {popup.loading ? (
-              <div className="flex items-center justify-center py-4">
-                <Loader2 size={24} className="animate-spin text-blue-500" />
-                <span className="ml-2 text-gray-600 dark:text-gray-300">
-                  Traduzione...
+              <div className="flex flex-col items-center justify-center py-8">
+                <div className="relative">
+                  <Loader2 size={40} className="animate-spin text-blue-600" />
+                  <div className="absolute inset-0 rounded-full bg-blue-400 opacity-20 animate-ping"></div>
+                </div>
+                <span className="mt-4 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Traduzione in corso...
                 </span>
               </div>
             ) : (
               <>
-                <div className="mb-3">
-                  <p className="text-2xl font-semibold text-blue-600 dark:text-blue-400 text-center">
+                <div className="mb-5 p-6 bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100 dark:from-blue-900/40 dark:via-purple-900/30 dark:to-pink-900/20 rounded-2xl border-2 border-blue-200 dark:border-blue-700 shadow-inner">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center shadow-md">
+                      <span className="text-white text-sm font-bold">✓</span>
+                    </div>
+                    <span className="text-sm font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wide">Traduzione</span>
+                  </div>
+                  <p className="text-4xl font-black bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 dark:from-blue-300 dark:via-purple-300 dark:to-pink-300 bg-clip-text text-transparent text-center leading-relaxed">
                     {popup.translation}
                   </p>
                   {popup.error && (
-                    <p className="text-xs text-red-500 mt-1 text-center">
+                    <p className="text-sm text-red-600 dark:text-red-400 mt-3 text-center font-semibold bg-red-50 dark:bg-red-900/20 py-2 px-3 rounded-lg">
                       {popup.error}
                     </p>
                   )}
                 </div>
 
-                {/* Actions */}
-                <div className="flex gap-2">
+                {/* Actions - ELEGANT BUTTONS */}
+                <div className="flex gap-3">
                   {popup.audioUrl && (
                     <button
                       onClick={playAudio}
                       disabled={playingAudio}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white rounded-lg transition-colors text-sm font-medium"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-lg font-semibold text-sm"
                     >
-                      <Volume2 size={16} />
-                      {playingAudio ? 'Playing...' : 'Ascolta'}
+                      <Volume2 size={18} className={playingAudio ? 'animate-pulse' : ''} />
+                      {playingAudio ? 'In riproduzione...' : 'Ascolta'}
                     </button>
                   )}
                   <button
                     onClick={copyToClipboard}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg transition-colors text-sm font-medium"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3.5 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-500 text-gray-800 dark:text-gray-100 rounded-xl transition-all transform hover:scale-105 active:scale-95 shadow-md font-semibold text-sm"
                   >
-                    <Copy size={16} />
+                    <Copy size={18} />
                     Copia
                   </button>
                 </div>
               </>
             )}
           </div>
-        </>
+        </>,
+        document.body
       )}
+
+      {/* Elegant Animations */}
+      <style>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes slideInFromTop {
+          from {
+            opacity: 0;
+            transform: translate(-50%, -20px);
+          }
+          to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+          }
+        }
+      `}</style>
     </>
   );
 };
