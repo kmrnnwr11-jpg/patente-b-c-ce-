@@ -234,6 +234,7 @@ export async function getOrCreateWordAssets(
 
     if (snap && snap.exists()) {
       const data = snap.data() as WordAsset;
+      console.log('🟢 Trovato in Cache (Nessun costo API):', normWord);
       // Aggiorna usage in background senza attendere
       setDoc(docRef, { usageCount: data.usageCount + 1 }, { merge: true }).catch(() => { });
       return {
@@ -253,6 +254,7 @@ export async function getOrCreateWordAssets(
     // Lancia processo di background per audio e salvataggio
     (async () => {
       try {
+        console.log('💾 Salvataggio in Cache (Risparmio per il futuro):', normWord);
         let audioUrl: string | null = null;
 
         // Prima controlla se esiste già su Storage
