@@ -79,7 +79,7 @@ async function translateWithLibre(
   targetLang: string
 ): Promise<string> {
   console.log(`🌐 Traduzione LibreTranslate: "${text}" (${sourceLang} → ${targetLang})`);
-  
+
   const response = await fetch('https://libretranslate.com/translate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -133,7 +133,7 @@ async function generateAudio(
   targetLang: string
 ): Promise<Blob | null> {
   const voiceId = VOICE_IDS[targetLang];
-  
+
   if (!ELEVENLABS_API_KEY || !voiceId) {
     console.warn(`Audio non disponibile per ${targetLang}: manca API key o voice ID`);
     return null;
@@ -203,7 +203,7 @@ export async function getOrCreateWordAssets(
   targetLang: string
 ): Promise<{ translation: string; audioUrl: string | null }> {
   const normWord = normalizeWord(word);
-  
+
   if (!normWord) {
     return { translation: word, audioUrl: null };
   }
@@ -211,70 +211,95 @@ export async function getOrCreateWordAssets(
   const docId = getDocId(normWord, targetLang);
   const docRef = doc(db, 'word_translations', docId);
 
-  // 1) Controlla cache Firestore (solo se Firebase configurato)
+  // ⚡️ PERFORMANCE OPTIMIZATION:
+  // Eseguiamo tutto in parallelo. Se la cache Firebase è lenta o fallisce,
+  // la traduzione API deve comunque arrivare subito.
+
   try {
-    const snap = await getDoc(docRef);
-    
-    if (snap.exists()) {
+    // 1. Lancia la richiesta di cache Firebase (Promise in background)
+    const cachePromise = getDoc(docRef).catch(() => null);
+
+    // 2. Lancia SUBITO la traduzione API (in parallelo)
+    const translationPromise = translateText(normWord, sourceLang, targetLang);
+
+    // 3. Aspetta il primo che finisce (Race) o gestisci intelligentemente
+    // In questo caso, preferiamo controllare se la cache risponde veloce (< 500ms)
+    // Altrimenti usiamo la traduzione API appena pronta.
+
+    // Proviamo a leggere cache
+    const snap = await Promise.race([
+      cachePromise,
+      new Promise<null>(r => setTimeout(() => r(null), 800)) // Timeout cache ridotto
+    ]);
+
+    if (snap && snap.exists()) {
       const data = snap.data() as WordAsset;
-      
-      // Incrementa usage count
-      setDoc(docRef, { usageCount: data.usageCount + 1 }, { merge: true }).catch(() => {});
-      
+      // Aggiorna usage in background senza attendere
+      setDoc(docRef, { usageCount: data.usageCount + 1 }, { merge: true }).catch(() => { });
       return {
         translation: data.translation,
         audioUrl: data.audioUrl || null
       };
     }
-  } catch (firebaseError) {
-    console.warn('Firebase non disponibile, salto cache:', firebaseError);
-  }
 
-  // 2) Non in cache: genera traduzione
-  const translation = await translateText(normWord, sourceLang, targetLang);
+    // Se cache miss o timeout o errore Firebase:
+    // Attendiamo la traduzione che è già partita al punto 2
+    const translation = await translationPromise;
 
-  // 3) Genera audio (se configurato)
-  let audioUrl: string | null = null;
-  
-  // Prima controlla se esiste già su Storage
-  try {
-    audioUrl = await getAudioFromStorage(normWord, targetLang);
-  } catch {
-    // Storage non disponibile
-  }
-  
-  if (!audioUrl) {
-    // Genera nuovo audio
-    const audioBlob = await generateAudio(translation, targetLang);
-    
-    if (audioBlob) {
+    // 4. Gestione Audio e Salvataggio (TUTTO IN BACKGROUND)
+    // Non facciamo aspettare l'utente per l'audio se non è essenziale
+    // Ritorna subito la traduzione!
+
+    // Lancia processo di background per audio e salvataggio
+    (async () => {
       try {
-        audioUrl = await saveAudioToStorage(audioBlob, normWord, targetLang);
-      } catch {
-        console.warn('Impossibile salvare audio su Storage');
+        let audioUrl: string | null = null;
+
+        // Prima controlla se esiste già su Storage
+        try {
+          audioUrl = await getAudioFromStorage(normWord, targetLang);
+        } catch {
+          // Storage non disponibile
+        }
+
+        if (!audioUrl) {
+          // Genera nuovo audio
+          const audioBlob = await generateAudio(translation, targetLang);
+
+          if (audioBlob) {
+            try {
+              audioUrl = await saveAudioToStorage(audioBlob, normWord, targetLang);
+            } catch {
+              console.warn('Impossibile salvare audio su Storage');
+            }
+          }
+        }
+
+        // Salvataggio su Firestore
+        const assetData: WordAsset = {
+          word: normWord,
+          sourceLang,
+          targetLang,
+          translation,
+          audioUrl: audioUrl || undefined,
+          createdAt: Timestamp.now(),
+          usageCount: 1,
+          version: 1
+        };
+        await setDoc(docRef, assetData).catch(() => { });
+      } catch (err) {
+        console.warn('Background asset tasks failed', err);
       }
-    }
+    })();
+
+    // RITORNA SUBITO LA TRADUZIONE
+    return { translation, audioUrl: null };
+
+  } catch (error) {
+    console.error('Critical error in getOrCreateWordAssets:', error);
+    // Fallback estremo: ritorna la parola originale se tutto esplode
+    return { translation: word, audioUrl: null };
   }
-
-  // 4) Salva tutto in Firestore per riuso (solo se disponibile)
-  try {
-    const assetData: WordAsset = {
-      word: normWord,
-      sourceLang,
-      targetLang,
-      translation,
-      audioUrl: audioUrl || undefined,
-      createdAt: Timestamp.now(),
-      usageCount: 1,
-      version: 1
-    };
-
-    await setDoc(docRef, assetData);
-  } catch {
-    console.warn('Impossibile salvare su Firestore, continuo comunque');
-  }
-
-  return { translation, audioUrl };
 }
 
 // Funzione per pre-generare asset (batch)
@@ -285,17 +310,17 @@ export async function prewarmWordAssets(
   onProgress?: (current: number, total: number, word: string) => void
 ): Promise<void> {
   const total = words.length;
-  
+
   for (let i = 0; i < total; i++) {
     const word = words[i];
-    
+
     try {
       await getOrCreateWordAssets(word, sourceLang, targetLang);
-      
+
       if (onProgress) {
         onProgress(i + 1, total, word);
       }
-      
+
       // Rate limit: pausa tra richieste
       await new Promise(resolve => setTimeout(resolve, 200));
     } catch (error) {

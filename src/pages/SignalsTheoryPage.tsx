@@ -41,7 +41,13 @@ export const SignalsTheoryPage: FC = () => {
   const navigate = useNavigate();
   const { chapterId } = useParams<{ chapterId: string }>();
   const { visitChapter, addStudyTime } = useStudyProgress();
-  const { selectedLang, isEnabled } = useTheoryTranslation();
+  const {
+    selectedLang,
+    isEnabled,
+    availableLanguages,
+    toggleTranslation,
+    changeLanguage
+  } = useTheoryTranslation();
   const [chapter, setChapter] = useState<Chapter | null>(null);
   const [startTime] = useState(Date.now());
 
@@ -89,11 +95,51 @@ export const SignalsTheoryPage: FC = () => {
           >
             <ArrowLeft className="w-6 h-6 text-white" />
           </button>
-          
-          {/* Info traduzione */}
-          <div className="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full">
-            <Languages className="w-4 h-4 text-white" />
-            <span className="text-white text-xs">Clicca parola per tradurre</span>
+
+          {/* Language Selector & Toggle */}
+          <div className="flex items-center gap-3">
+            {/* Language Dropdown */}
+            {isEnabled && (
+              <div className="relative group">
+                <button className="flex items-center gap-2 bg-white/20 hover:bg-white/30 transition-colors px-3 py-1.5 rounded-full text-white backdrop-blur-md border border-white/10">
+                  <span className="text-lg">
+                    {availableLanguages.find(l => l.code === selectedLang)?.flag}
+                  </span>
+                  <span className="text-sm font-medium">
+                    {availableLanguages.find(l => l.code === selectedLang)?.name}
+                  </span>
+                </button>
+
+                {/* Dropdown Menu */}
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden hidden group-hover:block z-50">
+                  {availableLanguages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full text-left px-4 py-3 flex items-center gap-3 hover:bg-gray-50 transition-colors ${selectedLang === lang.code ? 'bg-blue-50 text-blue-600' : 'text-gray-700'
+                        }`}
+                    >
+                      <span className="text-xl">{lang.flag}</span>
+                      <span className="font-medium">{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Toggle Switch */}
+            <button
+              onClick={toggleTranslation}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full transition-all border ${isEnabled
+                ? 'bg-white text-blue-600 border-white shadow-lg'
+                : 'bg-black/20 text-white/70 border-white/10 hover:bg-black/30'
+                }`}
+            >
+              <Languages className="w-4 h-4" />
+              <span className="text-xs font-semibold">
+                {isEnabled ? 'Traduzione ON' : 'Traduzione OFF'}
+              </span>
+            </button>
           </div>
         </div>
 
@@ -179,7 +225,7 @@ export const SignalsTheoryPage: FC = () => {
                     </p>
                   </div>
                   {isEnabled ? (
-                    <InteractiveTheoryText 
+                    <InteractiveTheoryText
                       content={signal.descrizione}
                       targetLang={selectedLang}
                     />
@@ -196,7 +242,7 @@ export const SignalsTheoryPage: FC = () => {
                     </p>
                   </div>
                   {isEnabled ? (
-                    <InteractiveTheoryText 
+                    <InteractiveTheoryText
                       content={signal.comportamento}
                       targetLang={selectedLang}
                     />
