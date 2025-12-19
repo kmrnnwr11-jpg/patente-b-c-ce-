@@ -1,0 +1,582 @@
+{
+  "chapters": [
+    {
+      "id": "segnali-pericolo",
+      "title": "Segnali di Pericolo",
+      "icon": "AlertTriangle",
+      "order": 1,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche dei segnali di pericolo",
+          "content": "I segnali di pericolo hanno forma triangolare con vertice verso l'alto, bordo rosso e sfondo bianco. Preavvisano l'esistenza di pericoli e prescrivono comportamenti prudenti."
+        },
+        {
+          "id": "distanza",
+          "title": "Distanza di collocazione",
+          "content": "Sono collocati a 150 metri dal pericolo che segnalano fuori dai centri abitati, e a distanza minore nei centri abitati."
+        }
+      ]
+    },
+    {
+      "id": "segnali-precedenza",
+      "title": "Segnali di Precedenza",
+      "icon": "AlertCircle",
+      "order": 2,
+      "sections": [
+        {
+          "id": "stop",
+          "title": "Segnale di STOP",
+          "content": "Il segnale di STOP impone l'arresto del veicolo in corrispondenza della striscia trasversale di arresto. Il conducente deve dare la precedenza ai veicoli provenienti sia da destra che da sinistra."
+        },
+        {
+          "id": "dare-precedenza",
+          "title": "Dare precedenza",
+          "content": "Il segnale triangolare con vertice in basso impone di dare la precedenza ai veicoli provenienti dalla strada che si incrocia."
+        }
+      ]
+    },
+    {
+      "id": "segnali-divieto",
+      "title": "Segnali di Divieto",
+      "icon": "Ban",
+      "order": 3,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche",
+          "content": "I segnali di divieto hanno forma circolare con bordo rosso su fondo bianco o azzurro. Vietano determinate manovre o comportamenti."
+        }
+      ]
+    },
+    {
+      "id": "segnali-obbligo",
+      "title": "Segnali di Obbligo",
+      "icon": "Shield",
+      "order": 4,
+      "sections": [
+        {
+          "id": "caratteristiche",
+          "title": "Caratteristiche",
+          "content": "I segnali di obbligo hanno forma circolare con pittogramma bianco su fondo azzurro. Prescrivono un determinato comportamento."
+        }
+      ]
+    },
+    {
+      "id": "segnali-indicazione",
+      "title": "Segnali di Indicazione",
+      "icon": "Eye",
+      "order": 5,
+      "sections": [
+        {
+          "id": "tipologie",
+          "title": "Tipologie",
+          "content": "I segnali di indicazione forniscono informazioni utili per la guida. Possono essere di preavviso, direzione, conferma, località e nome strada."
+        }
+      ]
+    },
+    {
+      "id": "norme-precedenza",
+      "title": "Norme sulla Precedenza",
+      "icon": "Users",
+      "order": 6,
+      "sections": [
+        {
+          "id": "introduzione",
+          "title": "Introduzione alle Norme sulla Precedenza",
+          "content": "Le norme sulla precedenza regolano l'ordine di passaggio dei veicoli negli incroci e nelle situazioni di traffico complesso. Rispettare la precedenza è fondamentale per evitare incidenti, specialmente agli incroci dove avvengono il 25% degli incidenti stradali.",
+          "importante": "🚨 FONDAMENTALE: La precedenza non è un diritto assoluto! Anche se hai la precedenza, devi assicurarti che gli altri veicoli ti lascino passare prima di impegnare l'incrocio."
+        },
+        {
+          "id": "gerarchia",
+          "title": "📋 Gerarchia delle Precedenze",
+          "content": "Esiste un ordine preciso da seguire: 1) SEGNALI DEI VIGILI (hanno priorità su tutto) | 2) SEMAFORI (precedono i segnali stradali) | 3) SEGNALI VERTICALI (STOP, Dare Precedenza) | 4) SEGNALETICA ORIZZONTALE (strisce, zebrature) | 5) NORME GENERALI (regola della destra).",
+          "trucco": "💡 TRUCCO PER RICORDARE: 'Vigile batte Semaforo, Semaforo batte Segnale, Segnale batte Riga, Riga batte Regola'. Come carta-forbice-sasso!",
+          "esempio": "Esempio pratico: Se c'è un vigile che dirige il traffico con semaforo verde, SEGUI IL VIGILE (ha priorità sul semaforo)."
+        },
+        {
+          "id": "regola-destra",
+          "title": "➡️ Regola della Precedenza a Destra",
+          "content": "Negli incroci SENZA segnaletica (né semafori, né cartelli), vale la regola: CHI ARRIVA DA DESTRA HA LA PRECEDENZA. Questa è la regola base, ma la più semplice da ricordare.",
+          "dettagli": "📌 IMPORTANTE: Si applica solo quando: NON ci sono segnali | NON ci sono semafori | NON ci sono strisce di precedenza | L'incrocio è tra strade di pari importanza.",
+          "esempio": "Esempio: Arrivi a un incrocio senza cartelli. Guarda a destra: se arriva un veicolo, DEVI dare precedenza. Se non arriva nessuno da destra, puoi passare (ma controlla comunque a sinistra!).",
+          "errore": "❌ ERRORE COMUNE: Pensare che la precedenza a destra valga SEMPRE. NO! Vale solo senza segnaletica. Se c'è STOP o Dare Precedenza, quelli hanno priorità!"
+        },
+        {
+          "id": "segnali-precedenza",
+          "title": "🛑 Segnali di Precedenza: STOP e Dare Precedenza",
+          "content": "STOP (ottagono rosso): Impone l'ARRESTO TOTALE alla striscia bianca. Devi fermarti SEMPRE, anche se non vedi veicoli. Poi dai precedenza a destra E sinistra. | DARE PRECEDENZA (triangolo rovesciato): Devi rallentare e dare precedenza, ma NON sei obbligato a fermarti se la strada è libera.",
+          "differenza": "🔍 DIFFERENZA CHIAVE: STOP = fermarsi sempre | Dare Precedenza = rallentare, fermarsi solo se necessario.",
+          "trucco": "💡 MEMORIA: STOP ha 4 lettere come le 4 direzioni da controllare (avanti, destra, sinistra, dietro). Dare Precedenza ha la punta in GIÙ = tu vai giù di velocità.",
+          "sanzione": "⚖️ SANZIONI: Non fermarsi allo STOP: multa 167-665€ + 6 punti! | Non dare precedenza: multa 167-665€ + 5 punti."
+        },
+        {
+          "id": "semafori",
+          "title": "🚦 Precedenza con Semafori",
+          "content": "VERDE: Puoi passare, MA controlla che l'incrocio sia libero. GIALLO: STOP se puoi fermarti in sicurezza. Se hai già impegnato l'incrocio, sgomberalo. ROSSO: STOP assoluto. | SEMAFORO SPENTO: Vale come incrocio senza segnaletica (precedenza a destra) OPPURE seguire i cartelli se presenti.",
+          "importante": "🚨 ATTENZIONE: Anche con il verde, devi assicurarti che l'incrocio sia libero. Se c'è ancora un veicolo che sta sgomberando con il giallo, ASPETTA!",
+          "trucco": "💡 GIALLO DOMANDA: 'Posso fermarmi in sicurezza?' SÌ → fermati | NO (sei troppo vicino) → passa velocemente sgomberando l'incrocio.",
+          "errore": "❌ ERRORE MORTALE: Partire di scatto appena scatta il verde senza guardare. Sempre più incidenti avvengono con il verde per veicoli che passano con il rosso!"
+        },
+        {
+          "id": "rotonde",
+          "title": "🔄 Rotatorie (Rotonde)",
+          "content": "Regola: Chi CIRCOLA DENTRO la rotonda ha SEMPRE la precedenza su chi ENTRA. Quando entri: rallenta, guarda a sinistra, dai precedenza a chi è già dentro. Quando esci: metti la freccia a destra prima di uscire.",
+          "dettagli": "📌 COME COMPORTARSI: 1) Avvicinandoti: rallenta, guarda il segnale (rotonda) 2) All'ingresso: STOP se c'è traffico nella rotonda 3) Dentro: mantieni la corsia, non zigzagare 4) All'uscita: freccia destra PRIMA dell'uscita.",
+          "trucco": "💡 TRUCCO VISIVO: La rotonda è come un fiume circolare. Tu sei sulla sponda: devi aspettare che passi il flusso prima di entrare!",
+          "errore": "❌ ERRORI COMUNI: Non dare precedenza entrando (causa incidenti!) | Non mettere la freccia in uscita (gli altri non capiscono) | Fermarsi DENTRO la rotonda per far entrare altri (NO! Chi è dentro ha precedenza sempre!)."
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚑 Precedenza ai Veicoli di Emergenza",
+          "content": "Veicoli con sirena e lampeggiante accesi (ambulanza, polizia, vigili del fuoco) hanno SEMPRE la precedenza. Devi accostare a destra e fermarti per farli passare. | TRAM: Ha sempre precedenza sui veicoli normali, tranne quando esce dal deposito.",
+          "comportamento": "🚨 COSA FARE: 1) Senti sirena → guarda negli specchietti 2) Individua da dove arriva 3) Accosta a DESTRA (mai a sinistra!) 4) Fermati se necessario 5) Riparti solo quando è passato.",
+          "importante": "📋 TRAM: Può circolare in entrambi i sensi sulla sua corsia. Quando un tram è fermo per far scendere passeggeri, i veicoli dietro devono FERMARSI (i passeggeri potrebbero attraversare).",
+          "sanzione": "⚖️ Non dare precedenza a ambulanza/polizia: multa 328-1.314€ + 9 punti + sospensione patente fino a 6 mesi!"
+        },
+        {
+          "id": "casi-speciali",
+          "title": "⚠️ Incroci e Casi Particolari",
+          "content": "INCROCIO CON 4 VEICOLI (tutti da direzioni diverse): Si applica la precedenza a destra in sequenza. Il veicolo senza nessuno a destra passa per primo. | STRADE IN SALITA/DISCESA STRETTE: Chi sale ha la precedenza (più difficile ripartire in salita). Se più comodo, chi scende può fare retromarcia.",
+          "esempio": "🔍 INCROCIO 4 AUTO: Immagina 4 auto A, B, C, D. A ha B a destra, B ha C a destra, C ha D a destra, D ha A a destra. Chi passa? Nessuno ha precedenza assoluta! Soluzione: contatto visivo, passa chi ha strada più libera alla sua destra, poi gli altri seguono.",
+          "montagna": "🏔️ STRADE STRETTE DI MONTAGNA: Chi SALE ha precedenza su chi SCENDE. Chi scende deve fare retromarcia se necessario fino a uno slargo. Ragione: in salita è difficile ripartire e fare retromarcia.",
+          "trucco": "💡 RICORDA: In montagna, se SCENDI devi fare PIÙ FATICA (retromarcia). Chi SALE ha già fatica a salire!"
+        },
+        {
+          "id": "attraversamenti",
+          "title": "🚶 Precedenza ai Pedoni e Biciclette",
+          "content": "STRISCE PEDONALI (zebre): I pedoni hanno SEMPRE precedenza assoluta quando sono sulle strisce o stanno per attraversare. Devi FERMARTI completamente. | PISTE CICLABILI: Quando attraversi una pista ciclabile (es. per entrare in un parcheggio), devi dare precedenza alle biciclette.",
+          "dettagli": "📌 IMPORTANTE: 'Stanno per attraversare' significa: il pedone è sul marciapiede vicino alle strisce e manifesta l'intenzione di attraversare (si avvicina, guarda verso le strisce).",
+          "comportamento": "👁️ COSA FARE: 1) Vedi strisce pedonali avanti 2) Rallenta 3) Guarda se ci sono pedoni 4) Se sì, FERMATI completamente 5) Fai segno di passare 6) Riparti solo quando hanno attraversato.",
+          "sanzione": "⚖️ Non dare precedenza al pedone: multa 167-665€ + 8 punti + sospensione 1 mese (se recidivo 3 mesi)! È una delle infrazioni PIÙ GRAVI.",
+          "errore": "❌ ERRORE COMUNE: Rallentare ma non fermarsi. NO! Devi FERMARTI completamente se il pedone sta attraversando o sta per farlo."
+        },
+        {
+          "id": "svolta-destra-sinistra",
+          "title": "↩️ Precedenza in Svolta",
+          "content": "SVOLTA A DESTRA: Dai precedenza ai pedoni che attraversano la strada dove stai svoltando. Dai precedenza ai veicoli che provengono da sinistra. | SVOLTA A SINISTRA: Dai precedenza ai veicoli che arrivano di fronte e a quelli da destra. Poi ai pedoni che attraversano.",
+          "regola": "📋 REGOLA SEMPLICE: Quando svolti (destra o sinistra), dai precedenza a: 1) Veicoli che proseguono dritto 2) Veicoli dalla tua destra 3) Pedoni sulle strisce che attraversi.",
+          "esempio": "Esempio svolta sinistra: Sei a un incrocio con verde, vuoi svoltare a sinistra. Devi aspettare: 1) I veicoli che arrivano di fronte dritti 2) I veicoli di fronte che svoltano a destra 3) Solo dopo puoi svoltare.",
+          "trucco": "💡 MEMORIA: In svolta, chi VA DRITTO ha precedenza su chi GIRA. Ragione: chi va dritto ha meno tempo per reagire!"
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Consigli per l'Esame",
+          "content": "Domande frequenti: Differenza STOP vs Dare Precedenza | Precedenza a destra (quando si applica?) | Gerarchia (vigile > semaforo > segnale > regola) | Rotonde (chi è dentro ha precedenza) | Pedoni (sempre precedenza) | Veicoli emergenza (sempre precedenza) | Tram (ha precedenza).",
+          "verofalso": "✅ VERO/FALSO TIPICI: 'Allo STOP devo fermarmi sempre' = VERO | 'Con semaforo verde posso passare senza guardare' = FALSO (devo comunque controllare) | 'In rotonda do precedenza entrando' = VERO | 'Precedenza a destra vale sempre' = FALSO (solo senza segnali).",
+          "trucco": "💡 TRUCCHI FINALI: Se hai dubbi in un incrocio, guarda A DESTRA per primo | Semaforo spento = precedenza a destra | Chi svolta dà precedenza a chi va dritto | Pedoni e ambulanze = precedenza SEMPRE!",
+          "errori": "❌ ERRORI NEI QUIZ: Confondere 'rallentare' con 'fermarsi' | Pensare che il verde dia precedenza assoluta | Dimenticare che il vigile ha priorità su tutto | Confondere precedenza in montagna (chi sale ha precedenza)."
+        }
+      ]
+    },
+    {
+      "id": "limiti-velocita",
+      "title": "Limiti di Velocità",
+      "icon": "Gauge",
+      "order": 7,
+      "sections": [
+        {
+          "id": "introduzione",
+          "title": "Introduzione ai Limiti di Velocità",
+          "content": "I limiti di velocità sono fondamentali per la sicurezza stradale. Variano in base al tipo di strada, condizioni meteo, tipo di veicolo e esperienza del conducente. Il loro rispetto riduce drasticamente il rischio di incidenti e la loro gravità."
+        },
+        {
+          "id": "autostrade",
+          "title": "🛣️ Autostrade",
+          "content": "Limite massimo: 130 km/h (con tempo asciutto) | 110 km/h (in caso di pioggia o neve) | Limite minimo: 60 km/h. Le autostrade sono strade a carreggiate separate, riservate alla circolazione dei veicoli a motore.",
+          "dettagli": "📌 IMPORTANTE: Il limite minimo di 60 km/h si applica solo alla corsia di sinistra (sorpasso). Non c'è limite minimo sulla corsia di destra, ma bisogna comunque mantenere una velocità che non intralci il traffico.",
+          "trucco": "💡 TRUCCO PER RICORDARE: In autostrada pensa '130 - 110 - 60': 130 normale, 110 con pioggia (-20), 60 minimo."
+        },
+        {
+          "id": "extraurbane",
+          "title": "🛤️ Strade Extraurbane Principali",
+          "content": "Limite: 110 km/h (tempo asciutto) | 90 km/h (con pioggia). Sono le strade a scorrimento veloce con almeno 2 corsie per senso di marcia separate da spartitraffico.",
+          "esempi": "Esempi: Superstrade, tangenziali, raccordi autostradali senza pedaggio. Riconoscimento: cartello blu con scritta bianca.",
+          "errore": "❌ ERRORE COMUNE: Molti confondono le extraurbane principali (110 km/h) con quelle secondarie (90 km/h). La differenza: le principali hanno 2+ corsie per senso!"
+        },
+        {
+          "id": "extraurbane-secondarie",
+          "title": "🏞️ Strade Extraurbane Secondarie",
+          "content": "Limite: 90 km/h. Sono le strade provinciali e comunali extraurbane, con una corsia per senso di marcia.",
+          "dettagli": "Caratteristiche: Possono avere incroci a raso (allo stesso livello), accessi da strade laterali, attraversamenti pedonali. Non hanno spartitraffico centrale.",
+          "trucco": "💡 RICORDA: 'Secondarie = 90' | Se la strada ha solo 1 corsia per senso, è secondaria = 90 km/h massimo."
+        },
+        {
+          "id": "urbane",
+          "title": "🏙️ Centri Abitati",
+          "content": "Limite: 50 km/h all'interno dei centri abitati, salvo diversa indicazione. Il limite inizia dal cartello 'Inizio centro abitato' (con nome della località su sfondo bianco) e termina con 'Fine centro abitato' (nome barrato).",
+          "dettagli": "⚠️ ATTENZIONE: Anche su strade larghe e scorrevoli dentro il centro abitato, il limite resta 50 km/h se non diversamente indicato. La larghezza della strada non cambia il limite!",
+          "esempi": "Zone speciali nei centri abitati: Zone residenziali 30 km/h | Zone scolastiche 30 km/h (negli orari indicati) | Alcune vie possono avere limiti diversi (segnalati)."
+        },
+        {
+          "id": "casi-speciali",
+          "title": "⚡ Limiti Speciali e Particolari",
+          "content": "Zone residenziali: 30 km/h | Zone a traffico limitato (ZTL): variabile, sempre segnalato | Presenza di lavori: seguire segnaletica temporanea | Condizioni di scarsa visibilità: adeguare comunque la velocità.",
+          "importante": "🚨 FONDAMENTALE: In caso di nebbia fitta, pioggia forte o neve, DEVI comunque ridurre la velocità anche se sotto il limite massimo consentito. La velocità deve sempre essere adeguata alle condizioni."
+        },
+        {
+          "id": "neopatentati",
+          "title": "👤 Limiti per Neopatentati",
+          "content": "Per i primi 3 anni dalla patente, i neopatentati hanno limiti ridotti: Autostrada: 100 km/h (invece di 130) | Extraurbane principali: 90 km/h (invece di 110).",
+          "dettagli": "Si applicano solo a: Neopatentati con patente B conseguita da meno di 3 anni. NON si applicano a chi ha avuto patente A prima della B.",
+          "trucco": "💡 CALCOLO FACILE: Neopatentati = limiti normali -30 km/h (130→100, 110→90)"
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚛 Limiti per Veicoli Particolari",
+          "content": "Autocarri oltre 3,5t: Autostrada 80 km/h | Extraurbane 70 km/h | Centri abitati 50 km/h. Auto con rimorchio: Autostrada 80 km/h | Extraurbane 70 km/h. Autobus: Autostrada 100 km/h | Extraurbane 80 km/h.",
+          "nota": "📋 I ciclomotori (50cc) non possono circolare in autostrada e sulle strade extraurbane principali. Limite massimo: 45 km/h."
+        },
+        {
+          "id": "sanzioni",
+          "title": "⚖️ Sanzioni per Eccesso di Velocità",
+          "content": "Superamento fino a 10 km/h: multa 42-173€ | Da 10 a 40 km/h: multa 173-695€ + 3 punti | Da 40 a 60 km/h: multa 543-2.170€ + 6 punti + sospensione 1-3 mesi | Oltre 60 km/h: multa 845-3.382€ + 10 punti + sospensione 6-12 mesi + possibile revoca patente.",
+          "aggravanti": "🚨 AGGRAVANTI: Infrazioni notturne (22:00-7:00): sanzioni aumentate di 1/3. Recidiva: se commetti 2 infrazioni gravi in 2 anni, sospensione automatica."
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Consigli per l'Esame",
+          "content": "Quiz frequenti: Differenza tra extraurbane principali e secondarie | Limiti con pioggia | Limiti neopatentati | Limite minimo in autostrada (60 km/h solo corsia sinistra!) | Ricorda: con neve, nebbia, pioggia forte bisogna ridurre anche se sotto il limite.",
+          "errori": "❌ ERRORI DA EVITARE: Confondere 110 e 90 (principale vs secondaria) | Pensare che il limite minimo in autostrada sia ovunque (è solo corsia sinistra!) | Dimenticare il -20 km/h con pioggia in autostrada e extraurbane."
+        }
+      ]
+    },
+    {
+      "id": "distanza-sicurezza",
+      "title": "Distanza di Sicurezza",
+      "icon": "Scale",
+      "order": 8,
+      "sections": [
+        {
+          "id": "definizione",
+          "title": "📏 Cos'è la Distanza di Sicurezza",
+          "content": "La distanza di sicurezza è lo spazio minimo che deve separare il tuo veicolo da quello che ti precede. Deve essere tale da permetterti di arrestare completamente il veicolo evitando la collisione, anche se il veicolo davanti frena bruscamente.",
+          "importante": "🚨 FONDAMENTALE: Non mantenere la distanza di sicurezza è una delle cause principali di tamponamenti. È più importante del limite di velocità stesso!"
+        },
+        {
+          "id": "fattori",
+          "title": "⚙️ Fattori che Influenzano la Distanza",
+          "content": "La distanza di sicurezza dipende da: VELOCITÀ (più vai veloce, più distanza serve) | CONDIZIONI METEO (pioggia, nebbia, neve richiedono più distanza) | STATO DEL VEICOLO (freni, pneumatici) | STATO DELLA STRADA (asciutta, bagnata, ghiacciata) | TRAFFICO (intenso o scorrevole) | TUO STATO FISICO (stanchezza, riflessi).",
+          "regola": "📌 REGOLA ORO: In autostrada, mantieni almeno la distanza equivalente ai metri della velocità. Esempio: 130 km/h = almeno 130 metri di distanza."
+        },
+        {
+          "id": "calcolo-pratico",
+          "title": "🧮 Come Calcolarla in Pratica",
+          "content": "METODO DEI SECONDI: Quando il veicolo davanti passa un punto di riferimento (cartello, ponte), inizia a contare 'milleuno, milledue, milletre'. Dovresti impiegare ALMENO 2-3 secondi prima di passare lo stesso punto. Con pioggia: 4 secondi | Con neve/ghiaccio: 6-8 secondi.",
+          "trucco": "💡 TRUCCO VISIVO: In autostrada, usa i cartelli di distanza (strisce laterali ogni 50m). A 130 km/h dovresti vedere 2-3 strisce tra te e l'auto davanti.",
+          "esempio": "Esempio pratico: A 50 km/h in città = circa 25-30 metri (6-7 lunghezze d'auto) | A 90 km/h extraurbana = circa 50-60 metri (12-15 auto) | A 130 km/h autostrada = circa 70-100 metri (20-25 auto)."
+        },
+        {
+          "id": "tempo-reazione",
+          "title": "⏱️ Tempo di Reazione e Frenata",
+          "content": "TEMPO DI REAZIONE: Circa 1 secondo (tempo tra vedere il pericolo e iniziare a frenare). In questo tempo percorri: 50 km/h = 14 metri | 90 km/h = 25 metri | 130 km/h = 36 metri. SPAZIO DI FRENATA: Dipende da velocità, strada, freni. Formula approssimativa: (Velocità/10)² metri.",
+          "calcoli": "📊 SPAZI DI FRENATA (strada asciutta): 50 km/h = 25 m | 90 km/h = 81 m | 130 km/h = 169 m | CON PIOGGIA: raddoppiano! | CON GHIACCIO: 8-10 volte di più!",
+          "allerta": "⚠️ ATTENZIONE: Lo spazio totale di arresto = tempo reazione + spazio frenata. A 130 km/h serve oltre 200 metri per fermarsi!"
+        },
+        {
+          "id": "condizioni-meteo",
+          "title": "🌧️ Distanza con Maltempo",
+          "content": "PIOGGIA: Raddoppia la distanza normale. L'asfalto bagnato riduce l'aderenza del 50%. NEVE: Triplica o quadruplica la distanza. GHIACCIO: Aumenta di 8-10 volte! Praticamente impossibile fermarsi. NEBBIA: Anche con buona aderenza, serve più distanza per vedere il pericolo in tempo.",
+          "regola": "📏 REGOLA PRATICA: Con pioggia conta 4 secondi invece di 2 | Con neve conta 6-8 secondi | Con ghiaccio mantieni 10+ secondi (o non guidare!).",
+          "consiglio": "💡 CONSIGLIO: Con maltempo, riduci SEMPRE la velocità anche se sei nei limiti. Non serve a nulla andare al limite se poi non riesci a fermarti!"
+        },
+        {
+          "id": "autostrada",
+          "title": "🛣️ Distanza in Autostrada",
+          "content": "In autostrada la distanza è CRUCIALE per l'alta velocità. REGOLA MINIMA: Mantieni almeno 100 metri (2 bande colorate sul guard-rail). MEGLIO: 130-150 metri a 130 km/h. USA I RIFERIMENTI: Strisce laterali ogni 50m, cartelli ogni 1 km.",
+          "trucco": "💡 TRUCCO AUTOSTRADA: Se vedi bene il numero di targa dell'auto davanti, sei TROPPO VICINO! Dovresti vedere solo la sagoma del veicolo.",
+          "errore": "❌ ERRORE MORTALE: Attaccarsi al veicolo davanti per 'sfruttare la scia' o perché 'sei di fretta'. È la causa #1 di tamponamenti a catena in autostrada!"
+        },
+        {
+          "id": "traffico-intenso",
+          "title": "🚗 Traffico Intenso e Code",
+          "content": "Anche nel traffico intenso DEVI mantenere distanza di sicurezza. In coda: almeno 3-5 metri (vedi le ruote dell'auto davanti e un pezzo di asfalto). PERICOLO CODE: Quando arrivi in coda, rallenta gradualmente e accendi le emergenze per avvisare chi viene dietro.",
+          "importante": "🚨 In caso di coda improvvisa in autostrada: 1) Rallenta gradualmente 2) Accendi 4 frecce 3) Controlla specchietto 4) Lascia spazio di fuga 5) Non fermarti all'ultimo metro!",
+          "consiglio": "👁️ Guarda sempre 2-3 auto avanti, non solo quella immediatamente davanti. Così vedi prima se sta succedendo qualcosa."
+        },
+        {
+          "id": "veicoli-speciali",
+          "title": "🚛 Distanza da Veicoli Particolari",
+          "content": "AUTOCARRI/CAMION: Mantieni distanza MAGGIORE. Possono frenare improvvisamente, nascondono la visuale, possono perdere carico. MOTO: Mantieni più distanza, sono più instabili e possono frenare più bruscamente. BICICLETTE: Almeno 1,5 metri laterali quando sorpassi.",
+          "attenzione": "⚠️ CAMION: Non metterti troppo vicino, il camionista non ti vede negli specchietti! Se non vedi i suoi specchietti, lui non vede te.",
+          "divieto": "🚫 VIETATO: Seguire troppo da vicino (tailgating) è punito con multa 41-168€ + 2 punti dalla patente."
+        },
+        {
+          "id": "sanzioni",
+          "title": "⚖️ Sanzioni e Responsabilità",
+          "content": "Mancato rispetto distanza di sicurezza: Multa 41-168€ + 2 punti patente. In caso di tamponamento: Quasi sempre responsabile chi sta dietro (presunzione di non aver mantenuto distanza). Recidiva (2 infrazioni in 2 anni): Sospensione patente 15-30 giorni.",
+          "importante": "📋 RESPONSABILITÀ: In un tamponamento, chi tampona è quasi sempre ritenuto responsabile. L'unica eccezione: dimostri che l'altro ha frenato senza motivo per farti tamponare (quasi impossibile)."
+        },
+        {
+          "id": "consigli-esame",
+          "title": "📝 Tips per l'Esame",
+          "content": "Domande frequenti: Distanza minima in autostrada | Fattori che influenzano la distanza | Cosa fare con pioggia/neve | Tempo di reazione (circa 1 secondo) | Formula '2 secondi' per il calcolo. VERO/FALSO tipici: 'Con pioggia devo raddoppiare' = VERO | 'A 130 km/h bastano 50 metri' = FALSO | 'Il tempo di reazione è sempre uguale' = FALSO.",
+          "trucco": "💡 RICORDA: Più velocità = più distanza | Più maltempo = più distanza | Più stanchezza = più distanza | Nel dubbio: PIÙ DISTANZA!",
+          "errori": "❌ ERRORI COMUNI NEI QUIZ: Confondere spazio di reazione con spazio di frenata | Pensare che in autostrada 50m bastino | Dimenticare che col ghiaccio serve 8-10 volte più spazio."
+        }
+      ]
+    },
+    {
+      "id": "sorpasso",
+      "title": "Sorpasso",
+      "icon": "Target",
+      "order": 9,
+      "sections": [
+        {
+          "id": "quando-vietato",
+          "title": "Quando è vietato",
+          "content": "Il sorpasso è vietato in corrispondenza di curve, dossi, passaggi a livello, incroci e attraversamenti pedonali."
+        },
+        {
+          "id": "come-effettuarlo",
+          "title": "Come effettuarlo",
+          "content": "Prima di sorpassare bisogna accertarsi di avere spazio sufficiente e che nessuno stia già sorpassando. Si deve segnalare la manovra con l'indicatore di direzione."
+        }
+      ]
+    },
+    {
+      "id": "fermata-sosta",
+      "title": "Fermata, Sosta e Arresto",
+      "icon": "Clock",
+      "order": 10,
+      "sections": [
+        {
+          "id": "definizioni",
+          "title": "Definizioni",
+          "content": "FERMATA: sospensione della marcia del veicolo protratta nel tempo strettamente necessario per far salire o scendere persone o per operazioni di carico/scarico. SOSTA: sospensione della marcia del veicolo che si protrae nel tempo, con possibilità per il conducente di allontanarsi."
+        },
+        {
+          "id": "divieti",
+          "title": "Dove è vietata",
+          "content": "Fermata e sosta sono vietate sui binari del tram, sulle piste ciclabili, nei sottopassaggi, in corrispondenza e in prossimità di dossi e curve."
+        }
+      ]
+    },
+    {
+      "id": "norme-circolazione",
+      "title": "Norme di Circolazione",
+      "icon": "Road",
+      "order": 11,
+      "sections": [
+        {
+          "id": "marcia-destra",
+          "title": "Marcia sulla destra",
+          "content": "I veicoli devono circolare sulla parte destra della carreggiata e in prossimità del margine destro della stessa."
+        }
+      ]
+    },
+    {
+      "id": "segnaletica-orizzontale",
+      "title": "Segnaletica Orizzontale",
+      "icon": "Road",
+      "order": 12,
+      "sections": [
+        {
+          "id": "strisce",
+          "title": "Strisce longitudinali",
+          "content": "Le strisce continue non possono essere superate né valicate. Le strisce discontinue possono essere superate."
+        }
+      ]
+    },
+    {
+      "id": "semafori",
+      "title": "Semafori e Segnali dei Vigili",
+      "icon": "Timer",
+      "order": 13,
+      "sections": [
+        {
+          "id": "luci",
+          "title": "Significato delle luci",
+          "content": "VERDE: via libera. GIALLO: sgomberare l'incrocio se già impegnato, altrimenti arrestarsi. ROSSO: arresto."
+        }
+      ]
+    },
+    {
+      "id": "luci-veicoli",
+      "title": "Luci e Dispositivi Acustici",
+      "icon": "Headphones",
+      "order": 14,
+      "sections": [
+        {
+          "id": "anabbaglianti",
+          "title": "Luci anabbaglianti",
+          "content": "Devono essere accese da mezz'ora dopo il tramonto a mezz'ora prima dell'alba e di giorno fuori dai centri abitati."
+        },
+        {
+          "id": "abbaglianti",
+          "title": "Luci abbaglianti",
+          "content": "Devono essere spente quando si incrocia un altro veicolo o si segue un veicolo a breve distanza."
+        }
+      ]
+    },
+    {
+      "id": "cinture-casco",
+      "title": "Cinture di Sicurezza e Casco",
+      "icon": "Briefcase",
+      "order": 15,
+      "sections": [
+        {
+          "id": "obbligo-cinture",
+          "title": "Obbligo cinture",
+          "content": "Le cinture di sicurezza devono essere indossate anche nei sedili posteriori se il veicolo ne è provvisto."
+        },
+        {
+          "id": "obbligo-casco",
+          "title": "Obbligo casco",
+          "content": "Il casco è obbligatorio per conducenti e passeggeri di ciclomotori e motocicli."
+        }
+      ]
+    },
+    {
+      "id": "elementi-veicolo",
+      "title": "Elementi del Veicolo e Manutenzione",
+      "icon": "Car",
+      "order": 16,
+      "sections": [
+        {
+          "id": "pneumatici",
+          "title": "Pneumatici",
+          "content": "Gli pneumatici devono avere un battistrada con profondità minima di 1,6 mm. La pressione deve essere quella indicata dalla casa costruttrice."
+        },
+        {
+          "id": "freni",
+          "title": "Impianto frenante",
+          "content": "Il veicolo deve essere dotato di due sistemi frenanti indipendenti: freno di servizio e freno di stazionamento."
+        }
+      ]
+    },
+    {
+      "id": "patente-documenti",
+      "title": "Patente, Punti e Documenti",
+      "icon": "FileText",
+      "order": 17,
+      "sections": [
+        {
+          "id": "patente-punti",
+          "title": "Sistema a punti",
+          "content": "La patente ha un punteggio iniziale di 20 punti. Si perdono punti per infrazioni gravi. Con 0 punti la patente viene revocata."
+        },
+        {
+          "id": "documenti-obbligatori",
+          "title": "Documenti da portare",
+          "content": "Bisogna avere con sé: patente di guida, certificato di assicurazione, certificato di circolazione (libretto)."
+        }
+      ]
+    },
+    {
+      "id": "alcool-droga",
+      "title": "Alcool, Droga e Primo Soccorso",
+      "icon": "Pill",
+      "order": 18,
+      "sections": [
+        {
+          "id": "limiti-alcool",
+          "title": "Limiti alcolici",
+          "content": "Il tasso alcolemico massimo consentito è 0,5 g/l. Per neopatentati (primi 3 anni) è 0 g/l."
+        },
+        {
+          "id": "primo-soccorso",
+          "title": "Primo soccorso",
+          "content": "In caso di incidente bisogna prestare assistenza agli eventuali feriti e chiamare i soccorsi (112 o 118)."
+        }
+      ]
+    },
+    {
+      "id": "incidenti",
+      "title": "Incidenti Stradali e Comportamenti",
+      "icon": "AlertCircle",
+      "order": 19,
+      "sections": [
+        {
+          "id": "cosa-fare",
+          "title": "Cosa fare in caso di incidente",
+          "content": "Fermarsi immediatamente, prestare soccorso, segnalare il pericolo con il triangolo, chiamare le autorità se ci sono feriti."
+        }
+      ]
+    },
+    {
+      "id": "responsabilita-assicurazione",
+      "title": "Responsabilità Civile e Assicurazione",
+      "icon": "Scale",
+      "order": 20,
+      "sections": [
+        {
+          "id": "rca",
+          "title": "Assicurazione RCA",
+          "content": "L'assicurazione per la responsabilità civile auto (RCA) è obbligatoria. Copre i danni causati a terzi."
+        }
+      ]
+    },
+    {
+      "id": "ambiente",
+      "title": "Consumi, Ambiente e Inquinamento",
+      "icon": "Lightbulb",
+      "order": 21,
+      "sections": [
+        {
+          "id": "guida-ecologica",
+          "title": "Guida ecologica",
+          "content": "Per ridurre consumi ed emissioni: mantenere velocità costante, evitare accelerazioni brusche, spegnere il motore in caso di sosta prolungata."
+        }
+      ]
+    },
+    {
+      "id": "autostrade",
+      "title": "Norme Varie e Autostrade",
+      "icon": "Highway",
+      "order": 22,
+      "sections": [
+        {
+          "id": "pedaggi",
+          "title": "Pedaggi autostradali",
+          "content": "In autostrada è obbligatorio pagare il pedaggio. Si può pagare in contanti, con carta o con Telepass."
+        }
+      ]
+    },
+    {
+      "id": "segnali-cantiere",
+      "title": "Segnali Complementari e Cantieri",
+      "icon": "TrafficCone",
+      "order": 23,
+      "sections": [
+        {
+          "id": "pannelli",
+          "title": "Pannelli integrativi",
+          "content": "I pannelli integrativi completano il significato dei segnali verticali fornendo indicazioni su distanza, estensione del pericolo, categoria di veicoli interessati."
+        }
+      ]
+    },
+    {
+      "id": "definizioni-stradali",
+      "title": "Definizioni Stradali e di Traffico",
+      "icon": "Circle",
+      "order": 24,
+      "sections": [
+        {
+          "id": "carreggiata",
+          "title": "Carreggiata",
+          "content": "Parte della strada destinata allo scorrimento dei veicoli. Può essere a senso unico o a doppio senso di circolazione."
+        },
+        {
+          "id": "corsia",
+          "title": "Corsia",
+          "content": "Parte longitudinale della carreggiata di larghezza sufficiente a permettere il transito di una sola fila di veicoli."
+        }
+      ]
+    },
+    {
+      "id": "pannelli-integrativi",
+      "title": "Pannelli Integrativi dei Segnali",
+      "icon": "Info",
+      "order": 25,
+      "sections": [
+        {
+          "id": "funzione",
+          "title": "Funzione",
+          "content": "I pannelli integrativi sono posti sotto i segnali verticali per fornire indicazioni complementari come distanza, estensione, orari di validità."
+        }
+      ]
+    }
+  ]
+}
+
