@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:audioplayers/audioplayers.dart';
 import '../../models/translation.dart';
+import '../../services/google_cloud_tts_service.dart';
 
 /// Service for text-to-speech functionality
+/// Uses Google Cloud TTS for Urdu/Punjabi (high quality), native TTS for Italian/English
 class TtsService {
   static final TtsService _instance = TtsService._internal();
   factory TtsService() => _instance;
   TtsService._internal();
 
   final FlutterTts _flutterTts = FlutterTts();
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  final GoogleCloudTtsService _cloudTts = GoogleCloudTtsService();
   bool _isInitialized = false;
   bool _isSpeaking = false;
 
-  /// Language code mappings for TTS
-  static const Map<String, String> _languageMap = {
+  /// Languages that should use Google Cloud TTS (better quality for these)
+  static const List<String> _cloudTtsLanguages = ['ur', 'pa', 'hi'];
+
+  /// Language code mappings for native iOS TTS
+  static const Map<String, String> _nativeLanguageMap = {
     'it': 'it-IT',
     'en': 'en-US',
-    'hi': 'hi-IN',
-    'ur': 'ur-PK',
-    'pa': 'pa-IN',
   };
 
   /// Initialize TTS engine
@@ -26,17 +31,30 @@ class TtsService {
     if (_isInitialized) return;
 
     try {
+      // Initialize native TTS
       await _flutterTts.setSharedInstance(true);
+      await _flutterTts.setIosAudioCategory(
+        IosTextToSpeechAudioCategory.playback,
+        [
+          IosTextToSpeechAudioCategoryOptions.defaultToSpeaker,
+          IosTextToSpeechAudioCategoryOptions.allowBluetooth,
+          IosTextToSpeechAudioCategoryOptions.allowBluetoothA2DP,
+        ],
+        IosTextToSpeechAudioMode.defaultMode,
+      );
+
       await _flutterTts.setSpeechRate(0.45);
       await _flutterTts.setVolume(1.0);
       await _flutterTts.setPitch(1.0);
 
       _flutterTts.setStartHandler(() {
         _isSpeaking = true;
+        print('🔊 TTS: Started speaking');
       });
 
       _flutterTts.setCompletionHandler(() {
         _isSpeaking = false;
+        print('🔊 TTS: Completed');
       });
 
       _flutterTts.setCancelHandler(() {
@@ -45,41 +63,84 @@ class TtsService {
 
       _flutterTts.setErrorHandler((msg) {
         _isSpeaking = false;
-        print('TTS Error: $msg');
+        print('🔊 TTS Error: $msg');
+      });
+
+      // Initialize Google Cloud TTS
+      await _cloudTts.init();
+
+      // Initialize audio player
+      _audioPlayer.onPlayerComplete.listen((_) {
+        _isSpeaking = false;
+        print('🔊 Cloud TTS: Completed');
       });
 
       _isInitialized = true;
+      print('🔊 TTS: Initialized with Google Cloud TTS support');
     } catch (e) {
-      print('TTS Init Error: $e');
+      print('🔊 TTS Init Error: $e');
     }
   }
 
   /// Speak text in the specified language
+  /// Uses Google Cloud TTS for Urdu/Punjabi/Hindi, native TTS for Italian/English
   Future<void> speak(
     String text, {
     AppLanguage language = AppLanguage.italian,
   }) async {
-    if (!_isInitialized) await init();
+    print(
+      '🔊 TTS: speak() called with text: "$text", language: ${language.code}',
+    );
+
+    if (!_isInitialized) {
+      print('🔊 TTS: Not initialized, calling init()...');
+      await init();
+    }
 
     try {
       // Stop any current speech
       await stop();
 
-      // Set language
-      final langCode = _languageMap[language.code] ?? 'it-IT';
-      await _flutterTts.setLanguage(langCode);
-
-      // Speak
-      await _flutterTts.speak(text);
+      // Check if this language should use Google Cloud TTS
+      if (_cloudTtsLanguages.contains(language.code)) {
+        await _speakWithCloudTts(text, language);
+      } else {
+        await _speakWithNativeTts(text, language);
+      }
     } catch (e) {
-      print('TTS Speak Error: $e');
+      print('🔊 TTS Speak Error: $e');
     }
+  }
+
+  /// Speak using Google Cloud TTS (for Urdu, Punjabi, Hindi)
+  Future<void> _speakWithCloudTts(String text, AppLanguage language) async {
+    print('🔊 Using Google Cloud TTS for ${language.code}...');
+    _isSpeaking = true;
+
+    final audioPath = await _cloudTts.synthesize(text, language);
+    if (audioPath != null) {
+      print('🔊 Playing audio from: $audioPath');
+      await _audioPlayer.play(DeviceFileSource(audioPath));
+    } else {
+      print('🔊 Cloud TTS failed, audio not available');
+      _isSpeaking = false;
+    }
+  }
+
+  /// Speak using native iOS TTS (for Italian, English)
+  Future<void> _speakWithNativeTts(String text, AppLanguage language) async {
+    final langCode = _nativeLanguageMap[language.code] ?? 'it-IT';
+    print('🔊 Using native TTS with language: $langCode');
+
+    await _flutterTts.setLanguage(langCode);
+    await _flutterTts.speak(text);
   }
 
   /// Stop speaking
   Future<void> stop() async {
     try {
       await _flutterTts.stop();
+      await _audioPlayer.stop();
       _isSpeaking = false;
     } catch (e) {
       print('TTS Stop Error: $e');
@@ -101,6 +162,8 @@ class TtsService {
 
   /// Check if a language is available
   Future<bool> isLanguageAvailable(String langCode) async {
+    // Cloud TTS languages are always available
+    if (_cloudTtsLanguages.contains(langCode)) return true;
     try {
       final result = await _flutterTts.isLanguageAvailable(langCode);
       return result == 1;

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../models/quiz_question.dart';
 import '../../models/translation.dart';
 import '../../services/quiz_service.dart';
 import '../../services/bookmark_service.dart';
 import '../../services/stats_service.dart';
 import '../../services/achievement_service.dart';
+import '../../services/translation_service.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/audio/audio_button.dart';
 import '../../widgets/translation/language_selector.dart';
@@ -33,11 +35,14 @@ class _QuizScreenState extends State<QuizScreen> {
   int _correctAnswers = 0;
   int _wrongAnswers = 0;
   bool _isLoading = true;
-  bool? _selectedAnswer;
-  bool _showResult = false;
+
+  // Track answers for each question (key = question index, value = user's answer)
+  Map<int, bool> _userAnswers = {};
 
   AppLanguage _selectedLanguage = AppLanguage.italian;
   Set<int> _bookmarkedIds = {};
+  bool _showTranslation = false;
+  final TranslationService _translationService = TranslationService();
 
   @override
   void initState() {
@@ -64,7 +69,7 @@ class _QuizScreenState extends State<QuizScreen> {
     List<QuizQuestion> questions;
     switch (widget.mode) {
       case QuizMode.quick:
-        questions = _quizService.getRandomQuestions(10);
+        questions = _quizService.getRandomQuestions(30);
         break;
       case QuizMode.exam:
         questions = _quizService.getExamQuestions();
@@ -72,7 +77,7 @@ class _QuizScreenState extends State<QuizScreen> {
       case QuizMode.topic:
         questions = widget.topic != null
             ? _quizService.getByTopic(widget.topic!)
-            : _quizService.getRandomQuestions(10);
+            : _quizService.getRandomQuestions(30);
         break;
     }
 
@@ -82,12 +87,18 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
+  /// Check if current question has been answered
+  bool get _hasAnswered => _userAnswers.containsKey(_currentIndex);
+
+  /// Get the answer for current question (if any)
+  bool? get _currentAnswer => _userAnswers[_currentIndex];
+
   void _answerQuestion(bool answer) {
-    if (_showResult) return;
+    // Don't allow changing answer if already answered
+    if (_hasAnswered) return;
 
     setState(() {
-      _selectedAnswer = answer;
-      _showResult = true;
+      _userAnswers[_currentIndex] = answer;
 
       if (answer == _questions[_currentIndex].risposta) {
         _correctAnswers++;
@@ -125,9 +136,84 @@ class _QuizScreenState extends State<QuizScreen> {
     if (_currentIndex < _questions.length - 1) {
       setState(() {
         _currentIndex++;
-        _selectedAnswer = null;
-        _showResult = false;
       });
+    } else {
+      // Check if all questions answered
+      _handleQuizEnd();
+    }
+  }
+
+  void _previousQuestion() {
+    if (_currentIndex > 0) {
+      setState(() {
+        _currentIndex--;
+      });
+    }
+  }
+
+  /// Get count of unanswered questions
+  int get _unansweredCount => _questions.length - _userAnswers.length;
+
+  /// Get indices of unanswered questions
+  List<int> get _unansweredIndices {
+    return List.generate(
+      _questions.length,
+      (i) => i,
+    ).where((i) => !_userAnswers.containsKey(i)).toList();
+  }
+
+  /// Handle end of quiz - show remaining questions or results
+  void _handleQuizEnd() {
+    if (_unansweredCount > 0) {
+      // Show dialog to let user go back to unanswered questions
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: AppTheme.surfaceColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          title: const Text(
+            '⚠️ Domande non risposte',
+            textAlign: TextAlign.center,
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Hai $_unansweredCount domande senza risposta.',
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Vuoi tornare a rispondere o vedere i risultati?',
+                style: TextStyle(color: AppTheme.textSecondary),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                // Go to first unanswered question
+                setState(() {
+                  _currentIndex = _unansweredIndices.first;
+                });
+              },
+              child: const Text('Continua Quiz'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _showFinalResults();
+              },
+              child: const Text('Vedi Risultati'),
+            ),
+          ],
+        ),
+      );
     } else {
       _showFinalResults();
     }
@@ -135,7 +221,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void _showFinalResults() async {
     // Record quiz completion and get XP
-    final bool examPassed = widget.mode == QuizMode.exam && _wrongAnswers <= 4;
+    final bool examPassed = widget.mode == QuizMode.exam && _wrongAnswers <= 3;
     final bool perfectQuiz = _wrongAnswers == 0;
 
     final xpEarned = await _statsService.recordQuizCompleted(
@@ -169,7 +255,7 @@ class _QuizScreenState extends State<QuizScreen> {
         backgroundColor: AppTheme.surfaceColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
-          _wrongAnswers <= 4 ? '🎉 Superato!' : '😔 Non superato',
+          _wrongAnswers <= 3 ? '🎉 Superato!' : '😔 Non superato',
           textAlign: TextAlign.center,
           style: const TextStyle(fontSize: 24),
         ),
@@ -188,7 +274,7 @@ class _QuizScreenState extends State<QuizScreen> {
             const SizedBox(height: 16),
             Text(
               widget.mode == QuizMode.exam
-                  ? 'Max 4 errori per passare'
+                  ? 'Max 3 errori per passare'
                   : 'Continua a studiare!',
               style: const TextStyle(color: AppTheme.textSecondary),
             ),
@@ -209,8 +295,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 _currentIndex = 0;
                 _correctAnswers = 0;
                 _wrongAnswers = 0;
-                _selectedAnswer = null;
-                _showResult = false;
+                _userAnswers.clear();
               });
               _loadQuestions();
             },
@@ -238,7 +323,7 @@ class _QuizScreenState extends State<QuizScreen> {
     }
 
     final question = _questions[_currentIndex];
-    final isCorrect = _selectedAnswer == question.risposta;
+    final isCorrect = _currentAnswer == question.risposta;
 
     return Scaffold(
       appBar: AppBar(
@@ -389,6 +474,212 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                     ),
 
+                    // Translation toggle button
+                    const SizedBox(height: 12),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showTranslation = !_showTranslation;
+                        });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: _showTranslation
+                              ? AppTheme.primaryColor.withOpacity(0.2)
+                              : AppTheme.cardColor,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: _showTranslation
+                                ? AppTheme.primaryColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.translate,
+                              size: 20,
+                              color: _showTranslation
+                                  ? AppTheme.primaryColor
+                                  : AppTheme.textSecondary,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              _showTranslation ? 'Hide' : 'Translate',
+                              style: TextStyle(
+                                color: _showTranslation
+                                    ? AppTheme.primaryColor
+                                    : AppTheme.textSecondary,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Icon(
+                              _showTranslation
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
+                              color: _showTranslation
+                                  ? AppTheme.primaryColor
+                                  : AppTheme.textSecondary,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // Translation panel with FutureBuilder
+                    if (_showTranslation) ...[
+                      const SizedBox(height: 12),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: AppTheme.primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: AppTheme.primaryColor.withOpacity(0.3),
+                          ),
+                        ),
+                        child: FutureBuilder<String?>(
+                          future: _translationService
+                              .getTranslationWithFallback(
+                                question.id,
+                                question.domanda,
+                                _selectedLanguage,
+                              ),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      color: AppTheme.primaryColor,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    'Traduzione in corso...',
+                                    style: TextStyle(
+                                      color: AppTheme.textSecondary,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }
+
+                            final translation = snapshot.data;
+
+                            if (translation != null && translation.isNotEmpty) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            _selectedLanguage.flag,
+                                            style: const TextStyle(
+                                              fontSize: 24,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Text(
+                                            _selectedLanguage.name,
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppTheme.textSecondary,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      // Audio button
+                                      GestureDetector(
+                                        onTap: () {
+                                          TtsService().speak(
+                                            translation,
+                                            language: _selectedLanguage,
+                                          );
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.all(12),
+                                          decoration: BoxDecoration(
+                                            color: Colors.blue.shade400
+                                                .withOpacity(0.2),
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color: Colors.blue.shade400,
+                                              width: 2,
+                                            ),
+                                          ),
+                                          child: Icon(
+                                            Icons.volume_up,
+                                            color: Colors.blue.shade400,
+                                            size: 24,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Text(
+                                    translation,
+                                    textDirection:
+                                        _selectedLanguage == AppLanguage.urdu ||
+                                            _selectedLanguage ==
+                                                AppLanguage.punjabi
+                                        ? TextDirection.rtl
+                                        : TextDirection.ltr,
+                                    style: _selectedLanguage == AppLanguage.urdu
+                                        ? GoogleFonts.notoNastaliqUrdu(
+                                            fontSize: 18,
+                                            height: 1.6,
+                                            color: AppTheme.textPrimary,
+                                          )
+                                        : (_selectedLanguage ==
+                                                  AppLanguage.punjabi
+                                              ? GoogleFonts.notoSansGurmukhi(
+                                                  fontSize: 16,
+                                                  height: 1.4,
+                                                  color: AppTheme.textPrimary,
+                                                )
+                                              : TextStyle(
+                                                  fontSize: 16,
+                                                  height: 1.4,
+                                                  color: AppTheme.textPrimary,
+                                                )),
+                                  ),
+                                ],
+                              );
+                            } else {
+                              return Center(
+                                child: Text(
+                                  'Nessuna traduzione disponibile in ${_selectedLanguage.name}.',
+                                  style: TextStyle(
+                                    color: AppTheme.textSecondary,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+
                     const SizedBox(height: 24),
 
                     // Answer buttons
@@ -398,7 +689,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           child: _buildAnswerButton(
                             label: 'VERO',
                             value: true,
-                            isSelected: _selectedAnswer == true,
+                            isSelected: _currentAnswer == true,
                             isCorrectAnswer: question.risposta == true,
                           ),
                         ),
@@ -407,7 +698,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           child: _buildAnswerButton(
                             label: 'FALSO',
                             value: false,
-                            isSelected: _selectedAnswer == false,
+                            isSelected: _currentAnswer == false,
                             isCorrectAnswer: question.risposta == false,
                           ),
                         ),
@@ -415,7 +706,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
 
                     // Result feedback
-                    if (_showResult) ...[
+                    if (_hasAnswered) ...[
                       const SizedBox(height: 20),
                       Container(
                         padding: const EdgeInsets.all(16),
@@ -462,33 +753,74 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
             ),
 
-            // Next button
-            if (_showResult)
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: _nextQuestion,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                    ),
-                    child: Text(
-                      _currentIndex < _questions.length - 1
-                          ? 'Prossima Domanda'
-                          : 'Vedi Risultati',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+            // Navigation buttons (always visible)
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  // Previous button
+                  Expanded(
+                    child: SizedBox(
+                      height: 56,
+                      child: OutlinedButton.icon(
+                        onPressed: _currentIndex > 0 ? _previousQuestion : null,
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.textPrimary,
+                          side: BorderSide(
+                            color: _currentIndex > 0
+                                ? AppTheme.primaryColor
+                                : AppTheme.cardColor,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        icon: const Icon(Icons.arrow_back_ios, size: 18),
+                        label: const Text(
+                          'Precedente',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  const SizedBox(width: 12),
+                  // Next button - always enabled for navigation
+                  Expanded(
+                    child: SizedBox(
+                      height: 56,
+                      child: ElevatedButton.icon(
+                        onPressed: _nextQuestion,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppTheme.primaryColor,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        icon: Icon(
+                          _currentIndex < _questions.length - 1
+                              ? Icons.arrow_forward_ios
+                              : Icons.check_circle,
+                          size: 18,
+                        ),
+                        label: Text(
+                          _currentIndex < _questions.length - 1
+                              ? 'Prossima'
+                              : 'Risultati',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
+            ),
           ],
         ),
       ),
@@ -533,7 +865,7 @@ class _QuizScreenState extends State<QuizScreen> {
     Color borderColor;
     Color textColor;
 
-    if (_showResult) {
+    if (_hasAnswered) {
       if (isCorrectAnswer) {
         backgroundColor = AppTheme.accentGreen.withOpacity(0.2);
         borderColor = AppTheme.accentGreen;
@@ -560,7 +892,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return Material(
       color: Colors.transparent,
       child: InkWell(
-        onTap: _showResult ? null : () => _answerQuestion(value),
+        onTap: _hasAnswered ? null : () => _answerQuestion(value),
         borderRadius: BorderRadius.circular(16),
         child: Container(
           height: 64,

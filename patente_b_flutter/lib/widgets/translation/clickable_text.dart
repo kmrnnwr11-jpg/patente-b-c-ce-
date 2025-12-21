@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/translation.dart';
+import '../audio/audio_button.dart';
 
 /// Widget that makes each word in a text clickable for translation
 ///
@@ -40,73 +41,109 @@ class _ClickableTextState extends State<ClickableText> {
     _overlayEntry = null;
   }
 
-  /// Split text into words and punctuation tokens
+  /// Split text into words and punctuation tokens, keeping everything
   List<String> _tokenize(String text) {
-    // Split preserving spaces and punctuation
-    return text.split(RegExp(r'(\s+|[.,!?;:\-—])'));
-  }
-
-  /// Check if token is a word (not punctuation or whitespace)
-  bool _isWord(String token) {
-    return token.trim().isNotEmpty &&
-        !RegExp(r'^[.,!?;:\-—\s]+$').hasMatch(token);
-  }
-
-  void _showLanguagePopup(BuildContext context, String word, Offset position) {
-    _removeOverlay();
-
-    _overlayEntry = OverlayEntry(
-      builder: (context) => _LanguagePopup(
-        word: word,
-        position: position,
-        onLanguageSelected: (language) {
-          _removeOverlay();
-          _showTranslation(context, word, language, position);
-        },
-        onDismiss: _removeOverlay,
-      ),
+    // Regex matches:
+    // 1. Sequences of word characters (alphanumeric + accented)
+    // 2. OR Sequences of non-word characters (spaces, punctuation)
+    // We want to keep BOTH to render the text exactly as is.
+    final RegExp regExp = RegExp(
+      r'([a-zA-Z0-9àèéìòùÀÈÉÌÒÙ]+)|([^a-zA-Z0-9àèéìòùÀÈÉÌÒÙ]+)',
     );
 
-    Overlay.of(context).insert(_overlayEntry!);
+    final List<String> tokens = [];
+    final Iterable<Match> matches = regExp.allMatches(text);
+
+    for (final Match match in matches) {
+      tokens.add(match.group(0)!);
+    }
+    return tokens;
   }
 
-  void _showTranslation(
+  /// Check if token is a word (starts with letter/number)
+  bool _isWord(String token) {
+    if (token.trim().isEmpty) return false;
+    // Check if it starts with a letter or number (roughly)
+    return RegExp(r'^[a-zA-Z0-9àèéìòùÀÈÉÌÒÙ]').hasMatch(token);
+  }
+
+  void _showTranslationsPopup(
     BuildContext context,
     String word,
-    AppLanguage language,
     Offset position,
   ) {
-    // Look up translation
-    String? translation;
-    if (widget.translations != null) {
-      final langTranslations = widget.translations![language.code];
-      if (langTranslations != null) {
-        translation = langTranslations[word.toLowerCase()];
+    _removeOverlay();
+
+    // Find all translations for this word
+    print(
+      '🔍 Looking up translation for word: "$word" (lowercase: "${word.toLowerCase()}")',
+    );
+    if (widget.translations != null && widget.translations!.containsKey('ur')) {
+      print('UR keys count: ${widget.translations!['ur']?.length}');
+      // Check if 'strada' exists specifically
+      if (widget.translations!['ur']!.containsKey('strada')) {
+        print('✅ "strada" exists in UR map');
+      } else {
+        print('❌ "strada" NOT found in UR map');
       }
     }
 
+    final Map<AppLanguage, String> foundTranslations = {};
+
+    if (widget.translations != null) {
+      final lookupWord = word.toLowerCase();
+      print('🔎 Looking up word: "$lookupWord"');
+
+      // Check Urdu
+      final ur = widget.translations!['ur'];
+      if (ur != null) {
+        print('   UR map has ${ur.length} entries');
+        if (ur.containsKey(lookupWord)) {
+          foundTranslations[AppLanguage.urdu] = ur[lookupWord]!;
+          print('   ✅ Found UR translation: ${ur[lookupWord]}');
+        } else {
+          print('   ❌ UR: "$lookupWord" not found');
+        }
+      }
+
+      // Check Punjabi
+      final pa = widget.translations!['pa'];
+      if (pa != null) {
+        if (pa.containsKey(lookupWord)) {
+          foundTranslations[AppLanguage.punjabi] = pa[lookupWord]!;
+          print('   ✅ Found PA translation: ${pa[lookupWord]}');
+        } else {
+          print('   ❌ PA: "$lookupWord" not found');
+        }
+      }
+
+      // Check Hindi
+      final hi = widget.translations!['hi'];
+      if (hi != null && hi.containsKey(lookupWord)) {
+        foundTranslations[AppLanguage.hindi] = hi[lookupWord]!;
+      }
+
+      // Check English
+      final en = widget.translations!['en'];
+      if (en != null && en.containsKey(lookupWord)) {
+        foundTranslations[AppLanguage.english] = en[lookupWord]!;
+      }
+
+      print('   📋 Total translations found: ${foundTranslations.length}');
+    } else {
+      print('   ⚠️ widget.translations is NULL!');
+    }
+
     _overlayEntry = OverlayEntry(
-      builder: (context) => _TranslationPopup(
+      builder: (context) => _MultiTranslationPopup(
         word: word,
-        translation: translation,
-        language: language,
+        translations: foundTranslations,
         position: position,
         onDismiss: _removeOverlay,
       ),
     );
 
     Overlay.of(context).insert(_overlayEntry!);
-
-    // Auto dismiss after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      if (_overlayEntry != null) {
-        _removeOverlay();
-      }
-    });
-
-    if (translation != null) {
-      widget.onTranslationFound?.call(word, translation);
-    }
   }
 
   @override
@@ -126,7 +163,7 @@ class _ClickableTextState extends State<ClickableText> {
 
         return GestureDetector(
           onTapDown: (details) {
-            _showLanguagePopup(context, token, details.globalPosition);
+            _showTranslationsPopup(context, token, details.globalPosition);
           },
           child: MouseRegion(
             onEnter: (_) => setState(() => _hoveredWord = token),
@@ -160,17 +197,17 @@ class _ClickableTextState extends State<ClickableText> {
   }
 }
 
-/// Popup for selecting translation language
-class _LanguagePopup extends StatelessWidget {
+// Multi-translation list popup
+class _MultiTranslationPopup extends StatelessWidget {
   final String word;
+  final Map<AppLanguage, String> translations; // Map of available translations
   final Offset position;
-  final void Function(AppLanguage) onLanguageSelected;
   final VoidCallback onDismiss;
 
-  const _LanguagePopup({
+  const _MultiTranslationPopup({
     required this.word,
+    required this.translations,
     required this.position,
-    required this.onLanguageSelected,
     required this.onDismiss,
   });
 
@@ -178,190 +215,16 @@ class _LanguagePopup extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    // Calculate position to keep popup on screen
     double left = position.dx - 140;
-    double top = position.dy - 250;
+    double top = position.dy + 20;
 
     if (left < 16) left = 16;
     if (left + 280 > screenSize.width - 16) {
       left = screenSize.width - 296;
     }
-    if (top < 16) top = position.dy + 20;
-
-    return Stack(
-      children: [
-        // Dismiss layer
-        Positioned.fill(
-          child: GestureDetector(
-            onTap: onDismiss,
-            child: Container(color: Colors.transparent),
-          ),
-        ),
-
-        // Popup
-        Positioned(
-          left: left,
-          top: top,
-          child: Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: 280,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.blue.shade500, Colors.purple.shade500],
-                ),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // Header
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.25),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Text(
-                            '🌐',
-                            style: TextStyle(fontSize: 24),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Scegli lingua:',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              'Seleziona per tradurre',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // Language buttons
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    child: Column(
-                      children: AppLanguage.values.map((lang) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
-                          child: InkWell(
-                            onTap: () => onLanguageSelected(lang),
-                            borderRadius: BorderRadius.circular(12),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 14,
-                                vertical: 12,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.15),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: Colors.white.withOpacity(0.2),
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    lang.flag,
-                                    style: const TextStyle(fontSize: 26),
-                                  ),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    lang.name,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-
-                  // Close button
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                    child: TextButton(
-                      onPressed: onDismiss,
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.1),
-                        minimumSize: const Size(double.infinity, 44),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: const Text(
-                        'Chiudi',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// Popup showing the translation result
-class _TranslationPopup extends StatelessWidget {
-  final String word;
-  final String? translation;
-  final AppLanguage language;
-  final Offset position;
-  final VoidCallback onDismiss;
-
-  const _TranslationPopup({
-    required this.word,
-    required this.translation,
-    required this.language,
-    required this.position,
-    required this.onDismiss,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
-    double left = position.dx - 120;
-    double top = position.dy + 20;
-
-    if (left < 16) left = 16;
-    if (left + 240 > screenSize.width - 16) {
-      left = screenSize.width - 256;
+    // Adjust if too close to bottom
+    if (top + 200 > screenSize.height) {
+      top = position.dy - 220; // Show above
     }
 
     return Stack(
@@ -377,91 +240,95 @@ class _TranslationPopup extends StatelessWidget {
           top: top,
           child: Material(
             elevation: 8,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
             child: Container(
-              constraints: const BoxConstraints(maxWidth: 240),
+              width: 280,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: Colors.grey.shade200),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Language badge
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade50,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          language.flag,
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          language.code.toUpperCase(),
-                          style: TextStyle(
-                            color: Colors.blue.shade700,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  // Translation
-                  if (translation != null)
-                    Text(
-                      translation!,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
-                    )
-                  else
-                    Text(
-                      'Traduzione non disponibile',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: FontStyle.italic,
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
-
-                  const SizedBox(height: 12),
-
-                  // Footer
+                  // Header
                   Row(
                     children: [
-                      Icon(
-                        Icons.auto_awesome,
-                        size: 14,
-                        color: Colors.amber.shade600,
-                      ),
-                      const SizedBox(width: 4),
                       Text(
-                        'In memoria',
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey.shade500,
+                        word,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
                         ),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(Icons.close, size: 20),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: onDismiss,
                       ),
                     ],
                   ),
+                  const Divider(),
+
+                  if (translations.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        'Nessuna traduzione trovata',
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ),
+
+                  // List of translations
+                  ...translations.entries.map((entry) {
+                    final language = entry.key;
+                    final text = entry.value;
+
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            language.flag,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  language.name,
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.grey[600],
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  text,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InlineAudioButton(text: text, language: language),
+                        ],
+                      ),
+                    );
+                  }).toList(),
                 ],
               ),
             ),

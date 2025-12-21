@@ -1,0 +1,829 @@
+{
+    "chapters": [
+        {
+            "id": "pdf-definizioni-stradali",
+            "title": "1. Definizioni Stradali e di Traffico",
+            "icon": "Map",
+            "order": 101,
+            "sections": [
+                {
+                    "id": "tipi-strade",
+                    "title": "Tipi di Strade",
+                    "content": "Le strade si distinguono in:\n• Strade urbane: sono quelle che si trovano dentro l'abitato. Cartelli bianchi con nome del luogo. Velocità max 50 km/h.\n• Strade extraurbane: fuori dall'abitato. Velocità max 90 km/h.\n• Autostrade: scorrimento veloce, ingresso/uscite regolamentate. Velocità min 60 km/h, max 130 km/h.\n• Strade carrabili: percorribili da veicoli a motore."
+                },
+                {
+                    "id": "corsie-margini",
+                    "title": "Corsie e Margini",
+                    "content": "Le corsie sono le strisce longitudinali che dividono la carreggiata in più parti.\n• Margine destro: bordo della carreggiata verso il bordo strada.\n• Margine sinistro: bordo verso il centro della strada."
+                },
+                {
+                    "id": "tipi-veicoli",
+                    "title": "Tipi di Veicoli",
+                    "content": "• Veicoli a motore: automobili, motocicli, autocarri\n• Veicoli senza motore: biciclette, carri trainati\n• Veicoli speciali: ambulanze, vigili del fuoco"
+                },
+                {
+                    "id": "traffico",
+                    "title": "Tipi di Traffico",
+                    "content": "• Traffico debole: pedoni, ciclisti, motocicli\n• Traffico pesante: autocarri, autobus"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-pericolo",
+            "title": "2. Segnali di Pericolo",
+            "icon": "AlertTriangle",
+            "order": 102,
+            "sections": [
+                {
+                    "id": "caratteristiche",
+                    "title": "Caratteristiche",
+                    "content": "I segnali di pericolo sono TRIANGOLARI con fondo giallo e bordo rosso. Indicano un pericolo che si trova dopo il segnale."
+                },
+                {
+                    "id": "principali-segnali",
+                    "title": "Principali Segnali di Pericolo",
+                    "content": "• Curva pericolosa a destra/sinistra\n• Doppia curva\n• Discesa ripida / Salita ripida\n• Strada stretta / sdrucciolevole\n• Passaggio a livello\n• Incrocio con strada secondaria\n• Intersezione a T\n• Animali vaganti\n• Lavori in corso\n• Attraversamento pedonale\n• Bambini / Ciclisti\n• Traffico a doppio senso"
+                },
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento Corretto",
+                    "content": "Quando si incontra un segnale di pericolo:\n1. Ridurre la velocità\n2. Aumentare la distanza di sicurezza\n3. Prestare massima attenzione\n4. Essere pronti a fermarsi"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-precedenza",
+            "title": "3. Segnali di Precedenza",
+            "icon": "AlertCircle",
+            "order": 103,
+            "sections": [
+                {
+                    "id": "segnali",
+                    "title": "Segnali di Precedenza",
+                    "content": "• STOP: obbligo di fermarsi completamente prima dell'incrocio\n• DARE PRECEDENZA: obbligo di dare la precedenza ai veicoli da destra o sinistra\n• INCROCIO CON STRADA PRIORITARIA: si sta per entrare in una strada principale\n• STRADA PRIORITARIA: si ha la precedenza\n• FINE STRADA PRIORITARIA: fine della strada con precedenza"
+                },
+                {
+                    "id": "regole",
+                    "title": "Regole di Precedenza",
+                    "content": "1. All'incrocio senza segnali: precedenza a chi viene da DESTRA\n2. I veicoli che salgono hanno precedenza su quelli che scendono\n3. I veicoli trainati hanno la precedenza\n4. I veicoli speciali in servizio hanno SEMPRE la precedenza"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-divieto",
+            "title": "4. Segnali di Divieto",
+            "icon": "Ban",
+            "order": 104,
+            "sections": [
+                {
+                    "id": "caratteristiche",
+                    "title": "Caratteristiche",
+                    "content": "I segnali di divieto sono ROTONDI con fondo bianco e bordo rosso. Indicano un divieto che inizia dopo il segnale."
+                },
+                {
+                    "id": "principali",
+                    "title": "Principali Segnali di Divieto",
+                    "content": "• DIVIETO DI ACCESSO: vietato l'ingresso a tutti\n• DIVIETO DI TRANSITO: vietato il passaggio\n• DIVIETO DI SOSTA: divieto di fermarsi e parcheggiare\n• DIVIETO DI FERMATA: divieto solo di fermarsi\n• LIMITI DI VELOCITÀ: velocità max consentita\n• LIMITI DI PESO/ALTEZZA/LARGHEZZA"
+                },
+                {
+                    "id": "sanzioni",
+                    "title": "Sanzioni",
+                    "content": "Le violazioni dei segnali di divieto sono sanzionate penalmente e possono comportare la sospensione della patente."
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-obbligo",
+            "title": "5. Segnali di Obbligo",
+            "icon": "Shield",
+            "order": 105,
+            "sections": [
+                {
+                    "id": "caratteristiche",
+                    "title": "Caratteristiche",
+                    "content": "I segnali di obbligo sono ROTONDI con fondo blu. Indicano un obbligo che inizia dopo il segnale."
+                },
+                {
+                    "id": "principali",
+                    "title": "Principali Segnali di Obbligo",
+                    "content": "• SENSO OBBLIGATORIO: procedere nella direzione indicata\n• OBBLIGO DI GIRARE A DESTRA/SINISTRA\n• OBBLIGO DI PROCEDERE DIRITTO\n• OBBLIGO CATENE DA NEVE\n• ZONA PEDONALE\n• ZONA A TRAFFICO LIMITATO (ZTL)\n• PARCHEGGIO DISCO ORARIO"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-indicazione",
+            "title": "6. Segnali di Indicazione",
+            "icon": "Eye",
+            "order": 106,
+            "sections": [
+                {
+                    "id": "caratteristiche",
+                    "title": "Caratteristiche",
+                    "content": "I segnali di indicazione sono rettangolari o quadrati con fondo BLU o VERDE. Forniscono informazioni utili al conducente."
+                },
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Segnali",
+                    "content": "• DIREZIONI: indicano le direzioni per le destinazioni\n• DISTANZE: distanze in chilometri\n• NOMI DI LUOGO: nomi delle città\n• SERVIZI: benzinaio, ospedale, ecc.\n• CARATTERISTICHE DELLA STRADA\n• LIMITI DI VELOCITÀ CONSIGLIATI\n• INFORMAZIONI TURISTICHE"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-temporanei",
+            "title": "7. Segnali Temporanei e di Cantiere",
+            "icon": "TrafficCone",
+            "order": 107,
+            "sections": [
+                {
+                    "id": "caratteristiche",
+                    "title": "Caratteristiche",
+                    "content": "• Sono di colore GIALLO\n• Possono essere mobili\n• Indicano lavori in corso o situazioni temporanee"
+                },
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Segnali",
+                    "content": "• LAVORI IN CORSO\n• DEVIAZIONE temporanea\n• RESTRINGIMENTO DI CARREGGIATA\n• VELOCITÀ LIMITATA temporanea\n• DIVIETO DI TRANSITO TEMPORANEO"
+                },
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento",
+                    "content": "1. Ridurre la velocità\n2. Aumentare distanza di sicurezza\n3. Seguire indicazioni del personale di cantiere\n4. Rispettare limiti temporanei\n5. Essere pronti a fermarsi"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnali-complementari",
+            "title": "8. Segnali Complementari",
+            "icon": "Info",
+            "order": 108,
+            "sections": [
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Segnali Complementari",
+                    "content": "• DISTANZA: distanza al pericolo o divieto\n• LUNGHEZZA: lunghezza della zona\n• DIREZIONE: direzione di applicazione\n• ORARIO: orari di applicazione\n• CATEGORIE DI VEICOLI interessate\n• CONDIZIONI METEOROLOGICHE"
+                },
+                {
+                    "id": "esempi",
+                    "title": "Esempi di Uso",
+                    "content": "• Divieto di sosta con orari\n• Limiti di velocità per condizioni meteo\n• Divieti solo per certe categorie\n• Zone di divieto con lunghezza indicata"
+                }
+            ]
+        },
+        {
+            "id": "pdf-pannelli-integrativi",
+            "title": "9. Pannelli Integrativi dei Segnali",
+            "icon": "Info",
+            "order": 109,
+            "sections": [
+                {
+                    "id": "descrizione",
+                    "title": "Descrizione",
+                    "content": "I pannelli integrativi sono piccoli segnali rettangolari sotto i segnali principali per informazioni aggiuntive."
+                },
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Pannelli",
+                    "content": "• DISTANZA: dal segnale al punto di interesse\n• DIREZIONE: verso cui si applica\n• CATEGORIE: veicoli interessati\n• ORARI/GIORNI: validità\n• CONDIZIONI: validità"
+                },
+                {
+                    "id": "importanza",
+                    "title": "Importanza",
+                    "content": "1. Chiarificano il significato del segnale principale\n2. Limitano l'applicazione a situazioni specifiche\n3. Forniscono informazioni temporali e spaziali\n4. Aiutano a evitare fraintendimenti"
+                }
+            ]
+        },
+        {
+            "id": "pdf-semafori",
+            "title": "10. Semafori e Segnali degli Agenti",
+            "icon": "Timer",
+            "order": 110,
+            "sections": [
+                {
+                    "id": "colori",
+                    "title": "Colori dei Semafori",
+                    "content": "• ROSSO: obbligo di fermarsi prima della linea di arresto\n• GIALLO: precauzione, prepararsi a fermarsi\n• VERDE: via libera, ma con cautela"
+                },
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Semafori",
+                    "content": "• Semaforo a tre luci: rosso, giallo, verde\n• Semaforo a due luci: rosso e verde\n• Semaforo con frecce: direzione consentita\n• Semaforo per pedoni"
+                },
+                {
+                    "id": "agenti",
+                    "title": "Segnali degli Agenti",
+                    "content": "• Braccia tese: indica l'arresto\n• Braccia mosse: indica la direzione consentita\n• Movimenti circolari: rotazione consentita"
+                },
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento",
+                    "content": "1. Rispettare SEMPRE i semafori\n2. Fermarsi sempre al rosso\n3. Non partire immediatamente al verde\n4. Prestare attenzione ai pedoni\n5. Seguire indicazioni degli agenti anche se contrarie ai semafori"
+                }
+            ]
+        },
+        {
+            "id": "pdf-segnaletica-orizzontale",
+            "title": "11. Segnaletica Orizzontale",
+            "icon": "Road",
+            "order": 111,
+            "sections": [
+                {
+                    "id": "tipi",
+                    "title": "Tipi di Segnaletica",
+                    "content": "• LINEE BIANCHE: separano le corsie dello stesso senso\n• LINEE GIALLE: separano i sensi opposti\n• LINEE CONTINUE: NON si possono attraversare\n• LINEE TRATTEGGIATE: si possono attraversare con cautela\n• FRECCE: indicano la direzione da seguire\n• SIMBOLI: indicano divieti o obblighi"
+                },
+                {
+                    "id": "ostacoli",
+                    "title": "Segni sugli Ostacoli",
+                    "content": "• Strisce rosse e bianche: ostacoli da evitare\n• Strisce gialle e nere: ostacoli temporanei\n• Rifrangenti: visibilità notturna"
+                },
+                {
+                    "id": "importanza",
+                    "title": "Importanza",
+                    "content": "1. Guida il traffico nelle varie situazioni\n2. Indica la presenza di ostacoli\n3. Segnala le varie corsie\n4. Indica i punti di fermata\n5. Segnala attraversamenti pedonali"
+                }
+            ]
+        },
+        {
+            "id": "pdf-velocita-distanza",
+            "title": "12. Velocità, Distanza di Sicurezza, Limiti",
+            "icon": "Gauge",
+            "order": 112,
+            "sections": [
+                {
+                    "id": "pericolo",
+                    "title": "Pericolo alla Circolazione",
+                    "content": "Un veicolo è in pericolo quando può causare incidenti o ostacolare il traffico:\n• Veicolo fermo in posizione pericolosa\n• Carico che ostruisce la strada\n• Guasti meccanici\n• Comportamento anomalo del conducente"
+                },
+                {
+                    "id": "limiti",
+                    "title": "Limiti di Velocità",
+                    "content": "⚡ LIMITI STANDARD:\n• Autostrade: 130 km/h (110 con pioggia)\n• Strade extraurbane: 90 km/h (80 con pioggia)\n• Strade urbane: 50 km/h\n• Zone residenziali: 30 km/h"
+                },
+                {
+                    "id": "distanza",
+                    "title": "Distanza di Sicurezza",
+                    "content": "La distanza dipende dalla velocità e condizioni strada:\n• A 50 km/h: 25 metri\n• A 90 km/h: 45 metri\n• A 130 km/h: 65 metri\n\n⚠️ Con fondo bagnato o visibilità ridotta, AUMENTARE la distanza!"
+                },
+                {
+                    "id": "intralcio",
+                    "title": "Intralcio alla Circolazione",
+                    "content": "È VIETATO ostacolare la circolazione con:\n• Guida troppo lenta senza motivo\n• Soste in posizioni pericolose\n• Cambi di direzione improvvisi\n• Carichi che ostruiscono la visibilità"
+                }
+            ]
+        },
+        {
+            "id": "pdf-posizione-manovre",
+            "title": "13. Posizione, Cambio Corsia, Svolta, Incroci",
+            "icon": "ArrowRightLeft",
+            "order": 113,
+            "sections": [
+                {
+                    "id": "posizione",
+                    "title": "Posizione sulla Carreggiata",
+                    "content": "• Destra: veicoli lenti e carichi pesanti\n• Centro: veicoli normali\n• Sinistra: sorpasso (temporaneo)"
+                },
+                {
+                    "id": "cambio-corsia",
+                    "title": "Cambio di Corsia",
+                    "content": "1. Controllare gli specchi\n2. Segnalare la manovra\n3. Verificare la sicurezza\n4. Eseguire la manovra con decisione"
+                },
+                {
+                    "id": "svolta",
+                    "title": "Svolta",
+                    "content": "• Svolta a DESTRA: massima vicinanza al margine destro\n• Svolta a SINISTRA: massima vicinanza al centro dell'intersezione\n• Segnalare con sufficiente anticipo\n• Ridurre la velocità"
+                },
+                {
+                    "id": "incroci",
+                    "title": "Comportamento agli Incroci",
+                    "content": "1. Rispettare la precedenza\n2. Ridurre la velocità\n3. Segnalare le intenzioni\n4. Prestare attenzione a pedoni e ciclisti"
+                },
+                {
+                    "id": "convogli",
+                    "title": "Convogli Militari e Cortei",
+                    "content": "• Hanno SEMPRE la precedenza\n• Non si possono attraversare\n• Si deve fermarsi e lasciarli passare\n• Non si può sorpassare"
+                }
+            ]
+        },
+        {
+            "id": "pdf-norme-precedenza",
+            "title": "14. Norme sulla Precedenza (Incroci)",
+            "icon": "Users",
+            "order": 114,
+            "sections": [
+                {
+                    "id": "precedenza-destra",
+                    "title": "1. Precedenza a Destra",
+                    "content": "All'incrocio SENZA segnali, ha la precedenza chi viene da DESTRA.\n⚠️ Vale solo se non ci sono segnali di precedenza!"
+                },
+                {
+                    "id": "precedenza-salita",
+                    "title": "2. Precedenza alla Salita",
+                    "content": "In salita ha la precedenza chi SALE.\nSolo se la strada è stretta."
+                },
+                {
+                    "id": "veicoli-speciali",
+                    "title": "3. Veicoli Speciali",
+                    "content": "Ambulanze, vigili del fuoco, forze dell'ordine hanno SEMPRE la precedenza quando sono in servizio."
+                },
+                {
+                    "id": "rotonde",
+                    "title": "4. Traffico in Rotonda",
+                    "content": "• Chi è GIÀ nella rotonda ha la precedenza\n• Chi entra DEVE dare la precedenza"
+                },
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento Corretto",
+                    "content": "1. Ridurre sempre la velocità\n2. Osservare la segnaletica\n3. Rispettare le regole di precedenza\n4. Essere cortesi con gli altri conducenti\n5. Non forzare MAI la precedenza"
+                }
+            ]
+        },
+        {
+            "id": "pdf-sorpasso",
+            "title": "15. Sorpasso",
+            "icon": "Target",
+            "order": 115,
+            "sections": [
+                {
+                    "id": "condizioni",
+                    "title": "Condizioni per Sorpassare",
+                    "content": "1. Strada sufficientemente larga\n2. Visibilità adeguata\n3. Velocità sufficiente\n4. Nessun divieto"
+                },
+                {
+                    "id": "divieti",
+                    "title": "Divieti di Sorpasso",
+                    "content": "❌ VIETATO sorpassare:\n• In curva\n• In salita con visibilità limitata\n• Nei pressi di passaggi a livello\n• In galleria\n• Quando c'è la linea continua\n• In presenza di segnali di divieto"
+                },
+                {
+                    "id": "manovra",
+                    "title": "Manovra di Sorpasso",
+                    "content": "1. Controllare gli specchi\n2. Verificare la visibilità\n3. Segnalare la manovra\n4. Accelerare e sorpassare\n5. Tornare nella propria corsia con sicurezza"
+                },
+                {
+                    "id": "segnali",
+                    "title": "Segnali di Sorpasso",
+                    "content": "• Linea tratteggiata: sorpasso consentito\n• Linea continua: sorpasso VIETATO\n• Doppia linea continua: vietato in entrambi i sensi"
+                }
+            ]
+        },
+        {
+            "id": "pdf-fermata-sosta",
+            "title": "16. Fermata, Sosta, Arresto e Partenza",
+            "icon": "Clock",
+            "order": 116,
+            "sections": [
+                {
+                    "id": "definizioni",
+                    "title": "Definizioni",
+                    "content": "• FERMATA: arresto temporaneo (max 1 minuto)\n• SOSTA: arresto prolungato del veicolo"
+                },
+                {
+                    "id": "consentito",
+                    "title": "Dove è Consentito Fermarsi",
+                    "content": "• A destra della carreggiata\n• In aree di sosta\n• In parcheggi\n• Sul bordo della strada"
+                },
+                {
+                    "id": "vietato",
+                    "title": "Dove è VIETATO Fermarsi",
+                    "content": "❌ VIETATO:\n• Sugli attraversamenti pedonali\n• Nei passaggi carrabili\n• Davanti ai garage\n• In curva\n• In salita o discesa\n• Vicino agli incroci\n• Nei passaggi a livello"
+                },
+                {
+                    "id": "arresto",
+                    "title": "Arresto del Veicolo",
+                    "content": "1. Controllare la posizione\n2. Usare le luci di emergenza\n3. Azionare il freno a mano\n4. In discesa: sterzare verso il marciapiede\n5. In salita: sterzare verso il centro"
+                },
+                {
+                    "id": "tempi-sosta",
+                    "title": "Tempi di Sosta",
+                    "content": "• Disco orario: max 1-2 ore\n• Strisce blu: a pagamento\n• Strisce bianche: gratuite\n• Strisce gialle: carico/scarico"
+                }
+            ]
+        },
+        {
+            "id": "pdf-ingombro-segnalazione",
+            "title": "17. Ingombro Carreggiata, Segnalazione Veicolo Fermo",
+            "icon": "AlertCircle",
+            "order": 117,
+            "sections": [
+                {
+                    "id": "ingombro",
+                    "title": "Ingombro della Carreggiata",
+                    "content": "❌ VIETATO ostacolare con:\n• Carichi che superano i limiti\n• Veicoli in doppia fila\n• Soste in posizione pericolosa\n• Aperture di portiere\n• Carichi non fissati"
+                },
+                {
+                    "id": "segnalazione",
+                    "title": "Segnalazione Veicolo Fermo",
+                    "content": "Quando un veicolo si ferma in posizione pericolosa:\n\n1. ACCENDERE LE LUCI DI EMERGENZA\n2. POSIZIONARE IL TRIANGOLO:\n   • Strade urbane: a 50 metri\n   • Strade extraurbane: a 100 metri\n   • Autostrada: a 150 metri\n3. INDOSSARE IL GIUBBOTTO RIFRANGENTE\n4. ALLONTANARSI DALLA CARREGGIATA\n5. CHIAMARE I SOCCORSI"
+                },
+                {
+                    "id": "precauzioni",
+                    "title": "Precauzioni",
+                    "content": "• Non rimanere sul ciglio della strada\n• Non effettuare riparazioni pericolose\n• Non creare code o rallentamenti\n• Rispettare la sicurezza propria e altrui"
+                }
+            ]
+        },
+        {
+            "id": "pdf-autostrade",
+            "title": "18. Circolazione su Autostrade ed Extraurbane",
+            "icon": "Highway",
+            "order": 118,
+            "sections": [
+                {
+                    "id": "extraurbane",
+                    "title": "Strade Extraurbane Principali",
+                    "content": "• Velocità max: 90 km/h (80 con pioggia)\n• Divieto sorpasso per veicoli pesanti\n• Obbligo luci anabbaglianti\n• Divieto di sosta e fermata\n• Obbligo cinture di sicurezza"
+                },
+                {
+                    "id": "autostrade",
+                    "title": "Autostrade",
+                    "content": "• Velocità MIN: 60 km/h\n• Velocità MAX: 130 km/h (110 con pioggia)\n• Accesso solo con biglietto o Telepass\n• Corsie emergenza solo per emergenze\n• Divieto inversione e retromarcia\n• Obbligo giubbotto rifrangente"
+                },
+                {
+                    "id": "ingresso-uscita",
+                    "title": "Ingresso e Uscita",
+                    "content": "INGRESSO:\n• Usare corsia di accelerazione\n• Inserirsi con cautela\n• Rispettare la precedenza\n\nUSCITA:\n• Prendere corsia di decelerazione\n• Ridurre la velocità\n• Segnalare la manovra"
+                },
+                {
+                    "id": "emergenza",
+                    "title": "In Emergenza",
+                    "content": "1. Accendere luci di emergenza\n2. Indossare il giubbotto\n3. Posizionare il triangolo a 150m\n4. Chiamare il soccorso"
+                }
+            ]
+        },
+        {
+            "id": "pdf-luci-clacson",
+            "title": "19. Luci, Clacson e Dispositivi",
+            "icon": "Headphones",
+            "order": 119,
+            "sections": [
+                {
+                    "id": "luci-anteriori",
+                    "title": "Luci Anteriori",
+                    "content": "• Luci di POSIZIONE (obbligatorie di notte)\n• Luci di CROCIERA (illuminare la strada)\n• Luci ABBAGLIANTI (solo senza altri veicoli)\n• Luci di EMERGENZA (lampeggianti)"
+                },
+                {
+                    "id": "luci-posteriori",
+                    "title": "Luci Posteriori",
+                    "content": "• Luci di posizione\n• Luci di STOP\n• Luci di retromarcia\n• Luci di ingombro"
+                },
+                {
+                    "id": "uso-luci",
+                    "title": "Uso delle Luci",
+                    "content": "• Di notte: SEMPRE accese\n• Di giorno: consigliate (anabbaglianti)\n• In galleria: OBBLIGATORIE\n• Con nebbia: anabbaglianti e posteriori\n• Con pioggia: anabbaglianti"
+                },
+                {
+                    "id": "clacson",
+                    "title": "Clacson",
+                    "content": "• Uso consentito: per segnalare pericolo\n• Uso VIETATO: in zona urbana (salvo pericolo)\n• Divieto assoluto: vicino agli ospedali"
+                },
+                {
+                    "id": "equipaggiamento",
+                    "title": "Equipaggiamento Obbligatorio",
+                    "content": "• Triangolo di emergenza ✅\n• Giubbotto rifrangente ✅\n• Estintore (consigliato)\n• Kit pronto soccorso (consigliato)"
+                }
+            ]
+        },
+        {
+            "id": "pdf-spie-comandi",
+            "title": "20. Spie e Simboli sui Comandi",
+            "icon": "Eye",
+            "order": 120,
+            "sections": [
+                {
+                    "id": "spie-rosse",
+                    "title": "Spie ROSSE (Pericolo Immediato)",
+                    "content": "🔴 FERMARSI IMMEDIATAMENTE:\n• Pressione olio motore\n• Temperatura acqua\n• Freni\n• Airbag"
+                },
+                {
+                    "id": "spie-gialle",
+                    "title": "Spie GIALLE (Attenzione)",
+                    "content": "🟡 CONTROLLARE APPENA POSSIBILE:\n• Check engine\n• ABS\n• ESP\n• Livello carburante basso"
+                },
+                {
+                    "id": "spie-verdi",
+                    "title": "Spie VERDI (Funzionamento Normale)",
+                    "content": "🟢 TUTTO OK:\n• Luci anabbaglianti\n• Luci abbaglianti\n• Frecce\n• Cruise control"
+                },
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento con Spia Accesa",
+                    "content": "1. Spia ROSSA: fermarsi immediatamente\n2. Spia GIALLA: controllare appena possibile\n3. Consultare libretto uso e manutenzione\n4. Rivolgersi a un'officina\n5. Non ignorare MAI le spie!"
+                }
+            ]
+        },
+        {
+            "id": "pdf-cinture-casco",
+            "title": "21. Cinture di Sicurezza, Airbag e Casco",
+            "icon": "Briefcase",
+            "order": 121,
+            "sections": [
+                {
+                    "id": "cinture",
+                    "title": "Cinture di Sicurezza",
+                    "content": "• OBBLIGATORIE per tutti i passeggeri\n• Devono essere indossate correttamente\n• Devono essere in buono stato\n• Sostituirle dopo un incidente"
+                },
+                {
+                    "id": "tipologie",
+                    "title": "Tipologie di Cinture",
+                    "content": "1. Cintura a 2 punti: solo addominale\n2. Cintura a 3 punti: addominale e toracica\n3. Cintura a 4 punti: per competizione"
+                },
+                {
+                    "id": "bambini",
+                    "title": "Sistemi di Ritenuta per Bambini",
+                    "content": "• Seggiolino omologato OBBLIGATORIO\n• Utilizzo fino a 12 anni o 150 cm\n• Posizionamento sul sedile posteriore\n• Fissaggio corretto al sistema ISOFIX"
+                },
+                {
+                    "id": "airbag",
+                    "title": "Airbag",
+                    "content": "• Dispositivo di sicurezza supplementare\n• Si attiva in caso di incidente\n• NON sostituisce la cintura di sicurezza\n• Vietato trasportare oggetti sul cruscotto"
+                },
+                {
+                    "id": "casco",
+                    "title": "Casco Protettivo",
+                    "content": "• OBBLIGATORIO per moto e ciclomotori\n• Deve essere omologato\n• Deve essere ben allacciato\n• Sostituirlo dopo un incidente"
+                }
+            ]
+        },
+        {
+            "id": "pdf-trasporto-carico",
+            "title": "22. Trasporto Persone, Carico e Traino",
+            "icon": "Car",
+            "order": 122,
+            "sections": [
+                {
+                    "id": "persone",
+                    "title": "Trasporto di Persone",
+                    "content": "• Numero max indicato sulla carta di circolazione\n• Tutti devono avere cintura di sicurezza\n• VIETATO trasportare persone sul cassone\n• Obbligo di mantenere il silenzio"
+                },
+                {
+                    "id": "carico",
+                    "title": "Carico dei Veicoli",
+                    "content": "• Peso max indicato sulla carta di circolazione\n• Carico ben fissato e bilanciato\n• Non deve ostruire la visibilità\n• Non deve superare i limiti di ingombro"
+                },
+                {
+                    "id": "limiti",
+                    "title": "Limiti di Ingombro",
+                    "content": "• Larghezza: 2,55 m (2,60 refrigerati)\n• Altezza: 4 metri\n• Lunghezza: 12 m per autocarri\n• Peso: 44 tonnellate per autotreni"
+                },
+                {
+                    "id": "pannelli",
+                    "title": "Pannelli su Veicoli",
+                    "content": "• Triangolo rosso: veicoli lenti\n• Cartello giallo: carichi speciali\n• Cartello bianco: trasporti eccezionali\n• Cartello arancione: merci pericolose"
+                },
+                {
+                    "id": "traino",
+                    "title": "Traino Veicoli in Avaria",
+                    "content": "• Solo se impossibile rimuovere\n• Distanza max: 50 metri\n• Velocità max: 30 km/h\n• Solo con conducente esperto\n• Obbligo di segnalazione"
+                }
+            ]
+        },
+        {
+            "id": "pdf-patente-documenti",
+            "title": "23. Patenti di Guida e Documenti",
+            "icon": "FileText",
+            "order": 123,
+            "sections": [
+                {
+                    "id": "categorie",
+                    "title": "Categorie di Patente",
+                    "content": "• AM: ciclomotori fino a 45 km/h\n• A1: moto fino a 125 cc\n• A2: moto fino a 35 kW\n• A: moto senza limiti\n• B: auto fino a 9 posti\n• BE: auto con rimorchio\n• C/CE: autocarri\n• D: autobus"
+                },
+                {
+                    "id": "requisiti",
+                    "title": "Requisiti",
+                    "content": "• Età minima (varia per categoria)\n• Idoneità psico-fisica\n• Esame teorico e pratico\n• Frequenza scuola guida"
+                },
+                {
+                    "id": "validita",
+                    "title": "Validità",
+                    "content": "• Patente B: 10 anni (fino a 50 anni)\n• Patente C/D: 5 anni\n• Patente A: 5 anni"
+                },
+                {
+                    "id": "provvedimenti",
+                    "title": "Provvedimenti",
+                    "content": "• SOSPENSIONE: per gravi infrazioni (1-24 mesi)\n• REVOCA: per gravi reati o invalidità\n• RITIRO: per infrazioni gravi (fino a 30 giorni)\n• REVISIONE: controllo tecnico obbligatorio"
+                }
+            ]
+        },
+        {
+            "id": "pdf-obblighi-documenti",
+            "title": "24. Obblighi verso Funzionari, Documenti, Occhiali",
+            "icon": "Users",
+            "order": 124,
+            "sections": [
+                {
+                    "id": "obblighi",
+                    "title": "Obblighi verso Funzionari",
+                    "content": "• Fermarsi immediatamente all'alt\n• Esibire i documenti richiesti\n• Fornire le generalità\n• Sottoporsi agli accertamenti\n• Non opporre resistenza"
+                },
+                {
+                    "id": "documenti",
+                    "title": "Documenti di Guida",
+                    "content": "📋 DA PORTARE SEMPRE:\n1. Patente di guida\n2. Carta di circolazione\n3. Assicurazione RCA\n4. Documento personale"
+                },
+                {
+                    "id": "occhiali",
+                    "title": "Uso di Occhiali",
+                    "content": "• Obbligo se indicato in patente\n• Per miopia, astigmatismo, ipermetropia\n• Sanzioni per mancato uso"
+                },
+                {
+                    "id": "diritti",
+                    "title": "Diritti del Conducente",
+                    "content": "• Conoscere il motivo del controllo\n• Ricevere verbale delle infrazioni\n• Fare osservazioni\n• Ricorrere contro le sanzioni\n• Essere assistito"
+                }
+            ]
+        },
+        {
+            "id": "pdf-cause-incidenti",
+            "title": "25. Cause di Incidenti e Corretto Uso della Strada",
+            "icon": "AlertCircle",
+            "order": 125,
+            "sections": [
+                {
+                    "id": "cause-principali",
+                    "title": "Cause Principali di Incidenti",
+                    "content": "1. VELOCITÀ INADEGUATA\n2. DISTRAZIONE (telefono, passeggeri)\n3. ALCOL E DROGHE\n4. STANCHEZZA\n5. CONDIZIONI ATMOSFERICHE"
+                },
+                {
+                    "id": "velocita",
+                    "title": "Velocità Inadeguata",
+                    "content": "• Eccessiva per le condizioni\n• Inadeguata al fondo stradale\n• Non rispettata nei centri abitati"
+                },
+                {
+                    "id": "distrazione",
+                    "title": "Distrazione",
+                    "content": "• Uso del telefono ❌\n• Conversazioni con passeggeri\n• Sistemazione radio o GPS\n• Fattori esterni"
+                },
+                {
+                    "id": "corretto-uso",
+                    "title": "Corretto Uso della Strada",
+                    "content": "1. Rispetto delle regole\n2. Atteggiamento prudente\n3. Manutenzione del veicolo\n4. Stato fisico adeguato"
+                }
+            ]
+        },
+        {
+            "id": "pdf-incidenti-responsabilita",
+            "title": "26. Comportamento in Incidente, Responsabilità, RCA",
+            "icon": "Scale",
+            "order": 126,
+            "sections": [
+                {
+                    "id": "comportamento",
+                    "title": "Comportamento in Incidente",
+                    "content": "1. FERMARSI IMMEDIATAMENTE (mai allontanarsi!)\n2. Accendere luci emergenza\n3. Indossare giubbotto\n4. SOCCORRERE I FERITI: chiamare 118\n5. SEGNALARE: posizionare triangolo\n6. Chiamare polizia (113) o carabinieri (112)\n7. DOCUMENTARE: foto, testimonianze, CID"
+                },
+                {
+                    "id": "responsabilita-civile",
+                    "title": "Responsabilità Civile",
+                    "content": "• Risarcimento dei danni\n• Copertura assicurativa\n• Valutazione del danno\n• Tempi di prescrizione"
+                },
+                {
+                    "id": "responsabilita-penale",
+                    "title": "Responsabilità Penale",
+                    "content": "• Omicidio stradale ⚠️\n• Lesioni personali\n• Fuga dal luogo dell'incidente\n• Guida sotto effetto di alcol"
+                },
+                {
+                    "id": "rca",
+                    "title": "Assicurazione RCA",
+                    "content": "📋 OBBLIGHI:\n• Contrarre l'assicurazione\n• Mantenere la copertura\n• Comunicare incidenti\n• Pagare il premio\n\n💰 COPERTURE: danni a cose, persone, morali, spese legali"
+                },
+                {
+                    "id": "sanzioni",
+                    "title": "Sanzioni",
+                    "content": "• Mancata assicurazione: MULTA + SEQUESTRO\n• Fuga: PENALE + AMMINISTRATIVA\n• Omicidio: CARCERE + SOSPENSIONE PATENTE"
+                }
+            ]
+        },
+        {
+            "id": "pdf-alcol-droga-soccorso",
+            "title": "27. Stato Fisico, Alcol, Droghe e Primo Soccorso",
+            "icon": "Pill",
+            "order": 127,
+            "sections": [
+                {
+                    "id": "stato-fisico",
+                    "title": "Stato Fisico del Conducente",
+                    "content": "REQUISITI:\n• Vista adeguata (con/senza correzione)\n• Capacità motorie sufficienti\n• Riflessi pronti\n• Attenzione costante\n\nCONDIZIONI INADEGUATE:\n• Stanchezza eccessiva\n• Malattie influenzali\n• Assunzione di farmaci\n• Stati emotivi alterati"
+                },
+                {
+                    "id": "alcol",
+                    "title": "Effetti dell'Alcol",
+                    "content": "🍷 TASSI LEGALI:\n• Neopatentati: 0,5 g/l\n• Autotrasportatori: 0,5 g/l\n• Conducenti esperti: 1,5 g/l\n\n⚠️ EFFETTI:\n• Riduzione dei riflessi\n• Alterazione del giudizio\n• Diminuzione della vista\n• Aumento della confidenza"
+                },
+                {
+                    "id": "conseguenze",
+                    "title": "Conseguenze",
+                    "content": "• Multe salate\n• Sospensione patente\n• Sequestro veicolo\n• Carcere per reati gravi"
+                },
+                {
+                    "id": "droghe",
+                    "title": "Sostanze Stupefacenti",
+                    "content": "• Divieto ASSOLUTO\n• Zero tolleranza\n• Controlli antidroga\n• Sanzioni penali"
+                },
+                {
+                    "id": "primo-soccorso",
+                    "title": "Primo Soccorso",
+                    "content": "1. VALUTARE la situazione (sicurezza, feriti, gravità)\n2. CHIAMARE i soccorsi: 118 ambulanza, 113 polizia, 115 vigili del fuoco\n3. PRESTARE le prime cure: non spostare feriti, controllare respirazione/polso\n4. ATTENDERE i soccorsi: tranquillizzare, tenere al caldo, non somministrare nulla"
+                }
+            ]
+        },
+        {
+            "id": "pdf-consumi-ambiente",
+            "title": "28. Limitazione Consumi e Inquinamento",
+            "icon": "Lightbulb",
+            "order": 128,
+            "sections": [
+                {
+                    "id": "guida-ecologica",
+                    "title": "Guida Ecologica",
+                    "content": "🌿 RISPARMIO CARBURANTE:\n• Partenze dolci\n• Cambi marcia anticipati\n• Velocità costante\n• Utilizzo dell'inerzia"
+                },
+                {
+                    "id": "manutenzione",
+                    "title": "Manutenzione",
+                    "content": "• Pressione pneumatici corretta\n• Filtri puliti\n• Olio motore in buono stato\n• Regolazione motori"
+                },
+                {
+                    "id": "inquinamento-atmosferico",
+                    "title": "Inquinamento Atmosferico",
+                    "content": "💨 POLLANTI PRINCIPALI:\n• CO: monossido di carbonio\n• NOx: ossidi di azoto\n• PM: particolato\n• CO2: anidride carbonica\n\n📋 NORMATIVE: Norme Euro 6, controlli periodici, ZTL"
+                },
+                {
+                    "id": "inquinamento-acustico",
+                    "title": "Inquinamento Acustico",
+                    "content": "🔊 LIMITI:\n• 70 dB per autovetture\n• 80 dB per autocarri\n• Divieto clacson in città\n• Orari consegna merci"
+                },
+                {
+                    "id": "soluzioni",
+                    "title": "Soluzioni",
+                    "content": "• Veicoli elettrici\n• Ibridi\n• Carburanti alternativi\n• Trasporto pubblico"
+                }
+            ]
+        },
+        {
+            "id": "pdf-elementi-veicolo",
+            "title": "29. Elementi del Veicolo: Pneumatici, Freni, Sterzo",
+            "icon": "Car",
+            "order": 129,
+            "sections": [
+                {
+                    "id": "pneumatici",
+                    "title": "Pneumatici",
+                    "content": "📏 CARATTERISTICHE:\n• Dimensioni indicate sulla carta di circolazione\n• Pressione corretta (libretto uso)\n• Battistrada minimo: 1,6 mm\n• Stesso tipo sullo stesso asse\n\n⚠️ PROBLEMI COMUNI:\n• Usura irregolare: pressione errata\n• Sgonfiaggio: foratura\n• Vibrazioni: squilibrio"
+                },
+                {
+                    "id": "ammortizzatori",
+                    "title": "Ammortizzatori",
+                    "content": "FUNZIONE:\n• Assorbire asperità del fondo\n• Mantenere l'aderenza\n• Controllare l'oscillazione\n\n⚠️ SEGNALI DI USURA:\n• Rimbalzi eccessivi\n• Instabilità in curva\n• Usura irregolare pneumatici\n• Rumori anomali"
+                },
+                {
+                    "id": "sterzo",
+                    "title": "Sterzo",
+                    "content": "COMPONENTI: Volante, colonna, scatola sterzo, tiranti, bielette\n\n⚠️ CONTROLLI:\n• Giochi\n• Lubrificazione\n• Allineamento ruote"
+                },
+                {
+                    "id": "freni",
+                    "title": "Freni",
+                    "content": "TIPOLOGIE:\n• Freni a disco (anteriori)\n• Freni a tamburo (posteriori)\n• Freno a mano meccanico\n• ABS (Anti-lock Braking System)\n\n🔧 MANUTENZIONE:\n• Controllare livello olio\n• Spessore dischi e pastiglie\n• Sostituzione liquido freni\n\n⚠️ SEGNALI GUASTO:\n• Aumento corsa pedale\n• Rumori metallici\n• Vibrazioni in frenata"
+                }
+            ]
+        },
+        {
+            "id": "pdf-stabilita-tenuta",
+            "title": "30. Stabilità e Tenuta di Strada",
+            "icon": "Target",
+            "order": 130,
+            "sections": [
+                {
+                    "id": "fattori",
+                    "title": "Fattori che Influenzano la Stabilità",
+                    "content": "1. PNEUMATICI: pressione corretta, battistrada adeguato\n2. SOSPENSIONI: ammortizzatori efficienti, molle in buono stato\n3. DISTRIBUZIONE CARICO: bilanciato, basso baricentro\n4. VELOCITÀ: adeguata alle condizioni"
+                },
+                {
+                    "id": "comportamento-curva",
+                    "title": "Comportamento in Curva",
+                    "content": "• Ridurre velocità PRIMA della curva\n• NON frenare in curva\n• Accelerare gradualmente all'uscita\n• Mantenere la traiettoria corretta"
+                },
+                {
+                    "id": "rischi-sbandamento",
+                    "title": "Rischi di Sbandamento",
+                    "content": "• Fondi scivolosi\n• Velocità eccessiva\n• Brusche manovre\n• Carico sbilanciato"
+                },
+                {
+                    "id": "controllo",
+                    "title": "Controllo dello Sbandamento",
+                    "content": "1. NON frenare bruscamente\n2. Sterzare dolcemente\n3. Mantenere la calma\n4. Correggere gradualmente"
+                },
+                {
+                    "id": "situazioni-critiche",
+                    "title": "Situazioni Critiche",
+                    "content": "• AQUAPLANING: perdita aderenza sull'acqua\n• NEVE E GHIACCIO: aderenza ridotta\n• FOGLIE: fondo scivoloso\n• GHIAIA: scarsa aderenza"
+                },
+                {
+                    "id": "sistemi-sicurezza",
+                    "title": "Sistemi di Sicurezza",
+                    "content": "• ABS: anti-bloccaggio ruote\n• ESP: controllo stabilità\n• ASR: controllo trazione\n• AIRBAG: protezione conducente"
+                }
+            ]
+        }
+    ]
+}

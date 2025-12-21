@@ -6,6 +6,7 @@ class Signal {
   final String description;
   final String image;
   final String? descriptionEn;
+  final String? behavior;
 
   Signal({
     required this.id,
@@ -14,6 +15,7 @@ class Signal {
     required this.description,
     required this.image,
     this.descriptionEn,
+    this.behavior,
   });
 
   factory Signal.fromJson(Map<String, dynamic> json) {
@@ -24,11 +26,21 @@ class Signal {
       description: json['description'] ?? json['descrizione'] ?? '',
       image: json['image'] ?? json['immagine'] ?? '',
       descriptionEn: json['description_en'],
+      behavior: json['comportamento'],
     );
   }
 
   /// Get the asset path for the signal image
-  String get imagePath => 'assets/images/segnali/$image';
+  String get imagePath {
+    // Handle different image path formats
+    if (image.startsWith('/')) {
+      return 'assets$image';
+    } else if (image.startsWith('assets/')) {
+      return image;
+    } else {
+      return 'assets/images/segnali/$image';
+    }
+  }
 }
 
 /// Categories of traffic signals

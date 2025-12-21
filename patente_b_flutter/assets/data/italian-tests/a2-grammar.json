@@ -1,0 +1,611 @@
+{
+    "level": "A2",
+    "section": "grammar",
+    "title": "Grammatica e Vocabolario - Livello A2",
+    "description": "Scegli la risposta corretta per ogni domanda",
+    "duration": 20,
+    "totalQuestions": 50,
+    "passThreshold": 60,
+    "categories": [
+        {
+            "name": "Articoli",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Ho comprato ___ libro interessante.",
+                    "options": [
+                        "un",
+                        "una",
+                        "il",
+                        "lo"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 2,
+                    "question": "___ studente studia italiano.",
+                    "options": [
+                        "Il",
+                        "Lo",
+                        "La",
+                        "Le"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 3,
+                    "question": "Mi piace ___ pizza italiana.",
+                    "options": [
+                        "il",
+                        "lo",
+                        "la",
+                        "i"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 4,
+                    "question": "Vedo ___ uccelli nel cielo.",
+                    "options": [
+                        "i",
+                        "gli",
+                        "le",
+                        "lo"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 5,
+                    "question": "Leggo ___ giornale ogni mattina.",
+                    "options": [
+                        "un",
+                        "il",
+                        "lo",
+                        "la"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Presente Indicativo",
+            "questions": [
+                {
+                    "id": 6,
+                    "question": "Io ___ italiano ogni giorno.",
+                    "options": [
+                        "studio",
+                        "studi",
+                        "studia",
+                        "studiamo"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 7,
+                    "question": "Maria ___ al supermercato.",
+                    "options": [
+                        "vado",
+                        "vai",
+                        "va",
+                        "vanno"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 8,
+                    "question": "Noi ___ la televisione la sera.",
+                    "options": [
+                        "guardo",
+                        "guardi",
+                        "guarda",
+                        "guardiamo"
+                    ],
+                    "answer": 3
+                },
+                {
+                    "id": 9,
+                    "question": "Tu ___ il caffè con zucchero?",
+                    "options": [
+                        "bevo",
+                        "bevi",
+                        "beve",
+                        "beviamo"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 10,
+                    "question": "I bambini ___ nel parco.",
+                    "options": [
+                        "gioco",
+                        "giochi",
+                        "gioca",
+                        "giocano"
+                    ],
+                    "answer": 3
+                }
+            ]
+        },
+        {
+            "name": "Passato Prossimo",
+            "questions": [
+                {
+                    "id": 11,
+                    "question": "Ieri io ___ un film al cinema.",
+                    "options": [
+                        "ho visto",
+                        "sono visto",
+                        "ha visto",
+                        "ho veduto"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 12,
+                    "question": "Maria ___ in Italia l'anno scorso.",
+                    "options": [
+                        "ha andato",
+                        "è andata",
+                        "ha andata",
+                        "è andato"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 13,
+                    "question": "Noi ___ una bella vacanza.",
+                    "options": [
+                        "abbiamo fatto",
+                        "siamo fatto",
+                        "abbiamo fatti",
+                        "siamo fatti"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 14,
+                    "question": "I ragazzi ___ tardi ieri sera.",
+                    "options": [
+                        "hanno tornato",
+                        "sono tornati",
+                        "hanno tornati",
+                        "è tornato"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 15,
+                    "question": "Tu ___ la lettera?",
+                    "options": [
+                        "hai scritto",
+                        "sei scritto",
+                        "ha scritto",
+                        "sono scritto"
+                    ],
+                    "answer": 0
+                }
+            ]
+        },
+        {
+            "name": "Preposizioni",
+            "questions": [
+                {
+                    "id": 16,
+                    "question": "Vado ___ Roma domani.",
+                    "options": [
+                        "a",
+                        "in",
+                        "da",
+                        "per"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 17,
+                    "question": "Abito ___ Italia da tre anni.",
+                    "options": [
+                        "a",
+                        "in",
+                        "da",
+                        "con"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 18,
+                    "question": "Il libro è ___ tavolo.",
+                    "options": [
+                        "su",
+                        "sul",
+                        "sopra",
+                        "nel"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 19,
+                    "question": "Vengo ___ casa di Marco.",
+                    "options": [
+                        "a",
+                        "in",
+                        "da",
+                        "per"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 20,
+                    "question": "Studio italiano ___ tre mesi.",
+                    "options": [
+                        "per",
+                        "da",
+                        "in",
+                        "a"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Pronomi",
+            "questions": [
+                {
+                    "id": 21,
+                    "question": "___ chiamo Paolo.",
+                    "options": [
+                        "Io",
+                        "Mi",
+                        "Me",
+                        "Ti"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 22,
+                    "question": "Il libro? ___ ho letto ieri.",
+                    "options": [
+                        "Lo",
+                        "La",
+                        "Li",
+                        "Le"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 23,
+                    "question": "Le chiavi? Non ___ trovo.",
+                    "options": [
+                        "lo",
+                        "la",
+                        "li",
+                        "le"
+                    ],
+                    "answer": 3
+                },
+                {
+                    "id": 24,
+                    "question": "___ piace la musica italiana.",
+                    "options": [
+                        "Mi",
+                        "Ti",
+                        "Gli",
+                        "Ci"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 25,
+                    "question": "Telefono ___ domani.",
+                    "options": [
+                        "ti",
+                        "te",
+                        "tu",
+                        "tuo"
+                    ],
+                    "answer": 0
+                }
+            ]
+        },
+        {
+            "name": "Aggettivi",
+            "questions": [
+                {
+                    "id": 26,
+                    "question": "Maria è molto ___.",
+                    "options": [
+                        "bello",
+                        "bella",
+                        "belli",
+                        "belle"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 27,
+                    "question": "I libri sono ___.",
+                    "options": [
+                        "interessante",
+                        "interessanti",
+                        "interessanto",
+                        "interessanta"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 28,
+                    "question": "Questa casa è ___ grande di quella.",
+                    "options": [
+                        "più",
+                        "molto",
+                        "tanto",
+                        "troppo"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 29,
+                    "question": "Marco è il ragazzo ___ alto della classe.",
+                    "options": [
+                        "molto",
+                        "più",
+                        "tanto",
+                        "troppo"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 30,
+                    "question": "Ho comprato una ___ macchina.",
+                    "options": [
+                        "nuovo",
+                        "nuova",
+                        "nuovi",
+                        "nuove"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Casa",
+            "questions": [
+                {
+                    "id": 31,
+                    "question": "Dove si cucina?",
+                    "options": [
+                        "In camera",
+                        "In bagno",
+                        "In cucina",
+                        "In salotto"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 32,
+                    "question": "Dove si dorme?",
+                    "options": [
+                        "In camera da letto",
+                        "In cucina",
+                        "In bagno",
+                        "In giardino"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 33,
+                    "question": "Il ___ serve per vedere la televisione.",
+                    "options": [
+                        "frigorifero",
+                        "forno",
+                        "televisore",
+                        "lavandino"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 34,
+                    "question": "Per salire al secondo piano uso ___.",
+                    "options": [
+                        "la finestra",
+                        "la porta",
+                        "le scale",
+                        "il balcone"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 35,
+                    "question": "La macchina è nel ___.",
+                    "options": [
+                        "bagno",
+                        "garage",
+                        "salotto",
+                        "corridoio"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Tempo",
+            "questions": [
+                {
+                    "id": 36,
+                    "question": "Il giorno dopo lunedì è ___.",
+                    "options": [
+                        "domenica",
+                        "martedì",
+                        "mercoledì",
+                        "sabato"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 37,
+                    "question": "Gennaio è il primo mese dell'___.",
+                    "options": [
+                        "estate",
+                        "inverno",
+                        "anno",
+                        "autunno"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 38,
+                    "question": "Oggi piove, il tempo è ___.",
+                    "options": [
+                        "bello",
+                        "brutto",
+                        "caldo",
+                        "freddo"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 39,
+                    "question": "In estate fa molto ___.",
+                    "options": [
+                        "freddo",
+                        "caldo",
+                        "pioggia",
+                        "neve"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 40,
+                    "question": "Sono le tre e ___. (3:30)",
+                    "options": [
+                        "quindici",
+                        "mezza",
+                        "quaranta",
+                        "dieci"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Cibo",
+            "questions": [
+                {
+                    "id": 41,
+                    "question": "La mattina faccio ___ con caffè e biscotti.",
+                    "options": [
+                        "pranzo",
+                        "cena",
+                        "colazione",
+                        "merenda"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 42,
+                    "question": "Il pane lo compro in ___.",
+                    "options": [
+                        "farmacia",
+                        "panetteria",
+                        "libreria",
+                        "edicola"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 43,
+                    "question": "La frutta è ___.",
+                    "options": [
+                        "dolce",
+                        "salata",
+                        "amara",
+                        "piccante"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 44,
+                    "question": "Per bere il vino uso ___.",
+                    "options": [
+                        "la forchetta",
+                        "il coltello",
+                        "il bicchiere",
+                        "il piatto"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 45,
+                    "question": "Gli spaghetti sono un tipo di ___.",
+                    "options": [
+                        "carne",
+                        "pesce",
+                        "pasta",
+                        "verdura"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "name": "Espressioni Comuni",
+            "questions": [
+                {
+                    "id": 46,
+                    "question": "Quando incontri qualcuno la mattina, dici: ___",
+                    "options": [
+                        "Buonasera!",
+                        "Buonanotte!",
+                        "Buongiorno!",
+                        "Arrivederci!"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 47,
+                    "question": "Quando qualcuno ti fa un regalo, dici: ___",
+                    "options": [
+                        "Prego!",
+                        "Grazie!",
+                        "Scusa!",
+                        "Permesso!"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 48,
+                    "question": "'Come stai?' - ___",
+                    "options": [
+                        "Sono Marco",
+                        "Sto bene, grazie",
+                        "Ho 25 anni",
+                        "Sono italiano"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 49,
+                    "question": "Per entrare in una stanza con altre persone, dici: ___",
+                    "options": [
+                        "Ciao!",
+                        "Permesso!",
+                        "Basta!",
+                        "Aiuto!"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 50,
+                    "question": "Quando non capisci qualcosa, dici: ___",
+                    "options": [
+                        "Ho capito",
+                        "Non ho capito",
+                        "Va bene",
+                        "D'accordo"
+                    ],
+                    "answer": 1
+                }
+            ]
+        }
+    ]
+}

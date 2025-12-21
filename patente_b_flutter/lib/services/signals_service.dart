@@ -15,10 +15,43 @@ class SignalsService {
       final String jsonString = await rootBundle.loadString(
         'assets/data/theory-segnali-completo.json',
       );
-      final List<dynamic> jsonList = json.decode(jsonString);
+      final dynamic jsonData = json.decode(jsonString);
 
-      _signals = jsonList.map((json) => Signal.fromJson(json)).toList();
+      // Handle the chapters structure
+      if (jsonData is Map<String, dynamic>) {
+        final chapters = jsonData['chapters'] as List<dynamic>? ?? [];
+
+        for (final chapter in chapters) {
+          final chapterMap = chapter as Map<String, dynamic>;
+          final categoryTitle = chapterMap['title'] as String? ?? '';
+          final signals = chapterMap['signals'] as List<dynamic>? ?? [];
+
+          for (final signalData in signals) {
+            final signalMap = signalData as Map<String, dynamic>;
+            // Fix image path - add 'assets' prefix and handle leading slash
+            String imagePath = signalMap['image'] as String? ?? '';
+            if (imagePath.startsWith('/')) {
+              imagePath = 'assets$imagePath';
+            } else if (!imagePath.startsWith('assets/')) {
+              imagePath = 'assets/images/segnali/$imagePath';
+            }
+
+            _signals.add(
+              Signal(
+                id: signalMap['id'] as String? ?? '',
+                name: signalMap['nome'] as String? ?? '',
+                category: categoryTitle,
+                description: signalMap['descrizione'] as String? ?? '',
+                behavior: signalMap['comportamento'] as String?,
+                image: signalMap['image'] as String? ?? '',
+              ),
+            );
+          }
+        }
+      }
+
       _isLoaded = true;
+      print('✅ Loaded ${_signals.length} signals');
     } catch (e) {
       print('Error loading signals: $e');
       _signals = [];

@@ -8,6 +8,7 @@ class QuizService {
   bool _isLoaded = false;
 
   List<QuizQuestion> get questions => _questions;
+  List<QuizQuestion> get allQuestions => _questions;
   bool get isLoaded => _isLoaded;
 
   /// Load quiz questions from JSON asset
@@ -46,8 +47,8 @@ class QuizService {
     return shuffled.take(count).toList();
   }
 
-  /// Get 40 random questions (exam simulation)
+  /// Get 30 random questions (exam simulation - official Italian exam)
   List<QuizQuestion> getExamQuestions() {
-    return getRandomQuestions(40);
+    return getRandomQuestions(30);
   }
 }

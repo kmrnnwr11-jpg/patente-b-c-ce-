@@ -1,0 +1,14 @@
+🚀 Generazione traduzioni con rate limiting aggressivo...
+
+📊 Progresso precedente: ultimo ID=0, UR=0, PA=0
+
+📚 Totale domande: 7139
+
+📋 Traduzioni esistenti in Firebase: 2617
+
+🔍 Domande da processare: 5066
+
+
+📝 [1/5066] ID: 91
+   IT: Una zona a traffico limitato è un'area nella quale...
+   ⏳ Rate limited, attesa 30s (tentativo 1/3)...
