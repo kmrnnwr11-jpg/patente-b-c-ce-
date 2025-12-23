@@ -4,7 +4,7 @@ import 'course_selection_screen.dart';
 import 'italian_level_screen.dart';
 
 class ItalianDashboardScreen extends StatelessWidget {
-  const ItalianDashboardScreen({Key? key}) : super(key: key);
+  const ItalianDashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

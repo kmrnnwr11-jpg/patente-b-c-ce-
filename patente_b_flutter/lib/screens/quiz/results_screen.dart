@@ -12,14 +12,14 @@ class ResultsScreen extends StatelessWidget {
   final bool isExamMode;
 
   const ResultsScreen({
-    Key? key,
+    super.key,
     required this.correctAnswers,
     required this.wrongAnswers,
     required this.totalQuestions,
     required this.questions,
     required this.userAnswers,
     this.isExamMode = false,
-  }) : super(key: key);
+  });
 
   bool get isPassed => isExamMode ? wrongAnswers <= 4 : true;
 

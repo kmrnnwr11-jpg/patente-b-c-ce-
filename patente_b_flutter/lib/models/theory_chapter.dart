@@ -36,6 +36,8 @@ class TheorySection {
   final String content;
   final String? image;
   final List<String>? images;
+  final List<String>? simpleSummary;
+  final String? icon;
 
   TheorySection({
     required this.id,
@@ -43,6 +45,8 @@ class TheorySection {
     required this.content,
     this.image,
     this.images,
+    this.simpleSummary,
+    this.icon,
   });
 
   factory TheorySection.fromJson(Map<String, dynamic> json) {
@@ -52,6 +56,10 @@ class TheorySection {
       content: json['content'] ?? json['description'] ?? '',
       image: json['image'],
       images: (json['images'] as List<dynamic>?)?.cast<String>(),
+      simpleSummary: json['simple_summary'] != null
+          ? List<String>.from(json['simple_summary'])
+          : null,
+      icon: json['icon'],
     );
   }
 }

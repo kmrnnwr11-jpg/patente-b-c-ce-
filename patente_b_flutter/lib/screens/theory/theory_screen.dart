@@ -177,7 +177,8 @@ class _TheoryScreenState extends State<TheoryScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => TheoryDetailScreen(chapter: lesson),
+        builder: (context) =>
+            TheoryDetailScreen(chapter: lesson, allChapters: _pdfLessons),
       ),
     );
   }
@@ -188,14 +189,13 @@ class _SignalCategoryCard extends StatefulWidget {
   final IconData icon;
   final Color color;
   final VoidCallback onTap;
-  final bool fullWidth;
+  final bool fullWidth = false;
 
   const _SignalCategoryCard({
     required this.title,
     required this.icon,
     required this.color,
     required this.onTap,
-    this.fullWidth = false,
   });
 
   @override

@@ -38,4 +38,5 @@ flutter:
     - assets/images/segnali/
     - assets/images/theory-icons/
     - assets/images/theory-pdf/
+    - assets/images/theory/lesson1/
     - assets/data/italian-tests/

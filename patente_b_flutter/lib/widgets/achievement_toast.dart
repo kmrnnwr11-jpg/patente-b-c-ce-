@@ -5,8 +5,11 @@ class AchievementToast extends StatelessWidget {
   final Achievement achievement;
   final VoidCallback? onDismiss;
 
-  const AchievementToast({Key? key, required this.achievement, this.onDismiss})
-    : super(key: key);
+  const AchievementToast({
+    super.key,
+    required this.achievement,
+    this.onDismiss,
+  });
 
   @override
   Widget build(BuildContext context) {

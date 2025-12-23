@@ -50,7 +50,7 @@ class BookmarkedQuestion {
 class BookmarkService {
   static const String _storageKey = 'bookmarked_questions';
 
-  Map<int, BookmarkedQuestion> _bookmarks = {};
+  final Map<int, BookmarkedQuestion> _bookmarks = {};
   bool _isLoaded = false;
 
   /// Load bookmarks from storage

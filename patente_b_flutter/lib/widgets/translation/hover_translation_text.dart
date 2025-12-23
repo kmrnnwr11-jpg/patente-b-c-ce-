@@ -1,138 +1,239 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../models/translation.dart';
-import '../../services/translation_service.dart';
+import '../../services/google_translate_service.dart';
+import '../../widgets/audio/audio_button.dart';
 
-/// Simple text widget with hover translation tooltip and click-to-speak
-class HoverTranslationText extends StatefulWidget {
-  final String text;
-  final AppLanguage currentLanguage;
+/// Interactive text widget where each word shows translation on tap and plays audio
+/// Designed for touch screens - tap shows translation popup and plays ONLY that word
+class InteractiveTranslationText extends StatefulWidget {
+  final String text; // Italian text to display
+  final AppLanguage
+  targetLanguage; // Language to translate to (Urdu, Punjabi, etc.)
   final TextStyle? style;
-  final TextAlign? textAlign;
+  final TextAlign textAlign;
 
-  const HoverTranslationText({
+  const InteractiveTranslationText({
     super.key,
     required this.text,
-    required this.currentLanguage,
+    required this.targetLanguage,
     this.style,
-    this.textAlign,
+    this.textAlign = TextAlign.start,
   });
 
   @override
-  State<HoverTranslationText> createState() => _HoverTranslationTextState();
+  State<InteractiveTranslationText> createState() =>
+      _InteractiveTranslationTextState();
 }
 
-class _HoverTranslationTextState extends State<HoverTranslationText> {
-  final TranslationService _translationService = TranslationService();
-  final FlutterTts _tts = FlutterTts();
-  String? _hoveredWord;
+class _InteractiveTranslationTextState
+    extends State<InteractiveTranslationText> {
+  final GoogleTranslateService _translateService = GoogleTranslateService();
+  final TtsService _ttsService = TtsService();
+  String? _selectedWord;
+  String? _translatingWord;
+
+  // Cache for word translations
+  final Map<String, String> _wordCache = {};
 
   @override
   void initState() {
     super.initState();
-    _translationService.loadTranslations();
-    _tts.setLanguage(widget.currentLanguage.code);
+    _ttsService.init();
   }
 
-  /// Split text into words and punctuation tokens
+  /// Split text into tokens (words and punctuation)
   List<String> _tokenize(String text) {
-    return text.split(RegExp(r'(\s+|[.,!?;:\-—])'));
+    final tokens = <String>[];
+    final regex = RegExp(r"[\w\u00C0-\u017F]+|[^\w\u00C0-\u017F]+");
+    for (final match in regex.allMatches(text)) {
+      tokens.add(match.group(0)!);
+    }
+    return tokens;
   }
 
-  /// Check if token is a word (not punctuation or whitespace)
+  /// Check if token is a word (not just punctuation/whitespace)
   bool _isWord(String token) {
-    return token.trim().isNotEmpty &&
-        !RegExp(r'^[.,!?;:\-—\s]+$').hasMatch(token);
+    return RegExp(r'^[\w\u00C0-\u017F]+$').hasMatch(token);
   }
 
-  /// Get translation for a word
-  String? _getTranslation(String word) {
-    if (widget.currentLanguage == AppLanguage.italian) {
-      return null; // No translation needed for Italian
+  /// Handle word tap - translate using Google Translate and play audio
+  Future<void> _onWordTap(String word) async {
+    print('👆 WORD TAP: "$word"');
+
+    setState(() {
+      _selectedWord = word;
+      _translatingWord = word;
+    });
+
+    String? translation;
+
+    // Check cache first
+    final cacheKey = '${word.toLowerCase()}_${widget.targetLanguage.code}';
+    if (_wordCache.containsKey(cacheKey)) {
+      translation = _wordCache[cacheKey];
+      print('📦 Word cache hit: "$word" -> "$translation"');
+    } else {
+      // Translate single word using Google Translate
+      translation = await _translateService.translate(
+        word,
+        widget.targetLanguage,
+      );
+      if (translation != null) {
+        _wordCache[cacheKey] = translation;
+        print('🌐 Word translated: "$word" -> "$translation"');
+      }
     }
 
-    final translation = _translationService.getTranslation(
-      0,
-    ); // TODO: use proper ID
-    return translation?.domandaEn; // Simplified - should lookup word
-  }
+    setState(() => _translatingWord = null);
 
-  /// Speak word using TTS
-  Future<void> _speakWord(String word) async {
-    try {
-      final translation = _getTranslation(word);
-      final textToSpeak = translation ?? word;
-      await _tts.speak(textToSpeak);
-    } catch (e) {
-      print('TTS error: $e');
+    if (translation != null) {
+      // Play audio of the translated word ONLY
+      print('🔊 Playing single word: "$translation"');
+      _ttsService.speak(translation, language: widget.targetLanguage);
+
+      // Show snackbar with translation
+      if (mounted) {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.translate, color: Colors.white, size: 20),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        word,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white70,
+                          fontSize: 12,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        translation,
+                        style: widget.targetLanguage == AppLanguage.urdu
+                            ? GoogleFonts.notoNastaliqUrdu(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              )
+                            : widget.targetLanguage == AppLanguage.punjabi
+                            ? GoogleFonts.notoSansGurmukhi(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              )
+                            : const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.volume_up, color: Colors.white54, size: 18),
+              ],
+            ),
+            backgroundColor: Colors.blue.shade800,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            duration: const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+          ),
+        );
+      }
     }
+
+    // Clear selection after a moment
+    Future.delayed(const Duration(milliseconds: 800), () {
+      if (mounted) setState(() => _selectedWord = null);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.currentLanguage == AppLanguage.italian) {
-      // No translation needed for Italian - show plain text
-      return Text(
-        widget.text,
-        style: widget.style,
-        textAlign: widget.textAlign ?? TextAlign.center,
-      );
-    }
-
     final tokens = _tokenize(widget.text);
     final defaultStyle =
         widget.style ?? const TextStyle(fontSize: 16, height: 1.5);
 
     return Wrap(
-      alignment: WrapAlignment.center,
+      alignment: widget.textAlign == TextAlign.center
+          ? WrapAlignment.center
+          : widget.textAlign == TextAlign.end
+          ? WrapAlignment.end
+          : WrapAlignment.start,
       children: tokens.map((token) {
         if (!_isWord(token)) {
           return Text(token, style: defaultStyle);
         }
 
-        final isHovered = _hoveredWord == token;
-        final translation = _getTranslation(token);
+        final isSelected = _selectedWord == token;
+        final isTranslating = _translatingWord == token;
 
-        return MouseRegion(
-          onEnter: (_) => setState(() => _hoveredWord = token),
-          onExit: (_) => setState(() => _hoveredWord = null),
-          cursor: SystemMouseCursors.click,
-          child: Tooltip(
-            message: translation ?? 'Translation not available',
-            waitDuration: const Duration(milliseconds: 100),
-            preferBelow: true,
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => _onWordTap(token),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+            margin: const EdgeInsets.symmetric(vertical: 1),
             decoration: BoxDecoration(
-              color: Colors.black87,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            textStyle: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-            child: GestureDetector(
-              onTap: () => _speakWord(token),
-              child: Text(
-                token,
-                style: defaultStyle.copyWith(
-                  color: isHovered ? Colors.blue.shade600 : null,
-                  decoration: TextDecoration.underline,
-                  decorationStyle: TextDecorationStyle.dotted,
-                  decorationColor: isHovered
-                      ? Colors.blue.shade400
-                      : Colors.grey.shade400,
-                ),
+              color: isSelected
+                  ? Colors.blue.withOpacity(0.3)
+                  : Colors.blue.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                color: isSelected
+                    ? Colors.blue.shade400
+                    : Colors.blue.withOpacity(0.2),
+                width: 1,
               ),
             ),
+            child: isTranslating
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        token,
+                        style: defaultStyle.copyWith(
+                          color: Colors.blue.shade300,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      SizedBox(
+                        width: 12,
+                        height: 12,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation(
+                            Colors.blue.shade300,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                : Text(
+                    token,
+                    style: defaultStyle.copyWith(
+                      color: isSelected
+                          ? Colors.blue.shade300
+                          : Colors.blue.shade200,
+                    ),
+                  ),
           ),
         );
       }).toList(),
     );
   }
-
-  @override
-  void dispose() {
-    _tts.stop();
-    super.dispose();
-  }
 }
+
+/// Keep the old HoverTranslationText for backward compatibility
+typedef HoverTranslationText = InteractiveTranslationText;

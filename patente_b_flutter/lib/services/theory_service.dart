@@ -7,11 +7,17 @@ class PdfTheorySection {
   final String id;
   final String title;
   final String content;
+  final List<String>? simpleSummary;
+  final String? icon;
+  final String? image;
 
   PdfTheorySection({
     required this.id,
     required this.title,
     required this.content,
+    this.simpleSummary,
+    this.icon,
+    this.image,
   });
 
   factory PdfTheorySection.fromJson(Map<String, dynamic> json) {
@@ -19,7 +25,21 @@ class PdfTheorySection {
       id: json['id'] ?? '',
       title: json['title'] ?? 'Contenuto',
       content: json['content'] ?? '',
+      simpleSummary: json['simple_summary'] != null
+          ? List<String>.from(json['simple_summary'])
+          : null,
+      icon: json['icon'],
+      image: _fixPath(json['image']),
     );
+  }
+
+  static String? _fixPath(String? path) {
+    if (path == null) return null;
+    String clean = path.startsWith('/') ? path.substring(1) : path;
+    if (clean.startsWith('images/') && !clean.startsWith('assets/')) {
+      return 'assets/$clean';
+    }
+    return clean;
   }
 }
 
@@ -66,7 +86,14 @@ class PdfTheoryChapter {
       description: 'Pagine $startPage-$endPage del Manuale di Teoria',
       sections: sections
           .map(
-            (s) => TheorySection(id: s.id, title: s.title, content: s.content),
+            (s) => TheorySection(
+              id: s.id,
+              title: s.title,
+              content: s.content,
+              simpleSummary: s.simpleSummary,
+              icon: s.icon,
+              image: s.image,
+            ),
           )
           .toList(),
     );
@@ -118,11 +145,21 @@ class TheoryService {
               final imagePath = signal['image'] as String?;
               String? fullImagePath;
               if (imagePath != null) {
-                // Image.asset() wants path relative to pubspec.yaml, without 'assets/' prefix
-                // Convert /images/segnali/xxx.png to images/segnali/xxx.png
-                fullImagePath = imagePath.startsWith('/')
+                // Ensure path starts with 'assets/' if it's in the images folder
+                // Convert /images/segnali/xxx.png to assets/images/segnali/xxx.png
+                String cleanPath = imagePath.startsWith('/')
                     ? imagePath.substring(1) // Remove leading /
                     : imagePath;
+
+                if (cleanPath.startsWith('images/') &&
+                    !cleanPath.startsWith('assets/')) {
+                  fullImagePath = 'assets/$cleanPath';
+                } else {
+                  fullImagePath = cleanPath;
+                }
+                print(
+                  '🔍 DEBUG IMAGE PATH: $imagePath -> $cleanPath -> $fullImagePath',
+                );
               }
 
               sections.add(
@@ -169,13 +206,23 @@ class TheoryService {
               .map((c) => TheoryChapter.fromJson(c))
               .toList();
           print('Loaded ${theoryChapters.length} theory chapters');
+          // Debug: Check if first chapter has images
+          if (theoryChapters.isNotEmpty) {
+            final firstChapter = theoryChapters.first;
+            print('📸 First chapter: ${firstChapter.title}');
+            for (var section in firstChapter.sections) {
+              print('  📷 Section "${section.title}" image: ${section.image}');
+            }
+          }
         }
       } catch (e) {
         print('Error loading theory lessons: $e');
       }
 
       // 3. Combine: Signal chapters first, then general theory
-      _chapters = [...signalChapters, ...theoryChapters];
+      _chapters = [
+        ...theoryChapters,
+      ]; // Only load PDF lessons (signals are merged in)
 
       // Sort by order - signals get priority 1-10, theory gets 100+
       _chapters.sort((a, b) {

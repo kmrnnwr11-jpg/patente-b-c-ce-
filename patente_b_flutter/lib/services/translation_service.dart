@@ -6,6 +6,11 @@ import 'google_translate_service.dart';
 
 /// Service for managing translations
 class TranslationService {
+  // Singleton pattern
+  static final TranslationService _instance = TranslationService._internal();
+  factory TranslationService() => _instance;
+  TranslationService._internal();
+
   final Map<int, TranslatedQuestion> _translationsEn = {};
   // Text-based maps for Firebase translations (key = Italian text)
   final Map<String, String> _translationsUrByText = {}; // Urdu
@@ -13,6 +18,9 @@ class TranslationService {
   // ID-based maps for Firebase translations (key = question ID)
   final Map<int, String> _translationsUrById = {}; // Urdu by ID
   final Map<int, String> _translationsPaById = {}; // Punjabi by ID
+  // Audio URL maps (key = question ID)
+  final Map<int, String> _audioUrlsUr = {}; // Urdu audio URLs
+  final Map<int, String> _audioUrlsPa = {}; // Punjabi audio URLs
 
   bool _isLoaded = false;
   bool _firestoreLoaded = false;
@@ -49,7 +57,7 @@ class TranslationService {
   }
 
   /// Load translations from Firebase Firestore
-  /// Structure: translations/{base64Id} → { it: "...", ur: "...", pa: "..." }
+  /// Structure: translations/{base64Id} → { it: "...", ur: "...", pa: "...", ur_audio: "...", pa_audio: "..." }
   Future<void> loadFromFirestore() async {
     if (_firestoreLoaded) return;
 
@@ -59,7 +67,7 @@ class TranslationService {
       // Load all translations from flat collection
       final snapshot = await firestore.collection('translations').get();
 
-      int urCount = 0, paCount = 0;
+      int urCount = 0, paCount = 0, urAudioCount = 0, paAudioCount = 0;
 
       for (final doc in snapshot.docs) {
         final data = doc.data();
@@ -95,12 +103,31 @@ class TranslationService {
           }
           paCount++;
         }
+
+        // Urdu Audio URL
+        if (numericId != null &&
+            data.containsKey('ur_audio') &&
+            data['ur_audio'] != null &&
+            data['ur_audio'].toString().isNotEmpty) {
+          _audioUrlsUr[numericId] = data['ur_audio'].toString();
+          urAudioCount++;
+        }
+
+        // Punjabi Audio URL
+        if (numericId != null &&
+            data.containsKey('pa_audio') &&
+            data['pa_audio'] != null &&
+            data['pa_audio'].toString().isNotEmpty) {
+          _audioUrlsPa[numericId] = data['pa_audio'].toString();
+          paAudioCount++;
+        }
       }
 
       print('📚 Firestore translations: Urdu=$urCount, Punjabi=$paCount');
       print(
         '📚 ID-based translations: Urdu=${_translationsUrById.length}, Punjabi=${_translationsPaById.length}',
       );
+      print('🎵 Audio URLs: Urdu=$urAudioCount, Punjabi=$paAudioCount');
       _firestoreLoaded = true;
     } catch (e) {
       print('Error loading Firestore translations: $e');
@@ -289,5 +316,29 @@ class TranslationService {
     );
 
     return googleResult;
+  }
+
+  /// Get audio URL for a specific question and language
+  /// Returns null if no audio is available for that language
+  String? getAudioUrl(int questionId, AppLanguage language) {
+    print(
+      '🎵 getAudioUrl called: questionId=$questionId, language=${language.code}',
+    );
+    print('🎵 Available Urdu audio count: ${_audioUrlsUr.length}');
+    print('🎵 Available Punjabi audio count: ${_audioUrlsPa.length}');
+
+    switch (language) {
+      case AppLanguage.urdu:
+        final url = _audioUrlsUr[questionId];
+        print('🎵 Urdu audio URL for $questionId: $url');
+        return url;
+      case AppLanguage.punjabi:
+        final url = _audioUrlsPa[questionId];
+        print('🎵 Punjabi audio URL for $questionId: $url');
+        return url;
+      default:
+        print('🎵 No audio for language ${language.code}');
+        return null; // No audio URLs for other languages
+    }
   }
 }

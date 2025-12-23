@@ -328,7 +328,7 @@ class _MultiTranslationPopup extends StatelessWidget {
                         ],
                       ),
                     );
-                  }).toList(),
+                  }),
                 ],
               ),
             ),

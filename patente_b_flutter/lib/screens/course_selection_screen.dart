@@ -6,7 +6,7 @@ import 'dashboard_screen.dart';
 import 'italian_dashboard_screen.dart';
 
 class CourseSelectionScreen extends StatelessWidget {
-  const CourseSelectionScreen({Key? key}) : super(key: key);
+  const CourseSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

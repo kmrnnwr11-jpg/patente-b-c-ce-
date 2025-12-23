@@ -1,6 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class WordTranslationService {
+  // Singleton pattern
+  static final WordTranslationService _instance =
+      WordTranslationService._internal();
+  factory WordTranslationService() => _instance;
+  WordTranslationService._internal();
+
   // Map<LanguageCode, Map<Word, Translation>>
   // e.g. 'ur': {'auto': 'گاڑی', 'strada': 'سڑک', ...}
   final Map<String, Map<String, String>> _translations = {};
@@ -73,6 +79,15 @@ class WordTranslationService {
       print('Error loading word translations: $e');
     }
   }
+
+  /// Get translation for a specific word in a language
+  String? getWordTranslation(String word, String languageCode) {
+    final lowerWord = word.toLowerCase().trim();
+    return _translations[languageCode]?[lowerWord];
+  }
+
+  /// Check if translations are loaded
+  bool get isLoaded => _isLoaded;
 
   /// Extract words from Italian text
   List<String> _extractWords(String text) {

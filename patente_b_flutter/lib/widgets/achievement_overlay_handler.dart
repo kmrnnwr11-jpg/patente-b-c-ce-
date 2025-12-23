@@ -6,8 +6,7 @@ import 'achievement_toast.dart';
 class AchievementOverlayHandler extends StatefulWidget {
   final Widget child;
 
-  const AchievementOverlayHandler({Key? key, required this.child})
-    : super(key: key);
+  const AchievementOverlayHandler({super.key, required this.child});
 
   @override
   State<AchievementOverlayHandler> createState() =>
@@ -65,11 +64,7 @@ class _AnimatedToast extends StatefulWidget {
   final Achievement achievement;
   final VoidCallback onDismiss;
 
-  const _AnimatedToast({
-    Key? key,
-    required this.achievement,
-    required this.onDismiss,
-  }) : super(key: key);
+  const _AnimatedToast({required this.achievement, required this.onDismiss});
 
   @override
   State<_AnimatedToast> createState() => _AnimatedToastState();

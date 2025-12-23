@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../services/stats_service.dart';
+import '../services/course_service.dart';
+import '../services/language_preference_service.dart';
+import '../models/translation.dart';
 import '../theme/app_theme.dart';
 import 'quiz/quiz_screen.dart';
 import 'quiz/topic_selection_screen.dart';
@@ -7,9 +13,8 @@ import 'theory/signals_screen.dart';
 import 'bookmarks/bookmarked_questions_screen.dart';
 import 'stats/stats_screen.dart';
 import 'settings/settings_screen.dart';
-import 'course_selection_screen.dart';
+import 'documents/documents_screen.dart';
 
-/// Main dashboard screen - home page of the app
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -18,223 +23,186 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _selectedIndex = 0;
+  final LanguagePreferenceService _languageService =
+      LanguagePreferenceService();
+  AppLanguage _selectedLanguage = AppLanguage.italian;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguagePreference();
+  }
+
+  Future<void> _loadLanguagePreference() async {
+    await _languageService.loadPreference();
+    setState(() {
+      _selectedLanguage = _languageService.preferredLanguage;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
-        child: IndexedStack(
-          index: _selectedIndex,
-          children: [
-            // Home Tab
-            CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Column(
-                      children: [
-                        _buildHeader(context),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: _buildLargeCard(
-                                context,
-                                icon: Icons.play_circle_fill,
-                                title: 'Quiz Veloce',
-                                subtitle: '10 domande',
-                                color: const Color(0xFF3B82F6),
-                                onTap: () => _startQuickQuiz(context),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: _buildLargeCard(
-                                context,
-                                icon: Icons.assignment,
-                                title: 'Esame',
-                                subtitle: 'Simulazione',
-                                color: const Color(0xFF10B981),
-                                onTap: () => _startExamSimulation(context),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SliverPadding(
-                  padding: const EdgeInsets.all(16),
-                  sliver: SliverGrid(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          mainAxisSpacing: 16,
-                          crossAxisSpacing: 12,
-                          childAspectRatio: 0.8,
-                        ),
-                    delegate: SliverChildListDelegate([
-                      _buildGridCard(
-                        context,
-                        icon: Icons.category,
-                        title: 'Argomenti',
-                        subtitle: 'Per tema',
-                        color: const Color(0xFF8B5CF6),
-                        onTap: () => _openTopicSelection(context),
-                      ),
-                      _buildGridCard(
-                        context,
-                        icon: Icons.menu_book,
-                        title: 'Teoria',
-                        subtitle: 'Studia',
-                        color: const Color(0xFFF59E0B),
-                        onTap: () => _openTheory(context),
-                      ),
-                      _buildGridCard(
-                        context,
-                        icon: Icons.traffic,
-                        title: 'Segnali',
-                        subtitle: 'Stradali',
-                        color: const Color(0xFFEF4444),
-                        onTap: () => _openSignals(context),
-                      ),
-                      _buildGridCard(
-                        context,
-                        icon: Icons.error_outline,
-                        title: 'Errori',
-                        subtitle: 'Ripeti',
-                        color: const Color(0xFFEC4899),
-                        onTap: () => _startErrorsQuiz(context),
-                      ),
-                      _buildGridCard(
-                        context,
-                        icon: Icons.bookmark,
-                        title: 'Salvate',
-                        subtitle: 'Segnalibri',
-                        color: const Color(0xFF6366F1),
-                        onTap: () => _openBookmarks(context),
-                      ),
-                      _buildGridCard(
-                        context,
-                        icon: Icons.bar_chart,
-                        title: 'Statistiche',
-                        subtitle: 'Progressi',
-                        color: const Color(0xFF14B8A6),
-                        onTap: () => _openStats(context),
-                      ),
-                    ]),
-                  ),
-                ),
-              ],
-            ),
-            // Placeholder for other tabs if we wanted real content
-            Container(), // Corsi handled by onTap
-            Container(), // Settings handled by onTap or real tab
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppTheme.cardColor,
-        selectedItemColor: AppTheme.primaryColor,
-        unselectedItemColor: Colors.grey,
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          if (index == 1) {
-            // Corsi - Navigate to selection
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (context) => const CourseSelectionScreen(),
-              ),
-            );
-            return;
-          }
-          if (index == 2) {
-            // Settings - Navigate
-            _openSettings(context);
-            return;
-          }
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.swap_horiz), label: 'Corsi'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Impostazioni',
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(context),
+              const SizedBox(height: 24),
+              _buildPreparationBar(context),
+              const SizedBox(height: 24),
+              _buildMainActions(context),
+              const SizedBox(height: 24),
+              _buildGridActions(context),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildHeader(BuildContext context) {
+    final theme = Theme.of(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Bentornato,',
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: theme.colorScheme.onSurface.withOpacity(0.6),
+              ),
+            ),
+            Text(
+              'Studente',
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            // Language selector dropdown
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: theme.dividerColor),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<AppLanguage>(
+                  value: _selectedLanguage,
+                  icon: const Icon(Icons.keyboard_arrow_down, size: 20),
+                  isDense: true,
+                  items: AppLanguage.values.map((lang) {
+                    return DropdownMenuItem(
+                      value: lang,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(lang.flag, style: const TextStyle(fontSize: 18)),
+                          const SizedBox(width: 6),
+                          Text(lang.name, style: const TextStyle(fontSize: 12)),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (lang) {
+                    if (lang != null) {
+                      setState(() => _selectedLanguage = lang);
+                      _languageService.setPreferredLanguage(lang);
+                    }
+                  },
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            // Settings button
+            Container(
+              decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: theme.dividerColor),
+              ),
+              child: IconButton(
+                icon: Icon(
+                  Icons.settings_outlined,
+                  color: theme.colorScheme.onSurface,
+                ),
+                onPressed: () => _openSettings(context),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPreparationBar(BuildContext context) {
+    // Mock calculation based on stats or just random for now
+    // In real app, pull from StatsService
+    const double preparation = 0.35; // 35% ready
+    final theme = Theme.of(context);
+
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  gradient: AppTheme.primaryGradient,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Icon(
-                  Icons.directions_car,
-                  color: Colors.white,
-                  size: 32,
+              Text(
+                'Preparazione Esame',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Patente B',
-                      style: Theme.of(context).textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      'Preparazione esame',
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.textSecondary,
-                      ),
-                    ),
-                  ],
+              Text(
+                '${(preparation * 100).toInt()}%',
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: theme.primaryColor,
                 ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.settings_outlined),
-                onPressed: () => _openSettings(context),
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          // Stats row
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: AppTheme.surfaceColor,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppTheme.cardColor, width: 1),
+          const SizedBox(height: 12),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LinearProgressIndicator(
+              value: preparation,
+              minHeight: 12,
+              backgroundColor: theme.dividerColor.withOpacity(0.3),
+              valueColor: AlwaysStoppedAnimation<Color>(theme.primaryColor),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildStatItem('1.742', 'Domande'),
-                _buildDivider(),
-                _buildStatItem('30+', 'Argomenti'),
-                _buildDivider(),
-                _buildStatItem('∞', 'Tentativi'),
-              ],
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Continua così! Completa più quiz per aumentare la tua probabilità di successo.',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.6),
             ),
           ),
         ],
@@ -242,28 +210,77 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _buildStatItem(String value, String label) {
-    return Column(
+  Widget _buildMainActions(BuildContext context) {
+    final theme = Theme.of(context);
+    return Row(
       children: [
-        Text(
-          value,
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: AppTheme.primaryLight,
+        Expanded(
+          child: _buildLargeCard(
+            context,
+            icon: Icons.play_circle_fill,
+            title: 'Simulazione\nEsame',
+            subtitle: '30 Domande',
+            color: theme.primaryColor,
+            onTap: () => _startExamSimulation(context),
           ),
         ),
-        const SizedBox(height: 4),
-        Text(
-          label,
-          style: const TextStyle(fontSize: 12, color: AppTheme.textSecondary),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildLargeCard(
+            context,
+            icon: Icons.school,
+            title: 'Quiz per\nArgomento',
+            subtitle: 'Esercitati',
+            color: AppTheme
+                .accentPurple, // Need to make sure this exists or use replacement
+            onTap: () => _openTopicSelection(context),
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildDivider() {
-    return Container(width: 1, height: 40, color: AppTheme.cardColor);
+  Widget _buildGridActions(BuildContext context) {
+    final theme = Theme.of(context);
+    // Grid of 4 items
+    return GridView.count(
+      crossAxisCount: 4,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      mainAxisSpacing: 16,
+      crossAxisSpacing: 16,
+      childAspectRatio: 0.8,
+      children: [
+        _buildGridIcon(
+          context,
+          icon: Icons.menu_book_rounded,
+          label: 'Teoria',
+          color: Colors.orange,
+          onTap: () => _openTheory(context),
+        ),
+        _buildGridIcon(
+          context,
+          icon: Icons.warning_rounded,
+          label: 'Segnali',
+          color: Colors.amber,
+          onTap: () => _openSignals(context),
+        ),
+        _buildGridIcon(
+          context,
+          icon: Icons.refresh_rounded,
+          label: 'Ripasso\nErrori',
+          color: AppTheme.accentRed,
+          onTap: () => _startErrorsQuiz(context),
+        ),
+        _buildGridIcon(
+          context,
+          icon: Icons.folder_special,
+          label: 'Documenti',
+          color: AppTheme.accentGreen,
+          onTap: () => _openDocuments(context),
+        ),
+      ],
+    );
   }
 
   Widget _buildLargeCard(
@@ -277,20 +294,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 120, // Taller card
-        padding: const EdgeInsets.all(16),
+        height: 160,
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [color, color.withOpacity(0.8)],
-          ),
-          borderRadius: BorderRadius.circular(20),
+          color: color,
+          borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
               color: color.withOpacity(0.4),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
             ),
           ],
         ),
@@ -299,9 +312,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withOpacity(0.25),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: Colors.white, size: 28),
@@ -315,6 +328,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                    height: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white.withOpacity(0.8),
                   ),
                 ),
               ],
@@ -325,65 +347,46 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  /// Build iOS-style app icon with name below
-  Widget _buildGridCard(
+  Widget _buildGridIcon(
     BuildContext context, {
     required IconData icon,
-    required String title,
-    required String subtitle, // kept for compatibility but not displayed
+    required String label,
     required Color color,
     required VoidCallback onTap,
   }) {
+    final theme = Theme.of(context);
     return GestureDetector(
       onTap: onTap,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
         children: [
-          // iOS-style app icon
           Container(
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [color, color.withValues(alpha: 0.7)],
-              ),
-              borderRadius: BorderRadius.circular(14),
+              color: theme.cardColor,
+              borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: color.withValues(alpha: 0.4),
+                  color: Colors.black.withOpacity(0.05),
                   blurRadius: 8,
-                  offset: const Offset(0, 4),
+                  offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: Icon(icon, color: Colors.white, size: 28),
+            child: Icon(icon, color: color, size: 26),
           ),
           const SizedBox(height: 8),
-          // App name
           Text(
-            title,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            ),
+            label,
             textAlign: TextAlign.center,
-            maxLines: 1,
+            style: theme.textTheme.bodySmall?.copyWith(
+              fontWeight: FontWeight.w500,
+              fontSize: 11,
+            ),
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
         ],
-      ),
-    );
-  }
-
-  void _startQuickQuiz(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const QuizScreen(mode: QuizMode.quick),
       ),
     );
   }
@@ -423,19 +426,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  void _openBookmarks(BuildContext context) {
+  void _startErrorsQuiz(BuildContext context) {
+    // This assumes QuizMode or QuizService supports 'errors'
+    // If not, we fall back to quick quiz but with specific params
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const BookmarkedQuestionsScreen(),
+        builder: (context) => const QuizScreen(mode: QuizMode.errors),
       ),
     );
   }
 
-  void _openStats(BuildContext context) {
+  void _openDocuments(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const StatsScreen()),
+      MaterialPageRoute(builder: (context) => const DocumentsScreen()),
     );
   }
 
@@ -445,13 +450,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       MaterialPageRoute(builder: (context) => const SettingsScreen()),
     );
   }
+}
 
-  void _startErrorsQuiz(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const QuizScreen(mode: QuizMode.quick),
-      ),
-    );
-  }
+// Add these extension/constants if needed or just rely on Material Colors
+// The previous file had AccentPurple, let's substitute if missing
+extension AppThemeColors on AppTheme {
+  static const Color accentPurple = Color(0xFF8B5CF6);
 }

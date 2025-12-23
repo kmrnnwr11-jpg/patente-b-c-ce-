@@ -7,11 +7,13 @@ import '../../services/bookmark_service.dart';
 import '../../services/stats_service.dart';
 import '../../services/achievement_service.dart';
 import '../../services/translation_service.dart';
+import '../../services/language_preference_service.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/audio/audio_button.dart';
 import '../../widgets/translation/language_selector.dart';
+import '../../widgets/translation/hover_translation_text.dart';
 
-enum QuizMode { quick, exam, topic }
+enum QuizMode { quick, exam, topic, errors }
 
 /// Quiz screen with question display and answer handling
 class QuizScreen extends StatefulWidget {
@@ -37,12 +39,18 @@ class _QuizScreenState extends State<QuizScreen> {
   bool _isLoading = true;
 
   // Track answers for each question (key = question index, value = user's answer)
-  Map<int, bool> _userAnswers = {};
+  final Map<int, bool> _userAnswers = {};
 
   AppLanguage _selectedLanguage = AppLanguage.italian;
   Set<int> _bookmarkedIds = {};
   bool _showTranslation = false;
   final TranslationService _translationService = TranslationService();
+  final LanguagePreferenceService _languagePreferenceService =
+      LanguagePreferenceService();
+
+  // Answer feedback overlay
+  bool _showAnswerOverlay = false;
+  bool? _lastAnswerCorrect;
 
   @override
   void initState() {
@@ -55,11 +63,16 @@ class _QuizScreenState extends State<QuizScreen> {
     await _bookmarkService.load();
     await _statsService.load();
     await _achievementService.load();
+    await _translationService.loadFromFirestore(); // Load audio URLs
+    await _languagePreferenceService
+        .loadPreference(); // Load global language preference
 
     // Get already bookmarked question IDs
     final bookmarks = _bookmarkService.getAllBookmarks();
     setState(() {
       _bookmarkedIds = bookmarks.map((b) => b.questionId).toSet();
+      _selectedLanguage =
+          _languagePreferenceService.preferredLanguage; // Use global preference
     });
   }
 
@@ -79,6 +92,15 @@ class _QuizScreenState extends State<QuizScreen> {
             ? _quizService.getByTopic(widget.topic!)
             : _quizService.getRandomQuestions(30);
         break;
+      case QuizMode.errors:
+        questions = _quizService.getErrorQuestions();
+        // If no errors, we might want to show a message or fallback, but logic here:
+        if (questions.isEmpty) {
+          // Ideally handle empty state, but for now allow empty list and UI handles it?
+          // The UI might crash or show empty.
+          // Let's fallback to random if empty? No, intended for errors.
+        }
+        break;
     }
 
     setState(() {
@@ -97,21 +119,31 @@ class _QuizScreenState extends State<QuizScreen> {
     // Don't allow changing answer if already answered
     if (_hasAnswered) return;
 
+    final isCorrect = answer == _questions[_currentIndex].risposta;
+
     setState(() {
       _userAnswers[_currentIndex] = answer;
+      _showAnswerOverlay = true;
+      _lastAnswerCorrect = isCorrect;
 
-      if (answer == _questions[_currentIndex].risposta) {
+      if (isCorrect) {
         _correctAnswers++;
+        _quizService.removeError(_questions[_currentIndex].id);
       } else {
         _wrongAnswers++;
+        _quizService.addError(_questions[_currentIndex].id);
       }
 
       // Record answer for stats tracking
       final question = _questions[_currentIndex];
-      _statsService.recordAnswer(
-        topic: question.argomento,
-        correct: answer == question.risposta,
-      );
+      _statsService.recordAnswer(topic: question.argomento, correct: isCorrect);
+    });
+
+    // Hide overlay after 0.8 seconds
+    Future.delayed(const Duration(milliseconds: 800), () {
+      if (mounted) {
+        setState(() => _showAnswerOverlay = false);
+      }
     });
   }
 
@@ -343,486 +375,639 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Progress bar
-            LinearProgressIndicator(
-              value: (_currentIndex + 1) / _questions.length,
-              backgroundColor: AppTheme.cardColor,
-              valueColor: const AlwaysStoppedAnimation<Color>(
-                AppTheme.primaryColor,
-              ),
-            ),
-
-            // Score display
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _buildScoreBadge(
-                    icon: Icons.check_circle,
-                    count: _correctAnswers,
-                    color: AppTheme.accentGreen,
+      body: Stack(
+        children: [
+          // Main quiz content
+          SafeArea(
+            child: Column(
+              children: [
+                // Progress bar
+                LinearProgressIndicator(
+                  value: (_currentIndex + 1) / _questions.length,
+                  backgroundColor: AppTheme.cardColor,
+                  valueColor: const AlwaysStoppedAnimation<Color>(
+                    AppTheme.primaryColor,
                   ),
-                  const SizedBox(width: 24),
-                  _buildScoreBadge(
-                    icon: Icons.cancel,
-                    count: _wrongAnswers,
-                    color: AppTheme.accentRed,
-                  ),
-                ],
-              ),
-            ),
+                ),
 
-            // Question content
-            Expanded(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Image if present
-                    if (question.immagine != null) ...[
-                      Container(
-                        height: 180,
-                        decoration: BoxDecoration(
-                          color: AppTheme.cardColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: Image.asset(
-                            'assets${question.immagine}',
-                            fit: BoxFit.contain,
-                            errorBuilder: (context, error, stackTrace) {
-                              return const Center(
-                                child: Icon(
-                                  Icons.image_not_supported,
-                                  size: 48,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
+                // Score display
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 12,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildScoreBadge(
+                        icon: Icons.check_circle,
+                        count: _correctAnswers,
+                        color: AppTheme.accentGreen,
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(width: 24),
+                      _buildScoreBadge(
+                        icon: Icons.cancel,
+                        count: _wrongAnswers,
+                        color: AppTheme.accentRed,
+                      ),
                     ],
+                  ),
+                ),
 
-                    // Question text
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: AppTheme.surfaceColor,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: AppTheme.cardColor),
-                      ),
-                      child: Column(
-                        children: [
-                          // Controls row
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              // Language selector
-                              LanguageSelector(
-                                currentLanguage: _selectedLanguage,
-                                onLanguageChanged: (lang) {
-                                  setState(() => _selectedLanguage = lang);
+                // Question content
+                Expanded(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Image if present
+                        if (question.immagine != null) ...[
+                          Container(
+                            height: 180,
+                            decoration: BoxDecoration(
+                              color: AppTheme.cardColor,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Image.asset(
+                                'assets${question.immagine}',
+                                fit: BoxFit.contain,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return const Center(
+                                    child: Icon(
+                                      Icons.image_not_supported,
+                                      size: 48,
+                                    ),
+                                  );
                                 },
-                                compact: true,
                               ),
-
-                              // Audio and Bookmark buttons
-                              Row(
-                                children: [
-                                  // Audio button
-                                  InlineAudioButton(
-                                    text: question.domanda,
-                                    language: _selectedLanguage,
-                                  ),
-                                  const SizedBox(width: 8),
-                                  // Bookmark button
-                                  IconButton(
-                                    onPressed: () => _toggleBookmark(question),
-                                    icon: Icon(
-                                      _bookmarkedIds.contains(question.id)
-                                          ? Icons.bookmark
-                                          : Icons.bookmark_border,
-                                      color:
-                                          _bookmarkedIds.contains(question.id)
-                                          ? Colors.amber
-                                          : Colors.grey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 16),
-                          // Question text
-                          Text(
-                            question.domanda,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              height: 1.5,
                             ),
-                            textAlign: TextAlign.center,
                           ),
+                          const SizedBox(height: 20),
                         ],
-                      ),
-                    ),
 
-                    // Translation toggle button
-                    const SizedBox(height: 12),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _showTranslation = !_showTranslation;
-                        });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: _showTranslation
-                              ? AppTheme.primaryColor.withOpacity(0.2)
-                              : AppTheme.cardColor,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: _showTranslation
-                                ? AppTheme.primaryColor
-                                : Colors.transparent,
+                        // Question text
+                        Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: AppTheme.surfaceColor,
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: AppTheme.cardColor),
                           ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.translate,
-                              size: 20,
-                              color: _showTranslation
-                                  ? AppTheme.primaryColor
-                                  : AppTheme.textSecondary,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              _showTranslation ? 'Hide' : 'Translate',
-                              style: TextStyle(
-                                color: _showTranslation
-                                    ? AppTheme.primaryColor
-                                    : AppTheme.textSecondary,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            Icon(
-                              _showTranslation
-                                  ? Icons.keyboard_arrow_up
-                                  : Icons.keyboard_arrow_down,
-                              color: _showTranslation
-                                  ? AppTheme.primaryColor
-                                  : AppTheme.textSecondary,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    // Translation panel with FutureBuilder
-                    if (_showTranslation) ...[
-                      const SizedBox(height: 12),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: AppTheme.primaryColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: AppTheme.primaryColor.withOpacity(0.3),
-                          ),
-                        ),
-                        child: FutureBuilder<String?>(
-                          future: _translationService
-                              .getTranslationWithFallback(
-                                question.id,
-                                question.domanda,
-                                _selectedLanguage,
-                              ),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                          child: Column(
+                            children: [
+                              // Controls row
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                      color: AppTheme.primaryColor,
-                                    ),
+                                  // Language selector
+                                  LanguageSelector(
+                                    currentLanguage: _selectedLanguage,
+                                    onLanguageChanged: (lang) {
+                                      setState(() => _selectedLanguage = lang);
+                                    },
+                                    compact: true,
                                   ),
-                                  const SizedBox(width: 12),
-                                  Text(
-                                    'Traduzione in corso...',
-                                    style: TextStyle(
-                                      color: AppTheme.textSecondary,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                  ),
-                                ],
-                              );
-                            }
 
-                            final translation = snapshot.data;
-
-                            if (translation != null && translation.isNotEmpty) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                  // Audio and Bookmark buttons
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            _selectedLanguage.flag,
-                                            style: const TextStyle(
-                                              fontSize: 24,
-                                            ),
-                                          ),
-                                          const SizedBox(width: 8),
-                                          Text(
-                                            _selectedLanguage.name,
-                                            style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold,
-                                              color: AppTheme.textSecondary,
-                                            ),
-                                          ),
-                                        ],
+                                      // Italian Audio button 🇮🇹
+                                      Tooltip(
+                                        message: 'Ascolta in Italiano',
+                                        child: InlineAudioButton(
+                                          text: question.domanda,
+                                          language: AppLanguage.italian,
+                                          audioUrl: null, // Use TTS for Italian
+                                          icon: Icons.volume_up,
+                                          color: Colors.green.shade400,
+                                        ),
                                       ),
-                                      // Audio button
-                                      GestureDetector(
-                                        onTap: () {
-                                          TtsService().speak(
-                                            translation,
-                                            language: _selectedLanguage,
-                                          );
-                                        },
-                                        child: Container(
-                                          padding: const EdgeInsets.all(12),
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue.shade400
-                                                .withOpacity(0.2),
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                              color: Colors.blue.shade400,
-                                              width: 2,
-                                            ),
-                                          ),
-                                          child: Icon(
-                                            Icons.volume_up,
+                                      const SizedBox(width: 4),
+                                      // Translation Audio button 🌐 - speaks TRANSLATED text
+                                      if (_selectedLanguage !=
+                                          AppLanguage.italian)
+                                        Tooltip(
+                                          message: 'Ascolta traduzione',
+                                          child: TranslationAudioButton(
+                                            questionId: question.id,
+                                            italianText: question.domanda,
+                                            targetLanguage: _selectedLanguage,
+                                            audioUrl: _translationService
+                                                .getAudioUrl(
+                                                  question.id,
+                                                  _selectedLanguage,
+                                                ),
+                                            icon: Icons.translate,
                                             color: Colors.blue.shade400,
-                                            size: 24,
+                                            getTranslation: (id, text, lang) =>
+                                                _translationService
+                                                    .getTranslationWithFallback(
+                                                      id,
+                                                      text,
+                                                      lang,
+                                                    ),
                                           ),
+                                        ),
+                                      // Bookmark button
+                                      IconButton(
+                                        onPressed: () =>
+                                            _toggleBookmark(question),
+                                        icon: Icon(
+                                          _bookmarkedIds.contains(question.id)
+                                              ? Icons.bookmark
+                                              : Icons.bookmark_border,
+                                          color:
+                                              _bookmarkedIds.contains(
+                                                question.id,
+                                              )
+                                              ? Colors.amber
+                                              : Colors.grey,
                                         ),
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 12),
-                                  Text(
-                                    translation,
-                                    textDirection:
-                                        _selectedLanguage == AppLanguage.urdu ||
-                                            _selectedLanguage ==
-                                                AppLanguage.punjabi
-                                        ? TextDirection.rtl
-                                        : TextDirection.ltr,
-                                    style: _selectedLanguage == AppLanguage.urdu
-                                        ? GoogleFonts.notoNastaliqUrdu(
-                                            fontSize: 18,
-                                            height: 1.6,
-                                            color: AppTheme.textPrimary,
-                                          )
-                                        : (_selectedLanguage ==
-                                                  AppLanguage.punjabi
-                                              ? GoogleFonts.notoSansGurmukhi(
-                                                  fontSize: 16,
-                                                  height: 1.4,
-                                                  color: AppTheme.textPrimary,
-                                                )
-                                              : TextStyle(
-                                                  fontSize: 16,
-                                                  height: 1.4,
-                                                  color: AppTheme.textPrimary,
-                                                )),
-                                  ),
                                 ],
-                              );
-                            } else {
-                              return Center(
-                                child: Text(
-                                  'Nessuna traduzione disponibile in ${_selectedLanguage.name}.',
-                                  style: TextStyle(
-                                    color: AppTheme.textSecondary,
-                                    fontStyle: FontStyle.italic,
+                              ),
+                              const SizedBox(height: 16),
+                              // Question text - Italian or clickable word-by-word translation
+                              if (_selectedLanguage == AppLanguage.italian)
+                                // Plain Italian text - no translation needed
+                                Text(
+                                  question.domanda,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.5,
                                   ),
+                                  textAlign: TextAlign.center,
+                                )
+                              else
+                                // Clickable word-by-word translation for other languages
+                                InteractiveTranslationText(
+                                  text: question.domanda,
+                                  targetLanguage: _selectedLanguage,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.5,
+                                  ),
+                                  textAlign: TextAlign.center,
                                 ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                    ],
-
-                    const SizedBox(height: 24),
-
-                    // Answer buttons
-                    Row(
-                      children: [
-                        Expanded(
-                          child: _buildAnswerButton(
-                            label: 'VERO',
-                            value: true,
-                            isSelected: _currentAnswer == true,
-                            isCorrectAnswer: question.risposta == true,
+                            ],
                           ),
                         ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: _buildAnswerButton(
-                            label: 'FALSO',
-                            value: false,
-                            isSelected: _currentAnswer == false,
-                            isCorrectAnswer: question.risposta == false,
+
+                        // Translation toggle button
+                        const SizedBox(height: 12),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _showTranslation = !_showTranslation;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              color: _showTranslation
+                                  ? AppTheme.primaryColor.withOpacity(0.2)
+                                  : AppTheme.cardColor,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: _showTranslation
+                                    ? AppTheme.primaryColor
+                                    : Colors.transparent,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.translate,
+                                  size: 20,
+                                  color: _showTranslation
+                                      ? AppTheme.primaryColor
+                                      : AppTheme.textSecondary,
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  _showTranslation ? 'Hide' : 'Translate',
+                                  style: TextStyle(
+                                    color: _showTranslation
+                                        ? AppTheme.primaryColor
+                                        : AppTheme.textSecondary,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Icon(
+                                  _showTranslation
+                                      ? Icons.keyboard_arrow_up
+                                      : Icons.keyboard_arrow_down,
+                                  color: _showTranslation
+                                      ? AppTheme.primaryColor
+                                      : AppTheme.textSecondary,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+
+                        // Translation panel with FutureBuilder
+                        if (_showTranslation) ...[
+                          const SizedBox(height: 12),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: AppTheme.primaryColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: AppTheme.primaryColor.withOpacity(0.3),
+                              ),
+                            ),
+                            child: FutureBuilder<String?>(
+                              future: _translationService
+                                  .getTranslationWithFallback(
+                                    question.id,
+                                    question.domanda,
+                                    _selectedLanguage,
+                                  ),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: AppTheme.primaryColor,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Text(
+                                        'Traduzione in corso...',
+                                        style: TextStyle(
+                                          color: AppTheme.textSecondary,
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
+
+                                final translation = snapshot.data;
+
+                                if (translation != null &&
+                                    translation.isNotEmpty) {
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                _selectedLanguage.flag,
+                                                style: const TextStyle(
+                                                  fontSize: 24,
+                                                ),
+                                              ),
+                                              const SizedBox(width: 8),
+                                              Text(
+                                                _selectedLanguage.name,
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: AppTheme.textSecondary,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          // Audio button
+                                          GestureDetector(
+                                            onTap: () {
+                                              TtsService().speak(
+                                                translation,
+                                                language: _selectedLanguage,
+                                                audioUrl: _translationService
+                                                    .getAudioUrl(
+                                                      question.id,
+                                                      _selectedLanguage,
+                                                    ),
+                                              );
+                                            },
+                                            child: Container(
+                                              padding: const EdgeInsets.all(12),
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue.shade400
+                                                    .withOpacity(0.2),
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                  color: Colors.blue.shade400,
+                                                  width: 2,
+                                                ),
+                                              ),
+                                              child: Icon(
+                                                Icons.volume_up,
+                                                color: Colors.blue.shade400,
+                                                size: 24,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      // Full translation
+                                      Text(
+                                        translation,
+                                        textDirection:
+                                            _selectedLanguage ==
+                                                    AppLanguage.urdu ||
+                                                _selectedLanguage ==
+                                                    AppLanguage.punjabi
+                                            ? TextDirection.rtl
+                                            : TextDirection.ltr,
+                                        style:
+                                            _selectedLanguage ==
+                                                AppLanguage.urdu
+                                            ? GoogleFonts.notoNastaliqUrdu(
+                                                fontSize: 18,
+                                                height: 1.6,
+                                                color: AppTheme.textPrimary,
+                                              )
+                                            : (_selectedLanguage ==
+                                                      AppLanguage.punjabi
+                                                  ? GoogleFonts.notoSansGurmukhi(
+                                                      fontSize: 16,
+                                                      height: 1.4,
+                                                      color:
+                                                          AppTheme.textPrimary,
+                                                    )
+                                                  : TextStyle(
+                                                      fontSize: 16,
+                                                      height: 1.4,
+                                                      color:
+                                                          AppTheme.textPrimary,
+                                                    )),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return Center(
+                                    child: Text(
+                                      'Nessuna traduzione disponibile in ${_selectedLanguage.name}.',
+                                      style: TextStyle(
+                                        color: AppTheme.textSecondary,
+                                        fontStyle: FontStyle.italic,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+
+                        const SizedBox(height: 16),
+
+                        // Combined Navigation & Answer Buttons Row
+                        Row(
+                          children: [
+                            // Previous Arrow
+                            IconButton(
+                              onPressed: _currentIndex > 0
+                                  ? _previousQuestion
+                                  : null,
+                              icon: Icon(
+                                Icons.chevron_left_rounded,
+                                color: _currentIndex > 0
+                                    ? AppTheme.primaryColor
+                                    : Colors.grey.withOpacity(0.3),
+                                size: 36,
+                              ),
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
+
+                            const SizedBox(width: 8),
+
+                            // VERO Button
+                            Expanded(
+                              child: _buildAnswerButton(
+                                label: 'VERO',
+                                value: true,
+                                isSelected: _currentAnswer == true,
+                                isCorrectAnswer: question.risposta == true,
+                              ),
+                            ),
+
+                            const SizedBox(width: 12),
+
+                            // FALSO Button
+                            Expanded(
+                              child: _buildAnswerButton(
+                                label: 'FALSO',
+                                value: false,
+                                isSelected: _currentAnswer == false,
+                                isCorrectAnswer: question.risposta == false,
+                              ),
+                            ),
+
+                            const SizedBox(width: 8),
+
+                            // Next Arrow
+                            IconButton(
+                              onPressed: _nextQuestion,
+                              icon: _currentIndex < _questions.length - 1
+                                  ? Icon(
+                                      Icons.chevron_right_rounded,
+                                      color: AppTheme.primaryColor,
+                                      size: 36,
+                                    )
+                                  : Icon(
+                                      Icons.check_circle_rounded,
+                                      color: AppTheme.accentGreen,
+                                      size: 32,
+                                    ),
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
+                          ],
+                        ),
+
+                        // Result feedback
+                        if (_hasAnswered) ...[
+                          const SizedBox(height: 20),
+                          Container(
+                            padding: const EdgeInsets.all(16),
+                            decoration: BoxDecoration(
+                              color: isCorrect
+                                  ? AppTheme.accentGreen.withOpacity(0.15)
+                                  : AppTheme.accentRed.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: isCorrect
+                                    ? AppTheme.accentGreen
+                                    : AppTheme.accentRed,
+                                width: 1,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  isCorrect ? Icons.check_circle : Icons.cancel,
+                                  color: isCorrect
+                                      ? AppTheme.accentGreen
+                                      : AppTheme.accentRed,
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  isCorrect
+                                      ? 'Risposta corretta!'
+                                      : 'Risposta errata!',
+                                  style: TextStyle(
+                                    color: isCorrect
+                                        ? AppTheme.accentGreen
+                                        : AppTheme.accentRed,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (!isCorrect) ...[
+                            const SizedBox(height: 12),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFF59E0B).withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: const Color(0xFFF59E0B),
+                                ),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.lightbulb_outline,
+                                        color: Color(0xFFF59E0B),
+                                        size: 20,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      const Text(
+                                        'Spiegazione:',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFFF59E0B),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'La risposta corretta è ${question.risposta ? "VERO" : "FALSO"}. Ripassa il capitolo "${question.argomento}".',
+                                    style: TextStyle(
+                                      color:
+                                          Theme.of(
+                                            context,
+                                          ).textTheme.bodyMedium?.color ??
+                                          Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ],
+                      ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+              ],
+            ),
+          ),
+          // Animated Answer Feedback Overlay
+          if (_showAnswerOverlay)
+            AnimatedOpacity(
+              opacity: _showAnswerOverlay ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 200),
+              child: Container(
+                color: (_lastAnswerCorrect ?? false)
+                    ? Colors.green.withOpacity(0.85)
+                    : Colors.red.withOpacity(0.85),
+                child: Center(
+                  child: TweenAnimationBuilder<double>(
+                    duration: const Duration(milliseconds: 400),
+                    tween: Tween(begin: 0.0, end: 1.0),
+                    curve: Curves.elasticOut,
+                    builder: (context, value, child) {
+                      return Transform.scale(scale: value, child: child);
+                    },
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 20,
+                                offset: const Offset(0, 8),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            (_lastAnswerCorrect ?? false)
+                                ? Icons.check_rounded
+                                : Icons.close_rounded,
+                            size: 80,
+                            color: (_lastAnswerCorrect ?? false)
+                                ? Colors.green
+                                : Colors.red,
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(
+                          (_lastAnswerCorrect ?? false)
+                              ? 'CORRETTO!'
+                              : 'SBAGLIATO!',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2,
                           ),
                         ),
                       ],
                     ),
-
-                    // Result feedback
-                    if (_hasAnswered) ...[
-                      const SizedBox(height: 20),
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: isCorrect
-                              ? AppTheme.accentGreen.withOpacity(0.15)
-                              : AppTheme.accentRed.withOpacity(0.15),
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: isCorrect
-                                ? AppTheme.accentGreen
-                                : AppTheme.accentRed,
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              isCorrect ? Icons.check_circle : Icons.cancel,
-                              color: isCorrect
-                                  ? AppTheme.accentGreen
-                                  : AppTheme.accentRed,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              isCorrect
-                                  ? 'Risposta corretta!'
-                                  : 'Risposta errata!',
-                              style: TextStyle(
-                                color: isCorrect
-                                    ? AppTheme.accentGreen
-                                    : AppTheme.accentRed,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ],
+                  ),
                 ),
               ),
             ),
-
-            // Navigation buttons (always visible)
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  // Previous button
-                  Expanded(
-                    child: SizedBox(
-                      height: 56,
-                      child: OutlinedButton.icon(
-                        onPressed: _currentIndex > 0 ? _previousQuestion : null,
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: AppTheme.textPrimary,
-                          side: BorderSide(
-                            color: _currentIndex > 0
-                                ? AppTheme.primaryColor
-                                : AppTheme.cardColor,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        icon: const Icon(Icons.arrow_back_ios, size: 18),
-                        label: const Text(
-                          'Precedente',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  // Next button - always enabled for navigation
-                  Expanded(
-                    child: SizedBox(
-                      height: 56,
-                      child: ElevatedButton.icon(
-                        onPressed: _nextQuestion,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppTheme.primaryColor,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                        icon: Icon(
-                          _currentIndex < _questions.length - 1
-                              ? Icons.arrow_forward_ios
-                              : Icons.check_circle,
-                          size: 18,
-                        ),
-                        label: Text(
-                          _currentIndex < _questions.length - 1
-                              ? 'Prossima'
-                              : 'Risultati',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -924,6 +1109,8 @@ class _QuizScreenState extends State<QuizScreen> {
         return 'Simulazione Esame';
       case QuizMode.topic:
         return widget.topic ?? 'Quiz per Argomento';
+      case QuizMode.errors:
+        return 'Ripasso Errori';
     }
   }
 }

@@ -14,7 +14,7 @@ const TTS_URL = 'https://texttospeech.googleapis.com/v1/text:synthesize';
 
 // Inizializza Firebase
 const newApp = admin.initializeApp({
-    credential: admin.credential.cert('./new-firebase-key.json'),
+    credential: admin.credential.cert(path.join(__dirname, 'new-firebase-key.json')),
     projectId: 'patente-b-2025',
     storageBucket: 'patente-b-2025.firebasestorage.app'
 }, 'audio-gen');
@@ -37,7 +37,7 @@ const VOICE_CONFIG = {
 };
 
 // Progress file
-const PROGRESS_FILE = './audio_generation_progress.json';
+const PROGRESS_FILE = path.join(__dirname, 'audio_generation_progress.json');
 const BATCH_SIZE = 10;
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));

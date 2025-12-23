@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
-import '../../services/italian_test_service.dart';
 import 'italian_test_screen.dart';
 
 class ItalianLevelScreen extends StatelessWidget {
@@ -8,12 +7,12 @@ class ItalianLevelScreen extends StatelessWidget {
   final String title;
   final Color color;
 
-  ItalianLevelScreen({
-    Key? key,
+  const ItalianLevelScreen({
+    super.key,
     required this.level,
     required this.title,
     required this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

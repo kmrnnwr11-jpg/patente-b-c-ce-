@@ -10,11 +10,11 @@ class ItalianTestScreen extends StatefulWidget {
   final String title;
 
   const ItalianTestScreen({
-    Key? key,
+    super.key,
     required this.level,
     required this.section,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   State<ItalianTestScreen> createState() => _ItalianTestScreenState();
@@ -31,7 +31,7 @@ class _ItalianTestScreenState extends State<ItalianTestScreen> {
   int _remainingSeconds = 0;
 
   // Track answers: questionId -> selectedOptionIndex
-  Map<int, int> _userAnswers = {};
+  final Map<int, int> _userAnswers = {};
 
   @override
   void initState() {
@@ -279,7 +279,7 @@ class _ItalianTestScreenState extends State<ItalianTestScreen> {
           ),
           const SizedBox(height: 12),
 
-          ...exercise.questions.map((q) => _buildQuestion(q)).toList(),
+          ...exercise.questions.map((q) => _buildQuestion(q)),
 
           const SizedBox(height: 40),
 
@@ -423,7 +423,7 @@ class _ItalianTestScreenState extends State<ItalianTestScreen> {
                 ),
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

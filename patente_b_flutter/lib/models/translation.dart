@@ -29,6 +29,8 @@ class TranslatedQuestion {
   final String? immagine;
   final String argomento;
   final String? argomentoEn;
+  final String? urAudio;
+  final String? paAudio;
 
   TranslatedQuestion({
     required this.id,
@@ -38,6 +40,8 @@ class TranslatedQuestion {
     this.immagine,
     required this.argomento,
     this.argomentoEn,
+    this.urAudio,
+    this.paAudio,
   });
 
   factory TranslatedQuestion.fromJson(Map<String, dynamic> json) {
@@ -49,6 +53,8 @@ class TranslatedQuestion {
       immagine: json['immagine'],
       argomento: json['argomento'] ?? '',
       argomentoEn: json['argomento_en'],
+      urAudio: json['ur_audio'],
+      paAudio: json['pa_audio'],
     );
   }
 
@@ -69,6 +75,18 @@ class TranslatedQuestion {
         return argomentoEn ?? argomento;
       default:
         return argomento;
+    }
+  }
+
+  /// Get the audio URL for the specified language
+  String? getAudioUrl(AppLanguage language) {
+    switch (language) {
+      case AppLanguage.urdu:
+        return urAudio;
+      case AppLanguage.punjabi:
+        return paAudio;
+      default:
+        return null;
     }
   }
 }
