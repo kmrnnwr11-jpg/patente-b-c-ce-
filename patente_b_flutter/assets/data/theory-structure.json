@@ -264,7 +264,7 @@
           "id": "doppio-senso-di-circolazione",
           "title": "DOPPIO SENSO DI CIRCOLAZIONE",
           "content": "Indica che la strada, che precedentemente era a senso unico, adesso diventa a\ndoppio senso (cioè vengono veicoli di fronte); pertanto bisogna fare maggiore\nattenzione, specie quando si effettua un sorpasso. Se a fondo giallo è posto in\npresenza di lavori in corso. È sbagliato dire che bisogna dare precedenza ai vei-\ncoli provenienti dal senso opposto o che il traffico si svolge su due carreggiate\nseparate.",
-          "image": "assets/images/segnali/doppio-senso-circolazione.png"
+          "image": "assets/images/segnali/doppio-senso-v2.jpg"
         },
         {
           "id": "preavviso-di-circolazione-rotatoria",
@@ -354,7 +354,7 @@
           "id": "preavviso-di-dare-precedenza",
           "title": "PREAVVISO DI DARE PRECEDENZA",
           "content": "Presegnala la successiva presenza del segnale \"Dare Precedenza\" (fig. 40) ed in-\ndica la distanza dall'incrocio in cui dovremo dare la precedenza sia a destra che\na sinistra; bisogna rallentare per potersi fermare se ci sono veicoli cui bisogna\ndare la precedenza; indica che la strada che percorriamo non ha diritto di prece-\ndenza e si può incontrare prima di un incrocio a forma di \"T\". È sbagliato dire\nche il segnale è un \"preavviso di fermarsi e dare precedenza\" (fig. 43) oppure\nche all'incrocio dobbiamo obbligatoriamente fermarci.",
-          "image": "assets/images/segnali/preavviso-dare-precedenza.png"
+          "image": "assets/images/segnali/preavviso-dare-precedenza-v2.jpg"
         },
         {
           "id": "fermarsi-e-dare-precedenza--stop",
@@ -444,7 +444,8 @@
         {
           "id": "introduzione",
           "title": "Introduzione",
-          "content": "Lezione 4. Segnali di Divieto\nOggetto di questa lezione è il secondo gruppo dei segnali di prescrizione che compren-\nde i segnali di divieto, ovvero di quei cartelli che vietano o limitano il transito di tutti o\ndi alcuni veicoli, o impongono limitazioni di velocità, sorpasso, sosta, ecc.\nSono tutti circolari, con bordo rosso ad eccezione di quelli che indicano la fine di un\nlimite (circolari e bianchi) e di quelli di parcheggio."
+          "content": "Lezione 4. Segnali di Divieto\nOggetto di questa lezione è il secondo gruppo dei segnali di prescrizione che compren-\nde i segnali di divieto, ovvero di quei cartelli che vietano o limitano il transito di tutti o\ndi alcuni veicoli, o impongono limitazioni di velocità, sorpasso, sosta, ecc.\nSono tutti circolari, con bordo rosso ad eccezione di quelli che indicano la fine di un\nlimite (circolari e bianchi) e di quelli di parcheggio.",
+          "image": "assets/images/theory/lesson4/introduzione_v1.png"
         },
         {
           "id": "divieto-di-transito",
@@ -653,7 +654,8 @@
         {
           "id": "introduzione",
           "title": "Introduzione",
-          "content": "Lezione 5. Segnali di Obbligo\nI segnali di obbligo sono la terza categoria distinta nell'ambito dei segnali di prescri-\nzione. Hanno questo nome perché impongono un comportamento (proseguire in una\ncerta direzione, fermarsi in corrispondenza di postazioni di controllo, mantenere una ve-\nlocità minima, circolare con catene), ovvero riservano l'uso della strada, o di una sua\nparte, a specifiche categorie di utenti (pedoni, biciclette o quadrupedi).\nSono circolari e hanno tutti colore blu con disegni bianchi, ad eccezione dei segnali che\nobbligano a fermarsi che assomigliano ai segnali di divieto."
+          "content": "Lezione 5. Segnali di Obbligo\nI segnali di obbligo sono la terza categoria distinta nell'ambito dei segnali di prescri-\nzione. Hanno questo nome perché impongono un comportamento (proseguire in una\ncerta direzione, fermarsi in corrispondenza di postazioni di controllo, mantenere una ve-\nlocità minima, circolare con catene), ovvero riservano l'uso della strada, o di una sua\nparte, a specifiche categorie di utenti (pedoni, biciclette o quadrupedi).\nSono circolari e hanno tutti colore blu con disegni bianchi, ad eccezione dei segnali che\nobbligano a fermarsi che assomigliano ai segnali di divieto.",
+          "image": "assets/images/theory/lesson5/introduzione_v1.png"
         },
         {
           "id": "direzione-obbligatoria-diritto",

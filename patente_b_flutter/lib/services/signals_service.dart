@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/signal.dart';
@@ -51,9 +52,9 @@ class SignalsService {
       }
 
       _isLoaded = true;
-      print('✅ Loaded ${_signals.length} signals');
+      debugPrint('✅ Loaded ${_signals.length} signals');
     } catch (e) {
-      print('Error loading signals: $e');
+      debugPrint('Error loading signals: $e');
       _signals = [];
     }
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:translator/translator.dart';
 import '../models/translation.dart';
 
@@ -24,14 +25,14 @@ class GoogleTranslateService {
     // Check cache first
     final cacheKey = '${text}_$targetCode';
     if (_cache.containsKey(cacheKey)) {
-      print(
+      debugPrint(
         '📦 Google Translate cache hit for: ${text.substring(0, text.length > 20 ? 20 : text.length)}...',
       );
       return _cache[cacheKey];
     }
 
     try {
-      print('🌐 Calling Google Translate API: IT → $targetCode');
+      debugPrint('🌐 Calling Google Translate API: IT → $targetCode');
       final translation = await _translator.translate(
         text,
         from: 'it',
@@ -43,12 +44,12 @@ class GoogleTranslateService {
       // Cache the result
       _cache[cacheKey] = translatedText;
 
-      print(
+      debugPrint(
         '✅ Google Translate result: ${translatedText.substring(0, translatedText.length > 30 ? 30 : translatedText.length)}...',
       );
       return translatedText;
     } catch (e) {
-      print('❌ Google Translate error: $e');
+      debugPrint('❌ Google Translate error: $e');
       return null;
     }
   }

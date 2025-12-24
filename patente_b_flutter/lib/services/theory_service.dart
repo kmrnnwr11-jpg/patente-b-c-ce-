@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/theory_chapter.dart';
@@ -157,7 +158,7 @@ class TheoryService {
                 } else {
                   fullImagePath = cleanPath;
                 }
-                print(
+                debugPrint(
                   '🔍 DEBUG IMAGE PATH: $imagePath -> $cleanPath -> $fullImagePath',
                 );
               }
@@ -183,12 +184,12 @@ class TheoryService {
               ),
             );
           }
-          print(
+          debugPrint(
             'Loaded ${signalChapters.length} signal chapters with ${signalChapters.fold(0, (sum, c) => sum + c.sections.length)} signals',
           );
         }
       } catch (e) {
-        print('Error loading signals: $e');
+        debugPrint('Error loading signals: $e');
       }
 
       // 2. Load the complete lessons file (with general theory)
@@ -205,18 +206,20 @@ class TheoryService {
           theoryChapters = chapters
               .map((c) => TheoryChapter.fromJson(c))
               .toList();
-          print('Loaded ${theoryChapters.length} theory chapters');
+          debugPrint('Loaded ${theoryChapters.length} theory chapters');
           // Debug: Check if first chapter has images
           if (theoryChapters.isNotEmpty) {
             final firstChapter = theoryChapters.first;
-            print('📸 First chapter: ${firstChapter.title}');
+            debugPrint('📸 First chapter: ${firstChapter.title}');
             for (var section in firstChapter.sections) {
-              print('  📷 Section "${section.title}" image: ${section.image}');
+              debugPrint(
+                '  📷 Section "${section.title}" image: ${section.image}',
+              );
             }
           }
         }
       } catch (e) {
-        print('Error loading theory lessons: $e');
+        debugPrint('Error loading theory lessons: $e');
       }
 
       // 3. Combine: Signal chapters first, then general theory
@@ -239,9 +242,9 @@ class TheoryService {
       });
 
       _isLoaded = true;
-      print('Theory loaded: ${_chapters.length} total chapters');
+      debugPrint('Theory loaded: ${_chapters.length} total chapters');
     } catch (e) {
-      print('Error loading theory: $e');
+      debugPrint('Error loading theory: $e');
       _chapters = [];
     }
   }

@@ -9183,7 +9183,7 @@
     "id": 1021,
     "domanda": "The sign depicted heralds that a one-way roadway, becomes a two-way roadway",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9192,7 +9192,7 @@
     "id": 1022,
     "domanda": "The sign depicted forewarns that, a little further on, you may encounter vehicles marching in the opposite direction",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9201,7 +9201,7 @@
     "id": 1023,
     "domanda": "The sign depicted heralds the end of the one-way traffic direction",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9210,7 +9210,7 @@
     "id": 1024,
     "domanda": "The sign depicted is a warning sign",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9219,7 +9219,7 @@
     "id": 1025,
     "domanda": "The sign depicted indicates that, just beyond that, more caution will need to be used",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9228,7 +9228,7 @@
     "id": 1026,
     "domanda": "The sign shown, if yellow background, is placed in the presence of work in progress",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9237,7 +9237,7 @@
     "id": 1027,
     "domanda": "In the presence of the depicted signal, overtaking, if allowed, should be done with special caution",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9246,7 +9246,7 @@
     "id": 1028,
     "domanda": "The sign depicted announces that traffic is on two separate carriageways",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9255,7 +9255,7 @@
     "id": 1029,
     "domanda": "The sign depicted heralds that traffic becomes one-way",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9264,7 +9264,7 @@
     "id": 1030,
     "domanda": "The sign depicted requires you to give way to vehicles coming in the opposite direction",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9273,7 +9273,7 @@
     "id": 1031,
     "domanda": "The sign depicted heralds the right of way in alternating one-way directions",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9282,7 +9282,7 @@
     "id": 1032,
     "domanda": "The signal depicted heralds that you must turn back",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9291,7 +9291,7 @@
     "id": 1033,
     "domanda": "The sign depicted heralds an alternating one-way street",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9300,7 +9300,7 @@
     "id": 1034,
     "domanda": "The sign depicted is a mandatory direction notice",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -19713,7 +19713,7 @@
     "id": 2191,
     "domanda": "The sign depicted is a prescription sign",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19722,7 +19722,7 @@
     "id": 2192,
     "domanda": "The sign depicted is a warning to give right and left right of way",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19731,7 +19731,7 @@
     "id": 2193,
     "domanda": "The signal depicted heralds the subsequent presence of a GIVE PREEMPTION signal.",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19740,7 +19740,7 @@
     "id": 2194,
     "domanda": "The sign shown indicates the distance to the intersection where we need to give right of way",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19749,7 +19749,7 @@
     "id": 2195,
     "domanda": "The depicted signal announces to slow down in order to stop if there are vehicles that need to be given right of way",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19758,7 +19758,7 @@
     "id": 2196,
     "domanda": "The signal depicted may herald a T-junction, where you must give right of way",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19767,7 +19767,7 @@
     "id": 2197,
     "domanda": "The sign depicted is placed on a road that has no right of way",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19776,7 +19776,7 @@
     "id": 2198,
     "domanda": "The sign depicted is a warning to stop and give way",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19785,7 +19785,7 @@
     "id": 2199,
     "domanda": "The signal depicted foretells the distance to the next STOP signal",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19794,7 +19794,7 @@
     "id": 2200,
     "domanda": "The sign shown indicates the distance to the intersection where we will have to compulsorily stop",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19803,7 +19803,7 @@
     "id": 2201,
     "domanda": "In the presence of the depicted signal, it is mandatory to stop at the next intersection",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19812,7 +19812,7 @@
     "id": 2202,
     "domanda": "The sign depicted heralds an intersection where the rule of giving right-of-way only applies",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19821,7 +19821,7 @@
     "id": 2203,
     "domanda": "The sign depicted heralds the presence of a three-light traffic light at 320 meters",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"

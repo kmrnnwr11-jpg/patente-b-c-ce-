@@ -120,7 +120,7 @@
         },
         {
           "id": "doppio-senso",
-          "image": "/images/segnali/doppio-senso.png",
+          "image": "/images/segnali/doppio-senso-v2.jpg",
           "nome": "Strada a doppio senso di circolazione",
           "descrizione": "Preavvisa l'inizio o la ripresa del doppio senso di circolazione dopo un tratto a senso unico.",
           "comportamento": "Tenersi sulla destra, prestare attenzione ai veicoli provenienti dal senso opposto."

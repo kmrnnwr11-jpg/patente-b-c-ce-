@@ -9183,7 +9183,7 @@
     "id": 1021,
     "domanda": "Il segnale raffigurato preannuncia che una carreggiata a senso unico, diventa a doppio senso di circolazione",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9192,7 +9192,7 @@
     "id": 1022,
     "domanda": "Il segnale raffigurato preannuncia che, poco oltre, si potranno incontrare veicoli che marciano in senso opposto",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9201,7 +9201,7 @@
     "id": 1023,
     "domanda": "Il segnale raffigurato preannuncia che termina il senso unico di circolazione",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9210,7 +9210,7 @@
     "id": 1024,
     "domanda": "Il segnale raffigurato è un segnale di pericolo",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9219,7 +9219,7 @@
     "id": 1025,
     "domanda": "Il segnale raffigurato indica che, poco oltre, occorrerà usare maggiore prudenza",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9228,7 +9228,7 @@
     "id": 1026,
     "domanda": "Il segnale raffigurato, se a fondo giallo, è posto in presenza di lavori in corso",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9237,7 +9237,7 @@
     "id": 1027,
     "domanda": "In presenza del segnale raffigurato il sorpasso, se consentito, deve essere effettuato con particolare prudenza",
     "risposta": true,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9246,7 +9246,7 @@
     "id": 1028,
     "domanda": "Il segnale raffigurato preannuncia che il traffico si svolge su due carreggiate separate",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9255,7 +9255,7 @@
     "id": 1029,
     "domanda": "Il segnale raffigurato preannuncia che la circolazione diventa a senso unico",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9264,7 +9264,7 @@
     "id": 1030,
     "domanda": "Il segnale raffigurato impone di dare la precedenza ai veicoli provenienti in senso contrario",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9273,7 +9273,7 @@
     "id": 1031,
     "domanda": "Il segnale raffigurato preannuncia il diritto di precedenza nei sensi unici alternati",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9282,7 +9282,7 @@
     "id": 1032,
     "domanda": "Il segnale raffigurato preannuncia che bisogna ritornare indietro",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9291,7 +9291,7 @@
     "id": 1033,
     "domanda": "Il segnale raffigurato preannuncia un senso unico alternato",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -9300,7 +9300,7 @@
     "id": 1034,
     "domanda": "Il segnale raffigurato è un preavviso di direzione obbligatoria",
     "risposta": false,
-    "immagine": "/images/quiz/28.png",
+    "immagine": "/images/quiz/fig-28-v2.jpg",
     "argomento": "Segnali di pericolo",
     "sottoArgomento": "doppio senso circolazione",
     "difficulty": "medium"
@@ -19713,7 +19713,7 @@
     "id": 2191,
     "domanda": "Il segnale raffigurato è un segnale di prescrizione",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19722,7 +19722,7 @@
     "id": 2192,
     "domanda": "Il segnale raffigurato è un preavviso di dare precedenza sia a destra che a sinistra",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19731,7 +19731,7 @@
     "id": 2193,
     "domanda": "Il segnale raffigurato preannuncia la successiva presenza di un segnale di DARE PRECEDENZA",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19740,7 +19740,7 @@
     "id": 2194,
     "domanda": "Il segnale raffigurato indica la distanza dall'incrocio in cui dobbiamo dare precedenza",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19749,7 +19749,7 @@
     "id": 2195,
     "domanda": "Il segnale raffigurato preannuncia di rallentare per potersi fermare se ci sono veicoli cui bisogna dare precedenza",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19758,7 +19758,7 @@
     "id": 2196,
     "domanda": "Il segnale raffigurato può preannunciare un incrocio a T, in cui bisogna dare la precedenza",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19767,7 +19767,7 @@
     "id": 2197,
     "domanda": "Il segnale raffigurato è posto su una strada che non ha diritto di precedenza",
     "risposta": true,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19776,7 +19776,7 @@
     "id": 2198,
     "domanda": "Il segnale raffigurato è un preavviso di fermarsi e dare precedenza",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19785,7 +19785,7 @@
     "id": 2199,
     "domanda": "Il segnale raffigurato preannuncia la distanza dal prossimo segnale di STOP",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19794,7 +19794,7 @@
     "id": 2200,
     "domanda": "Il segnale raffigurato indica la distanza dall'incrocio in cui dovremo obbligatoriamente fermarci",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19803,7 +19803,7 @@
     "id": 2201,
     "domanda": "In presenza del segnale raffigurato è obbligatorio fermarsi al prossimo incrocio",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19812,7 +19812,7 @@
     "id": 2202,
     "domanda": "Il segnale raffigurato preannuncia un incrocio in cui vale la regola di dare la precedenza solo a destra",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"
@@ -19821,7 +19821,7 @@
     "id": 2203,
     "domanda": "Il segnale raffigurato preannuncia la presenza di un semaforo a tre luci a 320 metri",
     "risposta": false,
-    "immagine": "/images/quiz/42.png",
+    "immagine": "/images/quiz/fig-42-v2.jpg",
     "argomento": "Segnali di precedenza",
     "sottoArgomento": "preavviso precedenza",
     "difficulty": "medium"

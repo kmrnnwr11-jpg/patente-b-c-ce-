@@ -4,7 +4,6 @@ import '../../models/translation.dart';
 import '../quiz/quiz_screen.dart';
 import '../../services/translation_service.dart';
 import '../../services/language_preference_service.dart';
-import '../../widgets/translation/language_selector.dart';
 import '../../widgets/translation/hover_translation_text.dart';
 import '../../widgets/audio/audio_button.dart';
 

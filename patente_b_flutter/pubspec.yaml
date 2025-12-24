@@ -23,6 +23,9 @@ dependencies:
   translator: ^1.0.0
   audioplayers: ^6.5.1
   path_provider: ^2.1.5
+  video_player: ^2.10.1
+  chewie: ^1.13.0
+  youtube_player_flutter: ^9.1.3
 
 dev_dependencies:
   flutter_test:
@@ -39,4 +42,7 @@ flutter:
     - assets/images/theory-icons/
     - assets/images/theory-pdf/
     - assets/images/theory/lesson1/
+    - assets/images/theory/lesson4/
+    - assets/images/theory/lesson5/
+    - assets/images/theory/lesson7/
     - assets/data/italian-tests/

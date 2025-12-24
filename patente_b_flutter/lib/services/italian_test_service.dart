@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/italian_test.dart';
@@ -13,7 +14,7 @@ class ItalianTestService {
       final Map<String, dynamic> jsonMap = json.decode(jsonString);
       return ItalianTest.fromJson(jsonMap);
     } catch (e) {
-      print('Error loading Italian test $level-$section: $e');
+      debugPrint('Error loading Italian test $level-$section: $e');
       rethrow;
     }
   }

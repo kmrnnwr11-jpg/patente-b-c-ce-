@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../services/stats_service.dart';
-import '../services/course_service.dart';
 import '../services/language_preference_service.dart';
 import '../models/translation.dart';
 import '../theme/app_theme.dart';
@@ -10,10 +7,9 @@ import 'quiz/quiz_screen.dart';
 import 'quiz/topic_selection_screen.dart';
 import 'theory/theory_screen.dart';
 import 'theory/signals_screen.dart';
-import 'bookmarks/bookmarked_questions_screen.dart';
-import 'stats/stats_screen.dart';
 import 'settings/settings_screen.dart';
 import 'documents/documents_screen.dart';
+import 'ai_tutor/tutor_topic_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -57,6 +53,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               _buildPreparationBar(context),
               const SizedBox(height: 24),
               _buildMainActions(context),
+              const SizedBox(height: 16),
+              _buildAiTutorAction(context),
               const SizedBox(height: 24),
               _buildGridActions(context),
             ],
@@ -240,8 +238,74 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+  Widget _buildAiTutorAction(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _openAiTutor(context),
+      child: Container(
+        height: 100,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.indigo.shade800, Colors.indigo.shade500],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.indigo.withOpacity(0.4),
+              blurRadius: 12,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.play_circle_fill,
+                color: Colors.white,
+                size: 32,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Ascolta Lezione Video',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Tutorial audiovisivi per imparare meglio',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white.withOpacity(0.8),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildGridActions(BuildContext context) {
-    final theme = Theme.of(context);
     // Grid of 4 items
     return GridView.count(
       crossAxisCount: 4,
@@ -290,11 +354,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
     required String subtitle,
     required Color color,
     required VoidCallback onTap,
+    bool fullWidth = false,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 160,
+        width: fullWidth ? double.infinity : null,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: color,
@@ -448,6 +514,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const SettingsScreen()),
+    );
+  }
+
+  void _openAiTutor(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TutorTopicScreen(language: _selectedLanguage),
+      ),
     );
   }
 }

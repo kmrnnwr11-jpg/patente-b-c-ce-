@@ -49,8 +49,7 @@ class AppTheme {
       colorScheme: ColorScheme.light(
         primary: primaryColor,
         secondary: accentGreen,
-        surface: Colors.white,
-        background: const Color(0xFFF1F5F9), // Slate 100
+        surface: Colors.white, // Slate 100
         error: accentRed,
         onPrimary: Colors.white,
         onSurface: const Color(0xFF1E293B), // Slate 800
@@ -58,9 +57,7 @@ class AppTheme {
       scaffoldBackgroundColor: const Color(0xFFF8FAFC), // Slate 50
       cardColor: Colors.white,
       dividerColor: const Color(0xFFE2E8F0), // Slate 200
-      textTheme: GoogleFonts.interTextTheme(
-        ThemeData.light().textTheme,
-      ).apply(
+      textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme).apply(
         bodyColor: const Color(0xFF1E293B), // Slate 800
         displayColor: const Color(0xFF0F172A), // Slate 900
       ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/translation.dart';
 
@@ -32,13 +33,13 @@ class LanguagePreferenceService {
 
       if (savedCode != null) {
         _preferredLanguage = _languageFromCode(savedCode);
-        print('🌐 Loaded preferred language: ${_preferredLanguage.name}');
+        debugPrint('🌐 Loaded preferred language: ${_preferredLanguage.name}');
       } else {
-        print('🌐 No saved language preference, using Italian as default');
+        debugPrint('🌐 No saved language preference, using Italian as default');
       }
       _isLoaded = true;
     } catch (e) {
-      print('Error loading language preference: $e');
+      debugPrint('Error loading language preference: $e');
       _isLoaded = true;
     }
   }
@@ -50,9 +51,9 @@ class LanguagePreferenceService {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(_prefKey, language.code);
-      print('🌐 Saved preferred language: ${language.name}');
+      debugPrint('🌐 Saved preferred language: ${language.name}');
     } catch (e) {
-      print('Error saving language preference: $e');
+      debugPrint('Error saving language preference: $e');
     }
   }
 

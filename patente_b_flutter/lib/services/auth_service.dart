@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -43,11 +44,11 @@ class AuthService {
 
       // Sign in to Firebase with the Google credential
       final userCredential = await _auth.signInWithCredential(credential);
-      print('✅ Signed in as: ${userCredential.user?.displayName}');
+      debugPrint('✅ Signed in as: ${userCredential.user?.displayName}');
 
       return userCredential;
     } catch (e) {
-      print('❌ Google sign in failed: $e');
+      debugPrint('❌ Google sign in failed: $e');
       rethrow;
     }
   }
@@ -56,10 +57,10 @@ class AuthService {
   Future<UserCredential> signInAnonymously() async {
     try {
       final userCredential = await _auth.signInAnonymously();
-      print('✅ Signed in anonymously');
+      debugPrint('✅ Signed in anonymously');
       return userCredential;
     } catch (e) {
-      print('❌ Anonymous sign in failed: $e');
+      debugPrint('❌ Anonymous sign in failed: $e');
       rethrow;
     }
   }
@@ -68,9 +69,9 @@ class AuthService {
   Future<void> signOut() async {
     try {
       await Future.wait([_auth.signOut(), _googleSignIn.signOut()]);
-      print('✅ Signed out successfully');
+      debugPrint('✅ Signed out successfully');
     } catch (e) {
-      print('❌ Sign out failed: $e');
+      debugPrint('❌ Sign out failed: $e');
       rethrow;
     }
   }

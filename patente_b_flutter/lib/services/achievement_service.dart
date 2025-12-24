@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
@@ -195,7 +196,7 @@ class AchievementService {
       }
       _isLoaded = true;
     } catch (e) {
-      print('Error loading achievements: $e');
+      debugPrint('Error loading achievements: $e');
     }
   }
 
@@ -206,7 +207,7 @@ class AchievementService {
       final jsonList = _achievements.values.map((a) => a.toJson()).toList();
       await prefs.setString(_storageKey, json.encode(jsonList));
     } catch (e) {
-      print('Error saving achievements: $e');
+      debugPrint('Error saving achievements: $e');
     }
   }
 

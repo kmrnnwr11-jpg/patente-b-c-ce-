@@ -256,7 +256,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final bool examPassed = widget.mode == QuizMode.exam && _wrongAnswers <= 3;
     final bool perfectQuiz = _wrongAnswers == 0;
 
-    final xpEarned = await _statsService.recordQuizCompleted(
+    await _statsService.recordQuizCompleted(
       correct: _correctAnswers,
       wrong: _wrongAnswers,
       mode: widget.mode.name,

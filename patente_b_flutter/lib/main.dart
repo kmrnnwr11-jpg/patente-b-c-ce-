@@ -23,7 +23,7 @@ void main() async {
   try {
     await FirebaseService().initialize();
   } catch (e) {
-    print('Failed to initialize Firebase: $e');
+    debugPrint('Failed to initialize Firebase: $e');
   }
 
   // Initialize Services

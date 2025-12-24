@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,11 +27,11 @@ class QuizService {
       _questions = jsonList
           .map((json) => QuizQuestion.fromJson(json as Map<String, dynamic>))
           .toList();
-      
+
       await _loadWrongAnswers();
       _isLoaded = true;
     } catch (e) {
-      print('Error loading quiz questions: $e');
+      debugPrint('Error loading quiz questions: $e');
       _questions = [];
     }
   }
@@ -47,8 +48,8 @@ class QuizService {
     _wrongQuestionIds.add(questionId);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(
-      'wrong_answers', 
-      _wrongQuestionIds.map((e) => e.toString()).toList()
+      'wrong_answers',
+      _wrongQuestionIds.map((e) => e.toString()).toList(),
     );
   }
 
@@ -57,8 +58,8 @@ class QuizService {
       _wrongQuestionIds.remove(questionId);
       final prefs = await SharedPreferences.getInstance();
       await prefs.setStringList(
-        'wrong_answers', 
-        _wrongQuestionIds.map((e) => e.toString()).toList()
+        'wrong_answers',
+        _wrongQuestionIds.map((e) => e.toString()).toList(),
       );
     }
   }
@@ -91,7 +92,7 @@ class QuizService {
     final errorQuestions = _questions
         .where((q) => _wrongQuestionIds.contains(q.id))
         .toList();
-    
+
     // If we have more than 20, just take 20 random ones from errors
     if (errorQuestions.length > 20) {
       errorQuestions.shuffle();

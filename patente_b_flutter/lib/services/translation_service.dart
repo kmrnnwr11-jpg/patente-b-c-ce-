@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -50,9 +51,9 @@ class TranslationService {
       }
 
       _isLoaded = true;
-      print('Loaded ${_translationsEn.length} translations');
+      debugPrint('Loaded ${_translationsEn.length} translations');
     } catch (e) {
-      print('Error loading translations: $e');
+      debugPrint('Error loading translations: $e');
     }
   }
 
@@ -123,14 +124,14 @@ class TranslationService {
         }
       }
 
-      print('📚 Firestore translations: Urdu=$urCount, Punjabi=$paCount');
-      print(
+      debugPrint('📚 Firestore translations: Urdu=$urCount, Punjabi=$paCount');
+      debugPrint(
         '📚 ID-based translations: Urdu=${_translationsUrById.length}, Punjabi=${_translationsPaById.length}',
       );
-      print('🎵 Audio URLs: Urdu=$urAudioCount, Punjabi=$paAudioCount');
+      debugPrint('🎵 Audio URLs: Urdu=$urAudioCount, Punjabi=$paAudioCount');
       _firestoreLoaded = true;
     } catch (e) {
-      print('Error loading Firestore translations: $e');
+      debugPrint('Error loading Firestore translations: $e');
     }
   }
 
@@ -203,7 +204,7 @@ class TranslationService {
         // 1. Try ID-based lookup first (most reliable)
         var result = _translationsUrById[questionId];
         if (result != null) {
-          print('✅ Found UR translation by ID: $questionId');
+          debugPrint('✅ Found UR translation by ID: $questionId');
           return result;
         }
 
@@ -212,8 +213,8 @@ class TranslationService {
         result ??= _findByNormalizedKey(_translationsUrByText, normalizedKey);
         result ??= _findBySubstring(_translationsUrByText, key);
         if (result == null && _translationsUrByText.isNotEmpty) {
-          print('🔍 UR full-question lookup failed (ID: $questionId)');
-          print(
+          debugPrint('🔍 UR full-question lookup failed (ID: $questionId)');
+          debugPrint(
             '   Search key: "${key.substring(0, key.length > 50 ? 50 : key.length)}..."',
           );
         }
@@ -222,7 +223,7 @@ class TranslationService {
         // 1. Try ID-based lookup first
         var result = _translationsPaById[questionId];
         if (result != null) {
-          print('✅ Found PA translation by ID: $questionId');
+          debugPrint('✅ Found PA translation by ID: $questionId');
           return result;
         }
 
@@ -262,7 +263,7 @@ class TranslationService {
       // Check if key contains search text OR search text contains key
       if (normalizedKey.contains(normalizedSearch) ||
           normalizedSearch.contains(normalizedKey)) {
-        print('   🔎 Found via substring match!');
+        debugPrint('   🔎 Found via substring match!');
         return entry.value;
       }
 
@@ -270,7 +271,7 @@ class TranslationService {
       if (normalizedKey.length > 30 && normalizedSearch.length > 30) {
         if (normalizedKey.substring(0, 30) ==
             normalizedSearch.substring(0, 30)) {
-          print('   🔎 Found via prefix match!');
+          debugPrint('   🔎 Found via prefix match!');
           return entry.value;
         }
       }
@@ -307,7 +308,7 @@ class TranslationService {
     }
 
     // 3. Fallback to Google Translate API
-    print(
+    debugPrint(
       '🌐 Using Google Translate fallback for: ${originalText.substring(0, originalText.length > 30 ? 30 : originalText.length)}...',
     );
     final googleResult = await GoogleTranslateService().translate(
@@ -321,23 +322,23 @@ class TranslationService {
   /// Get audio URL for a specific question and language
   /// Returns null if no audio is available for that language
   String? getAudioUrl(int questionId, AppLanguage language) {
-    print(
+    debugPrint(
       '🎵 getAudioUrl called: questionId=$questionId, language=${language.code}',
     );
-    print('🎵 Available Urdu audio count: ${_audioUrlsUr.length}');
-    print('🎵 Available Punjabi audio count: ${_audioUrlsPa.length}');
+    debugPrint('🎵 Available Urdu audio count: ${_audioUrlsUr.length}');
+    debugPrint('🎵 Available Punjabi audio count: ${_audioUrlsPa.length}');
 
     switch (language) {
       case AppLanguage.urdu:
         final url = _audioUrlsUr[questionId];
-        print('🎵 Urdu audio URL for $questionId: $url');
+        debugPrint('🎵 Urdu audio URL for $questionId: $url');
         return url;
       case AppLanguage.punjabi:
         final url = _audioUrlsPa[questionId];
-        print('🎵 Punjabi audio URL for $questionId: $url');
+        debugPrint('🎵 Punjabi audio URL for $questionId: $url');
         return url;
       default:
-        print('🎵 No audio for language ${language.code}');
+        debugPrint('🎵 No audio for language ${language.code}');
         return null; // No audio URLs for other languages
     }
   }

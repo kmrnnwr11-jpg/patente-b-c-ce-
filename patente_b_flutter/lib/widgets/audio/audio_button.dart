@@ -141,8 +141,17 @@ class TtsService {
     print('🔊 Using Google Cloud TTS for ${language.code}...');
     final audioPath = await _cloudTts.synthesize(text, language);
     if (audioPath != null) {
-      print('🔊 Playing audio from: $audioPath');
-      await _audioPlayer.play(DeviceFileSource(audioPath));
+      print(
+        '🔊 Playing audio from: ${audioPath.substring(0, audioPath.length > 50 ? 50 : audioPath.length)}...',
+      );
+
+      if (audioPath.startsWith('data:')) {
+        // Play from Data URI (Web)
+        await _audioPlayer.play(UrlSource(audioPath));
+      } else {
+        // Play from Local File (Mobile)
+        await _audioPlayer.play(DeviceFileSource(audioPath));
+      }
     } else {
       print('🔊 Cloud TTS failed, audio not available');
       _isSpeaking = false;

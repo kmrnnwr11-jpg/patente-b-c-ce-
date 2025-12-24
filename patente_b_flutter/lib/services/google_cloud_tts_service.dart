@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -52,15 +53,22 @@ class GoogleCloudTtsService {
 
   /// Initialize the service
   Future<void> init() async {
+    if (kIsWeb) {
+      debugPrint('🔊 Google Cloud TTS: Initialized (Web Mode - No Cache)');
+      return;
+    }
+
     try {
       final appDir = await getApplicationDocumentsDirectory();
       _cacheDir = Directory('${appDir.path}/tts_cache');
       if (!await _cacheDir!.exists()) {
         await _cacheDir!.create(recursive: true);
       }
-      print('🔊 Google Cloud TTS: Initialized, cache at ${_cacheDir!.path}');
+      debugPrint(
+        '🔊 Google Cloud TTS: Initialized, cache at ${_cacheDir!.path}',
+      );
     } catch (e) {
-      print('🔊 Google Cloud TTS Init Error: $e');
+      debugPrint('🔊 Google Cloud TTS Init Error: $e');
     }
   }
 
@@ -77,20 +85,22 @@ class GoogleCloudTtsService {
     final voiceConfig = _voiceConfig[langCode];
 
     if (voiceConfig == null) {
-      print('🔊 Google Cloud TTS: Language $langCode not supported');
+      debugPrint('🔊 Google Cloud TTS: Language $langCode not supported');
       return null;
     }
 
-    // Check cache first
-    final cacheKey = _getCacheKey(text, langCode);
-    final cachedFile = await _getCachedFile(cacheKey);
-    if (cachedFile != null) {
-      print('🔊 Google Cloud TTS: Using cached audio');
-      return cachedFile;
+    // Check cache first (skip on web)
+    if (!kIsWeb) {
+      final cacheKey = _getCacheKey(text, langCode);
+      final cachedFile = await _getCachedFile(cacheKey);
+      if (cachedFile != null) {
+        debugPrint('🔊 Google Cloud TTS: Using cached audio');
+        return cachedFile;
+      }
     }
 
     try {
-      print('🔊 Google Cloud TTS: Synthesizing for $langCode...');
+      debugPrint('🔊 Google Cloud TTS: Synthesizing for $langCode...');
 
       final requestBody = {
         'input': {'text': text},
@@ -117,26 +127,33 @@ class GoogleCloudTtsService {
         final responseData = jsonDecode(response.body);
         final audioContent = responseData['audioContent'] as String;
 
-        // Decode base64 audio and save to file
+        // On Web, return Data URI directly
+        if (kIsWeb) {
+          debugPrint('🔊 Google Cloud TTS: Returning Data URI (Web)');
+          return 'data:audio/mp3;base64,$audioContent';
+        }
+
+        // On Mobile, save to file
         final audioBytes = base64Decode(audioContent);
+        final cacheKey = _getCacheKey(text, langCode);
         final filePath = await _saveToCache(cacheKey, audioBytes);
 
-        print('🔊 Google Cloud TTS: Audio saved to $filePath');
+        debugPrint('🔊 Google Cloud TTS: Audio saved to $filePath');
         return filePath;
       } else {
-        print(
+        debugPrint(
           '🔊 Google Cloud TTS Error: ${response.statusCode} - ${response.body}',
         );
 
         // If Wavenet voice fails, try Standard voice
         if (voiceConfig['name']!.contains('Wavenet')) {
-          print('🔊 Google Cloud TTS: Trying Standard voice...');
+          debugPrint('🔊 Google Cloud TTS: Trying Standard voice...');
           return _synthesizeWithStandardVoice(text, language);
         }
         return null;
       }
     } catch (e) {
-      print('🔊 Google Cloud TTS Error: $e');
+      debugPrint('🔊 Google Cloud TTS Error: $e');
       return null;
     }
   }
@@ -186,7 +203,7 @@ class GoogleCloudTtsService {
         return await _saveToCache(cacheKey, audioBytes);
       }
     } catch (e) {
-      print('🔊 Google Cloud TTS Standard Voice Error: $e');
+      debugPrint('🔊 Google Cloud TTS Standard Voice Error: $e');
     }
     return null;
   }
@@ -226,10 +243,10 @@ class GoogleCloudTtsService {
       if (await _cacheDir!.exists()) {
         await _cacheDir!.delete(recursive: true);
         await _cacheDir!.create(recursive: true);
-        print('🔊 Google Cloud TTS: Cache cleared');
+        debugPrint('🔊 Google Cloud TTS: Cache cleared');
       }
     } catch (e) {
-      print('🔊 Google Cloud TTS Clear Cache Error: $e');
+      debugPrint('🔊 Google Cloud TTS Clear Cache Error: $e');
     }
   }
 
@@ -254,16 +271,16 @@ class GoogleCloudTtsService {
             )
             .toList();
 
-        print('🔊 Available voices for UR/PA/HI:');
+        debugPrint('🔊 Available voices for UR/PA/HI:');
         for (var voice in relevantVoices) {
-          print(
+          debugPrint(
             '   ${voice['name']} (${voice['languageCodes']}) - ${voice['ssmlGender']}',
           );
         }
         return relevantVoices;
       }
     } catch (e) {
-      print('🔊 List Voices Error: $e');
+      debugPrint('🔊 List Voices Error: $e');
     }
     return [];
   }
