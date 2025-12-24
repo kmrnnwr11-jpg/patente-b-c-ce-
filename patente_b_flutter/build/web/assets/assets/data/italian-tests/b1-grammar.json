@@ -1,0 +1,391 @@
+{
+    "level": "B1",
+    "section": "grammar",
+    "title": "Grammatica e Vocabolario - Livello B1",
+    "description": "Scegli la risposta corretta per ogni domanda",
+    "duration": 25,
+    "totalQuestions": 30,
+    "passThreshold": 60,
+    "categories": [
+        {
+            "name": "Congiuntivo Presente",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Penso che Maria ___ molto intelligente.",
+                    "options": [
+                        "è",
+                        "sia",
+                        "essere",
+                        "sarà"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 2,
+                    "question": "Spero che tu ___ a trovarmi presto.",
+                    "options": [
+                        "vieni",
+                        "venissi",
+                        "venga",
+                        "venire"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 3,
+                    "question": "È importante che tutti ___ puntuali.",
+                    "options": [
+                        "sono",
+                        "siano",
+                        "essere",
+                        "saranno"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Condizionale",
+            "questions": [
+                {
+                    "id": 4,
+                    "question": "Se avessi più tempo, ___ in palestra.",
+                    "options": [
+                        "vado",
+                        "andrei",
+                        "andavo",
+                        "andrò"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 5,
+                    "question": "___ aiutarmi con i compiti, per favore?",
+                    "options": [
+                        "Puoi",
+                        "Potresti",
+                        "Potevi",
+                        "Potrai"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 6,
+                    "question": "Lui ha detto che ___ domani.",
+                    "options": [
+                        "veniva",
+                        "verrà",
+                        "sarebbe venuto",
+                        "viene"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "name": "Imperfetto vs Passato Prossimo",
+            "questions": [
+                {
+                    "id": 7,
+                    "question": "Mentre io ___, tu hai telefonato.",
+                    "options": [
+                        "dormivo",
+                        "ho dormito",
+                        "dormirò",
+                        "dormo"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 8,
+                    "question": "Ieri ___ una bella giornata.",
+                    "options": [
+                        "era",
+                        "è stata",
+                        "sarà",
+                        "sia"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 9,
+                    "question": "Quando ero piccolo, ___ sempre al parco.",
+                    "options": [
+                        "vado",
+                        "sono andato",
+                        "andavo",
+                        "andrò"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "name": "Pronomi Combinati",
+            "questions": [
+                {
+                    "id": 10,
+                    "question": "Il libro? ___ ho dato ieri.",
+                    "options": [
+                        "Glielo",
+                        "Glieli",
+                        "Gliela",
+                        "Te lo"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 11,
+                    "question": "Le chiavi? ___ ho messe sul tavolo.",
+                    "options": [
+                        "Ce le",
+                        "Me le",
+                        "Te le",
+                        "Gliele"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 12,
+                    "question": "Hai detto la verità a Marco? Sì, ___ ho detta.",
+                    "options": [
+                        "gliela",
+                        "glieli",
+                        "glielo",
+                        "gliene"
+                    ],
+                    "answer": 0
+                }
+            ]
+        },
+        {
+            "name": "Periodo Ipotetico",
+            "questions": [
+                {
+                    "id": 13,
+                    "question": "Se ___ più soldi, comprerei una macchina nuova.",
+                    "options": [
+                        "ho",
+                        "avrò",
+                        "avessi",
+                        "abbia"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 14,
+                    "question": "Se domani piove, ___ a casa.",
+                    "options": [
+                        "resto",
+                        "resterei",
+                        "restassi",
+                        "sia restato"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 15,
+                    "question": "Se avessi studiato di più, ___ l'esame.",
+                    "options": [
+                        "superavo",
+                        "avrei superato",
+                        "supero",
+                        "supererò"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Connettori",
+            "questions": [
+                {
+                    "id": 16,
+                    "question": "Non posso venire ___ ho molto lavoro.",
+                    "options": [
+                        "perciò",
+                        "perché",
+                        "però",
+                        "quindi"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 17,
+                    "question": "Sono stanco, ___ vado a letto presto.",
+                    "options": [
+                        "perché",
+                        "mentre",
+                        "quindi",
+                        "ma"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 18,
+                    "question": "___ piova, andremo al mare.",
+                    "options": [
+                        "Perché",
+                        "Anche se",
+                        "Mentre",
+                        "Quando"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Lavoro",
+            "questions": [
+                {
+                    "id": 19,
+                    "question": "Ho mandato il mio ___ per la posizione di manager.",
+                    "options": [
+                        "curriculum",
+                        "contratto",
+                        "stipendio",
+                        "colloquio"
+                    ],
+                    "answer": 0
+                },
+                {
+                    "id": 20,
+                    "question": "Il ___ è stato molto positivo, spero di essere assunto.",
+                    "options": [
+                        "curriculum",
+                        "colloquio",
+                        "contratto",
+                        "licenziamento"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 21,
+                    "question": "Lo ___ netto mensile è di 1.500 euro.",
+                    "options": [
+                        "affitto",
+                        "mutuo",
+                        "stipendio",
+                        "conto"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Burocrazia",
+            "questions": [
+                {
+                    "id": 22,
+                    "question": "Per rinnovare la carta d'identità devo andare in ___.",
+                    "options": [
+                        "banca",
+                        "comune",
+                        "stazione",
+                        "ospedale"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 23,
+                    "question": "Il ___ di soggiorno deve essere rinnovato ogni anno.",
+                    "options": [
+                        "visto",
+                        "passaporto",
+                        "permesso",
+                        "biglietto"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 24,
+                    "question": "Devo pagare una ___ da bollo di 16 euro.",
+                    "options": [
+                        "multa",
+                        "marca",
+                        "tassa",
+                        "fattura"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "name": "Vocabolario - Salute",
+            "questions": [
+                {
+                    "id": 25,
+                    "question": "Il medico mi ha fatto una ___ per gli antibiotici.",
+                    "options": [
+                        "visita",
+                        "ricetta",
+                        "analisi",
+                        "cura"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 26,
+                    "question": "Devo fare le analisi del ___.",
+                    "options": [
+                        "cuore",
+                        "sangue",
+                        "cervello",
+                        "stomaco"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 27,
+                    "question": "Il Pronto ___ è aperto 24 ore.",
+                    "options": [
+                        "Intervento",
+                        "Aiuto",
+                        "Soccorso",
+                        "Servizio"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "name": "Espressioni Idiomatiche",
+            "questions": [
+                {
+                    "id": 28,
+                    "question": "'Avere le mani in pasta' significa:",
+                    "options": [
+                        "Cucinare",
+                        "Essere coinvolto in qualcosa",
+                        "Essere sporchi",
+                        "Essere affamati"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 29,
+                    "question": "'Costa un occhio della testa' significa che qualcosa:",
+                    "options": [
+                        "È brutto",
+                        "È pericoloso",
+                        "È molto costoso",
+                        "È raro"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 30,
+                    "question": "'In bocca al lupo' si dice per:",
+                    "options": [
+                        "Salutare",
+                        "Augurare buona fortuna",
+                        "Ringraziare",
+                        "Chiedere scusa"
+                    ],
+                    "answer": 1
+                }
+            ]
+        }
+    ]
+}

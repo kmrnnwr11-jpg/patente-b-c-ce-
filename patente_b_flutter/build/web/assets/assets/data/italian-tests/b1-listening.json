@@ -1,0 +1,277 @@
+{
+    "level": "B1",
+    "section": "listening",
+    "title": "Comprensione dell'Ascolto - Livello B1",
+    "description": "Ascolta i dialoghi e rispondi alle domande",
+    "duration": 35,
+    "totalQuestions": 20,
+    "passThreshold": 60,
+    "note": "Audio files should be placed in /public/audio/italian-tests/b1/",
+    "exercises": [
+        {
+            "id": "b1-l1",
+            "type": "dialogue",
+            "title": "Colloquio di lavoro",
+            "audioFile": "b1-l1-colloquio.mp3",
+            "transcript": "Direttore: Buongiorno, signor Rossi. Si accomodi, prego.\nCandidato: Buongiorno, grazie.\nDirettore: Ho letto il suo curriculum con interesse. Vedo che ha tre anni di esperienza nel marketing digitale.\nCandidato: Sì, esatto. Ho lavorato per un'agenzia pubblicitaria a Milano, dove mi occupavo di campagne sui social media.\nDirettore: Interessante. Perché vuole cambiare lavoro?\nCandidato: Cerco nuove sfide professionali e la vostra azienda ha un'ottima reputazione nel settore.\nDirettore: Quali sono i suoi punti di forza?\nCandidato: Sono molto creativo e lavoro bene in team. Inoltre, parlo tre lingue: italiano, inglese e spagnolo.\nDirettore: Bene. Le faremo sapere entro venerdì.",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Quanti anni di esperienza ha il candidato?",
+                    "options": [
+                        "Due anni",
+                        "Tre anni",
+                        "Quattro anni",
+                        "Cinque anni"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 2,
+                    "question": "Dove ha lavorato prima il candidato?",
+                    "options": [
+                        "A Roma",
+                        "A Milano",
+                        "A Napoli",
+                        "A Torino"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 3,
+                    "question": "Quante lingue parla il candidato?",
+                    "options": [
+                        "Due",
+                        "Tre",
+                        "Quattro",
+                        "Cinque"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 4,
+                    "question": "Quando riceverà una risposta il candidato?",
+                    "options": [
+                        "Domani",
+                        "Mercoledì",
+                        "Venerdì",
+                        "La prossima settimana"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "id": "b1-l2",
+            "type": "radio_interview",
+            "title": "Intervista alla radio",
+            "audioFile": "b1-l2-radio.mp3",
+            "transcript": "Conduttore: Buongiorno a tutti! Oggi abbiamo con noi la dottoressa Bianchi, nutrizionista esperta. Dottoressa, quali sono i suoi consigli per una dieta sana?\nDottoressa: Innanzitutto, è fondamentale fare una colazione abbondante. Molti italiani saltano la colazione, ma questo è un errore.\nConduttore: Perché è così importante?\nDottoressa: La colazione ci dà l'energia per affrontare la giornata. Consiglio cereali integrali, frutta fresca e proteine come yogurt o uova.\nConduttore: E per il pranzo e la cena?\nDottoressa: Il pranzo dovrebbe essere il pasto principale, con carboidrati e verdure. La cena invece deve essere leggera, preferibilmente almeno tre ore prima di andare a dormire.\nConduttore: Grazie mille per i consigli!",
+            "questions": [
+                {
+                    "id": 5,
+                    "question": "Qual è la professione dell'ospite?",
+                    "options": [
+                        "Medico generico",
+                        "Nutrizionista",
+                        "Chef",
+                        "Personal trainer"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 6,
+                    "question": "Secondo la dottoressa, quale pasto saltano spesso gli italiani?",
+                    "options": [
+                        "Il pranzo",
+                        "La cena",
+                        "La colazione",
+                        "La merenda"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 7,
+                    "question": "Quale dovrebbe essere il pasto principale secondo la dottoressa?",
+                    "options": [
+                        "La colazione",
+                        "Il pranzo",
+                        "La cena",
+                        "La merenda"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 8,
+                    "question": "Quanto tempo prima di dormire bisogna cenare?",
+                    "options": [
+                        "Un'ora",
+                        "Due ore",
+                        "Tre ore",
+                        "Quattro ore"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "id": "b1-l3",
+            "type": "voicemail",
+            "title": "Messaggio in segreteria",
+            "audioFile": "b1-l3-segreteria.mp3",
+            "transcript": "Buongiorno, sono la dottoressa Ferri dello studio medico in via Roma 45. Chiamo per confermare l'appuntamento del signor Bianchi per giovedì 25 gennaio alle ore 15:30. Ricordo di portare la tessera sanitaria e le ultime analisi del sangue. Se avesse bisogno di cambiare l'orario, la prego di richiamarci entro mercoledì al numero 06 12345678. Grazie e buona giornata.",
+            "questions": [
+                {
+                    "id": 9,
+                    "question": "Quando è l'appuntamento?",
+                    "options": [
+                        "Mercoledì 24",
+                        "Giovedì 25",
+                        "Venerdì 26",
+                        "Sabato 27"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 10,
+                    "question": "A che ora è fissato l'appuntamento?",
+                    "options": [
+                        "14:30",
+                        "15:00",
+                        "15:30",
+                        "16:00"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 11,
+                    "question": "Cosa deve portare il signor Bianchi?",
+                    "options": [
+                        "Solo la tessera sanitaria",
+                        "Solo le analisi",
+                        "Tessera sanitaria e analisi",
+                        "Il passaporto"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 12,
+                    "question": "Entro quando deve chiamare per cambiare l'appuntamento?",
+                    "options": [
+                        "Martedì",
+                        "Mercoledì",
+                        "Giovedì mattina",
+                        "Venerdì"
+                    ],
+                    "answer": 1
+                }
+            ]
+        },
+        {
+            "id": "b1-l4",
+            "type": "news_report",
+            "title": "Notiziario",
+            "audioFile": "b1-l4-notiziario.mp3",
+            "transcript": "Buonasera e benvenuti al telegiornale. La notizia principale di oggi: sciopero dei trasporti pubblici previsto per domani, venerdì 20 marzo. Lo sciopero durerà 24 ore e riguarderà autobus, metro e treni regionali. Sono garantite alcune fasce orarie: dalle 6 alle 9 del mattino e dalle 18 alle 21 della sera. Il sindacato chiede aumenti salariali e migliori condizioni di lavoro. Il Ministro dei Trasporti si è detto disponibile a incontrare i rappresentanti sindacali la prossima settimana.",
+            "questions": [
+                {
+                    "id": 13,
+                    "question": "Quando è previsto lo sciopero?",
+                    "options": [
+                        "Giovedì",
+                        "Venerdì",
+                        "Sabato",
+                        "Domenica"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 14,
+                    "question": "Quanto durerà lo sciopero?",
+                    "options": [
+                        "4 ore",
+                        "8 ore",
+                        "12 ore",
+                        "24 ore"
+                    ],
+                    "answer": 3
+                },
+                {
+                    "id": 15,
+                    "question": "In quale fascia oraria sono garantiti i servizi la sera?",
+                    "options": [
+                        "17-20",
+                        "18-21",
+                        "19-22",
+                        "20-23"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 16,
+                    "question": "Cosa chiedono i sindacati?",
+                    "options": [
+                        "Meno ore di lavoro",
+                        "Più ferie",
+                        "Aumenti salariali",
+                        "Smart working"
+                    ],
+                    "answer": 2
+                }
+            ]
+        },
+        {
+            "id": "b1-l5",
+            "type": "conversation",
+            "title": "Conversazione tra amici",
+            "audioFile": "b1-l5-amici.mp3",
+            "transcript": "Giulia: Ciao Paolo! Sono secoli che non ci vediamo! Come stai?\nPaolo: Giulia! Che bella sorpresa! Sto benissimo, grazie. E tu?\nGiulia: Bene, bene. Ho saputo che ti sei trasferito. Dove abiti adesso?\nPaolo: Sì, mi sono trasferito a Bologna per lavoro. È una città fantastica!\nGiulia: Ah, interessante! E il lavoro come va?\nPaolo: Molto bene. Lavoro per una startup tecnologica. Gli orari sono flessibili e l'ambiente è giovane e dinamico.\nGiulia: Che bello! Ti manca Roma?\nPaolo: Un po', soprattutto la famiglia e gli amici. Ma torno spesso, almeno una volta al mese.\nGiulia: Dobbiamo assolutamente vederci la prossima volta che vieni!\nPaolo: Certamente! Ti scrivo quando sono in città.",
+            "questions": [
+                {
+                    "id": 17,
+                    "question": "Dove si è trasferito Paolo?",
+                    "options": [
+                        "Milano",
+                        "Firenze",
+                        "Bologna",
+                        "Torino"
+                    ],
+                    "answer": 2
+                },
+                {
+                    "id": 18,
+                    "question": "Perché si è trasferito Paolo?",
+                    "options": [
+                        "Per studiare",
+                        "Per lavoro",
+                        "Per la famiglia",
+                        "Per amore"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 19,
+                    "question": "Che tipo di azienda è quella dove lavora Paolo?",
+                    "options": [
+                        "Una banca",
+                        "Una startup",
+                        "Un ospedale",
+                        "Una scuola"
+                    ],
+                    "answer": 1
+                },
+                {
+                    "id": 20,
+                    "question": "Quanto spesso Paolo torna a Roma?",
+                    "options": [
+                        "Ogni settimana",
+                        "Una volta al mese",
+                        "Ogni tre mesi",
+                        "Raramente"
+                    ],
+                    "answer": 1
+                }
+            ]
+        }
+    ]
+}
