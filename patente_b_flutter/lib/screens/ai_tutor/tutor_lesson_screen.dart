@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import '../../models/translation.dart';
 import '../../models/ai_tutor_model.dart';
 // import 'package:flutter/services.dart'; // For landscape if needed
@@ -33,21 +33,21 @@ class _TutorLessonScreenState extends State<TutorLessonScreen> {
 
   @override
   void deactivate() {
-    _controller?.pause();
+    // _controller?.pause(); // Not strictly needed with iframe, handled internally
     super.deactivate();
   }
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _controller?.close(); // Helper to clean up
     super.dispose();
   }
 
   Future<void> _initializeLesson(int index) async {
-    // Dipose previous controller if exists
+    // Dispose previous controller if exists
     final oldController = _controller;
     if (oldController != null) {
-      oldController.dispose();
+      oldController.close();
     }
 
     setState(() {
@@ -65,14 +65,16 @@ class _TutorLessonScreenState extends State<TutorLessonScreen> {
     print('DEBUG: all videoIds: ${section.aiExplanation?.videoIds}');
 
     if (videoId != null && videoId.isNotEmpty) {
-      _controller = YoutubePlayerController(
-        initialVideoId: videoId,
-        flags: const YoutubePlayerFlags(
-          autoPlay: true,
+      _controller = YoutubePlayerController.fromVideoId(
+        videoId: videoId,
+        autoPlay: false,
+        params: const YoutubePlayerParams(
+          showControls: true,
+          showFullscreenButton: true,
           mute: false,
-          enableCaption: false,
         ),
       );
+
       setState(() {
         _isVideoInitialized = true;
       });
@@ -130,11 +132,7 @@ class _TutorLessonScreenState extends State<TutorLessonScreen> {
                 child: _isVideoInitialized && _controller != null
                     ? YoutubePlayer(
                         controller: _controller!,
-                        showVideoProgressIndicator: true,
-                        progressIndicatorColor: Theme.of(context).primaryColor,
-                        onReady: () {
-                          // _controller.addListener(listener);
-                        },
+                        aspectRatio: 16 / 9,
                       )
                     : GestureDetector(
                         onTap: () {
