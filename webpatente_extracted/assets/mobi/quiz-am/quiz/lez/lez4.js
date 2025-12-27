@@ -1,6 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>È spontaneo associare l'idea di segnale stradale a quella di divieto, quindi comprendere la funzione dei segnali di cui ci occupiamo in questa lezione non dovrebbe crearci alcuna difficoltà. Essi infatti proibiscono di transitare in una strada, o di farlo in un certo senso di marcia, oppure di compiere una particolare manovra (come il sorpasso), oppure impongono limitazioni (per esempio nella velocità). Possono essere generici, validi per tutti, oppure riferiti a particolari categorie di veicoli.<br/><br/>Le classificazioni sono sempre un po' approssimative, quindi non dovrebbe sorprenderci l'esistenza di <b>segnali di divieto che non vietano</b>. È il caso dei segnali di fine divieto (ad esempio fig. 81) ma anche del segnale di PARCHEGGIO (fig. 86), che è evidentemente collocato in questa categoria per la sua parentela con il DIVIETO DI SOSTA (fig. 84).<br/><br/>I segnali di divieto sono tutti <b>circolari con bordo rosso</b>, ad eccezione di quelli di fine divieto (circolari e bianchi) e di quelli di parcheggio, che sono quadrati e blu.<br/><br/><b>Capitolo di riferimento: 2</b></div>"
-intro=cercafig(intro);
-sugg=[30,31,32,41,33,40,34,35,37,36,38,39,42,43,47,44,45,46,48]
-}
-manuale.continua()

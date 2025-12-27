@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=242
-titolo="ORDINE DI PRECEDENZA: B si ferma al centro - R - N e D insieme - prosegue B"
-segnale=638
-testo="Tutti i veicoli hanno la destra occupata in relazione alla loro destinazione. Il veicolo B si porta al centro dell’incrocio; poi passa il veicolo R (dopo che B si è portato al centro non incrocia veicoli da destra); quindi i veicoli D e N (transitato il veicolo R non incrociano altri veicoli da destra); Infine il veicolo B può completare l’attraversamento (svoltando a sinistra deve dare la precedenza ai veicoli che incrocia da destra – in questo caso non ce ne sono – e di fronte: solo a N e non a D, perché le loro traiettorie non si intersecano).<br /><br />È vero che: il veicolo B può impegnare l’incrocio prima del veicolo R, ma deve fermarsi al centro di esso; per concludere la manovra di svolta a sinistra, dovrà attendere il transito del veicolo N; il veicolo R può passare dopo che il veicolo B si è spostato al centro dell’incrocio; i veicoli D e N passano, contemporaneamente, dopo che è passato il veicolo R.<br /><br />La regola: in un incrocio senza segnale di DARE PRECEDENZA (fig. 40) quando tutti i veicoli hanno la destra occupata in relazione alla loro destinazione (osservando il disegno le traiettorie dei veicoli nell’intersecarsi devono formare un tracciato a mo’ di triangolo rettangolo), chi esegue la svolta a sinistra (in questo caso il veicolo B) è tenuto ad impegnare l’incrocio e fermarsi al centro di esso, in attesa che transitino gli altri veicoli, e poi ripartire. Dunque il veicolo che svolta sarà il primo ad impegnare l’incrocio, ma l’ultimo a disimpegnarlo."
-riferimento=[648,649]
-}
-suggerimenti.continua()

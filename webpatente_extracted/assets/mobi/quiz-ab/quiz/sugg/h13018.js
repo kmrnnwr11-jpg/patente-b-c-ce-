@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=13018
-titolo="REVOCA DELLA PATENTE"
-testo="Viene disposta dalla Motorizzazione civile o dal Prefetto (non dagli organi di polizia) e consiste nell’annullamento permanente della patente (viene cioè definitivamente tolta, spesso per sempre).<br /><br />La revoca della patente è disposta quando:<br />- il titolare, sottoposto ad esame di revisione, non risulti più idoneo alla guida (venga cioè bocciato agli esami di teoria o di pratica);<br />- il titolare perde permanentemente (per sempre) i requisiti morali, fisici e/o psichici richiesti;<br />- il titolare guida nonostante abbia la patente sospesa;<br />- il conducente, in autostrada, inverte il senso di marcia o percorre la carreggiata contro mano;<br />- la patente stessa viene sostituita con altra rilasciata da uno Stato estero (quando trasferendosi in un altro Stato si chiede la conversione della patente, quella italiana viene revocata, con possibilità però di tornarne nuovamente in possesso al ritorno in Italia, senza sostenere esami).<br /><br />Non si dispone la revoca della patente quando il conducente perde temporaneamente (per poco tempo) i requisiti fisici o psichici (in tal caso avviene la sospensione della patente, fino al recupero dei requisiti prescritti), quando si guida con patente scaduta di validità (in tal caso avviene il ritiro immediato), quando durante la guida non si faccia uso delle lenti correttive (in tal caso si avrà una multa e la decurtazione dei punti) oppure quando il conducente guida senza avere con sé la patente (in tal caso, essendone in possesso, ma avendo dimenticato solo di portarla con sé, viene applicata una semplice multa)."
-riferimento=[815]
-}
-suggerimenti.continua()

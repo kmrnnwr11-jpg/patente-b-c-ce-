@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>I <b>segnali di obbligo</b> sono la terza categoria distinta nell'ambito dei <b>segnali di prescrizione</b>. Hanno questo nome perché impongono un comportamento (proseguire in una certa direzione, fermarsi in corrispondenza di postazioni di controllo, mantenere una velocità minima, circolare con catene), ovvero riservano l'uso della strada, o di una sua parte, a specifiche categorie di utenti (pedoni, biciclette o quadrupedi).</div><div class='intro'>Sono <b>circolari</b> e hanno tutti colore <b>blu</b> con disegni bianchi, ad eccezione dei segnali che obbligano a fermarsi che assomigliano ai <a href='javascript:manualeteoria(3)'><b>segnali di divieto</b></a>.<br/><br/><b>Capitolo di riferimento: 2</b></div>"
-sugg=[96,97,100,98,99,103,104,105,106,107,108,109,110,111,112,113,114,115,117,123,124,125]
-}
-manuale.continua()

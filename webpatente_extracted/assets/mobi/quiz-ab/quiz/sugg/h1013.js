@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=1013
-titolo="LA SOSPENSIONE DELLA PATENTE"
-testo="La sospensione della patente viene disposta dal Prefetto, dalla Motorizzazione Civile e dall'Autorità Giudiziaria (giudice del tribunale) e consiste nel divieto di condurre veicoli per un determinato periodo (da un minimo di 15 giorni fino ad un massimo di 3 anni). La sospensione è prevista per molte infrazioni gravi; a volte, non alla prima infrazione, ma quando per 2 volte in 2 anni il conducente rifaccia la stessa irregolarità. La sospensione avviene: quando non si rispetta l'obbligo di dare la precedenza (ad esempio: ai tram, ai treni, quando si esce da un garage); quando si circola contromano in curva; quando si effettua l'inversione di marcia in autostrada; quando si supera di oltre 40 km/h il limite massimo di velocità; quando si circola abusivamente con un veicolo sottoposto a sequestro; quando il conducente fugge senza prestare soccorso alla persona investita; in caso di guida in stato di ebbrezza; in caso di temporanea perdita dei requisiti fisici o psichici (fino al recupero dei requisiti); se il titolare guida con patente di categoria diversa da quella necessaria per il veicolo condotto; quando il titolare di patente speciale guida veicoli con adattamenti diversi da quelli prescritti (ai mutilati e minorati fisici che guidano veicoli non opportunamente modificati)."
-riferimento=[]
-}
-suggerimenti.continua()

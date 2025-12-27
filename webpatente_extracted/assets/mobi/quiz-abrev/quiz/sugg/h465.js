@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=465
-titolo="USO DEGLI INDICATORI DI DIREZIONE"
-testo="Si devono usare gli indicatori di direzione (frecce) ogni volta che si deve eseguire una manovra di svolta (a destra e a sinistra) o un cambio di corsia (sia su strade a doppio senso di circolazione che su quelle a senso unico).<br /><br />È necessario azionarli, ad esempio, per segnalare l’immissione nella circolazione partendo dal margine della carreggiata o provenendo dalla corsia di accelerazione; la manovra di sorpasso (sia quando ci si sposta nella corsia di sinistra, sia quando si rientra nella corsia di marcia normale, ma non anche dopo averla completata, per altri  500 metri); l’intenzione di spostarsi nella corsia di decelerazione di uno svincolo autostradale; l’intenzione di portarsi sul margine della strada o fuori dalla carreggiata per una fermata o per parcheggiare; quando si esegue una svolta per entrare in un passo carrabile oppure quando si effettuano manovre di retromarcia.<br /><br />Non si devono usare gli indicatori di direzione per segnalare che si sta per frenare bruscamente (tra l’altro non si dovrebbero mai compiere manovre brusche); quando si deve percorrere un tornante; nella marcia per file parallele, se non si effettuano cambiamenti di corsia; quando ci si arresta ad un semaforo o per cause di interruzione della circolazione."
-riferimento=[772,773]
-}
-suggerimenti.continua()

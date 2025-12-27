@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11071
-titolo="TRAINO DI UN RIMORCHIO"
-testo="Prima di partire è opportuno accertarsi che gli impianti di illuminazione e di segnalazione siano collegati e funzionino regolarmente e controllare negli specchi retrovisori che la visibilità sia adeguata; è inoltre consigliabile che nel rimorchio il carico venga sistemato in modo che gli oggetti pesanti si trovino il più vicino possibile al suo asse (al centro).<br />Durate la guida occorre essere consapevoli che in tale situazione: <br />- nelle svolte la “fascia di ingombro” del complesso dei veicoli (cioè lo spazio necessario per curvare) è maggiore e il rimorchio tende a “stringere” la curva (perciò, ad esempio, nello svoltare a destra, bisogna fare attenzione a non salire con la ruota posteriore sul marciapiede); <br />- aumenta lo spazio di frenatura (specialmente nelle forti discese, a causa della forza di spinta esercitata dal rimorchio sulla motrice);<br />- aumenta la forza ribaltante esercitata dal vento;<br />- su strade con forti salite aumenta la temperatura del liquido di raffreddamento del motore.<br /><br />Gli organi di traino del veicolo devono essere omologati (anche se il rimorchio è leggero) e devono essere periodicamente lubrificati. Quando i rimorchi sono staccati dalla motrice, devono avere una copertura assicurativa che vale anche per il rischio statico (da fermo)."
-riferimento=[]
-}
-suggerimenti.continua()

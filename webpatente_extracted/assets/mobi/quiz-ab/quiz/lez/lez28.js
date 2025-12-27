@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Sui veicoli, per ragioni di sicurezza, l'<b>uso delle luci</b> è ormai quasi sempre obbligatorio; ciò dipende dal fatto che i dispositivi di illuminazione non servono solo &quot;per vedere&quot; ma anche &quot;per farsi vedere&quot;, cioè per rendere i veicoli più facilmente individuabili, anche di giorno. In questa lezione passeremo in rassengna anche i <b>simboli</b> che contraddistiguono i <b>comandi</b> e le <b>spie</b> dei dispositivi di illuminazione (abbaglianti e anabbaglianti) e segnalazione luminosa (frecce e segnale di emergenza), nonché le principali <b>spie rosse</b>, per lo più segnali di &quot;situazioni problematiche&quot;. Rimanendo in campo \"ottico\", concludiamo la lezione con indicazioni sull'uso degli <b>specchi retrovisori</b>.<br/><br/><b>Capitoli di riferimento: 13</b> (con due quiz nella prova di esame), <b>18</b></div>"
-sugg=[11077,11078,460,431,465,467,470,474,473,475,476,481,482,483,489,13004,472,13002]
-}
-manuale.continua()

@@ -1,1 +1,0 @@
-﻿var autopers=false;

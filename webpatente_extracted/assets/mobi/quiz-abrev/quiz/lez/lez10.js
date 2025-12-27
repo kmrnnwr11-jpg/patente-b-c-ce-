@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Per comprendere che cos'è la distanza di sicurezza, da quali fattori dipende e come rispettarla, occorre anzitutto possedere alcuni concetti: lo <b>spazio percorso dal veicolo nel tempo di reazione</b>, lo <b>spazio di frenatura</b> e la loro somma, ovvero lo <b>spazio totale di arresto</b>. Non bisogna farsi spaventare dal linguaggio un po’ tecnico, perché ciò che è essenziale conoscere (sia per passare l’esame, che per salvaguardare l’incolumità quando si guida) è abbastanza semplice.<br/><br/><b>Capitolo di riferimento: 4</b></div><!--<div style='font-size:8pt'><b>Su questo argomento si può vedere anche:</b><br><img height=8 src='pix.gif'><br>&nbsp;<a href='distanza.php' target=esperto>&#187; La distanza di sicurezza</a></div>-->"
-sugg=[11030,11031,11032,11033]
-}
-manuale.continua()

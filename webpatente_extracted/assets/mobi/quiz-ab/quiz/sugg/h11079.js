@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11079
-titolo="CINTURE DI SICUREZZA"
-testo="Servono a trattenere il corpo allacciato al sedile, evitando che, in caso di frenata brusca o incidente, vada ad urtare il parabrezza o le altre parti interne della vettura o sia proiettato fuori dall’abitacolo. <br />Devono essere sempre indossate sia dal conducente che dai passeggeri (compresi coloro che viaggiano sui sedili posteriori), in qualsiasi situazione di marcia, indipendentemente dalla velocità e anche se il veicolo è dotato di airbag (che, anzi, può produrre danni ai passeggeri che non le usano). <br /><br />Non sono obbligati ad agganciare la cintura di sicurezza, tra l’altro: le donne in stato di gravidanza con particolari condizioni di rischio certificate; le persone che soffrono di particolari malattie certificate; gli istruttori di guida nello svolgimento della loro professione. <br /><br />Le cinture di sicurezza devono essere di tipo omologato e devono essere periodicamente controllate rispetto al loro stato di usura e di efficienza. Sono previste sanzioni per chi, pur facendo uso della cintura di sicurezza, ne alteri o ostacoli il normale funzionamento, applicando fermi, mollette, ecc.<br /><br />È sbagliato affermare che non sono obbligati ad allacciare le cinture di sicurezza le persone anziane oltre ad una certa età, i postini durante l’attività lavorativa o chi guida con il foglio rosa; che si possa disabilitare la spia che indica il mancato agganciamento (fig. 707); che l’uso delle cinture non sia utile o obbligatorio nei centri urbani o per percorsi brevi o che il loro impiego consente il trasporto di bambini sui sedili anteriori in braccio a un adulto."
-riferimento=[787,788,789]
-}
-suggerimenti.continua()

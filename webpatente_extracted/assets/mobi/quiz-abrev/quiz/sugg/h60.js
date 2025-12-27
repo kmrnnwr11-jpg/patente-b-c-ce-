@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=60
-titolo="DIVIETO DI SORPASSO"
-segnale=56
-testo="Si trova su strade urbane ed extraurbane e vieta a tutti i veicoli (non solo agli autoveicoli) di sorpassare i veicoli a motore, eccetto i ciclomotori e i motocicli, anche se la manovra può compiersi entro la semicarreggiata (cioè senza superare la striscia, continua o meno, di mezzeria) ed anche se il veicolo che precede ha un motore elettrico, intende svoltare a destra o si muove molto lentamente.<br /><br />In presenza del segnale non è vietato sorpassare qualsiasi veicolo: infatti si possono sorpassare (da parte di tutti i veicoli) i motocicli, i ciclomotori e i veicoli sprovvisti di motore (biciclette, veicoli a braccia, carrozze a cavalli, veicoli a trazione animale). È invece vietato sorpassare tutti gli altri veicoli, compresi gli autoveicoli (di qualunque tipo e massa: autovetture, autocarri, autobus, ecc.), le macchine agricole e le macchine operatrici.<br /><br />È importante non confondere chi è soggetto al divieto (tutti i veicoli) con i veicoli che non si possono sorpassare: è perciò corretto affermare che il segnale vieta il sorpasso tra autoveicoli (perché questi ultimi non possono essere sorpassati) e che in sua presenza un’autovettura può sorpassare un motociclo (veicolo sorpassabile), ma un motociclo non può sorpassare un’autovettura (non sorpassabile).<br /><br />Il segnale può essere ripetuto dopo ogni incrocio il con pannello integrativo CONTINUAZIONE (fig. 129) e consente il transito di tutti i veicoli (non va confuso con il segnale di fig. 66).<br />È sbagliato affermare che preannuncia una strettoia (fig. 19) o impone di dare la precedenza nei sensi unici alternati (fig. 45); non indica che la corsia di destra è riservata ai veicoli lenti."
-riferimento=[133]
-}
-suggerimenti.continua()

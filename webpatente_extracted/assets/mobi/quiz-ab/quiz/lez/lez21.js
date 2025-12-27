@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Nella prima parte della lezione si prenderanno in esame <b>gli incroci</b>, parti della strada per le quali, a causa del pericolo determinato dal concomitante avvicinarsi di più veicoli, presumibilmente diretti in differenti direzioni, le norme prevedono alcune restrizioni (divieti di fermata, sosta, inversione, ecc.), oltre, ovviamente, alle regole di precedenza, che saranno oggetto della seconda parte.<br/>Si può affermare che <b>la precedenza</b> sia una &quot;scienza esatta&quot;, nel senso che è sempre possibile stabilire con certezza come ci si deve comportare quando la propria traiettoria interseca quella di altri veicoli; infatti la regola della precedenza a destra conosce solo le eccezioni che sono elencate in questa lezione. Si esamineranno alcuni casi di precedenza, tra quali è compreso il comportamento da tenere quando ci si imbatte in una rotatoria.<br/><br/><b>Capitolo di riferimento: 13</b> (con due quiz nella prova di esame).</div>"
-sugg=[299,298,427,11025,430,297,11040,11041,429,428]
-}
-manuale.continua()

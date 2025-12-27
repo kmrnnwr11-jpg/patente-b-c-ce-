@@ -1,6 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Esaurito il discorso generale sulle manovre, iniziamo a occuparci del ciclomotore e del suo “equipaggiamento”, ossia dei dispositivi ottici e acustici, dei freni e degli pneumatici. Il punto di vista non è tecnico, non ci serve sapere come funzionano le varie parti (anche se per qualcuno potrebbe essere interessante); qui ci occupiamo principalmente <b>dell'uso e della manutenzione del veicolo</b>, affrontando quattro argomenti:<br/>- le <b>luci</b> (anabbaglianti, abbaglianti e indicatori di direzione, nonché altri dispositivi che non sono propriamente luminosi, ma sempre &quot;ottici&quot;: catadriotti e specchietti) e il <b>clacson</b>;<br/>- gli <b>pneumatici</b> (con particolare riguardo ai controlli da effettuare sulla pressione e sullo stato del battistrada);<br/>- i <b>freni</b> (con indicazioni su come effettuare la frenata in diverse condizioni di aderenza);<br/>- le <b>revisioni</b> e i <b>controlli da effettuare sul ciclomotore</b> (tra le &quot;revisioni&quot; va annoverata quella periodica, obbligatoria per legge, non le modifiche illegali del veicolo per aumentarne la velocità).<br/><br/><b>Capitolo di riferimento: 8</b></div>"
-intro=cercafig(intro);
-sugg=[185,188,187,186,197,189,190,191,195,196,194,198,192,199,193]
-}
-manuale.continua()

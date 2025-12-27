@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=88
-titolo="DIVIETO DI SOSTA"
-segnale=84
-testo="Vieta la sosta o l’abbandono del veicolo, ma consente la fermata (sospensione momentanea della marcia del veicolo). Vale per tutti i veicoli (compresi ciclomotori, motocicli, quadricicli e autobus).<br />Senza pannelli integrativi il divieto di sosta, nei centri abitati, vale dalle 8 alle 20, mentre fuori dei centri abitati vale 24 ore su 24 (permanente); vieta la sosta sul lato della strada dove è posto (e non su ambedue i lati della carreggiata); cessa (finisce) di validità dopo il primo incrocio (salvo che venga ripetuto con il pannello di continuazione).<br /> <br />Il segnale non viene posto in quei luoghi ove per regola generale vige il divieto (curve, dossi, incroci, ecc.) e può essere corredato dai seguenti pannelli integrativi: <br />- ZONA RIMOZIONE COATTA (fig. 141 - Perciò è sbagliato dire che con il segnale è sempre prevista la rimozione forzata del veicolo); <br />- LIMITAZIONE(fig. 126); <br />- ECCEZIONE(fig. 127 - In tal caso consente la sosta agli autobus); <br />- INIZIO(fig. 128 - In tal caso è consentita la sosta nel tratto precedente); <br />- CONTINUAZIONE (fig. 129); <br />- FINE (fig. 130);<br />- FASCE ORARIE DEI GIORNI LAVORATIVI (fig. 125);<br />- FASCE ORARIE DEI GIORNI FESTIVI (fig. 124).<br /><br />È sbagliato dire che il segnale può essere integrato con pannello che vieta la sosta in doppia fila (sempre vietata agli autoveicoli) o che la sosta è regolamentata mediante disco orario o parchimetro."
-riferimento=[168,169]
-}
-suggerimenti.continua()

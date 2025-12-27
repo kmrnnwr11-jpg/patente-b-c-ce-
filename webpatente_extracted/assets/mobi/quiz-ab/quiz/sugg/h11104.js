@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11104
-titolo="SOCCORSO DEGLI INFORTUNATI DOPO UN INCIDENTE"
-testo="Soccorrere un ferito della strada è un obbligo imposto dalla legge (che ne punisce l’omissione) oltre che un dovere morale (che riguarda cioè la coscienza di ogni cittadino). Occorre sempre farlo, senza però mettere a repentaglio (rischio) la propria e altrui sicurezza, anche se non si è medici o personale sanitario, indipendentemente dal proprio giudizio sulla gravità dell’incidente o dell’eventuale intralcio che l’intervento possa causare alla circolazione.<br /><br />Il fine del primo soccorso è quello di cercare di mantenere in vita il ferito con semplici e immediati interventi, atti a garantire la respirazione e la circolazione, assistendo la vittima in attesa di un adeguato soccorso medico. È inoltre importante evitare che la vittima subisca ulteriori danni ed impedire che siano posti in atto interventi errati da parte di altre persone.<br /><br />A tal fine occorrerà: segnalare l’incidente (collocando il triangolo mobile di pericolo); chiamare i soccorsi qualificati; assistere e proteggere la vittima come meglio si può, senza prendere iniziative di competenza medica (come ad esempio: somministrare farmaci).<br /><br />È sbagliato affermare che il soccorritore deve identificare l’infortunato, chiedendogli nome e cognome, o domandargli come è avvenuto l’incidente; che bisogna allontanare in ogni caso il ferito dal posto in cui si trova (spesso può essere pericoloso muoverlo) o che non bisogna mai toccarlo se non è ancora arrivata la polizia (in molti casi può essere vitale la tempestività dell’intervento)."
-riferimento=[845,846,847]
-}
-suggerimenti.continua()

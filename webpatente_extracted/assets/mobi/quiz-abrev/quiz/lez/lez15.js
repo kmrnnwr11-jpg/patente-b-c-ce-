@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Tratteremo ora dell’<b>immissione di un veicolo nel flusso della circolazione</b> (ossia la &quot;partenza&quot;), nonché dell’<b>interruzione della marcia</b>. A questo proposito occorre avere chiara la distinzione tra tre concetti: l’<b>arresto</b> (che non dipende dal conducente, ma dalle esigenze della circolazione), la <b>fermata</b> (breve interruzione della marcia del veicolo senza l’allontanamento del conducente) e la <b>sosta</b> (che invece implica il protrarsi nel tempo e l’allontanamento). Agli ultimi due sono connessi una serie di comportamenti e di divieti che prenderemo in esame.<br/><br/><b>Capitoli di riferimento: 5 e 8</b></div><!--<div style='font-size:8pt'><b>Su questo argomento si può vedere anche:</b><br><img height=8 src='pix.gif'><br>&nbsp;<a href='09fermatasostaarresto.php' target=esperto>&#187; Le differenze: fermata, sosta e arresto</a></div>-->"
-sugg=[11049,11050,11052,11054]
-}
-manuale.continua()

@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=108
-titolo="SEMAFORO A TRE LUCI"
-segnale=154
-testo="La luce ROSSA obbliga a fermarsi all'incrocio, prima della striscia trasversale d'arresto. Non permette di proseguire diritto o di svoltare, anche se non sopraggiungono altri veicoli sulla strada che si incrocia o se per essa è già comparso il giallo.<br /><br />La luce VERDE consente di attraversare l'incrocio (usando comunque prudenza), di svoltare a destra, dando la precedenza ai pedoni che attraversano, e di svoltare a sinistra (senza bisogno di aspettare il giallo) dando la precedenza ai veicoli provenienti di fronte e ai pedoni.<br /><br />La luce GIALLA FISSA si accende quando il verde e il rosso sono spenti, per prescrivere di usare prudenza, diminuire la velocità e fermarsi se lo si può fare in condizioni di sicurezza (cioè se si è a bassa velocità e non si crea pericolo agli altri), altrimenti occorre liberare velocemente l’incrocio (se già impegnato).<br /><br />La luce GIALLA LAMPEGGIANTE, che si accende quando il verde e il rosso sono spenti (cioè quando il semaforo non è attivo), prescrive di usare molta prudenza, diminuire la velocità e rispettare la norma generale sulla precedenza agli incroci (precedenza a destra) o le prescrizioni imposte dai segnali stradali (STOP, fig. 41, DARE PRECEDENZA, fig. 40, ecc.); si può trovare anche in punti pericolosi della strada, per invitare a rallentare.<br /><br />In presenza del semaforo a tre luci è ammesso il passaggio, rallentando e usando la massima prudenza, anche quando è accesa la luce gialla lampeggiante (semaforo non attivo) o il semaforo è spento."
-riferimento=[122,123,124,125]
-}
-suggerimenti.continua()

@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11026
-titolo="MARCIA PER FILE PARALLELE"
-testo="È consentita:<br />- in caso di traffico intenso su strade a doppio senso con almeno due corsie per senso di marcia;<br />- in caso di traffico intenso su strade a senso unico con almeno due corsie;<br />- di norma, lungo il tratto di strada che porta ad un incrocio regolato da agenti del traffico (vigili) o da semaforo;<br />- quando viene autorizzata dagli agenti del traffico.<br /><br />Durante la marcia per file parallele (ad esempio, lungo le corsie di canalizzazione): è possibile, nel rispetto dei limiti massimi di velocità disposti per quel tipo di strada, che nella corsia di destra si circoli ad una velocità superiore a quella di sinistra (ma ciò non significa che, in tale situazione, sia sempre possibile sorpassare anche da destra); è consentito cambiare corsia per effettuare manovre di svolta; i motocicli non possono avanzare passando tra i veicoli affiancati.<br /><br />È sbagliato dire che se si viaggia per file parallele e si è sulla corsia di sinistra, occorre tenere in funzione l’indicatore di direzione sinistro (esso va invece usato quando si cambia direzione o corsia).<br />È anche sbagliato dire che, se si viaggia per file parallele su una carreggiata a senso unico, la svolta a sinistra si effettua immettendosi in una corsia qualsiasi (infatti bisognerà portarsi nella corsia di sinistra, o in quelle espressamente indicate dalla segnaletica orizzontale di preselezione)."
-riferimento=[493,541,542,543,544,545]
-}
-suggerimenti.continua()

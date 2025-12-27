@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11070
-titolo="TRAINO DI UN VEICOLO IN AVARIA (GUASTO)"
-testo="Un autoveicolo può trainare un veicolo che non sia un rimorchio solo se questo non può più circolare per avaria (guasto) o per mancanza di organi essenziali; inoltre, salvo il caso di trasporti eccezionali, nessun veicolo può trainare o essere trainato da più di un veicolo.<br /><br />Il traino per situazione di emergenza deve avvenire attraverso un solido collegamento, come fune, catena, cavo, barra rigida, purché idoneamente segnalati per rendere i veicoli chiaramente avvistabili dagli altri utenti della strada (il veicolo trainato deve avere in funzione il lampeggio d’emergenza, cioè l’accensione simultanea delle 4 frecce o esporre il pannello di carico sporgente di fig. 302).<br /><br />Alla guida del veicolo trainato deve sedersi una persona munita di patente, in grado di compiere tutte le manovre necessarie. È opportuno sapere che quando un veicolo guasto (a motore spento), munito di servosterzo, viene trainato, può risultare faticoso manovrare lo sterzo e che se il veicolo trainato ha le quattro ruote a terra il suo cambio va posizionato in folle.<br /><br />Il conducente che traina un altro veicolo senza rispettare le relative prescrizioni sulla solidità e visibilità del collegamento è punito, tra l’altro, con la sottrazione di 2 punti dalla patente.<br /><br />Il traino di un veicolo in avaria, da parte di un autoveicolo, non è ammesso sulle autostrade. È sbagliato dire che per guidare un’autovettura che traina un veicolo guasto, con conducente a bordo, occorre la patente di guida della categoria E o che la distanza fra i due veicoli, durante il traino, deve essere di almeno 3 metri."
-riferimento=[744,745]
-}
-suggerimenti.continua()

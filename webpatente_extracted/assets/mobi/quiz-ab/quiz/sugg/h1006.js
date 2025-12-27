@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=1006
-titolo="STRISCIA BIANCA DISCONTINUA (TRATTEGGIATA)"
-segnale=502
-testo="La striscia bianca discontinua (tratteggiata) divide la carreggiata in due corsie; può essere oltrepassata se vengono rispettate tutte le altre norme di circolazione (è però vietato marciarvi a cavallo, cioè di sopra). <br /><br />Nelle strade a DOPPIO SENSO di circolazione divide i sensi di marcia e consente il sorpasso (occupando momentaneamente l’opposta corsia anche con tutto il veicolo), la svolta a sinistra (spostandosi verso il centro della carreggiata, ma rimanendo nella corsia di destra) e l’inversione di marcia (in condizioni di sicurezza e occupando l’altra corsia).<br /><br />Nelle strade a SENSO UNICO divide la carreggiata in due corsie (corsia di marcia normale a destra e corsia di sorpasso a sinistra); consente il sorpasso (anche in curva e in vicinanza o in corrispondenza di dossi) e la svolta a sinistra (spostandosi al margine sinistro della corsia di sinistra), ma non l’inversione. La marcia per file parallele è ammessa solo in particolari condizioni (in caso di traffico intenso).<br /><br />È sbagliato dire che divide la strada in due carreggiate (per dividere una strada in due carreggiate occorre lo spartitraffico), che può essere sostituita da una serie di catadiottri o “chiodi” per segnaletica stradale (i “chiodi” o i catadiottri possono integrare la linea continua) o che si trova in vicinanza di un passaggio a livello (in genere in vicinanza di un pericolo quale un passaggio a livello si trova la linea continua)."
-riferimento=[249,250,251,252,253,254]
-}
-suggerimenti.continua()

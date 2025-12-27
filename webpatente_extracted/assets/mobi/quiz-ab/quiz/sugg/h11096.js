@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11096
-titolo="RISCHI DERIVANTI DALLA PRESENZA DI VARI TIPI DI VEICOLI"
-testo="Il conducente di un’autovettura deve conoscere i rischi che, sulla strada, sono legati alla presenza di:<br />VEICOLI LENTI, come ciclomotori o macchine agricole, soprattutto su strade extraurbane, in quanto, a causa della differenza tra la loro velocità e quella del nostro mezzo, può risultare difficoltosa la valutazione dei tempi di avvicinamento.<br /><br />VELOCIPEDI (BICICLETTE), mezzi dotati di massa modesta (leggeri) e caratterizzati da basse velocità e possibili oscillazioni trasversali, spesso utilizzati da conducenti giovanissimi e inesperti o da anziani, per i quali può risultare difficile valutare la velocità di avvicinamento dei veicoli a motore presenti nel traffico, o rendersi conto delle situazioni di pericolo.<br /><br />CICLOMOTORI, spesso condotti da giovani con limitata esperienza di guida, che potrebbero compiere  manovre improvvise, come il procedere a zig-zag tra i veicoli. Occorre particolare prudenza nel rispettare la distanza di sicurezza laterale, specialmente nelle svolte, per evitare di farli cadere.<br /><br />AUTOCARRI, AUTOTRENI, AUTOARTICOLATI E AUTOBUS, che a causa della loro MASSA MAGGIORE (ossia del maggior peso) possono costituire un pericolo notevole per gli altri utenti della strada, specialmente se non rispettano i limiti di velocità. In generale, infatti, risultano maggiormente pericolosi gli incidenti tra i veicoli se questi hanno masse molto diverse tra loro."
-riferimento=[754,755,756,757,758]
-}
-suggerimenti.continua()

@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=152
-titolo="SVOLTA"
-testo="È bene precisare, evitando l’approssimazione del linguaggio quotidiano, che la svolta non va confusa con la curva; a differenza di quest’ultima, infatti, essa presuppone la presenza di un incrocio e la possibilità di scegliere differenti direzioni.<br /><br />Quando si intende svoltare, si deve azionare con sufficiente anticipo l'indicatore di direzione e lasciarlo in funzione per l'intera durata della manovra (non è invece necessario fare uso del clacson). <br />Occorre rallentare la velocità man mano che ci si avvicina all'incrocio e posizionarsi sulla parte della carreggiata (o sulla corsia) coerente con la direzione che vogliamo prendere, anche nel caso in cui la circolazione avvenga per file parallele.<br /><br />Per svoltare A DESTRA bisogna tenersi il più vicino possibile al margine destro della strada.<br /><br />Per svoltare A SINISTRA bisogna:<br />- su strade A DOPPIO SENSO DI CIRCOLAZIONE avvicinarsi il più possibile al centro della strada (senza oltrepassare la striscia continua di mezzeria), come il veicolo C della fig. 628;<br />- su strade A SENSO UNICO tenersi il più vicino possibile al margine sinistro della strada (come il veicolo A della fig. 626).<br />In entrambi i casi, per svoltare a sinistra, si dovrà dare la precedenza ai veicoli provenienti da destra e di fronte, salvo diversa segnalazione; lasciare il centro dell'incrocio alla nostra destra (a meno che ci sia il segnale di ROTATORIA, fig. 104, come nel caso del veicolo H della fig. 602) ed evitare di imboccare contromano la nuova strada."
-riferimento=[162,163,164,165,166]
-}
-suggerimenti.continua()

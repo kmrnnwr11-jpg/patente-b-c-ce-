@@ -1,5 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>La lezione parte dalla domanda: che cosa occorre per poter circolare sulla pubblica via? Si vedrà che un veicolo deve essere, per esempio, dotato di <b>libretto di circolazione</b>, <b>targhe</b> e <b>assicurazione</b>; chi lo guida dovrà possedere una patente <b>adeguata</b>. Saranno perciò passate in rassegna le <b>categorie di patenti AM, A1, A2, A, B1, B, B con codice 96 e BE</b> per poi esaminare le <b>principali sanzioni</b> (ritiro, revisione, revoca, sospensione e sottrazione di punti) previste per i conducenti.<br/><br/><b>Capitoli di riferimento: 20, 22</b> (quest'ultimo con due quiz nella prova di esame)</div>"
-sugg=[11083,11084,11085,13008,13009,13010,13011,13012,13013,13014,13015,11086,13016,13017,13018,13019,13020,13021,13022]
-}
-manuale.continua()

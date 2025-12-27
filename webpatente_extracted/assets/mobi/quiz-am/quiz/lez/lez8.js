@@ -1,6 +1,0 @@
-l=new tlez; with(l){
-intro="<div class='intro'>Per ultimare il quadro della segnaletica verticale, occorre ancora ricordare i pannelli integrativi. Si tratta di piccoli cartelli, in genere <b>bianchi di forma rettangolare</b> che vengono collocati sotto ai segnali (di pericolo, prescrizione o indicazione) per completarne il significato. In quanto integrano, cioè, appunto, completano, non si trovano mai da soli.<br/><br/>I pannelli si usano per <b>precisare il significato di un segnale</b> (ad esempio, sotto il segnale STRADA SDRUCCIOLEVOLE, fig. 24 si può chiarire con un pannello se la scarsa aderenza si manifesta in caso di pioggia, fig. 139, oppure di neve o ghiaccio, fig. 138), <b>limitarne l'efficacia a certe categorie di utenti</b> (non ci sono esempi nei quiz per il patentino, ma se, guidando un ciclomotore, incontriamo un segnale di DIVIETO DI TRANSITO, fig. 54, con sotto un pannello che raffigura un autoarticolato, fig. 126, possiamo procedere perché il divieto non riguarda il nostro veicolo), oppure <b>definirne la validità nello spazio o nel tempo</b> (la maggior parte di questa lezione, come si vedrà proseguendo, riguarda questa funzione).<br/><br/><b>Capitolo di riferimento: 3</b></div>"
-intro=cercafig(intro);
-sugg=[85,86,87,88,89,90,91,92,93,94,95]
-}
-manuale.continua()

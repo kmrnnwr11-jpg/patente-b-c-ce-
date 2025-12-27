@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11117
-titolo="MANUTENZIONE DEGLI PNEUMATICI"
-testo="Per una maggiore sicurezza, bisogna utilizzare esclusivamente pneumatici delle dimensioni previste dall’omologazione del veicolo e indicati nella carta di circolazione, montando sulle ruote dello stesso asse pneumatici uguali.<br /><br />Anche nei veicoli che non sono dotati di sistema automatico di rilevamento della pressione degli pneumatici (dispositivo molto utile ai fini della sicurezza) la PRESSIONE DI GONFIAGGIO deve essere controllata frequentemente. La misura va effettuata quando le gomme sono fredde: bisogna verificare che la pressione di gonfiaggio di tutti gli pneumatici, compreso quello di scorta,  sia quella consigliata dalla casa costruttrice. Occorre comunque tener presente che: la pressione degli pneumatici va adeguata alle condizioni di peso (carico e dal numero dei passeggeri trasportati) del veicolo e che una pressione troppo bassa (oltre ad aumentare l’attrito e i consumi di carburante)  provoca l’anomalo consumo ai bordi degli pneumatici, mentre una pressione eccessiva li consuma al centro.<br /><br />Occorre inoltre controllare le condizioni degli pneumatici SUI LATI (fianchi), per prevenire improvvisi scoppi o sgonfiamenti, e lo spessore del BATTISTRADA (la parte che poggia a terra e si consuma) che in un autoveicolo non deve essere inferiore a 1,6 millimetri (1,0 millimetri in un motociclo). <br />Per evitare il consumo non omogeneo è opportuno variare periodicamente la posizione degli pneumatici (invertendo o incrociando il verso); dopo alcuni anni è comunque consigliabile sostituirli, anche se non sono usurati (consumati)."
-riferimento=[891,892,893]
-}
-suggerimenti.continua()

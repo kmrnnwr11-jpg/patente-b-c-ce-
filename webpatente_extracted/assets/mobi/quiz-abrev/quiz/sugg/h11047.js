@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=11047
-titolo="CASI IN CUI IL SORPASSO, ALTRIMENTI VIETATO, È CONSENTITO"
-testo="Il sorpasso è consentito:<br />- IN CURVA, SUI DOSSI o in altre condizioni di scarsa visibilità: quando la strada è a due carreggiate separate, o a senso unico, o con almeno due corsie per senso di marcia.<br />- SUL TRATTO DISCENDENTE (in discesa) DEI DOSSI: anche su strada a doppio senso e due sole corsie (perché la visibilità non è limitata).<br />- IN PROSSIMITÀ O IN CORRISPONDENZA DELLE INTERSEZIONI (incroci): quando il conducente del veicolo che si vuole sorpassare abbia segnalato che intende svoltare a sinistra e abbia iniziato detta manovra (in tal caso lo si sorpasserà da destra); quando la strada è a precedenza, purché a due carreggiate separate, o a senso unico con almeno due corsie per senso di marcia e le corsie siano delimitate dall’apposita segnaletica orizzontale; quando il veicolo che si sorpassa è a due ruote non a motore (bicicletta, veicolo a trazione animale), senza invadere il lato riservato al senso opposto; quando la circolazione sia regolata da semafori o da agenti del traffico (vigili).<br />- IN PROSSIMITÀ O IN CORRISPONDENZA DI PASSAGGI A LIVELLO senza barrire se la circolazione è regolata da semafori.<br /><br />È sbagliato affermare che si può sorpassare sulle corsie di accelerazione o di decelerazione, che è sempre consentito superare un veicolo a due ruote o che, in caso di intenso traffico, i motociclisti possono utilizzare per il sorpasso le corsie riservate."
-riferimento=[680,681]
-}
-suggerimenti.continua()

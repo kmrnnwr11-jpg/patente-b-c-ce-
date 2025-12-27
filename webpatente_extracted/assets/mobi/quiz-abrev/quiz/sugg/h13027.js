@@ -1,8 +1,0 @@
-s=new tsugg;
-with(s){
-numero=13027
-titolo="IMPIANTI DI FRENATURA"
-testo="FRENO DI SERVIZIO<br />Consente di ridurre l’energia cinetica, ossia la velocità, di un veicolo, trasformandola in calore, grazie all’attrito di elementi meccanici (le pastiglie contro i dischi, oppure le ganasce contro i tamburi), azionati dalla pressione idraulica di un liquido. In altri termini, il pedale del freno agisce come una pompa che spinge un liquido, che va ad azionare i meccanismi frenanti (pastiglie e ganasce). Il livello del liquido idraulico dei freni deve essere periodicamente controllato.<br />Le guarnizioni di attrito con cui sono rivestite le pastiglie e le ganasce, ossia le parti direttamente interessate allo sfregamento, sono sollecitate dalle alte temperature (che possono renderle inefficienti) e soggette ad usura.<br /><br />SERVOFRENO<br />Gli impianti di frenatura dei veicoli leggeri sono in genere dotati di servofreno, detto “a depressione” perché utilizza la differenza di pressione dell’aria all’interno della “pompa” azionata dal pedale. Questo dispositivo non può funzionare a motore spento (anche se la chiave di accensione è inserita nel quadro).<br /><br />FRENO DI STAZIONAMENTO<br />Serve per bloccare il veicolo in sosta, anche su strade in pendenza, o per situazioni di emergenza (ad esempio quando durante la marcia non funziona il freno di servizio). Non deve essere normalmente utilizzato per la frenatura di servizio."
-riferimento=[897]
-}
-suggerimenti.continua()

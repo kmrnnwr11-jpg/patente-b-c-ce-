@@ -1,9 +1,0 @@
-s=new tsugg;
-with(s){
-numero=241
-titolo="ORDINE DI PRECEDENZA: H - D - B - L"
-segnale=643
-testo="Il veicolo H passa per primo (svoltando a destra non incrocia veicoli da destra); poi passa il veicolo D (transitato il veicolo H non incrocia altri veicoli da destra); quindi il veicolo B (transitato il veicolo D non incrocia altri veicoli da destra); infine il veicolo L (deve attenere il transito del veicolo B che proviene da destra).<br /><br />È vero che: i veicoli passano nell’ordine: H, D, B, L; il veicolo H può passare per primo; il veicolo D può passare prima del veicolo B ma deve dare la precedenza al veicolo H; il veicolo B può passare prima del veicolo L; il veicolo L deve passare per ultimo (e quindi deve dare la precedenza al veicolo B). È sbagliato dire che i veicoli L e D hanno la precedenza perché non effettuano svolte (la regola della precedenza a destra, in assenza di altri segnali, si applica anche ai veicoli che proseguono dritto) o che passano contemporaneamente (infatti, anche se le traiettorie dei due veicoli non si intersecano, L deve attendere il transito del veicolo B che, a sua volta, deve dare la precedenza a D).<br /><br />La regola: se in un incrocio il conducente di un veicolo intende svoltare a destra nella strada adiacente (vedasi il veicolo H), allora questo veicolo passerà per primo, salvo il caso in cui vi sia il segnale DARE PRECEDENZA (fig. 40) o FERMARSI E DARE PRECEDENZA (fig. 41).<br /><br />La regola: se in un incrocio il conducente di un veicolo intende svoltare a sinistra (vedasi il veicolo B), allora questo veicolo prima di proseguire deve far passare i veicoli provenienti da destra e di fronte (D e H)."
-riferimento=[634]
-}
-suggerimenti.continua()
