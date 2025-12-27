@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di STRETTOIA SIMMETRICA"
+segnale="19"
+quizass=97
+sugg=18
+risposte=["Le panneau représenté annonce un rétrécissement de la chaussée","Le panneau représenté annonce un rétrécissement avec probables difficultés de croisement avec les véhicules venant dans le sens opposé","Le panneau représenté annonce un rétrécissement sur les deux côtés de la chaussée","Le panneau représenté est un panneau de danger","Le panneau représenté, si sur fond jaune, se trouve quand il y a un chantier routier qui réduit la largeur de la chaussée","Le panneau représenté implique une réduction de la vitesse","Le panneau représenté annonce un sens unique alterné avec l'obligation de céder le passage aux véhicules venant du sens opposé","Le panneau représenté annonce que les véhicules venant du sens opposé doivent nous donner la priorité","Le panneau représenté annonce l'interdiction de passage aux autobus","Le panneau représenté annonce une longue ligne droite","Le panneau représenté annonce l'entrée dans un tunnel","Le panneau représenté est un panneau de prescription","Le panneau représenté annonce une route à sens unique","Le panneau représenté annonce une voie d'accélération"]
+rispostet=["Il segnale raffigurato preannuncia un restringimento della carreggiata","Il segnale raffigurato preannuncia una strettoia con probabili difficoltà di incrocio con i veicoli provenienti dal senso opposto","Il segnale raffigurato preannuncia un restringimento sui due lati della carreggiata","Il segnale in figura è un segnale di pericolo","Il segnale raffigurato, se a fondo giallo, è posto in presenza di un cantiere stradale che riduce la larghezza della carreggiata","Il segnale raffigurato comporta di moderare la velocità","Il segnale raffigurato preannuncia un senso unico alternato con l'obbligo di dare la precedenza ai veicoli provenienti dall'altro senso","Il segnale raffigurato preannuncia che i veicoli provenienti dall'altro senso devono darci la precedenza","Il segnale raffigurato preannuncia un divieto di transito agli autobus","Il segnale raffigurato preannuncia un lungo rettilineo","Il segnale raffigurato preannuncia l'ingresso di una galleria","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato preannuncia una strada a senso unico","Il segnale raffigurato preannuncia una corsia di accelerazione"]
+soluzioni="VVVVVVFFFFFFFF"
+rispass=[903,904,905,906,909,910,911,912,913,914,915,916,917,918]
+nummin="02031"
+}
+continua();

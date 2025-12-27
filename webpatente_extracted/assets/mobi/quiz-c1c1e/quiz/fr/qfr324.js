@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Compressore dell'impianto di frenatura penumatico"
+quizass=324
+sugg=0
+risposte=["Sur les poids lourds, le compresseur du système de freinage pneumatique ou pneumo-hydraulique en général se met en route par l'intermédiaire du moteur du véhicule","Sur les poids lourds, le compresseur du système de freinage pneumatique ou pneumo-hydraulique aspire l'air de l'extérieur à travers un filtre et l'envoie sous forme de pression vers les réservoirs","Sur les poids lourds, le compresseur du système de freinage pneumatique ou pneumo-hydraulique a besoin de refroidissement et de lubrification","Sur les poids lourds, le compresseur du système de freinage pneumatique ou pneumo-hydraulique est alimenté par le carburant du moteur","Sur les poids lourds, le compresseur du système de freinage pneumatique ou pneumo-hydraulique est alimenté par un mélange à 4% d'huile","Sur les véhicules automobiles équipés de freinage pneumo-hydraulique, le compresseur peut être utilisé comme frein moteur, en inversant le sens de rotation"]
+rispostet=["Sui veicoli pesanti, il compressore dell'impianto di frenatura pneumatico o pneumoidraulico prende in genere movimento dal motore del veicolo","Sui veicoli pesanti, il compressore dell'impianto di frenatura pneumatico o pneumoidraulico aspira aria dall'esterno attraverso un filtro e la invia a pressione verso i serbatoi","Sui veicoli pesanti, il compressore dell'impianto di frenatura pneumatico o pneumoidraulico necessita di raffreddamento e lubrificazione","Sui veicoli pesanti, il compressore dell'impianto di frenatura pneumatico o pneumoidraulico è alimentato con il combustibile del motore","Sui veicoli pesanti, il compressore dell'impianto di frenatura pneumatico o pneumoidraulico è alimentato da miscela al 4% di olio","Sugli autoveicoli dotati di frenatura pneumoidraulica, il compressore può essere utilizzato come freno motore, invertendone il senso di rotazione"]
+soluzioni="VVVFFF"
+rispass=[2913,2914,2915,2916,2917,2918]
+nummin="141015"
+}
+continua();

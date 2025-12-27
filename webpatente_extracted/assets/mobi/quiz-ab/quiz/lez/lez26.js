@@ -1,0 +1,5 @@
+l=new tlez; with(l){
+intro="<div class='intro'>Questa lezione parla anzitutto del <b>carico</b> dei veicoli, sia nel senso del <b>numero di persone</b> e animali che possono essere trasportati, sia nel senso di <b>cose</b> inanimate, che devono essere sistemate in modo da evitarne la <b>caduta</b> e lo <b>spostamento</b> e con rispetto delle norme relative alle <b>dimensioni</b> e alla <b>portata</b>.</div><div class='intro'>Il discorso sul carico conduce alla trattazione dei <b>pannelli</b> che devono essere applicati in caso di <b>carichi sporgenti</b>, di trasporto di <b>merci pericolose</b> e su <b>veicoli di massa superiore a 3,5 tonnellate</b>.</div><div class='intro'>Al termine si farà cenno alle modalità con cui deve avvenire il <b>traino di un veicolo guasto</b> da parte di un altro e si tratterà, più in dettaglio, del <b>traino di un rimorchio</b>.<br/><br/><b>Capitoli di riferimento: 1, 13, 17</b> (gli ultimi due con due quiz nella prova di esame)</div>"
+sugg=[11060,11061,11063,11064,11065,406,11066,11067,11068,11069,11070,13001]
+}
+manuale.continua()

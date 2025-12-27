@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="La distanza di sicurezza (6)"
+quizass=517
+sugg=11033
+risposte=["Il rispetto della distanza di sicurezza evita la collisione con il veicolo che precede","Il valore della distanza di sicurezza da mantenere da una macchina sgombraneve in azione è di 20 metri","Il valore della distanza di sicurezza da mantenere da una macchina spanditrice di sale in azione è di 20 metri","Il conducente deve valutare la distanza di sicurezza con riferimento anche alla velocità del veicolo che lo precede","Il valore della distanza di sicurezza deve essere stabilito anche in base all'efficienza dei freni","Il valore della distanza di sicurezza deve essere stabilito anche in base alla condizione dei pneumatici","Su strada extraurbana a una corsia per senso di marcia, la distanza fra veicoli adibiti al trasporto di merci di massa complessiva superiore a 3,5 tonnellate, cui sia stato imposto il divieto di sorpasso, deve essere di almeno 100 metri","Il conducente ha l'obbligo di controllare che il veicolo che lo segue rispetti la distanza di sicurezza","Il valore della distanza di sicurezza da mantenere da una macchina sgombraneve in azione è di 10 metri","Il valore della distanza di sicurezza da mantenere da una macchina spanditrice di sale in azione è di 15 metri","La distanza fra autotreni, in presenza di segnali di divieto di sorpasso fra di loro, deve essere pari ad almeno 10 metri","Sulle strade extraurbane, il valore della distanza di sicurezza è sempre pari a 70 metri","Il valore della distanza di sicurezza deve essere almeno pari a quello della distanza di frenatura","Il valore della distanza di sicurezza deve essere almeno pari a quello della distanza di visibilità","La distanza di sicurezza non deve essere rispettata a velocità di marcia inferiori ai 50 km/h","Il valore della distanza di sicurezza deve essere stabilito anche in base alla marcia innestata"]
+soluzioni="VVVVVVVFFFFFFFFF"
+rispass=[4213,4222,4223,4224,4225,4226,4227,4233,4234,4235,4236,4237,4238,4239,4240,4241]
+nummin="12001"
+}
+continua();

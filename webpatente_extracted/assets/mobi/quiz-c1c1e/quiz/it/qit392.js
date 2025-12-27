@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Controlli e manutenzione a ruote e pneumatici"
+quizass=392
+sugg=0
+risposte=["La non corretta convergenza delle ruote anteriori determina l'asimmetrico consumo degli pneumatici","L'eccessiva pressione di gonfiaggio degli pneumatici provoca una maggiore rigidità di marcia, con minor confort per i passeggeri","Un'insufficiente pressione di gonfiaggio degli pneumatici provoca un aumento della deriva con conseguente minor tenuta di strada in curva","La mancata equilibratura dello pneumatico ne provoca un anomalo consumo e una vibrazione dello sterzo","Le ruote gemellate, se poco gonfie, possono deteriorarsi a causa del loro reciproco sfregamento","Se il conducente di un veicolo aziendale, durante un'ispezione, nota anomali consumi degli pneumatici, deve immediatamente riferirlo al responsabile del parco veicolare","Se il conducente, durante un'ispezione al veicolo, nota forte riscaldamento di alcune parti degli pneumatici, deve evitare di riprendere il viaggio riferendo all'azienda della situazione","La perdita di convergenza del veicolo diminuisce il rischio di sbandamento del veicolo, ma ne aumenta il consumo","La non corretta equilibratura delle ruote diminuisce lo spazio di frenatura del veicolo, ma porta a fenomeni di vibrazione allo sterzo","Un'insufficiente pressione di gonfiaggio degli pneumatici, provoca un aumento di temperatura del liquido di raffreddamento","Il conducente che noti un differente consumo delle varie zone del battistrada deve immediatamente sospendere il viaggio e attendere soccorsi","Il conducente che noti un differente consumo delle varie zone del battistrada, deve immediatamente cambiare lo pneumatico in oggetto con quello di scorta","Il conducente che noti un differente consumo delle varie zone del battistrada, deve immediatamente scaricare la merce o i passeggeri e avvisare l'azienda perché provveda al recupero e proseguire il viaggio a vuoto"]
+soluzioni="VVVVVVVFFFFFF"
+rispass=[3365,3366,3367,3368,3369,3370,3371,3372,3373,3374,3375,3376,3377]
+nummin="163006"
+}
+continua()

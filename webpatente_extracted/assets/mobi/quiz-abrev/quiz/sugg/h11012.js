@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=11012
+titolo="DOVERI DEL CONDUCENTE:  COMPORTAMENTI DA EVITARE"
+testo="Nell’uso della strada è dovere del conducente evitare i seguenti comportamenti:<br /><br />- RIMUOVERE, SPOSTARE, O IMBRATTARE (SPORCARE) LA SEGNALETICA STRADALE di qualunque tipo (compresi segnali temporanei e/o non solidamente fissati al terreno, come coni o barriere).<br /><br />- DANNEGGIARE opere e impianti stradali (recinzioni, panchine, tombini, ecc.).<br /><br />- SPORCARE LA CARREGGIATA o la banchina depositando rifiuti, oppure immettendosi sulla strada con le ruote sporche di fango o terriccio, o con un veicolo che perde olio o carburante (in  tali casi il conducente dovrà compiere tutte le azioni necessarie per evitare pericoli agli altri utenti, compreso avvisare l’ente proprietario della strada o gli organi di polizia). Chi, anche in modo involontario, sporca notevolmente la strada, incorre in sanzioni amministrative.<br /><br />- GETTARE OGGETTI, rifiuti o mozziconi accesi dai veicoli fermi o in movimento.<br /><br />- GAREGGIARE IN VELOCITÀ. Le competizioni sportive su strade pubbliche devono essere autorizzate. Chi gareggia in velocità su strade pubbliche o scommette sui veicoli che partecipano a gare non autorizzate è punito con la reclusione.<br /><br />Occorre inoltre astenersi dal procedere ad alta velocità su POZZANGHERE o su strade coperte di BRECCIOLINO, per evitare di sbandare."
+riferimento=[889]
+}
+suggerimenti.continua()

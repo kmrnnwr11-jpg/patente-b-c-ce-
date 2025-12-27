@@ -1,0 +1,9 @@
+s=new tsugg;
+with(s){
+numero=249
+titolo="ORDINE DI PRECEDENZA: T - G - P - B"
+segnale=648
+testo="Prima passa il veicolo T (perché circola su rotaie); poi il veicolo G (si trova sulla strada più importante, che gode del diritto di precedenza e deve attendere solo il passaggio del tram); quindi il veicolo P (ha il diritto di precedenza rispetto al veicolo B perché, avendo entrambi il segnale DARE PRECEDENZA, fig. 40, fra i due passa prima chi ha la destra libera); infine il veicolo B (effettua la svolta a sinistra e deve attendere il passaggio del veicolo che proviene di fronte).<br /><br />È vero che: i veicoli transitano nell’ordine: T, G, P, B; il veicolo T passa per primo; il veicolo G deve attendere il transito del veicolo T; il veicolo P transita dopo il tram e il veicolo G, ma prima del veicolo B; il veicolo B deve dare la precedenza a tutti gli altri veicoli, quindi transita per ultimo.<br /><br />La regola: quando si sta per impegnare un incrocio si ha l’obbligo di dare la precedenza a chi proviene da destra (vale anche per gli autobus). Si ha invece l’obbligo di dare la precedenza a destra e sinistra: in presenza del segnale DARE PRECEDENZA (fig. 40) o FERMARSI E DARE PRECEDENZA (fig. 41), ai veicoli circolanti su rotaie (tram e treni) e ai veicoli di polizia o di emergenza. Dunque il tram ed i veicoli di soccorso hanno sempre la precedenza e passano per primi.<br /><br />La regola: se in un incrocio il conducente di un veicolo intende svoltare a sinistra (vedasi il veicolo B), allora questo veicolo prima di proseguire deve far passare i veicoli provenienti da destra e di fronte (salvo il caso in cui nell’incrocio vi sia il segnale DARE PRECEDENZA, fig. 40, in questo caso bisogna darla anche a sinistra)."
+riferimento=[640,641]
+}
+suggerimenti.continua()

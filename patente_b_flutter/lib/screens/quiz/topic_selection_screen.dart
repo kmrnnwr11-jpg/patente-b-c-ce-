@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../services/course_service.dart';
 import '../../services/quiz_service.dart';
 import '../../theme/app_theme.dart';
 import 'quiz_screen.dart';
@@ -13,7 +15,7 @@ class TopicSelectionScreen extends StatefulWidget {
 }
 
 class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
-  final QuizService _quizService = QuizService();
+  late QuizService _quizService;
   List<String> _topics = [];
   Map<String, String> _topicImages = {}; // Map topic name to image path
   bool _isLoading = true;
@@ -21,11 +23,21 @@ class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
   @override
   void initState() {
     super.initState();
-    _loadData();
+    // Defer loading to didChangeDependencies to access context safely
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadData();
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _quizService = context.read<QuizService>();
   }
 
   Future<void> _loadData() async {
-    await _quizService.loadQuestions();
+    final courseService = context.read<CourseService>();
+    await _quizService.loadQuestions(license: courseService.currentLicense);
 
     // Load theory images to map them to topics
     try {
@@ -61,10 +73,12 @@ class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
       debugPrint('Error loading theory images: $e');
     }
 
-    setState(() {
-      _topics = _quizService.getTopics();
-      _isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        _topics = _quizService.getTopics();
+        _isLoading = false;
+      });
+    }
   }
 
   // Manual overrides for specific quiz topics
@@ -139,107 +153,124 @@ class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
       appBar: AppBar(title: const Text('Scegli Argomento')),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: _topics.length,
-              itemBuilder: (context, index) {
-                final topic = _topics[index];
-                final questionCount = _quizService.getByTopic(topic).length;
-                final imagePath = _findImageForTopic(topic);
+          : Column(
+              children: [
+                // Topics list
+                Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: _topics.length,
+                    itemBuilder: (context, index) {
+                      final topic = _topics[index];
+                      final questionCount = _quizService
+                          .getByTopic(topic)
+                          .length;
+                      final imagePath = _findImageForTopic(topic);
 
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Material(
-                    color: AppTheme.surfaceColor,
-                    borderRadius: BorderRadius.circular(16),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                QuizScreen(mode: QuizMode.topic, topic: topic),
-                          ),
-                        );
-                      },
-                      borderRadius: BorderRadius.circular(16),
-                      child: Container(
-                        padding: const EdgeInsets.all(
-                          12,
-                        ), // Reduced padding slightly
-                        decoration: BoxDecoration(
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 12),
+                        child: Material(
+                          color: AppTheme.surfaceColor,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(
-                            color: AppTheme.cardColor,
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            // IMAGE CONTAINER replacing the Number Container
-                            Container(
-                              width: 80, // Larger width for image
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: AppTheme.primaryColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(12),
-                                image: imagePath != null && imagePath.isNotEmpty
-                                    ? DecorationImage(
-                                        image: AssetImage(imagePath),
-                                        fit: BoxFit.cover,
-                                      )
-                                    : null,
-                              ),
-                              child: imagePath == null || imagePath.isEmpty
-                                  ? Center(
-                                      child: Text(
-                                        '${index + 1}',
-                                        style: const TextStyle(
-                                          color: AppTheme.primaryLight,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    )
-                                  : null,
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    topic,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => QuizScreen(
+                                    mode: QuizMode.topic,
+                                    topic: topic,
                                   ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    '$questionCount domande',
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      color: AppTheme.textSecondary,
+                                ),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(16),
+                            child: Container(
+                              padding: const EdgeInsets.all(
+                                12,
+                              ), // Reduced padding slightly
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                  color: AppTheme.cardColor,
+                                  width: 1,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  // IMAGE CONTAINER replacing the Number Container
+                                  Container(
+                                    width: 80, // Larger width for image
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: AppTheme.primaryColor.withOpacity(
+                                        0.1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                      image:
+                                          imagePath != null &&
+                                              imagePath.isNotEmpty
+                                          ? DecorationImage(
+                                              image: AssetImage(imagePath),
+                                              fit: BoxFit.cover,
+                                            )
+                                          : null,
                                     ),
+                                    child:
+                                        imagePath == null || imagePath.isEmpty
+                                        ? Center(
+                                            child: Text(
+                                              '${index + 1}',
+                                              style: const TextStyle(
+                                                color: AppTheme.primaryLight,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                              ),
+                                            ),
+                                          )
+                                        : null,
+                                  ),
+                                  const SizedBox(width: 16),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          topic,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          '$questionCount domande',
+                                          style: const TextStyle(
+                                            fontSize: 13,
+                                            color: AppTheme.textSecondary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: AppTheme.textSecondary,
+                                    size: 16,
                                   ),
                                 ],
                               ),
                             ),
-                            const Icon(
-                              Icons.arrow_forward_ios,
-                              color: AppTheme.textSecondary,
-                              size: 16,
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ],
             ),
     );
   }

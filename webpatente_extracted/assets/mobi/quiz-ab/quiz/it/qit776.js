@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Funzione dei catadiottri"
+quizass=776
+sugg=470
+risposte=["I catadiottri hanno la funzione di indicare la presenza e l'ingombro dei veicoli su cui sono applicati","I catadiottri di colore bianco hanno la funzione di evidenziare la parte davanti dei rimorchi e semirimorchi","I catadiottri, se illuminati, hanno la funzione di rendere più visibili, specialmente di notte, i veicoli e i rimorchi in sosta sulla strada","I catadiottri rendono più visibile un veicolo guasto, nel caso in cui non funzionino le luci di posizione posteriori","I catadiottri con gli indicatori di direzione, segnalano la svolta di un veicolo","I catadiottri di colore bianco sono installati negli autoveicoli che trasportano materiale infiammabile","I catadiottri possono sostituire gli indicatori di direzione"]
+soluzioni="VVVVFFF"
+rispass=[5862,5863,5864,5865,5866,5867,5868]
+nummin="18006"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Uso e funzionamento dello sterzo"
+quizass=908
+sugg=13030
+risposte=["In caso di mal funzionamento del servosterzo, lo sterzo diventa &quot;pesante&quot;","In caso di foratura di un pneumatico, lo sterzo tira nella direzione della ruota forata","Al fine di garantire la sicurezza della circolazione occorre verificare periodicamente l'assenza di giochi anomali allo sterzo","La &quot;durezza&quot; dello sterzo può essere indice di insufficiente pressione dei pneumatici","Il servosterzo idraulico non funziona se il motore è spento","Eccessivi giochi allo sterzo rendono imprecisa la traiettoria del veicolo","La convergenza delle ruote ha influenza sulla precisione della sterzata","Se lo sterzo vibra è bene far controllare la bilanciatura delle ruote anteriori","Il servosterzo aiuta a controllare la traiettoria del veicolo in caso di foratura di un pneumatico","Il servosterzo migliora l'azione frenante del veicolo","In caso di foratura di un pneumatico, lo sterzo tira nella direzione opposta a quella della ruota forata","Se lo sterzo vibra si deve far controllare la bilanciatura delle ruote posteriori","La rottura del servosterzo si manifesta con un'eccessiva facilità di manovra dello sterzo","Il volante deve essere impugnato nella sua parte bassa, con entrambe le mani sotto le razze","Il volante non può essere regolato in altezza","La precisione della sterzata non è influenzata dalle cattive condizioni delle sospensioni e degli ammortizzatori","La precisione della sterzata è influenzata dalla scarsa pressione dell'olio di lubrificazione","La precisione della sterzata è influenzata dall'eccessiva temperatura del liquido di raffreddamento"]
+soluzioni="VVVVVVVVVFFFFFFFFF"
+rispass=[7072,7073,7074,7075,7076,7077,7078,7079,7080,7081,7082,7083,7084,7085,7086,7087,7088,7089]
+nummin="25026"
+}
+continua();

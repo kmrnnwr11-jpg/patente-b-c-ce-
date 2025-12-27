@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Impianto di frenatura: servoautodistributore"
+quizass=202
+sugg=0
+risposte=["Le servo auto-distributeur est installé sur la remorque","Au servo auto-distributeur sont reliés à l'entrée deux tubes, celui du modérable et celui de l'automatique","Du servo auto-distributeur sont reliés à la sortie deux tubes, un qui va au réservoir de la remorque et un aux éléments de freinage","Le servo auto-distributeur garantit le freinage instantané et automatique de la remorque en cas de dételage accidentel","Dans le servo auto-distributeur il existe une commande manuelle pour le déblocage des freins de stationnement de la remorque quand elle même est dételée du véhicule porteur","Le servo auto-distributeur est équipé d'une soupape d'arrêt, une de décompression et une d'admission","Dans le servo auto-distributeur, la soupape d'admission reste ouverte tant qu'on appuie sur la pédale de frein","Quand, pour une panne, une section du système de freinage du véhicule porteur ne fonctionne pas, le servo auto-distributeur garantit de toute façon le freinage de la remorque"]
+rispostet=["Il servoautodistributore è montato sul rimorchio","Al servoautodistributore sono collegati in ingresso due tubi, quello del moderabile e quello dell'automatico","Dal servoautodistributore sono collegati in uscita due tubi, uno che va al serbatoio del rimorchio e uno agli elementi frenanti","Il servoautodistributore garantisce la frenatura istantanea ed automatica del rimorchio in caso di sganciamento accidentale","Nel servoautodistributore esiste un comando manuale per lo sblocco dei freni di stazionamento del rimorchio quando lo stesso è sganciato dalla motrice","Il servoautodistributore è dotato di una valvola di ritenuta, una di scarico e una d'immissione","Nel servoautodistributore, la valvola d'immissione resta aperta finché viene premuto il pedale del freno","Quando per un'avaria non funziona una sezione dell'impianto frenante della motrice, il servoautodistributore garantisce comunque la frenatura del rimorchio"]
+soluzioni="VVVVVVFF"
+rispass=[1520,1521,1522,1523,1524,1525,1526,1531]
+nummin="101003"
+}
+continua();

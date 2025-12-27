@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Installazione e manutenzione del cronotachigrafo digitale"
+quizass=55
+sugg=0
+risposte=["Der digitale Fahrtenschreiber darf nur von ermächtigten Werkstätten eingebaut werden","Der digitale Fahrtenschreiber ist mit Siegeln versehen und darf vom Fahrzeugführer nicht manipuliert werden","Der digitale Fahrtenschreiber muss geeicht werden, bevor das Fahrzeug in den Verkehr gebracht wird","Der digitale Fahrtenschreiber ist mit einem Schild versehen, auf welchem die technischen Informationen für die Montage angegeben sind","Der digitale Fahrtenschreiber muss in der Regel alle zwei Jahre überprüft werden","Der digitale Fahrtenschreiber darf von jeder angemessen ausgestatteten Werkstätte überholt werden","Der digitale Fahrtenschreiber darf von jeder Kraftfahrzeugwerkstätte eingebaut werden","Der digitale Fahrtenschreiber muss innerhalb von vier Wochen ab seinem Einbau geeicht werden","Der digitale Fahrtenschreiber muss in der Regel nicht alle zwei Jahre überprüft werden","Im Falle einer schwerwiegenden Störung kann der digitale Fahrtenschreiber von jeder Kraftfahrzeugwerkstätte repariert werden"]
+rispostet=["Il cronotachigrafo digitale può essere montato solo da officine autorizzate","Il cronotachigrafo digitale è munito di sigilli e non deve essere manomesso dal conducente","Il cronotachigrafo digitale deve essere tarato prima dell'immissione del veicolo in circolazione","Il cronotachigrafo digitale ha una targhetta contenente le informazioni tecniche di montaggio","Il cronotachigrafo digitale deve essere controllato, di norma, ogni due anni","Il cronotachigrafo digitale può essere revisionato da qualunque officina idoneamente attrezzata","Il cronotachigrafo digitale può essere riparato da qualunque officina meccanica","Il cronotachigrafo digitale deve essere tarato entro quattro settimane dall'installazione","Il cronotachigrafo digitale non deve essere revisionato, di norma, ogni due anni","In caso di guasto grave, il cronotachigrafo digitale può essere riparato da qualunque officina meccanica"]
+soluzioni="VVVVVFFFFF"
+rispass=[177,178,179,180,181,182,183,184,185,186]
+nummin="021010"
+}
+continua();

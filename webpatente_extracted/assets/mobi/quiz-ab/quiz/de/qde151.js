@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DIVIETO DI TRANSITO AGLI AUTOBUS"
+segnale="67"
+quizass=151
+sugg=71
+risposte=["Das abgebildete Verkehrszeichen zeigt das Durchfahrtsverbot für Autobusse an","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Personenkraftwagen erlaubt","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Lastkraftwagen erlaubt","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Krafträdern erlaubt","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Campingfahrzeugen erlaubt","Das abgebildete Verkehrszeichen verbietet die Durchfahrt auch von Autobussen mit einem Gesamtgewicht unter 3,5 Tonnen","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Reisebussen erlaubt","Das abgebildete Verkehrszeichen zeigt eine den Autobussen vorbehaltene Fahrspur an","Das abgebildete Verkehrszeichen kündigt einen Parkplatz für Reisebusse an","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Schulbussen erlaubt","Das abgebildete Verkehrszeichen verbietet die Durchfahrt von Campingfahrzeugen","Das abgebildete Verkehrszeichen gilt nur an Werktagen"]
+rispostet=["Il segnale raffigurato indica il divieto di transito agli autobus","In presenza del segnale raffigurato è consentito il transito alle autovetture","In presenza del segnale raffigurato è consentito il transito agli autocarri","In presenza del segnale raffigurato è consentito il transito ai motocicli","In presenza del segnale raffigurato è consentito il transito alle autocaravan","Il segnale raffigurato vieta il transito anche agli autobus di massa a pieno carico inferiore a 3,5 tonnellate","In presenza del segnale raffigurato è consentito il transito agli autobus turistici","Il segnale raffigurato segnala una corsia riservata agli autobus","Il segnale raffigurato preannuncia un'area di sosta per autobus turistici","In presenza del segnale raffigurato è consentito il transito agli scuolabus","Il segnale raffigurato vieta il transito alle autocaravan","Il segnale raffigurato è valido solo nei giorni feriali"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[1401,1402,1403,1404,1405,1406,1407,1408,1409,1410,1411,1412]
+nummin="03017"
+}
+continua();

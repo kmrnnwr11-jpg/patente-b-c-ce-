@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1001,
+        "domanda": "Il cronotachigrafo è un apparecchio che registra i tempi di guida e di riposo dei conducenti",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Cronotachigrafo",
+        "sottoArgomento": "Funzionamento",
+        "difficulty": "easy"
+    },
+    {
+        "id": 1002,
+        "domanda": "La carta tachigrafica del conducente ha una validità di 10 anni",
+        "risposta": false,
+        "immagine": null,
+        "argomento": "Cronotachigrafo",
+        "sottoArgomento": "Carte tachigrafiche",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1003,
+        "domanda": "È vietato utilizzare due carte tachigrafiche diverse nello stesso giorno lavorativo",
+        "risposta": false,
+        "immagine": null,
+        "argomento": "Cronotachigrafo",
+        "sottoArgomento": "Uso carte",
+        "difficulty": "hard"
+    },
+    {
+        "id": 1004,
+        "domanda": "La massa massima a pieno carico di un autocarro a 2 assi isolati non può superare 18 tonnellate",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Masse e Dimensioni",
+        "sottoArgomento": "Limiti di massa",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1005,
+        "domanda": "La larghezza massima di un veicolo per trasporto merci (esclusi quelli frigoriferi) è di 2,55 metri",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Masse e Dimensioni",
+        "sottoArgomento": "Limiti dimensionali",
+        "difficulty": "easy"
+    },
+    {
+        "id": 1006,
+        "domanda": "I pannelli retroriflettenti gialli e rossi posteriori indicano un autocarro di massa superiore a 3,5 tonnellate",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Dispositivi di Segnalazione",
+        "sottoArgomento": "Pannelli posteriori",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1007,
+        "domanda": "L'estintore è una dotazione obbligatoria per tutti gli autocarri superiori a 3,5t",
+        "risposta": false,
+        "immagine": null,
+        "argomento": "Dotazioni di Sicurezza",
+        "sottoArgomento": "Equipaggiamento obbligatorio",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1008,
+        "domanda": "Il limitatore di velocità per autocarri > 3,5t ma <= 12t deve essere tarato a 90 km/h",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Dispositivi di Sicurezza",
+        "sottoArgomento": "Limitatore di velocità",
+        "difficulty": "hard"
+    },
+    {
+        "id": 1009,
+        "domanda": "È consentito guidare senza inserire la carta tachigrafica solo se si effettuano tragitti brevi inferiori a 50 km",
+        "risposta": false,
+        "immagine": null,
+        "argomento": "Cronotachigrafo",
+        "sottoArgomento": "Esenzioni",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1010,
+        "domanda": "Il periodo di riposo giornaliero regolare deve essere di almeno 11 ore",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Tempi di Guida e Riposo",
+        "sottoArgomento": "Riposo giornaliero",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1011,
+        "domanda": "Dopo 4 ore e mezza di guida il conducente deve effettuare una pausa di almeno 45 minuti",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Tempi di Guida e Riposo",
+        "sottoArgomento": "Pause",
+        "difficulty": "easy"
+    },
+    {
+        "id": 1012,
+        "domanda": "Con la patente C si possono guidare anche gli autobus con più di 9 posti",
+        "risposta": false,
+        "immagine": null,
+        "argomento": "Categorie Patente",
+        "sottoArgomento": "Abilitazioni",
+        "difficulty": "easy"
+    },
+    {
+        "id": 1013,
+        "domanda": "Il carico sporgente posteriormente deve essere segnalato con un pannello a strisce bianche e rosse rifrangenti",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Carico e Scarico",
+        "sottoArgomento": "Segnalazione carico",
+        "difficulty": "easy"
+    },
+    {
+        "id": 1014,
+        "domanda": "La revisione per gli autocarri di massa superiore a 3,5 tonnellate è annuale",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Manutenzione e Revisione",
+        "sottoArgomento": "Scadenze",
+        "difficulty": "medium"
+    },
+    {
+        "id": 1015,
+        "domanda": "L'ABS è un sistema che impedisce il bloccaggio delle ruote in frenata",
+        "risposta": true,
+        "immagine": null,
+        "argomento": "Sistemi di Frenatura",
+        "sottoArgomento": "ABS",
+        "difficulty": "easy"
+    }
+]

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Ammortizzatori (1)"
+quizass=905
+sugg=13029
+risposte=["Die Stoßdämpfer eines Kraftfahrzeugs dienen dazu, die Schwingungen der Aufhängung zu verringern","Die Stoßdämpfer tragen zur Straßenlage des Fahrzeugs bei","Die Stoßdämpfer dienen unter anderem dazu, die Straßenlage des Fahrzeugs sicherzustellen","Die Überladung des Fahrzeugs kann die Stoßdämpfer funktionsuntüchtig machen","Die Überladung des Fahrzeugs kann zum vorzeitigen Verschleiß der Stoßdämpfer führen","Die Stoßdämpfer eines Kraftfahrzeugs erfordern weder Überprüfung noch Wartung, solange die Garantie des Fahrzeugs gilt","Die Überladung führt nicht zu Schäden an den Stoßdämpfern eines Kraftfahrzeugs, wenn der Fahrer einen vorsichtigen Fahrstil an den Tag legt","Wenn das Fahrzeug überladen ist, reicht es aus, den Reifendruck um ein halbes Bar zu erhöhen, um Schäden an den Stoßdämpfern zu vermeiden","Der Fahrer kann die Härte der Aufhängung auf jeden Fall einstellen","Die Härte der Stoßdämpfer eines Kraftfahrzeugs kann vom Eigentümer des Fahrzeugs überprüft werden, ohne eine Fachwerkstätte aufzusuchen"]
+rispostet=["Gli ammortizzatori di un veicolo a motore servono a ridurre le oscillazioni delle sospensioni","Gli ammortizzatori collaborano alla tenuta di strada del veicolo","Gli ammortizzatori servono, tra l'altro, a garantire la tenuta di strada del veicolo","Il sovraccarico del veicolo può rendere inefficienti gli ammortizzatori","Il sovraccarico del veicolo può comportare un'usura precoce degli ammortizzatori","Gli ammortizzatori di un veicolo a motore non necessitano di verifiche e manutenzioni fino a quando dura la garanzia del veicolo","Il sovraccarico non causa problemi agli ammortizzatori di un veicolo a motore se il conducente adotta uno stile di guida prudente","Se il veicolo è sovraccarico, per evitare problemi agli ammortizzatori è sufficiente aumentare la pressione dei pneumatici di mezzo bar","Il conducente può in ogni caso regolare la rigidità degli ammortizzatori","La rigidità degli ammortizzatori di un veicolo a motore può essere controllata dal proprietario del veicolo, senza ricorrere ad un'officina specializzata"]
+soluzioni="VVVVVFFFFF"
+rispass=[7050,7051,7052,7053,7054,7055,7056,7057,7058,7059]
+nummin="25024"
+}
+continua();

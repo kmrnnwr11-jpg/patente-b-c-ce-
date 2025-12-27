@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Responsabilità civile derivante da incidente stradale"
+quizass=327
+sugg=221
+risposte=["Die vom Verkehrsunfall herrührende zivilrechtliche Haftung entsteht, wenn Schäden an Personen, Tieren oder Sachen verursacht werden","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung liegt auch beim Fahrzeughalter, auch wenn er zum Zeitpunkt des Unfalls nicht anwesend war","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung verpflichtet den Verantwortlichen zum Schadenersatz","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung liegt bei beiden betroffenen Fahrern, solange nicht das Gegenteil bewiesen wird","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung beschränkt sich auf den Schadenersatz bei Sachschäden","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung ist bei leichten Schäden ausgeschlossen","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung geht auch für Schäden über der Höchstbemessungsgrenze zu Lasten des Versicherungsinstituts","Die vom Verkehrsunfall herrührende zivilrechtliche Haftung besteht in der Pflicht, etwaige Verletzte zu betreuen"]
+rispostet=["La responsabilità civile derivante dall'incidente stradale sorge qualora si causi un danno a persone, animali o cose","La responsabilità civile derivante dall'incidente stradale grava anche sul proprietario, anche se egli non è presente al momento dell'incidente","La responsabilità civile derivante dall'incidente stradale obbliga il responsabile al risarcimento del danno causato","La responsabilità civile derivante dall'incidente stradale è di ciascuno dei conducenti coinvolti, finché non sia dimostrato il contrario","La responsabilità civile derivante dall'incidente stradale si limita al risarcimento dei danni alle sole cose","La responsabilità civile derivante dall'incidente stradale è esclusa per danni di lieve entità","La responsabilità civile derivante dall'incidente stradale è a carico dell'impresa assicuratrice anche per danni superiori ai massimali","La responsabilità civile derivante dall'incidente stradale consiste nell'obbligo di assistere gli eventuali feriti"]
+soluzioni="VVVVFFFF"
+rispass=[1843,1844,1845,1846,1847,1848,1849,1850]
+nummin="10002"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Svolta a sinistra da una strada a doppio senso di circolazione"
+quizass=165
+sugg=152
+risposte=["Auf einer Gegenverkehrsstraße muss sich der Fahrer, um nach links abzubiegen, so weit wie möglich der Straßenmitte nähern","Auf einer Gegenverkehrsstraße muss sich der Fahrer, um nach links abzubiegen, die Mitte der Kreuzung in der Regel zu seiner Rechten lassen","Auf einer Gegenverkehrsstraße muss der Fahrer, um nach links abzubiegen, den von rechts kommenden Fahrzeugen die Vorfahrt gewähren, wenn nichts anderes angezeigt ist","Auf einer Gegenverkehrsstraße muss sich der Fahrer, um nach links abzubiegen, so weit wie möglich am linken Straßenrand halten","Auf einer Gegenverkehrsstraße muss der Fahrer, um nach links abzubiegen, das Abbiegemanöver rasch durchführen, um den von links und von rechts kommenden Fahrzeugen auszuweichen","Auf einer Gegenverkehrsstraße muss der Fahrer, um nach links abzubiegen, den von links kommenden Fahrzeugen immer die Vorfahrt gewähren"]
+rispostet=["In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve avvicinarsi il più possibile al centro della strada","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve lasciare di norma il centro dell'incrocio alla propria destra","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve dare la precedenza ai veicoli provenienti da destra, salvo diversa segnalazione","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve spostarsi il più possibile sul margine sinistro della strada","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve effettuare la svolta con rapidità per evitare i veicoli provenienti da destra e da sinistra","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve dare sempre la precedenza ai veicoli provenienti da sinistra"]
+soluzioni="VVVFFF"
+rispass=[1127,1128,1129,1130,1131,1132]
+nummin="05024"
+}
+continua();

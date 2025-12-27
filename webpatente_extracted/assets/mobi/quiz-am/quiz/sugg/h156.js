@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=156
+titolo="SOSTA"
+testo="È vietato sostare: <br />- in tutti i casi in cui è vietata la fermata - per esempio: sui dossi e nelle curve; negli incroci; in corrispondenza (=sopra) o in prossimità di (=vicino) passaggi a livello; sui binari tranviari; nelle gallerie e sotto i ponti, salvo diversa segnalazione; sulle strisce pedonali (ma non in loro prossimità); sui marciapiedi, salvo diversa segnalazione; davanti ai segnali stradali verticali e semaforici in modo da occultarne (=nasconderne) la vista;<br />- in presenza dell'apposito segnale (fig. 84) e dove il bordo del marciapiede è dipinto con strisce gialle e nere (fig. 670);<br />- davanti ai passi carrabili;<br />- negli spazi riservati alla sosta dei veicoli per persone disabili e in corrispondenza degli spazi destinati al passaggio dei disabili (scivoli);<br />- sulle piste ciclabili;<br />- nelle corsie riservate ai mezzi pubblici;<br />- alle fermate degli autobus (fig. 256 - anche se lo spazio non è delimitato dalle strisce gialle);<br />- nelle aree destinate alla fermata o alla sosta dei taxi;<br />- davanti ai cassonetti dei rifiuti urbani;<br />- davanti ai distributori di carburante, durante l'orario di apertura;<br />- nelle aree destinate a parcheggio è vietato sostare occupando più di uno spazio.<br /><br />La sosta è invece in genere ammessa: fuori dai centri abitati; sulle strade a senso unico; lungo le strade prive di marciapiede o di illuminazione pubblica; nei lunghi rettilinei; nelle discese pericolose; nei centri abitati, quando non esistono le apposite strisce; davanti alle sale da gioco."
+riferimento=[200,201,202,203,204,296]
+}
+suggerimenti.continua()

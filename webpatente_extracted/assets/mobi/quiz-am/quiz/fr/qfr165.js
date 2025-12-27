@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Svolta a sinistra da una strada a doppio senso di circolazione"
+quizass=165
+sugg=152
+risposte=["Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit se rapprocher le plus possible du centre de la route","Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit généralement laisser le centre du croisement à sa propre droite","Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit céder le passage aux véhicules venant de droite, sauf en cas de différentes signalisations","Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit se déplacer le plus possible sur le côté gauche de la route","Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit effectuer le virage rapidement pour éviter les véhicules venant de droite et de gauche","Sur une route à double sens de circulation, pour tourner à gauche, le conducteur doit toujours céder le passage aux véhicules venant de gauche"]
+rispostet=["In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve avvicinarsi il più possibile al centro della strada","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve lasciare di norma il centro dell'incrocio alla propria destra","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve dare la precedenza ai veicoli provenienti da destra, salvo diversa segnalazione","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve spostarsi il più possibile sul margine sinistro della strada","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve effettuare la svolta con rapidità per evitare i veicoli provenienti da destra e da sinistra","In una strada a doppio senso di circolazione, per svoltare a sinistra il conducente deve dare sempre la precedenza ai veicoli provenienti da sinistra"]
+soluzioni="VVVFFF"
+rispass=[1127,1128,1129,1130,1131,1132]
+nummin="05024"
+}
+continua();

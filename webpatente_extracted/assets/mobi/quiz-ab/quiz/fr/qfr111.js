@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di ATTENZIONE AGLI ANIMALI DOMESTICI VAGANTI"
+segnale="26"
+quizass=111
+sugg=24
+risposte=["Le panneau représenté annonce un tronçon de route avec probable passage d'animaux domestiques","Le panneau représenté demande de ralentir ou de s'arrêter si les animaux qui se trouvent sur la route semblent effarés","Le panneau représenté demande de ralentir ou de s'arrêter si les animaux sur la route ne se déplacent pas","Le panneau représenté signale qu'il pourrait y avoir des animaux domestiques sur la route","Le panneau représenté invite à faire particulièrement attention, car il pourrait y avoir des animaux domestiques sur la chaussée","Face au panneau représenté il faut utiliser le klaxon à plusieurs reprises pour éloigner les animaux","Le panneau représenté signale une aire réservée aux pâturages et interdite aux véhicules à moteur","Le panneau représenté signale une route réservée au passage d'animaux domestiques","Le panneau représenté annonce la présence de véhicules à traction animale","Le panneau représenté annonce une ferme en pleine campagne"]
+rispostet=["Il segnale raffigurato preannuncia un tratto di strada con probabile attraversamento di animali domestici","Il segnale raffigurato richiede di rallentare o di arrestarsi se gli animali sulla strada danno segno di spavento","Il segnale raffigurato richiede di rallentare o di arrestarsi se gli animali sulla strada non si spostano","Il segnale raffigurato preannuncia la possibilità di trovare sulla strada animali domestici vaganti","Il segnale raffigurato invita a fare attenzione per la probabile presenza di animali domestici sulla carreggiata","In presenza del segnale raffigurato è obbligatorio usare ripetutamente l'avvisatore acustico per allontanare gli animali","Il segnale raffigurato preannuncia una zona riservata al pascolo con divieto di transito ai veicoli a motore","Il segnale raffigurato preannuncia una strada riservata alla circolazione di animali domestici","Il segnale raffigurato preannuncia la presenza di veicoli a trazione animale","Il segnale raffigurato preannuncia una fattoria in aperta campagna"]
+soluzioni="VVVVVFFFFF"
+rispass=[1003,1004,1005,1006,1007,1008,1009,1010,1011,1012]
+nummin="02039"
+}
+continua();

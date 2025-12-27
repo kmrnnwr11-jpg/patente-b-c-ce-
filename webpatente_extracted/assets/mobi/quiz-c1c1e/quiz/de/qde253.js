@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Frizione 3"
+quizass=253
+sugg=0
+risposte=["Die Kupplung ist ein Teil der Antriebsorgane","Die Kupplung kann als Einscheibentrockenkupplung ausgelegt sein","Bei einigen Kraftwagen schließt die Kupplung automatisch","Bei einigen Kraftwagen erfolgt die Schaltung der Kupplung automatisch","Die Kupplung kann auf mechanische Reibung beruhen oder hydraulisch, elektrohydraulisch oder elektromagnetisch sein","Die Kupplung kann als Einscheiben- oder als Mehrscheibenkupplung ausgelegt sein","Die Mehrscheibenkupplung eignet sich vor allem für Fahrzeuge mit hohem Gewicht und/oder hoher Leistung","Die Kupplung kann automatisch sein","Die Mehrscheibenkupplung kann als Trockenkupplung oder als Ölbadkupplung ausgelegt sein","Die Kupplung kann auch mit hydraulischer oder pneumohydraulischer Steuerung sein","Bei Fahrzeugen mit einem automatischen Getriebe muss die Kupplung eine Einscheiben-Reibungskupplung sein","Die Kupplung ist ein Teil der Aufhängung","Es gibt keine automatisch gesteuerten Kupplungen","Bei Schwerfahrzeugen wird nie eine Mehrscheibenkupplung eingebaut"]
+rispostet=["La frizione fa parte degli organi di trasmissione","La frizione può essere di tipo monodisco a secco","In alcuni autoveicoli la frizione si innesta automaticamente","In alcuni autoveicoli il comando della frizione è automatico","La frizione può essere ad attrito meccanico, idraulica, elettroidraulica o elettromagnetica","La frizione può essere del tipo a disco unico o a dischi multipli","La frizione a dischi multipli è adatta soprattutto per i veicoli di massa e/o potenza elevate","La frizione può essere di tipo automatico","La frizione a dischi multipli può essere a secco oppure a bagno d'olio","La frizione può anche essere a comando idraulico oppure pneumo-idraulico","Nei veicoli provvisti di cambio automatico la frizione deve essere del tipo ad attrito e a disco singolo","La frizione fa parte degli organi di sospensione","Non esistono frizioni comandate automaticamente","La frizione a dischi multipli non viene mai montata sui veicoli pesanti"]
+soluzioni="VVVVVVVVVVFFFF"
+rispass=[2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,2172,2173,2174]
+nummin="115012"
+}
+continua();

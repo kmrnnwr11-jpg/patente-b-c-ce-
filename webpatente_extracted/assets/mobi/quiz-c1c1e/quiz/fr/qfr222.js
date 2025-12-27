@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Veicoli ibridi"
+quizass=222
+sugg=0
+risposte=["Un véhicule hybride peut être équipé d'un moteur à combustion","Un véhicule hybride peut être équipé d'un moteur Diesel","Un véhicule hybride peut être équipé aussi d'un moteur électrique","Un véhicule hybride est un véhicule à propulsion mixte","Les véhicules hybrides sont moins polluants que les autres types, à l'exception de ceux électriques","Un véhicule hybride a deux moteurs, un à combustion interne (combustion ou Diesel) et un électrique","Sont considérés véhicules hybrides ceux qui ont le moteur qui fonctionne à hydrogène","Un véhicule hybride est équipé de deux moteurs : un à combustion et un à gaz méthane","Un véhicule hybride est équipé seulement de deux moteurs électriques : un à haute tension et un à basse tension","Un véhicule hybride est très économique, mais il est plus polluant que les autres véhicules","Les véhicules hybrides ont des moteurs indiqués pour fonctionner seulement à température extérieure élevée","Les véhicules hybrides doivent avoir une traction à quatre roues motrices"]
+rispostet=["Un veicolo ibrido può essere dotato di un motore a scoppio","Un veicolo ibrido può essere dotato di un motore Diesel","Un veicolo ibrido è dotato anche di un motore elettrico","Un veicolo ibrido è un veicolo a propulsione mista","I veicoli ibridi sono meno inquinanti degli altri tipi, ad eccezione di quelli elettrici","Un veicolo ibrido ha due motori, uno a combustione interna (scoppio o Diesel) ed uno elettrico","Sono veicoli ibridi quelli che hanno il motore funzionante a idrogeno","Un veicolo ibrido è dotato di due motori: uno a scoppio ed uno a gas metano","Un veicolo ibrido è dotato solo di due motori elettrici: uno ad alta tensione ed uno a bassa tensione","Un veicolo ibrido è molto economico, ma è più inquinante degli altri veicoli","I veicoli ibridi hanno motori adatti a funzionare solo con temperature esterne elevate","I veicoli ibridi devono avere trazione a quattro ruote motrici"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[1655,1656,1657,1658,1659,1660,1661,1662,1663,1664,1665,1666]
+nummin="111006"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Comportamenti necessari quando di notte si incrocia un veicolo con fari a luce abbagliante accesi"
+quizass=594
+sugg=431
+risposte=["Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre procedere con prudenza, usando le luci anabbaglianti","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre distogliere lo sguardo dal fascio luminoso per non essere abbagliati","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre rallentare adeguatamente ed eventualmente fermarsi","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre tener conto della ridotta visibilità nel nostro comportamento di guida","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre evitare brusche manovre e cambi di corsia","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre disporre il retrovisore interno in posizione antiabbagliante","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre procedere a nostra volta con i fari abbaglianti, per veder meglio la strada","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre fermarsi immediatamente","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre azionare le trombe bitonali per richiamare l'attenzione del veicolo incrociante","Allorché di notte, su strada extraurbana, incrociamo un veicolo con fari a luce abbagliante accesi, occorre cercare di ripararsi gli occhi con le mani"]
+soluzioni="VVVVVFFFFF"
+rispass=[4442,4443,4444,4445,4446,4447,4448,4449,4450,4451]
+nummin="13010"
+}
+continua();

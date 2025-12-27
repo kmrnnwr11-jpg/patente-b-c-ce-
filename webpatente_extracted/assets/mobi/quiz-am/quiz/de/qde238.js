@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Rischi coperti dalla polizza di assicurazione per la responsabilità civile"
+quizass=238
+sugg=182
+risposte=["Die Haftpflichtversicherung deckt die zivilrechtliche Haftpflicht des Fahrers und des Fahrzeughalters","Die Haftpflichtversicherung deckt innerhalb der Versicherungssumme die vom Kleinkraftrad verursachten Schäden","Die Haftpflichtversicherung deckt auf zivilrechtlicher Ebene die durch den Verkehr des Kleinkraftrades verursachten Schäden","Die Haftpflichtversicherung deckt innerhalb der Versicherungssumme die an Personen und Sachen verursachten Schäden","Die Haftpflichtversicherung deckt innerhalb der Versicherungssumme den Brand und den Diebstahl","Die Haftpflichtversicherung deckt im Verhältnis zur eingezahlten Prämie jede Art von Haftung","Die Haftpflichtversicherung deckt die zivilrechtliche Haftpflicht über die Versicherungssumme hinaus","Die Haftpflichtversicherung deckt die dem eigenen Kleinkraftrad zugefügten Schäden"]
+rispostet=["La polizza di assicurazione per la responsabilità civile copre la responsabilità civile gravante sul conducente e sul proprietario","La polizza di assicurazione per la responsabilità civile copre i danni provocati dal ciclomotore, entro i massimali","La polizza di assicurazione per la responsabilità civile copre i rischi derivanti in sede civile dalla circolazione dei ciclomotori","La polizza di assicurazione per la responsabilità civile copre i danni provocati a persone e cose entro i massimali","La polizza di assicurazione per la responsabilità civile copre l'incendio e il furto, entro i massimali","La polizza di assicurazione per la responsabilità civile copre ogni forma di responsabilità, in proporzione al premio pagato","La polizza di assicurazione per la responsabilità civile copre la responsabilità civile, oltre i massimali","La polizza di assicurazione per la responsabilità civile copre i danni causati al proprio ciclomotore"]
+soluzioni="VVVVFFFF"
+rispass=[1455,1456,1457,1458,1459,1460,1461,1462]
+nummin="07031"
+}
+continua();

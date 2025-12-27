@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Periodo di riposo settimanale"
+quizass=9
+sugg=0
+risposte=["Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire normale soit d'au moins 45 heures","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire réduite doit être récupérée","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire réduite ait une durée minimale de 24 heures continues","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire puisse être de type normal ou réduit","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire normale soit d'au moins 30 heures","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire réduite soit au maximum de 24 heures continues","Le règlement 561/2006/CE prévoit que la durée de repos hebdomadaire normale ne puisse pas être inférieure à 90 heures","Le règlement 561/2006/CE prévoit que le conducteur, en contrepartie d'une somme d'argent, puisse renoncer à la durée de repos hebdomadaire"]
+rispostet=["Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale regolare è di almeno 45 ore","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale ridotto debba essere recuperato","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale ridotto abbia una durata minima di 24 ore ininterrotte","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale possa essere di tipo regolare o ridotto","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale regolare sia di almeno 30 ore","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale ridotto sia al massimo di 24 ore continuative","Il regolamento 561/2006/CE prevede che il periodo di riposo settimanale regolare non possa essere inferiore a 90 ore","Il regolamento 561/2006/CE prevede che il conducente, a fronte di indennità in denaro, possa rinunciare al periodo di riposo settimanale"]
+soluzioni="VVVVFFFF"
+rispass=[45,46,47,48,49,50,51,52]
+nummin="011006"
+}
+continua();

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di FINE DEL DIVIETO DI SORPASSO PER GLI AUTOCARRI CHE SUPERANO 3,5 T"
+segnale="83"
+quizass=139
+sugg=87
+risposte=["Wo das abgebildete Verkehrszeichen steht, darf ein Lastzug mit einem Gewicht von 44 Tonnen einen Personenkraftwagen überholen","Das abgebildete Verkehrszeichen hebt das vorher auferlegte Überholverbot auf","Wo das abgebildete Verkehrszeichen steht, darf ein Lastkraftwagen einen Autobus überholen","Das abgebildete Verkehrszeichen hebt das Überholverbot für Güterfahrzeuge mit einem Gesamtgewicht über 3,5 Tonnen auf","Das abgebildete Verkehrszeichen hebt eine Vorschrift auf","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Lastzügen, Gelenkbussen, Sattelkraftfahrzeugen verboten","Wo das abgebildete Verkehrszeichen steht, müssen Personenkraftwagen die Lastkraftwagen auf der rechten Fahrspur überholen","Das abgebildete Verkehrszeichen hebt das Überholverbot für Autobusse mit einem Gesamtgewicht über 3,5 Tonnen auf","Das abgebildete Verkehrszeichen ist ein Gefahrenzeichen","Das abgebildete Verkehrszeichen gilt nicht für Lastkraftwagen mit einem Gesamtgewicht von 7 Tonnen"]
+rispostet=["In presenza del segnale raffigurato un autotreno di massa pari a 44 tonnellate può sorpassare un'autovettura","Il segnale raffigurato indica la fine del divieto di sorpasso precedentemente imposto","In presenza del segnale raffigurato un autocarro può sorpassare un autobus","Il segnale raffigurato indica la fine del divieto di sorpasso per veicoli merci di massa a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato è un segnale di fine prescrizione","In presenza del segnale raffigurato è vietato il transito degli autotreni, autosnodati, autoarticolati","In presenza del segnale raffigurato le autovetture devono sorpassare gli autocarri sulla corsia di destra","Il segnale raffigurato indica la fine del divieto di sorpasso per autobus di massa a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato è un segnale di pericolo","Il segnale raffigurato non vale per gli autocarri di massa complessiva pari a 7 tonnellate"]
+soluzioni="VVVVVFFFFF"
+rispass=[1572,1573,1574,1575,1576,1577,1578,1579,1580,1581]
+nummin="03033"
+}
+continua();

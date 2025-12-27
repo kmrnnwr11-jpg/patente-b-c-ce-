@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere verso gli utenti deboli della strada"
+quizass=50
+sugg=11016
+risposte=["Gegenüber Menschen mit Behinderung ist erhöhte Vorsicht geboten","Gegenüber alten Leuten ist erhöhte Vorsicht geboten","Gegenüber Kindern, die die Straße überqueren, ist erhöhte Vorsicht geboten","Gegenüber Fahrern mit unsicherer Fahrweise ist erhöhte Vorsicht geboten","Gegenüber Fahrern von behindertengerecht umgebauten Fahrzeugen ist erhöhte Vorsicht geboten","Gegenüber Radfahrern und Personen mit eingeschränkter Beweglichkeit ist erhöhte Vorsicht geboten","Gegenüber Personen, die den Führerschein im Ausland erlangt haben, ist besondere Vorsicht geboten","Gegenüber Fahrern von Elektrokraftwagen ist erhöhte Vorsicht geboten","Gegenüber Taxifahrern ist erhöhte Vorsicht geboten","Gegenüber Fahrern von dreirädrigen Kraftfahrzeugen ist erhöhte Vorsicht geboten","Gegenüber Fußgängern mit weißem Stock, nicht jedoch gegenüber jenen mit weiß-rotem Stock, ist erhöhte Vorsicht geboten"]
+rispostet=["Bisogna usare maggiore prudenza nei confronti delle persone diversamente abili","Bisogna usare maggiore prudenza nei confronti delle persone anziane","Bisogna usare maggiore prudenza nei confronti dei bambini che attraversano la strada","Bisogna usare maggiore prudenza nei confronti dei conducenti che dimostrano una guida incerta","Bisogna usare maggiore prudenza nei confronti dei conducenti di veicoli adattati per persone diversamente abili","Bisogna usare maggiore prudenza nei confronti delle persone in bicicletta e di quelle con scarsa capacità di movimento","Bisogna usare particolare prudenza nei confronti dei conducenti che hanno conseguito la patente di guida in uno Stato estero","Bisogna usare maggiore prudenza nei confronti dei conducenti di autoveicoli elettrici","Bisogna usare maggiore prudenza nei confronti dei conducenti di taxi","Bisogna usare maggiore prudenza nei confronti dei conducenti di tricicli a motore","Bisogna usare maggiore prudenza nei confronti dei pedoni muniti di bastone bianco, ma non di quelli con bastone bianco-rosso"]
+soluzioni="VVVVVVFFFFF"
+rispass=[438,439,440,441,442,443,444,445,446,447,448]
+nummin="01042"
+}
+continua();

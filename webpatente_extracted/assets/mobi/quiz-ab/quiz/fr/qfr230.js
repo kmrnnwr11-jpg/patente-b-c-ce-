@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di PREAVVISO DI FERMARSI E DARE PRECEDENZA"
+segnale="43"
+quizass=230
+sugg=43
+risposte=["Le panneau représenté est un panneau de préavis de s'arrêter et céder le passage","Le panneau représenté annonce un panneau de STOP à 320 mètres","Le panneau représenté annonce qu'il faut s'arrêter au prochain croisement et céder le passage à droite et à gauche","Le panneau représenté annonce qu'il faut s'arrêter 320 mètres après le panneau et céder le passage","Le panneau représenté invite à ralentir car on approche d'un croisement où il faudra s'arrêter et céder le passage","Le panneau représenté est un panneau de prescription","Le panneau représenté impose uniquement de ralentir et, si nécessaire, de céder le passage au croisement à 320 mètres","Le panneau représenté se trouve à 320 mètres du panneau CÉDEZ LE PASSAGE","Le panneau représenté se trouve uniquement sur des routes d'agglomération","Le panneau représenté annonce la présence d'un barrage douanier","Le panneau représenté peut annoncer un péage d'autoroute","Le panneau représenté se trouve avant le panneau ALT-POLIZIA","Face au panneau représenté il faut s'arrêter immédiatement et puis encore s'arrêter après 320 mètres","Le panneau représenté est un panneau de danger"]
+rispostet=["Il segnale raffigurato è un segnale di preavviso di fermarsi e dare precedenza","Il segnale raffigurato preannuncia un segnale di STOP a 320 metri","Il segnale raffigurato preannuncia di arrestarsi al prossimo incrocio e dare la precedenza a destra ed a sinistra","Il segnale raffigurato preannuncia di fermarsi 320 metri dopo il segnale e dare la precedenza","Il segnale raffigurato invita a rallentare perché è prossimo un incrocio in cui bisogna fermarsi e dare la precedenza","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato obbliga solo a rallentare e, se necessario, a dare la precedenza all'incrocio a 320 metri","Il segnale raffigurato è posto a 320 metri dal segnale DARE PRECEDENZA","Il segnale raffigurato si trova solo nelle strade urbane","Il segnale raffigurato preannuncia la presenza di una barriera doganale","Il segnale raffigurato può presegnalare un casello autostradale","Il segnale raffigurato è posto prima del segnale ALT-POLIZIA","Incontrando il segnale raffigurato occorre fermarsi e poi arrestarsi nuovamente dopo 320 metri","Il segnale raffigurato è un segnale di pericolo"]
+soluzioni="VVVVVVFFFFFFFF"
+rispass=[2208,2209,2210,2211,2212,2213,2214,2215,2216,2217,2218,2219,2220,2221]
+nummin="05005"
+}
+continua();

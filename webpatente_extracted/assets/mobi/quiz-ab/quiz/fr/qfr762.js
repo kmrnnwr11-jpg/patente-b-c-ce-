@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Uso delle luci (1)"
+quizass=762
+sugg=11077
+risposte=["Lorsque l'on roule en agglomération, il est obligatoire de garder les feux de croisement allumés à partir de une demi-heure après le coucher du soleil à une demi-heure avant le lever du soleil","Lorsque l'on roule, en cas de visibilité réduite à cause des conditions météorologiques (neige, pluie, brouillard), il faut garder les feux de position allumés ainsi que les feux de croisement","Lorsque l'on roule, en cas de brouillard avec visibilité inférieure à 50 mètres, il faut utiliser les feux arrière de brouillard, si le véhicule en est équipé","De nuit, en agglomération, le véhicule en stationnement sur le côté de la chaussée, peut être signalé à l'aide des feux d'arrêt","Lorsque l'on roule, il faut obligatoirement garder les feux de route allumés, du coucher du soleil jusqu'au lever du soleil","De nuit, en cas de stationnement hors de la chaussée, il faut obligatoirement garder les feux de croisement allumés","Si on laisse le véhicule dans un parking autorisé, il faut laisser obligatoirement les feux d'arrêt allumés pendant toute la durée du stationnement"]
+rispostet=["Durante la marcia nei centri abitati, è obbligatorio tenere accese le luci anabbaglianti da mezz'ora dopo il tramonto del sole a mezz'ora prima del suo sorgere","Durante la marcia, in caso di scarsa visibilità per condizioni atmosferiche (neve, pioggia, nebbia), è obbligatorio tenere accese le luci di posizione e quelle anabbaglianti","Durante la marcia, in caso di nebbia con visibilità inferiore a 50 metri, bisogna usare la luce posteriore per nebbia, se il veicolo ne è dotato","Di notte, nei centri abitati, il veicolo in sosta al margine della carreggiata, può essere segnalato con le luci di sosta","Durante la marcia, è obbligatorio tenere accese le luci abbaglianti, a partire dal tramonto del sole fino al suo sorgere","Di notte, in caso di sosta fuori dalla carreggiata, è obbligatorio tenere accese le luci anabbaglianti","Se si lascia il veicolo in un parcheggio autorizzato, è obbligatorio tenere accese per tutto il tempo le luci di sosta"]
+soluzioni="VVVVFFF"
+rispass=[5836,5837,5838,5839,5840,5841,5842]
+nummin="18002"
+}
+continua();

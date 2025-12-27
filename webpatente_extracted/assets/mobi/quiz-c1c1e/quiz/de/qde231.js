@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Iniettori del motore Diesel"
+quizass=231
+sugg=0
+risposte=["Bei einem Dieselmotor spritzen die Einspritzdüsen Dieselkraftstoff unter hohem Druck in die Zylinder","Bei einem Dieselmotor sind die Einspritzdüsen mit einer Vorrichtung versehen, welche den in die Zylinder eingespritzten Dieselkraftstoff zerstäubt","Bei einem Dieselmotor müssen die Einspritzdüsen in regelmäßigen Zeitabständen überprüft werden","Bei einem Dieselmotor werden die Einspritzdüsen häufig elektronisch von einem Steuergerät gesteuert","Bei einem Dieselmotor gestattet es die elektronische Steuerung der Einspritzdüsen, den Zeitpunkt und die Dauer der Einspritzung des Dieselkraftstoffes in die Zylinder zu bestimmen","Bei einem Dieselmotor spritzen die Einspritzdüsen Dieselkraftstoff unter geringem Druck in die Zylinder","Bei einem Dieselmotor sind die Einspritzdüsen in die Einspritzpumpe integriert","Bei einem Dieselmotor spritzen die Einspritzdüsen in regelmäßigen Zeitabständen Schmieröl in die Zylinder","Bei einem Dieselmotor hören die Einspritzdüsen zehn Sekunden nach Abstellen des Motors auf, Dieselkraftstoff einzuspritzen"]
+rispostet=["In un motore Diesel, gli iniettori iniettano nei cilindri gasolio ad alta pressione","In un motore Diesel, gli iniettori sono dotati di un dispositivo che polverizza il gasolio in ingresso nei cilindri","In un motore Diesel, gli iniettori devono essere periodicamente controllati","In un motore Diesel, gli iniettori sono spesso controllati elettronicamente da una centralina","In un motore Diesel, il controllo elettronico degli iniettori permette di stabilire tempi e durata dell'iniezione del gasolio nei cilindri","In un motore Diesel, gli iniettori iniettano gasolio nei cilindri a bassa pressione","In un motore Diesel, gli iniettori si trovano incorporati nella pompa di iniezione","In un motore Diesel, gli iniettori iniettano periodicamente olio lubrificante nel cilindro","In un motore Diesel, gli iniettori cessano di iniettare gasolio dieci secondi dopo lo spegnimento del motore"]
+soluzioni="VVVVVFFFF"
+rispass=[1851,1852,1853,1854,1855,1856,1857,1858,1859]
+nummin="112008"
+}
+continua();

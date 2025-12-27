@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Uso del cronotachigrafo analogico 2"
+quizass=28
+sugg=0
+risposte=["Il conducente di un veicolo dotato di cronotachigrafo analogico, alla partenza, deve scrivere nome e cognome sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere il luogo di partenza sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere la data della partenza sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere il numero di targa del veicolo sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere la lettura del contachilometri al momento della partenza sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere il nome dell'azienda di trasporto proprietaria del veicolo sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere il numero di telaio del veicolo sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere numero e categoria della propria patente di guida sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere la data dell'ultimo trasporto effettuato all'estero sul foglio di registrazione che utilizzerà","Il conducente di un veicolo dotato di cronotachigrafo analogico, prima di iniziare il viaggio, deve scrivere la propria data di nascita sul foglio di registrazione che utilizzerà"]
+soluzioni="VVVVVFFFFF"
+rispass=[133,134,135,136,137,138,139,140,141,142]
+nummin="021005"
+}
+continua()

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Segnale di MATERIALE INSTABILE SULLA STRADA"
+segnale="31"
+quizass=108
+sugg=28
+risposte=["Il segnale raffigurato preannuncia un tratto di strada sul quale l'aderenza del veicolo può diminuire","Il segnale raffigurato richiede di procedere con cautela in presenza di pedoni, anche se si trovano fuori dalla carreggiata","Il segnale raffigurato preannuncia la presenza di pietrisco che può essere scagliato a distanza al passaggio del veicolo","Il segnale raffigurato richiede di moderare la velocità, incrociando un altro veicolo","In presenza del segnale raffigurato è opportuno mantenere una distanza maggiore dal veicolo che precede","Il segnale raffigurato preannuncia il pericolo di trovare pietrisco sulla pavimentazione stradale","In presenza del segnale raffigurato occorre considerare il pericolo di sbandamento o di slittamento","Il segnale raffigurato, se a fondo giallo, è posto in presenza di cantieri stradali","Il segnale raffigurato consiglia di accelerare per aumentare l'aderenza del veicolo sull'asfalto","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato preannuncia un tratto di strada soggetto a frana","Il segnale raffigurato, se a fondo giallo, preannuncia un tratto di strada non percorribile per la presenza di cantieri stradali","Il segnale raffigurato preannuncia la presenza di banchine cedevoli","Il segnale raffigurato preannuncia un tratto di strada ove esiste il pericolo di caduta di massi","Il segnale raffigurato preannuncia l'obbligo di montare le catene da neve"]
+soluzioni="VVVVVVVVFFFFFFF"
+rispass=[1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070]
+nummin="02043"
+}
+continua();

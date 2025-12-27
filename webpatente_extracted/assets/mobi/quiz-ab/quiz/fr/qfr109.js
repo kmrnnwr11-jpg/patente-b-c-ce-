@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di ATTENZIONE AI BAMBINI"
+segnale="25"
+quizass=109
+sugg=23
+risposte=["Le panneau représenté peut annoncer qu'on est en proximité d'une école fréquentée par des enfants","Le panneau représenté peut être placé en proximité d'un parc de jeux fréquenté par des enfants","Le panneau représenté annonce la proximité d'endroits fréquentés par les enfants","Le panneau représenté est un panneau de danger","Le panneau représenté peut être placé en proximité de jardins publics fréquentés par des enfants","Le panneau représenté invite à une circulation à vitesse modérée","Le panneau représenté invite à prévoir de possibles comportements imprudents de la part des enfants","Le panneau représenté interdit le passage aux enfants non accompagnés","Le panneau représenté annonce un passage pour piétons","Le panneau représenté signale la fin d'une allée réservée aux enfants","Le panneau représenté annonce un parcours pour piétons","Le panneau représenté interdit la circulation aux véhicules à moteur lors de la sortie des écoles des enfants","Le panneau représenté signale l'arrêt d'un bus scolaire","Le panneau représenté se trouve à l'arrière d'un bus scolaire"]
+rispostet=["Il segnale raffigurato può preannunciare la presenza di una scuola frequentata da bambini nelle vicinanze","Il segnale raffigurato può essere posto nelle vicinanze di un campo da gioco frequentato da bambini","Il segnale raffigurato preannuncia luoghi frequentati da fanciulli","Il segnale raffigurato è un segnale di pericolo","Il segnale raffigurato può essere posto nelle vicinanze di giardini pubblici frequentati da bambini","Il segnale raffigurato invita a circolare a velocità moderata","Il segnale raffigurato invita a considerare eventuali comportamenti imprudenti di fanciulli","Il segnale raffigurato vieta il transito ai bambini non accompagnati","Il segnale raffigurato preannuncia un attraversamento pedonale","Il segnale raffigurato indica la fine di un viale riservato ai bambini","Il segnale raffigurato preannuncia un percorso pedonale","Il segnale raffigurato vieta il transito ai veicoli a motore durante l'orario di uscita dei bambini dalla scuola","Il segnale raffigurato indica la fermata di uno scuolabus","Il segnale raffigurato è posto sulla parte posteriore dello scuolabus"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[982,983,984,985,986,987,988,989,990,991,992,993,994,995]
+nummin="02037"
+}
+continua();

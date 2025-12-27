@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Sistemi di ritenuta per bambini"
+quizass=792
+sugg=529
+risposte=["I bambini di altezza inferiore a 1,50 metri, quando sono trasportati su una autovettura, devono essere trattenuti da sistemi di ritenuta omologati, adeguati alla loro statura e peso","I bambini di età inferiore a 3 anni non possono viaggiare su autovetture sprovviste degli idonei sistemi di ritenuta","I bambini di età superiore ai 3 anni possono viaggiare sui sedili anteriori di un'autovettura sprovvista di sistemi di ritenuta, solo se la loro statura supera 1,50 metri e indossano le cinture di sicurezza","Se un'autovettura è munita di airbag, è possibile trasportare bambini sul sedile anteriore assicurati ad idoneo seggiolino solo se il veicolo è dotato di comando per disattivare l'airbag stesso","I sistemi di ritenuta per bambini sono classificati in gruppi, in funzione del peso del bambino che possono accogliere","I sistemi di ritenuta per bambini devono essere di tipo omologato e mantenuti sempre efficienti","I sistemi di ritenuta per bambini sono di un unico tipo e sono tutti utilizzabili per trasportare bambini fino a 1,50 metri di altezza","È consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché su percorsi urbani","È consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché si circoli alla velocità massima di 40 km/h","È consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché sui sedili anteriori e a portata di braccio del conducente","È consentito il trasporto di bambini senza che siano assicurati a sistemi di ritenuta, purché sui sedili anteriori in braccio a persona maggiorenne","Si possono utilizzare le cinture di sicurezza al posto dei sistemi di ritenuta per trasportare un bambino, purché sia di altezza superiore a 1,30 metri"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[6049,6050,6051,6052,6053,6054,6055,6056,6057,6058,6059,6060]
+nummin="19007"
+}
+continua();

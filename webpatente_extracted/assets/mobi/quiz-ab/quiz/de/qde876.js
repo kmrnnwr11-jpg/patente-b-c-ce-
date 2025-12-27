@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Riduzione dei consumi e dell’inquinamento (3)"
+quizass=876
+sugg=11111
+risposte=["Um den Kraftstoffverbrauch zu verringern, ist es zu empfehlen, die Fenster zu schließen, wenn man mit einer mittleren bis hohen Geschwindigkeit fährt, da die Turbulenzen im Innern des Fahrzeugs die Fahrt bremsen könnten","Um den Kraftstoffverbrauch zu verringern, ist es zu empfehlen, nicht den Gepäckträger zu verwenden, sondern das Gepäck im Innern des Fahrzeugs unterzubringen","Wenn man mit einer dicken Schneeschicht auf dem Fahrzeugdach fährt, führt dies zu einem erhöhten Kraftstoffverbrauch","Schnelles Fahren mit offenem Schiebedach führt zu einem erhöhten Kraftstoffverbrauch","Bei längerem Stillstand in einem Tunnel aufgrund der Bildung einer Fahrzeugkolonne ist es nicht gut für die Gesundheit, die Umluft im Innern des Fahrzeugs zu betätigen","Fahrzeuge, welche dem Umweltschutzstandard &quot;Euro 4&quot; entsprechen, stoßen mehr Schadstoffe aus als jene, die dem Umweltschutzstandard &quot;Euro 0&quot; entsprechen","Das Ziehen eines Anhängers führt nicht zu einem erhöhten Kraftstoffverbrauch"]
+rispostet=["Per limitare i consumi di carburante, conviene chiudere i finestrini se si viaggia a velocità medio alte, perché le turbolenze all'interno dell'abitacolo possono frenare la marcia del veicolo","Per limitare i consumi di carburante non conviene fare uso del portapacchi, ma sistemare i bagagli all'interno del veicolo","Viaggiare con uno spesso strato di neve sul tetto del veicolo, comporta un aumento dei consumi di carburante","Viaggiare a forte velocità con il tettuccio del veicolo aperto comporta un aumento dei consumi di carburante","In caso di arresto prolungato in galleria, per la formazione di una fila di veicoli, è dannoso per la salute azionare il comando del ricircolo dell'aria all'interno del veicolo","I veicoli che rispettano la normativa antinquinamento &quot;Euro 4&quot; emettono una quantità di gas inquinanti maggiore di quelli omologati secondo la normativa &quot;Euro 0&quot;","Trainare un rimorchio non comporta un aumento dei consumi di carburante"]
+soluzioni="VVVVFFF"
+rispass=[6829,6830,6831,6832,6833,6834,6835]
+nummin="24012"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Freno di stazionamento"
+quizass=332
+sugg=0
+risposte=["Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen wirkt nur auf die Hinterräder","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen ist eine mechanisch betätigte Bremse, die durch Ablassen der Luft aus den Federspeicherzylindern betätigt wird","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen wirkt nicht mehr, wenn ihr anhand des Feststellbremsventils Druckluft zugeleitet wird","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen kann, wenn sie regelbar ist, als Notbremse verwendet werden","Bei Kraftwagen mit pneumatischer Bremsanlage greift die Feststellbremse, wenn die Federbremse Luft aus dem Feststellbremsventil erhält","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen kann, wenn sie nicht regelbar ist, einen Teil der Notbremsanlage darstellen","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen kann nur über ein Pedal betätigt werden","Die Feststellbremse von Fahrzeugen mit Pneumatikbremsen wirkt nicht mehr, wenn die Druckluftbehälter nicht gefüllt sind"]
+rispostet=["Il freno di stazionamento dei veicoli dotati di freni pneumatici agisce solo sulle ruote posteriori","Il freno di stazionamento dei veicoli dotati di freni pneumatici è un freno ad azione meccanica e si attiva scaricando l'aria dai bielementi a molla","Il freno di stazionamento dei veicoli dotati di freni pneumatici cessa la sua azione quando, tramite il distributore a mano, gli viene inviata aria compressa","Il freno di stazionamento dei veicoli dotati di freni pneumatici, se moderabile, può essere utilizzato per la frenatura di soccorso","Sugli autoveicoli dotati di frenatura pneumatica, il freno di stazionamento, si inserisce quando il freno a molla riceve aria dal distributore a mano","Il freno di stazionamento dei veicoli dotati di freni pneumatici, se non moderabile, può fare parte dell'impianto di frenatura di soccorso","Il freno di stazionamento dei veicoli dotati di freni pneumatici, può essere azionato solo da un pedale","Il freno di stazionamento a molla dei veicoli dotati di freni pneumatici, cessa di funzionare se i serbatoi dell'aria compressa non sono carichi"]
+soluzioni="VVVVFFFF"
+rispass=[2837,2838,2839,2840,2841,2842,2843,2844]
+nummin="141008"
+}
+continua();

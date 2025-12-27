@@ -1,0 +1,5 @@
+l=new tlez; with(l){
+intro="<div class='intro'>Tratteremo ora delle operazioni necessarie per l'<b>immissione nel flusso della circolazione</b> (ossia la &quot;partenza&quot;) di un veicolo; nonché sua della <b>uscita dal flusso della circolazione</b> stessa, cioè di quando interrompiamo la marcia. Qui si introduce la distinzione tra tre concetti da non confondere: l'<b>arresto</b> (che non dipende dal conducente, ma dalle esigenze della circolazione), la <b>fermata</b> (breve interruzione della marcia del veicolo senza l'allontanamento del conducente) e la <b>sosta</b> (che invece implica il protrarsi nel tempo e l'allontanamento). Agli ultimi due sono connessi una serie di comportamenti e di divieti che prenderemo in esame.<br/><br/><b>Capitoli di riferimento: 13</b> (con due quiz nella prova di esame), <b>16</b>.</div><!--<div style='font-size:8pt'><b>Su questo argomento si può vedere anche:</b><br><img height=8 src='pix.gif'><br>&nbsp;<a href='09fermatasostaarresto.php' target=esperto>&#187; Le differenze: fermata, sosta e arresto</a></div>-->"
+sugg=[11048,11049,371,11050,11051,11052,11053,11054,11055,11056]
+}
+manuale.continua()

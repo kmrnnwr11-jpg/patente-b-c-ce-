@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Sorpasso in autostrada"
+quizass=674
+sugg=11046
+risposte=["Lors d'un dépassement en autoroute, si on ne fait pas suffisamment attention aux véhicules qui nous suivent, on risque un accident","Lors d'un dépassement en autoroute, un intervalle de sécurité insuffisant peut constituer une cause d'accident","Lors d'un dépassement en autoroute, le déplacement inattendu sur la voie de dépassement du véhicule qui nous précède peut constituer une cause d'accident","Lors d'un dépassement en autoroute, on risque d'encombrer la route si on reste trop longtemps sur la voie de dépassement","Doubler en autoroute peut constituer une cause d'accident, si on le fait en se mettant en queue derrière un véhicule qui est lui-même en train de doubler","Doubler en autoroute peut constituer une cause d'accident, si de fortes rafales de vent latéral compromettent la stabilité des véhicules","Doubler en autoroute peut constituer une cause d'accident, si on le fait en proximité d'une aire de stationnement","Doubler en autoroute peut constituer une cause d'accident, si on roule avec les feux de croisement toujours allumés"]
+rispostet=["Durante un sorpasso in autostrada, la scarsa attenzione posta ai veicoli che seguono può essere causa di incidente","Durante un sorpasso in autostrada, l'insufficiente distanza di sicurezza può essere causa di incidente","Durante un sorpasso in autostrada, può essere causa di incidente l'improvviso spostamento sulla corsia di sorpasso di uno dei veicoli che precedono","Durante un sorpasso in autostrada, mantenersi troppo a lungo sulla corsia di sorpasso può essere motivo di intralcio","Il sorpasso in autostrada può essere motivo di incidente, se viene effettuato accodandosi ad un veicolo che sta sorpassando","Il sorpasso in autostrada può essere motivo di incidente, se il forte vento laterale compromette la stabilità dei veicoli","Il sorpasso in autostrada può essere motivo di incidente, se viene effettuato in vicinanza di una piazzola di sosta","Il sorpasso in autostrada può essere motivo di incidente, se si viaggia con le luci anabbaglianti sempre accese"]
+soluzioni="VVVVVVFF"
+rispass=[5292,5293,5294,5295,5296,5297,5298,5299]
+nummin="15010"
+}
+continua();

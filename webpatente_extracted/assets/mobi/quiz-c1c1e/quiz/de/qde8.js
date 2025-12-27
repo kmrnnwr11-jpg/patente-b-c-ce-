@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Periodo di riposo giornaliero 2"
+quizass=8
+sugg=0
+risposte=["Gemäß Verordnung 561/2006/EG darf die tägliche Ruhezeit in zwei Zeitabschnitte unterteilt werden, von denen der erste mindestens 3 Stunden und der zweite mindestens 9 Stunden beträgt","Gemäß Verordnung 561/2006/EG muss der Fahrzeugführer nach sechs Tagen Lenkzeit eine Ruhepause von 45 zusammenhängenden Stunden einlegen","Gemäß Verordnung 561/2006/EG muss der Fahrzeugführer nach sechs Tagen Lenkzeit eine Ruhezeit von mindestens 24 zusammenhängenden Stunden einlegen, sofern die restlichen Ruhestunden innerhalb der dritten Woche nachgeholt werden","Gemäß Verordnung 561/2006/EG darf die tägliche Ruhezeit in zwei Zeitabschnitte unterteilt werden, von denen der erste mindestens 9 Stunden und der zweite mindestens 3 Stunden beträgt","Gemäß Verordnung 561/2006/EG muss der Fahrzeugführer nach vier Tagen Lenkzeit eine ununterbrochene Ruhezeit von mindestens 48 zusammenhängenden Stunden einlegen","Nach viereinhalb Stunden Lenkzeit muss der Fahrzeugführer eine ununterbrochene Ruhezeit von mindestens 50 Minuten einlegen"]
+rispostet=["Secondo il regolamento 561/2006/CE, il periodo di riposo giornaliero può essere frazionato in due parti, la prima di almeno 3 ore e la seconda di almeno 9 ore","Secondo il regolamento 561/2006/CE, il conducente, dopo sei periodi di guida, deve effettuare un riposo di 45 ore consecutive","Secondo il regolamento 561/2006/CE, il conducente, dopo sei periodi di guida, può effettuare un riposo ridotto di almeno 24 ore consecutive, purché le restanti ore di riposo vengano recuperate entro la fine della terza settimana","Secondo il regolamento 561/2006/CE, il periodo di riposo giornaliero può essere frazionato in due parti, la prima di almeno 9 ore e la seconda di almeno 3 ore","Secondo il regolamento 561/2006/CE, il conducente, dopo quattro periodi di guida, deve effettuare un riposo di 48 ore consecutive","Dopo un periodo di guida di quattro ore e mezza, il conducente deve osservare un periodo di riposo di almeno 50 minuti consecutivi"]
+soluzioni="VVVFFF"
+rispass=[80,81,82,84,85,89]
+nummin="011011"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Visibiltà indiretta. Regolazione degli specchi retrovisori"
+quizass=170
+sugg=0
+risposte=["La visibilità indiretta attraverso specchi o telecamere consente di vedere zone altrimenti non visibili direttamente dal conducente","Alla guida di un mezzo pesante bisogna considerare che la visibilità indiretta attraverso specchi o telecamere, lascia comunque delle &quot;zone d'ombra&quot; (angoli morti della visuale) dove non è possibile scorgere veicoli o pedoni","La visibilità indiretta attraverso specchi o telecamere è efficace solo se gli stessi sono orientati correttamente","La corretta regolazione degli specchietti retrovisori dei mezzi pesanti è un elemento fondamentale per la riduzione degli incidenti che li vedono coinvolti","Per una corretta regolazione degli specchi retrovisori dei mezzi pesanti, bisogna considerare che la visibilità della parte laterale destra della strada è particolarmente importante","La visibilità indiretta attraverso specchi o telecamere consente di annullare totalmente le &quot;zone d'ombra&quot;, coprendo tutti gli angoli morti della visuale della strada","Gli  specchi retrovisori non devono essere orientati prima di partire, ma solo dopo aver percorso alcuni chilometri, per fare in modo che il veicolo si assesti","Per una corretta regolazione degli specchi retrovisori dei mezzi pesanti occorre considerare le condizioni atmosferiche, in particolar modo il vento","Per una corretta regolazione degli specchi retrovisori dei mezzi pesanti bisogna tenere presente l'eventualità che il conducente indossi occhiali da vista","Gli specchi retrovisori dei mezzi pesanti si orientano automaticamente all'atto dell'inserimento della carta tachigrafica nel cronotachigrafo digitale"]
+soluzioni="VVVVVFFFFF"
+rispass=[1191,1192,1193,1194,1195,1201,1202,1203,1204,1205]
+nummin="081003"
+}
+continua()

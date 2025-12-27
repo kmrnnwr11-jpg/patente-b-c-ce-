@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di ALT-POLIZIA"
+segnale="119"
+quizass=223
+sugg=124
+risposte=["Das abgebildete Verkehrszeichen kündigt eine polizeiliche Straßensperre an","Das abgebildete Verkehrszeichen schreibt vor, in der Nähe einer polizeilichen Straßensperre anzuhalten","Das abgebildete Verkehrszeichen schreibt vor, an einer polizeilichen Straßensperre anzuhalten","Das abgebildete Verkehrszeichen zeigt eine polizeiliche Straßensperre an, an der man anhalten muss","Das abgebildete Verkehrszeichen, das in angemessener Entfernung von der Straßensperre steht, wird an der Stelle, an der man anzuhalten hat, wiederholt","Das abgebildete Verkehrszeichen schreibt vor, langsamer zu fahren, um bei einem Zeichen seitens der Polizeibeamten anhalten zu können","Das abgebildete Verkehrszeichen kündigt eine Staatsgrenze an, an welcher man die Pflicht hat, anzuhalten","Das abgebildete Verkehrszeichen zeigt eine Autobahnmautstelle an, bei der es Pflicht ist, anzuhalten","Das abgebildete Verkehrszeichen schreibt vor, anzuhalten und den Polizeifahrzeugen Vorfahrt zu gewähren","Das abgebildete Verkehrszeichen weist auf eine Zollstelle in der Nähe hin"]
+rispostet=["Il segnale raffigurato preannuncia la presenza di un posto di blocco stradale istituito da organi di polizia","Il segnale raffigurato obbliga ad arrestarsi in prossimità di blocco stradale istituito da organi di polizia","Il segnale raffigurato indica l'obbligo di arresto ad un posto di blocco stradale istituito dagli organi di polizia","Il segnale raffigurato segnala posto di blocco stradale istituito da organi di polizia al quale è obbligatorio fermarsi","Il segnale raffigurato, situato a distanza opportuna dal posto di blocco, è ripetuto all'altezza del punto di arresto","Il segnale raffigurato obbliga a rallentare per essere pronti a fermarsi in caso di segnalazione da parte degli agenti","Il segnale raffigurato presegnala un confine di Stato con obbligo di arrestarsi","Il segnale raffigurato segnala una stazione autostradale alla quale è obbligatorio fermarsi","Il segnale raffigurato impone di fermarsi e dare precedenza ai mezzi della polizia","Il segnale raffigurato segnala la vicinanza di un controllo doganale"]
+soluzioni="VVVVVFFFFF"
+rispass=[2120,2121,2122,2123,2124,2125,2126,2127,2128,2129]
+nummin="04038"
+}
+continua();

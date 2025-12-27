@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere in presenza del segnale di DIVIETO DI SORPASSO (1)"
+segnale="56"
+quizass=135
+sugg=60
+risposte=["Wo das abgebildete Verkehrszeichen steht, darf ein Lastkraftwagen ein Kraftrad überholen","Wo das abgebildete Verkehrszeichen steht, darf ein Personenkraftwagen ein Kleinkraftrad überholen","Das abgebildete Verkehrszeichen erlaubt die Durchfahrt von Lastzügen, Sattelkraftfahrzeugen und Gelenkbussen","Wo das abgebildete Verkehrszeichen steht, ist auch das Überholen von Kraftwagen mit einem Gesamtgewicht unter 3,5 Tonnen verboten","Wo das abgebildete Verkehrszeichen steht, ist es verboten, Kraftfahrzeuge zu überholen, wenn es sich nicht um Krafträder oder Kleinkrafträder handelt","Wo das abgebildete Verkehrszeichen steht, darf man Gespannfuhrwerke überholen","Das abgebildete Verkehrszeichen erlaubt es einem Personenkraftwagen, einen Lastkraftwagen zu überholen","Das abgebildete Verkehrszeichen steht nur an erstrangigen Freilandstraßen","Wo das abgebildete Verkehrszeichen steht, ist es verboten, jegliches Fahrzeug zu überholen","Wo das abgebildete Verkehrszeichen steht, ist die Durchfahrt von Personenkraftwagen verboten","Das abgebildete Verkehrszeichen schreibt vor, bei wechselndem Einbahnverkehr Vorfahrt zu gewähren","Das abgebildete Verkehrszeichen erlaubt es einem Kraftrad, einen Autobus zu überholen"]
+rispostet=["In presenza del segnale raffigurato un autocarro può sorpassare un motociclo","In presenza del segnale raffigurato un'autovettura può sorpassare un ciclomotore","Il segnale raffigurato consente il transito agli autotreni, autoarticolati ed autosnodati","In presenza del segnale raffigurato è vietato sorpassare anche gli autoveicoli di massa complessiva inferiore a 3,5 tonnellate","In presenza del segnale raffigurato è vietato sorpassare veicoli a motore diversi dai motocicli e dai ciclomotori","In presenza del segnale raffigurato è consentito sorpassare veicoli a trazione animale","Il segnale raffigurato consente ad un'autovettura di sorpassare un autocarro","Il segnale raffigurato si trova solo sulle strade extraurbane principali","In presenza del segnale raffigurato è vietato sorpassare qualsiasi veicolo","In presenza del segnale raffigurato è vietato il transito alle autovetture","Il segnale raffigurato impone di dare la precedenza nei sensi unici alternati","Il segnale raffigurato consente ad un motociclo di superare un autobus"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[1242,1243,1244,1245,1246,1247,1248,1249,1250,1251,1252,1253]
+nummin="03004"
+}
+continua();

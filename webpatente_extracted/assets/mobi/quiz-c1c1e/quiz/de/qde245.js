@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Fusibili 2"
+quizass=245
+sugg=0
+risposte=["Es ist nicht angebracht, eine Sicherung mit einer anderen zu ersetzen, die eine andere Stromstärke aufweist","Alle Sicherungen befinden sich in einem oder in mehreren leicht zugänglichen Fächern","Die Lage des Sicherungskastens ist im Wartungshandbuch angeführt","Die Sicherungen können nur in der Werkstätte ersetzt werden","Wenn keine Ersatzsicherung mit den gleichen Eigenschaften wie die durchgebrannte Sicherung zur Verfügung steht, muss man eine neue Sicherung mit geringerer Stromstärke einsetzen","Bei jeder Hauptuntersuchung des Fahrzeugs sind alle Sicherungen zu ersetzen","Die roten Sicherungen dürfen nur von den Mitarbeitern von Fachwerkstätten gewechselt werden","Wenn dieselbe Sicherung immer wieder durchbrennt, ist es angebracht, diese mit einer Sicherung mit geringerer Stromstärke zu ersetzen","Wenn dieselbe Sicherung immer wieder durchbrennt, ist es angebracht, diese mit einer Überbrückung aus Draht zu ersetzen","Der Austausch einer Sicherung muss bei eingestecktem Zündschlüssel erfolgen, damit man sofort sehen kann, ob der Vorgang richtig durchgeführt wurde"]
+rispostet=["Non è opportuno sostituire un fusibile con uno di amperaggio diverso","Tutti i fusibili sono raccolti in uno o più contenitori facilmente accessibili","La posizione della scatola dei fusibili è indicata sul libretto di uso e manutenzione","I fusibili sono sostituibili solo in officina","Se non si dispone di un fusibile sostitutivo uguale, occorre sostituire quello guasto con uno di amperaggio minore","Tutti i fusibili vanno sostituiti ogni volta che si effettua la revisione periodica del veicolo","I fusibili di colore rosso possono essere sostituiti solo da addetti delle officine specializzate","Se lo stesso fusibile brucia spesso è bene sostituirlo con uno di amperaggio inferiore","Se lo stesso fusibile brucia spesso è bene sostituirlo con un cavallotto di filo elettrico","La sostituzione di un fusibile va fatta con la chiave del quadro inserita, in modo da vedere subito se si è operato correttamente"]
+soluzioni="VVVFFFFFFF"
+rispass=[1944,1945,1949,1955,1956,1957,1961,1962,1963,1964]
+nummin="114001"
+}
+continua();

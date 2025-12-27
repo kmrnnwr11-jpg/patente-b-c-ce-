@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Funzione dei catadiottri"
+quizass=252
+sugg=186
+risposte=["Les catadioptres sont des dispositifs qui reflètent la lumière et qui servent à indiquer, spécialement la nuit, la présence de véhicules, même à feux éteints","Les catadioptres sont des dispositifs qui reflètent la lumière et qui servent à faciliter la visibilité pendant la nuit des remorques isolées garées sur la route","Les catadioptres sont des dispositifs qui reflètent la lumière et qui servent à signaler la présence du véhicule, en devenant lumineux, si éclairés par les phares","Les catadioptres sont des dispositifs qui reflètent la lumière et qui servent à repérer le véhicule au cas où les lumières à l'arrière ne fonctionnent pas","Les catadioptres sont des dispositifs qui reflétent la lumière et qui servent à signaler, s'ils sont rouges et triangulaires, la présence d'un quadricycle à moteur","Les catadioptres sont des dispositifs qui reflétent la lumière et qui servent à remplacer les clignotants, si ceux-ci ne fonctionnent pas"]
+rispostet=["I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di indicare, specialmente di notte, la presenza di veicoli, anche se a luci spente","I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di facilitare la visibilità notturna di rimorchi isolati parcheggiati su strada","I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di segnalare la presenza del veicolo, diventando luminosi se illuminati da fari","I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di far individuare il veicolo nel caso in cui non funzionino le luci posteriori","I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di segnalare, se rossi e triangolari, la presenza di un quadriciclo a motore","I catadiottri sono dispositivi che riflettono la luce e hanno la funzione di sostituire gli indicatori di direzione se questi non funzionano"]
+soluzioni="VVVVFF"
+rispass=[1482,1483,1484,1485,1486,1487]
+nummin="08002"
+}
+continua();

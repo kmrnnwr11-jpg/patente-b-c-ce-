@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Documenti da mostrare a richiesta degli agenti"
+quizass=321
+sugg=317
+risposte=["Le conducteur d'auto-véhicules ou de motocycles doit présenter, si les agents le demandent, la carte grise","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, son permis de conduire","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, l'attestation d'assurance du véhicule","Le conducteur d'auto-véhicules doit montrer, si les agents le demandent, le panneau mobile de danger (triangle)","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, la valise de premier secours","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, la certification de propriété","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, le code fiscal","Le conducteur d'auto-véhicules ou de motocycles doit montrer, si les agents le demandent, l'attestation de payement de la taxe sur la propriété"]
+rispostet=["Chi guida autoveicoli o motocicli deve esibire, a richiesta degli agenti, la carta di circolazione","Chi guida autoveicoli o motocicli deve esibire, a richiesta degli agenti, la patente di guida","Chi guida autoveicoli o motocicli deve esibire, a richiesta degli agenti, il certificato di assicurazione del veicolo","Chi guida autoveicoli deve esibire, a richiesta degli agenti, il segnale mobile di pericolo (triangolo)","Chi guida autoveicoli o motocicli deve mostrare, a richiesta degli agenti, la valigetta di pronto soccorso","Chi guida autoveicoli o motocicli deve esibire, a richiesta degli agenti, il certificato di proprietà","Chi guida autoveicoli o motocicli deve esibire, a richiesta degli agenti, il codice fiscale","Chi guida autoveicoli o motocicli deve mostrare, a richiesta degli agenti, l'attestazione di pagamento della tassa di possesso (bollo)"]
+soluzioni="VVVVFFFF"
+rispass=[2896,2897,2898,2899,2900,2901,2902,2903]
+nummin="07026"
+}
+continua();

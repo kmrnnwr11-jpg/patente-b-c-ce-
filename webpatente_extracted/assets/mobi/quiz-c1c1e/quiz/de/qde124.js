@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti in caso di ingombro della carreggiata 3"
+quizass=124
+sugg=0
+risposte=["Wenn wegen einer Panne am Fahrzeug die Fahrbahn versperrt ist, muss der Fahrer die Durchfahrt nach Möglichkeit umgehend frei machen, um den Verkehr nicht zu behindern","Wenn wegen einer Panne am Fahrzeug die Fahrbahn versperrt ist, muss der Fahrer das Fahrzeug aus der Fahrbahn schieben, oder, falls dies nicht möglich ist, auf den rechten Fahrbahnrand bringen","Wenn durch verlorene Ladung oder durch irgendeine andere Ursache die Fahrbahn versperrt ist, muss der Fahrer das Hindernis nach Möglichkeit wegschaffen","Wenn wegen einer Panne am Fahrzeug die Fahrbahn versperrt ist, ist der Fahrer, während er auf Hilfe wartet, nicht verpflichtet, das Fahrzeug zu verstellen, wenn der Verkehr auf der Straße gering ist","Wenn die Ladung versehentlich auf die Fahrbahn fällt und den Verkehr behindert, muss es der Fahrer unterlassen, sie wegzuschaffen, damit der Vorfall genau rekonstruiert werden kann","Wenn wegen einer Panne am Fahrzeug die Fahrbahn versperrt ist, muss der Fahrer in der Lage sein, das Fahrzeug rasch zu reparieren, wenn es sich um ein Schwerfahrzeug handelt"]
+rispostet=["In caso di ingombro della carreggiata per avaria del veicolo, il conducente deve sollecitamente rendere libero il transito per non ostacolare il traffico sopraggiungente","In caso di ingombro della carreggiata per avaria del veicolo, il conducente deve spingere il veicolo stesso fuori della carreggiata o, se ciò non è possibile, deve collocarlo sul margine destro della carreggiata","In caso di ingombro della carreggiata per caduta del carico o per qualsiasi altra causa, il conducente deve rimuovere l'ingombro, per quanto possibile","In caso di ingombro della carreggiata per avaria del veicolo, il conducente non è tenuto a spostarlo in attesa dei soccorsi, se il traffico sulla strada è scarso","Nel caso di ingombro della carreggiata per caduta accidentale del carico, il conducente deve evitare di spostarlo per consentire la ricostruzione corretta dell'accaduto","In caso di ingombro della carreggiata per avaria del veicolo, il conducente deve essere in grado di riparare il guasto rapidamente, se si tratta di un veicolo pesante"]
+soluzioni="VVVFFF"
+rispass=[794,795,796,797,798,799]
+nummin="052004"
+}
+continua();

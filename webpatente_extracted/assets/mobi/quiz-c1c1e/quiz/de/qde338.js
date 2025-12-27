@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti in caso di accensione di spie rosse"
+quizass=338
+sugg=0
+risposte=["Wenn die rote Kontrolllampe der Kühlanlage aufleuchtet, muss man anhalten und sofort den Motor abstellen, um Schäden zu vermeiden","Wenn die rote Kontrolllampe der Schmieranlage aufleuchtet, muss man anhalten und sofort den Motor abstellen, um Schäden zu vermeiden","Wenn die rote Kontrolllampe der Schmieranlage aufleuchtet, muss man sofort den Motor abstellen und, wenn kein Ölaustritt festzustellen ist, Öl der gleichen Art nachfüllen","Wenn bei der Abfahrt die rote Kontrolllampe der Schmieranlage aufleuchtet, muss man sofort den Motor abstellen, die Ölmenge in der Ölwanne prüfen und bei niedrigem Ölstand Öl der gleichen Art nachfüllen","Wenn die Kontrolllampe für die Schmierung aufleuchtet, bedeutet das, dass man innerhalb von tausend Kilometern den Ölfilter wechseln muss","Wenn die Kontrolllampe für die Schmierung aufleuchtet, bedeutet das, dass man das Motoröl wechseln muss","Wenn die Kontrolllampe für die Kühlung aufleuchtet, muss man beschleunigen, um zu Ziel zu gelangen, bevor die Flüssigkeit im Kühler vollkommen entweicht ist"]
+rispostet=["Se si accende la spia rossa dell'impianto di raffreddamento, è necessario fermarsi e spegnere subito il motore, per evitare danni","Se si accende la spia rossa dell'impianto di lubrificazione, è necessario fermarsi e spegnere subito il motore per evitare danni","Se si accende la spia rossa dell'impianto di lubrificazione è necessario fermare subito il motore e, se non vi sono perdite di lubrificante, occorre rabboccare con lubrificante, possibilmente dello stesso tipo","Alla partenza, se si accende la spia rossa, dell'impianto di lubrificazione, è necessario spegnere subito il motore, verificare la quantità di olio nella coppa e, se è basso il livello dell'olio, effettuare un rabbocco di olio dello stesso tipo","Se si accende la spia della lubrificazione, significa che bisogna cambiare il filtro dell'olio entro mille chilometri","Se si accende la spia della lubrificazione, significa che bisogna cambiare l'olio di lubrificazione del motore","Se si accende la spia del raffreddamento, occorre accelerare per giungere a destinazione prima che si esaurisca il liquido nel radiatore"]
+soluzioni="VVVVFFF"
+rispass=[2952,2953,2954,2955,2956,2957,2960]
+nummin="151001"
+}
+continua();

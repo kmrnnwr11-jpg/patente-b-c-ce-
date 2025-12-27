@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Classificazione dei veicoli: gli autocaravan (camper)"
+quizass=29
+sugg=11007
+risposte=["Campingfahrzeuge (Camper) sind Fahrzeuge mit einer besonderen Karosserie, die zur Beförderung und als Unterkunft von Personen verwendet werden können","Campingfahrzeuge (Camper) sind Fahrzeuge mit einer besonderen Karosserie, die zur Beförderung und als Unterkunft von maximal jener Anzahl an Personen verwendet werden können, die im Fahrzeugschein angeführt ist","Campingfahrzeuge (Camper) sind Fahrzeuge, die ständig zur Beförderung und als Unterkunft von Personen verwendet werden können","Campingfahrzeuge müssen der wiederkehrenden Hauptuntersuchung unterzogen werden","Campingfahrzeuge (Camper) sind Anhänger","Campingfahrzeuge (Camper) sind Fahrzeuge, die für landwirtschaftliche Arbeiten bestimmt sind","Campingfahrzeuge (Camper) sind Fahrzeuge, die für den Bau und die Instandhaltung von Straßen bestimmt sind","In Campingfahrzeugen (Camper) ist es möglich, im Stehen zu fahren, aber nur über kurze Strecken","Campingfahrzeuge müssen alle fünf Jahre der Hauptuntersuchung unterzogen werden"]
+rispostet=["Le autocaravan (camper) sono veicoli aventi una speciale carrozzeria per essere adibiti al trasporto ed all'alloggio di persone","Le autocaravan (camper) sono veicoli aventi una speciale carrozzeria per essere adibiti al trasporto ed all'alloggio al massimo del numero di persone indicato nella carta di circolazione","Le autocaravan (camper) sono veicoli attrezzati permanentemente per essere adibiti al trasporto ed all'alloggio di persone","Le autocaravan sono soggette a revisione periodica","Le autocaravan (camper) sono rimorchi","Le autocaravan (camper) sono veicoli destinati ai lavori agricoli","Le autocaravan (camper) sono veicoli destinati alla costruzione e alla manutenzione di opere stradali","Sulle autocaravan (camper) è possibile viaggiare in piedi, solo per brevi tratti","Le autocaravan sono soggette a revisione ogni cinque anni"]
+soluzioni="VVVVFFFFF"
+rispass=[286,287,288,289,290,291,292,293,294]
+nummin="01028"
+}
+continua();

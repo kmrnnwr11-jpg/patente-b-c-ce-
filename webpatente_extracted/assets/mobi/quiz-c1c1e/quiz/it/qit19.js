@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Veicoli che devono essere dotati di cronotachigrafo"
+quizass=19
+sugg=0
+risposte=["Il cronotachigrafo è obbligatorio per veicoli adibiti al trasporto di merci di massa complessiva a pieno carico superiore a 3,5 tonnellate","Il cronotachigrafo è obbligatorio per veicoli per trasporto passeggeri con più di 9 posti compreso quello del conducente (tranne quelli che effettuano servizi regolari di linea su percorsi inferiori a 50 km)","Il cronotachigrafo è obbligatorio per veicoli per trasporto di passeggeri con più di 9 posti compreso quello del conducente che effettuano servizi regolari di linea su percorsi superiori a 50 km","I veicoli con velocità massima autorizzata inferiore o uguale a 40 km/h non devono essere dotati di cronotachigrafo","Gli autobus in servizio pubblico di linea, ma utilizzati anche in corsa &quot;fuori linea&quot;, devono essere dotati di cronotachigrafo","Il cronotachigrafo è obbligatorio per i taxi che operano fuori dei centri urbani","Il cronotachigrafo è obbligatorio per veicoli adibiti al trasporto di merci di massa complessiva a pieno carico superiore a 2 tonnellate","Il cronotachigrafo è obbligatorio per tutti gli autobus","Il cronotachigrafo è obbligatorio per tutti i veicoli adibiti al trasporto di merci","Gli autobus in servizio pubblico di linea il cui percorso, da capolinea a capolinea, non supera i 50 km devono essere dotati di cronotachigrafo","I veicoli di proprietà delle forze armate e dei vigili del fuoco devono essere dotati di cronotachigrafo","I veicoli di massa complessiva superiore a 3,5 tonnellate adibiti ad uso medico devono essere dotati di cronotachigrafo","I carri attrezzi specializzati che operano entro un raggio di 100 km dalla propria base operativa devono essere dotati di cronotachigrafo"]
+soluzioni="VVVVVFFFFFFFF"
+rispass=[110,111,112,113,114,115,116,117,118,119,120,121,122]
+nummin="021003"
+}
+continua()

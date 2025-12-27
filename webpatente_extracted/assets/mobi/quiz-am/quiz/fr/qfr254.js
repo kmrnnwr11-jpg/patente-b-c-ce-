@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Cautele da adottare per evitare incidenti"
+quizass=254
+sugg=192
+risposte=["Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre effectuer le contrôle technique du cyclomoteur prévu par la loi","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre que les dispositifs de freinage et d'éclairage soient efficaces","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre faire contrôler régulièrement, par un mécanicien, le rendement du cyclomoteur","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre enlever les rétroviseurs","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre remplacer les ampoules par d'autres de couleur différente","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre éteindre les lumières pendant la journée","Pour assurer la sécurité de la circulation et éviter les accidents, il faut, entre autre se mettre côte à côte d'un autre cyclomoteur pour parler avec le conducteur"]
+rispostet=["Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro effettuare le revisioni periodiche del ciclomotore previste dalla legge","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro mantenere efficienti i dispositivi di frenatura e di illuminazione","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro far controllare periodicamente, ad un meccanico, l'efficienza del ciclomotore","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro togliere gli specchietti retrovisori","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro sostituire le lampadine con altre di diverso colore","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro, tenere le luci spente durante il giorno","Per garantire la sicurezza della circolazione ed evitare incidenti è necessario, fra l'altro affiancare un altro ciclomotore per parlare con il conducente"]
+soluzioni="VVVFFFF"
+rispass=[1600,1601,1602,1603,1604,1605,1606]
+nummin="08021"
+}
+continua();

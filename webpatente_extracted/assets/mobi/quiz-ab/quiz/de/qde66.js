@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere in presenza del segnale di CUNETTA"
+segnale="3"
+quizass=66
+sugg=3
+risposte=["Wo das abgebildete Verkehrszeichen steht, ist es notwendig, die Geschwindigkeit herabzusetzen, um Schäden an der Aufhängung zu vermeiden","Wo das abgebildete Verkehrszeichen steht, ist es notwendig, die Geschwindigkeit herabzusetzen, um die Kontrolle über das Fahrzeug zu bewahren","Wo das abgebildete Verkehrszeichen steht, ist es notwendig, das Lenkrad fester im Griff zu halten","Wo das abgebildete Verkehrszeichen steht, muss man sich bei Regen die Möglichkeit einer Anstauung von Wasser in der Senkung erwarten","Wo das abgebildete Verkehrszeichen steht, muss man sich die Möglichkeit einer Anstauung von Schlamm und Schutt in der Senkung erwarten","Wo das abgebildete Verkehrszeichen steht, muss man nur dann langsamer fahren, wenn Fahrzeuge aus der Gegenrichtung kommen","Wo das abgebildete Verkehrszeichen steht, ist es nicht notwendig, langsamer zu fahren, wenn die Senkung die Sicht erlaubt","Wo das abgebildete Verkehrszeichen steht, ist das Überholen verboten, wenn man durch eine Einbahnstraße fährt","Das abgebildete Verkehrszeichen kündigt ein unbefestigtes Bankett an"]
+rispostet=["In presenza del segnale raffigurato è necessario moderare la velocità per evitare danni alle sospensioni","In presenza del segnale raffigurato è necessario moderare la velocità per mantenere il controllo del veicolo","In presenza del segnale raffigurato è necessario tenere il volante con una presa più sicura","In presenza del segnale raffigurato e in caso di pioggia è necessario prevedere la possibilità di accumulo di acqua nella cunetta","In presenza del segnale raffigurato è necessario prevedere la possibilità di accumulo di fango e detriti nella cunetta","In presenza del segnale raffigurato è necessario rallentare solo se provengono veicoli dal senso opposto","In presenza del segnale raffigurato non è necessario rallentare se la cunetta presenta visibilità","In presenza del segnale raffigurato è vietato il sorpasso se si circola in una strada a senso unico","Il segnale raffigurato preannuncia una banchina cedevole"]
+soluzioni="VVVVVFFFF"
+rispass=[601,602,603,604,605,606,607,608,609]
+nummin="02006"
+}
+continua();

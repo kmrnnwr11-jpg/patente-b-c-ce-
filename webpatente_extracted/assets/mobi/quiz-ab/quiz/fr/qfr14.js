@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Definizioni stradali: l’attraversamento pedonale"
+quizass=14
+sugg=380
+risposte=["Le passage pour piétons est signalé par de larges bandes blanches parallèles","Le passage pour piétons est une partie de la chaussée sur laquelle l'arrêt des véhicules est interdit","Le passage pour piétons est une partie de la chaussée où les véhicules doivent céder le passage aux piétons, qui traversent sur les lignes","Le passage pour piétons est une partie de la chaussée réservée à l'engagement des piétons qui la traversent","Le passage pour piétons est une partie de la chaussée sur laquelle le stationnement des véhicules est interdit","Le passage pour piétons est une partie de la route, séparée latéralement de la chaussée à l'aide d'une ligne jaune","Le passage pour piétons est une partie de la chaussée interdite au passage des véhicules","Le passage pour piétons ne fait pas partie de la chaussée","Le passage pour piétons se trouve en dehors de la chaussée et est réservé à l'engagement des piétons","Le passage pour piétons est une partie de la chaussée où l'arrêt est autorisé mais le stationnement interdit"]
+rispostet=["L'attraversamento pedonale viene segnalato con strisce bianche parallele","L'attraversamento pedonale è una parte della carreggiata sulla quale è vietata la fermata dei veicoli","L'attraversamento pedonale è una parte della carreggiata, in cui i veicoli devono dare la precedenza ai pedoni, che attraversano sulle apposite strisce","L'attraversamento pedonale è una parte della carreggiata destinata al transito dei pedoni che attraversano","L'attraversamento pedonale è una parte della carreggiata sulla quale è vietata la sosta dei veicoli","L'attraversamento pedonale è una parte della strada, separata dalla carreggiata mediante una striscia gialla","L'attraversamento pedonale è una parte della carreggiata vietata al transito dei veicoli","L'attraversamento pedonale non fa parte della carreggiata","L'attraversamento pedonale è posto al di fuori della carreggiata ed è destinato al transito dei pedoni","L'attraversamento pedonale è una parte della carreggiata in cui è consentita la fermata ma non la sosta dei veicoli"]
+soluzioni="VVVVVFFFFF"
+rispass=[27,28,29,30,31,32,33,34,35,36]
+nummin="01004"
+}
+continua();

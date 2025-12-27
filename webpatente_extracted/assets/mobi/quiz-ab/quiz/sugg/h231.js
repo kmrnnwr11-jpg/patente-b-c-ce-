@@ -1,0 +1,9 @@
+s=new tsugg;
+with(s){
+numero=231
+titolo="ORDINE DI PRECEDENZA: T - A si ferma al centro - O - M - prosegue A"
+segnale=642
+testo="Tutti i veicoli hanno la destra occupata in relazione alla loro destinazione. Il tram passa per primo (in quanto circola su rotaie); poi il veicolo A si porta al centro dell’incrocio; quindi passano il veicolo O (quando A si è portato al centro, ha la destra libera) e, di seguito, il veicolo M (deve dare la precedenza ad O). Infine il veicolo A può completare l’attraversamento (chi svolta a sinistra, deve dare la precedenza ai veicoli che provengono da destra  - in questo caso non ce ne sono -  e di fronte: T e M).<br /><br />È vero che: tutti i veicoli devono usare prudenza nell’attraversare l’incrocio (anche se hanno la precedenza); il tram ha la precedenza rispetto agli altri veicoli e quindi transita per primo; il veicolo O deve attendere il transito del tram e che il veicolo A si porti al centro; il veicolo M deve attendere il transito del veicolo O.<br /><br />La regola: in un incrocio senza segnale di DARE PRECEDENZA (fig. 40) quando tutti i veicoli hanno la destra occupata in relazione alla loro destinazione (osservando il disegno le traiettorie dei veicoli nell’intersecarsi devono formare un tracciato a mo’ di triangolo rettangolo), chi esegue la svolta a sinistra (in questo caso il veicolo A) è tenuto ad impegnare l’incrocio e fermarsi al centro di esso, in attesa che transitino gli altri veicoli, e poi ripartire. Dunque il veicolo che svolta sarà il primo ad impegnare l’incrocio, ma l’ultimo a disimpegnarlo."
+riferimento=[650]
+}
+suggerimenti.continua()

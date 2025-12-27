@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Segnale di SENSO UNICO PARALLELO"
+segnale="152"
+quizass=323
+sugg=154
+risposte=["Il segnale raffigurato indica che la strada su cui è posto è a senso unico","Il segnale A di figura indica che svoltando a sinistra la strada è a senso unico","Il segnale raffigurato indica che svoltando nel senso della freccia non si incrociano veicoli provenienti dal senso opposto","Il segnale raffigurato indica che una volta svoltato nel senso della freccia è vietata l'inversione di marcia","Il segnale raffigurato indica che nel tratto di strada in cui è posto si deve sorpassare a destra","Il segnale A di figura indica che è obbligatorio svoltare a sinistra","Il segnale raffigurato indica che è vietato proseguire diritto","Il segnale raffigurato indica che si deve marciare per file parallele","Il segnale raffigurato indica che svoltando nel senso della freccia la sosta è consentita solo a sinistra","Il segnale raffigurato indica un parcheggio libero nel senso della freccia"]
+soluzioni="VVVVFFFFFF"
+rispass=[2978,2979,2980,2981,2982,2983,2984,2985,2986,2987]
+nummin="08008"
+}
+continua();

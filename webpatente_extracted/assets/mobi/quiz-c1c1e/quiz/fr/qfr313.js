@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Impianti di frenatura 6"
+quizass=313
+sugg=0
+risposte=["Le frein de type pneumo-hydraulique fonctionne grâce à l'action combinée de l'air et de l'huile","Un poids lourd ne peut pas avoir les freins pneumo-hydrauliques car ils sont trop élastiques","Les systèmes de freinage pneumo-hydrauliques, appelés aussi freins mixtes, fonctionnent avec un mélange d'air et d'huile préparé par le distributeur duplex","Dans les systèmes de freinage pneumo-hydrauliques, le mélangeur pour l'air et l'huile doit être présent","Si une fuite d'huile des freins pneumo-hydrauliques survient, le conducteur peut convertir le fonctionnement des freins à pneumatique intégral en excluant les convertisseurs","Sur les véhicules automobiles équipés de freinage pneumo-hydraulique, l'huile du système de freinage pneumo-hydraulique sert à bien maintenir lubrifiés les éléments de freinage, même dans les descentes à forte déclivité","Les véhicules automobiles équipés d'un système de freinage pneumo-hydraulique ne peuvent pas être aptes pour le remorquage"]
+rispostet=["Il freno di tipo pneumoidraulico funziona grazie all'azione combinata dell'aria e dell'olio","Un autocarro pesante non può avere i freni pneumoidraulici perché troppo elastici","Gli impianti di frenatura pneumoidraulici, detti anche freni misti, funzionano con una miscela di aria e olio preparata dal distributore duplex","Negli impianti di frenatura pneumoidraulici, deve essere presente un miscelatore per l'aria e l'olio","Se si verifica una perdita di olio dai freni pneumoidraulici, il conducente può convertire il funzionamento dei freni a pneumatico integrale escludendo i convertitori","Sugli autoveicoli dotati di frenatura pneumoidraulica, l'olio dell'impianto frenante pneumoidraulico serve a mantenere ben lubrificati gli elementi frenanti, anche nelle forti discese","Gli autoveicoli dotati di impianto frenante pneumoidraulico non possono essere atti al traino"]
+soluzioni="VFFFFFF"
+rispass=[2897,2905,2906,2907,2908,2911,2912]
+nummin="141014"
+}
+continua();

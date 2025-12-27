@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Obblighi del conducente del veicolo che viene sorpassato"
+quizass=190
+sugg=151
+risposte=["Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, das Überholmanöver zu erleichtern","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, den Verkehr nicht zu gefährden oder zu behindern","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, mit dem überholenden Fahrzeug nicht um die Wette zu fahren","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, nicht zu beschleunigen","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, die eigene Geschwindigkeit immer herabzusetzen","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, den rechten Richtungsanzeiger zu betätigen","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, in Fahrbahnmitte zu fahren, damit nicht weitere Fahrzeuge gleich hinter dem ersten überholen","Der Fahrer des Fahrzeugs, das überholt wird, hat die Pflicht, zu beschleunigen, um es dem überholenden Fahrzeug zu ermöglichen, Schwung zu nehmen und dadurch die Geschwindigkeit zu erhöhen"]
+rispostet=["Il conducente del veicolo che viene sorpassato ha l'obbligo di facilitare la manovra di sorpasso","Il conducente del veicolo che viene sorpassato ha l'obbligo di non costituire pericolo o intralcio alla circolazione","Il conducente del veicolo che viene sorpassato ha l'obbligo di non gareggiare in velocità con il veicolo che sta sorpassando","Il conducente del veicolo che viene sorpassato ha l'obbligo di non accelerare","Il conducente del veicolo che viene sorpassato ha l'obbligo di ridurre sempre la propria velocità","Il conducente del veicolo che viene sorpassato ha l'obbligo di azionare l'indicatore di direzione destro","Il conducente del veicolo che viene sorpassato ha l'obbligo di portarsi al centro della carreggiata per evitare sorpassi in scia","Il conducente del veicolo che viene sorpassato ha l'obbligo di accelerare per permettere al veicolo sorpassante di prendere la scia per aumentare la velocità"]
+soluzioni="VVVVFFFF"
+rispass=[1113,1114,1115,1116,1117,1118,1119,1120]
+nummin="05022"
+}
+continua();

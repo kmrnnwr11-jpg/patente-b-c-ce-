@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di LIMITI DI VELOCITA’ GENERALI"
+segnale="197"
+quizass=351
+sugg=173
+risposte=["Le panneau représenté se trouve en proximité de la frontière italienne, en position visible aux conducteurs venant de l'étranger","Le panneau représenté signale les limitations maximales de vitesse en vigueur en Italie","Le panneau représenté signale dans le premier cadre en haut la limitation maximale de vitesse dans les agglomérations","Le panneau représenté signale que la limitation maximale de vitesse sur des routes secondaires hors agglomération est de 90 km/h","Le panneau représenté signale que la limitation maximale de vitesse sur les routes principales hors agglomération est de 110 km/h","Le panneau représenté signale que la limitation maximale de vitesse sur les autoroutes est de 130 km/h","Le panneau représenté signale que la limitation maximale de vitesse dans les agglomérations est de 90 km/h","Le panneau représenté signale le nombre d'autoroutes en Italie qu'on peut parcourir sans payer de péage","Le panneau représenté signale que la limitation maximale de vitesse sur les routes principales hors agglomération est de 130 km/h","Le panneau représenté se trouve au début de chaque agglomération","Le panneau représenté signale les limites minimales de vitesse en vigueur en Italie"]
+rispostet=["Il segnale raffigurato viene posto in vicinanza della frontiera italiana, visibile dai conducenti provenienti dallo Stato estero","Il segnale raffigurato indica i limiti massimi di velocità generali che valgono in Italia","Il segnale raffigurato indica nel primo riquadro in alto il limite massimo di velocità nei centri abitati","Il segnale raffigurato indica in 90 km/h il limite massimo di velocità su strade extraurbane secondarie","Il segnale raffigurato indica in 110 km /h il limite massimo di velocità sulle strade extraurbane principali","Il segnale raffigurato indica in 130 km /h il limite massimo di velocità sulle autostrade","Il segnale raffigurato indica in 90 km /h il limite massimo di velocità nei centri abitati","Il segnale raffigurato indica il numero di autostrade in Italia che si possono percorrere senza pagarne il pedaggio","Il segnale raffigurato indica in 130 km /h il limite massimo di velocità su strade extraurbane principali","Il segnale raffigurato si trova all'ingresso di ogni città","Il segnale raffigurato indica i limiti minimi di velocità che valgono in Italia"]
+soluzioni="VVVVVVFFFFF"
+rispass=[3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226]
+nummin="08031"
+}
+continua();

@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=11027
+titolo="LIMITI MASSIMI DI VELOCITÀ"
+testo="I limiti di velocità non sono identici in tutti gli Stati d’Europa; in Italia sono vigenti i seguenti limiti massimi.<br /><br />IN RELAZIONE AI VEICOLI<br /><br />- Macchine agricole e macchine operatrici con pneumatici: 40 km/h.<br />- Ciclomotori: 45 km/h.<br />- Quadricicli a motore: 80 km/h.<br />- Veicoli fino a 3,5 t (motocicli, autovetture, autocaravan / camper, autovetture con carrello-appendice, autocarri): si applicano i limiti generali di velocità, previsti per il tipo di strada (50 km/h su strade urbane, 90 km/h su strade extraurbane secondarie, 110 km/h su strade extraurbane principali e 130 km/h in autostrada).<br />- Veicoli pesanti (autotreni, autovetture che trainano rimorchi, anche se leggeri, o caravan / roulotte): si applicano i limiti velocità ridotti previsti per il tipo di strada (50 km/h su strade urbane, 70 km/h su strade extraurbane sia secondarie che principali, 80 km/h sulle autostrade).<br /><br />PER TIPO DI STRADA<br /><br />Centri abitati (strade urbane):<br />- 50 km/h (in presenza di apposito segnale, su strade urbana con particolari caratteristiche: 70 km/h).<br /><br />Strade extraurbane secondarie: <br />- 90 km/h.<br />- Veicoli pesanti: 70 km/h.<br /><br />Strade extraurbane principali: <br />- 110 km/h.<br />- Veicoli pesanti: 70 km/h.<br />- In caso di neve, pioggia o grandine: non oltre 90 km/h.<br /><br />Autostrade:<br />- 130 km/h (in presenza di apposito segnale, in tratti di autostrade con particolari caratteristiche: 150 km/h) <br />- Veicoli pesanti: 80 km/h.<br />- In caso di neve, pioggia o grandine: non oltre 110 km/h."
+riferimento=[495,497,498,499,501,502]
+}
+suggerimenti.continua()

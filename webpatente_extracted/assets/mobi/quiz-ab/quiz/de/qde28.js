@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Classificazione dei veicoli: le autovetture"
+quizass=28
+sugg=11006
+risposte=["Ein Personenkraftwagen ist ein Kraftfahrzeug mit vier Rädern, welches für die Beförderung von höchstens neun Personen einschließlich des Fahrers bestimmt ist","Ein Personenkraftwagen gehört zu den Kraftwagen","Ein Personenkraftwagen darf nicht mehr als neun Plätze einschließlich des Fahrers haben","Ein Autobus ist kein Personenkraftwagen","Personenkraftwagen können mit einem Elektromotor ausgerüstet sein","Personenkraftwagen müssen der wiederkehrenden Hauptuntersuchung unterzogen werden","Als Personenkraftwagen bezeichnet man alle Kraftfahrzeuge mit Hinterradantrieb","Personenkraftwagen dürfen keine Anhängekarren oder Anhänger ziehen","Als Personenkraftwagen bezeichnet man alle Fahrzeuge mit Frontmotor","Ein Personenkraftwagen ist ein Fahrzeug mit insgesamt zehn Plätzen einschließlich des Fahrers","Als Personenkraftwagen bezeichnet man ein gepanzertes und eigens für die Beförderung von Wertgegenständen ausgestattetes Fahrzeug","Ein Lastkraftwagen ist ein Personenkraftwagen","Ein Personenkraftwagen kann höchstens fünf Plätze haben","Personenkraftwagen müssen alle fünf Jahre der Hauptuntersuchung unterzogen werden"]
+rispostet=["L'autovettura è un veicolo a motore con quattro ruote, destinato al trasporto di massimo nove persone, compreso il conducente","L'autovettura fa parte degli autoveicoli","L'autovettura non può avere più di nove posti, compreso il conducente","L'autobus non è un'autovettura","Le autovetture possono avere motore elettrico","Le autovetture sono soggette a revisione periodica","Si definiscono autovetture tutti i veicoli a motore che hanno la trazione posteriore","Le autovetture non possono trainare carrelli-appendice o rimorchi","Vengono definite autovetture tutti i veicoli con motore anteriore","L'autovettura è un veicolo con dieci posti in totale, compreso il conducente","Si definisce autovettura il veicolo blindato e appositamente attrezzato per il trasporto di valori","L'autocarro è un'autovettura","L'autovettura può avere, al massimo, cinque posti","Le autovetture sono soggette a revisione ogni cinque anni"]
+soluzioni="VVVVVVFFFFFFFF"
+rispass=[334,335,336,337,338,339,340,341,342,343,344,345,346,347]
+nummin="01032"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Airbag"
+quizass=790
+sugg=11081
+risposte=["L'airbag est un coussin gonflable de nylon ou d'un autre matériel synthétique","L'airbag s'active en cas d'accident de la route avec un choc violent","L'airbag peut être dangereux s'il s'active quand la ceinture de sécurité n'est pas attachée","L'airbag sert à limiter aux occupants du véhicule les dommages de heurts contre la superficie interne du véhicule en cas de choc violent dû à un accident de la route","L'airbag est parfois désactivable","L'airbag se gonfle automatiquement grâce à la commande un senseur","L'airbag se gonfle en quelques millisecondes","L'airbag se gonfle en quelques secondes","L'airbag se gonfle en appuyant un bouton sur le tableau de bord","L'airbag doit être gonflé régulièrement pour en vérifier l'efficacité","L'airbag est utile uniquement lors de la circulation hors agglomération","L'airbag ne doit pas être utilisé avec les ceintures de sécurité","L'airbag ne peut pas être installé sur des voitures avec moins de quatre portières","Le conducteur peut régler, avec une commande, la vitesse minimale de choc au dessus de laquelle faire activer l'airbag"]
+rispostet=["L'airbag è un cuscino gonfiabile di nylon o altro materiale sintetico","L'airbag entra in funzione in caso di incidente stradale con urto violento","L'airbag può essere pericoloso se si attiva mentre non si indossa la cintura di sicurezza","L'airbag serve a limitare i danni agli occupanti del veicolo per urti contro superfici interne del veicolo in caso di urto violento a seguito di incidente","L'airbag può essere talvolta disattivabile","L'airbag si gonfia automaticamente grazie al comando di un sensore","L'airbag si gonfia in pochi millisecondi","L'airbag si gonfia in pochi secondi","L'airbag si gonfia premendo un pulsante posto sul cruscotto","L'airbag deve essere gonfiato periodicamente per verificarne l'efficienza","L'airbag è utile soltanto nei percorsi extraurbani","L'airbag non va usato insieme alle cinture di sicurezza","L'airbag non può essere montato su vetture con meno di 4 porte","Il conducente può tarare, con apposito comando, la velocità minima d'urto al di sopra della quale far attivare l'airbag"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[6062,6063,6064,6065,6066,6067,6068,6069,6070,6071,6072,6073,6074,6075]
+nummin="19008"
+}
+continua();

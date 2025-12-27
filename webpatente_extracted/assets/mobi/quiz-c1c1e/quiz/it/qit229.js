@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Regolazione dell'iniezione nel motore Diesel"
+quizass=229
+sugg=0
+risposte=["Tutti i motori Diesel sono dotati di regolatore del numero di giri","In un motore Diesel, l'iniezione del gasolio a controllo elettronico permette di regolare la quantità di gasolio iniettato ed anche la tempistica dell'iniezione","In un motore Diesel, sui veicoli dotati di iniettori pompa non è montata la pompa di iniezione","In un motore Diesel, gli iniettori pompa dei motori Diesel di ultima generazione sono a controllo elettronico","In un motore Diesel, gli iniettori sregolati causano una cattiva combustione del gasolio","In un motore Diesel, gli iniettori sregolati causano un maggior consumo di combustibile","In un motore Diesel, gli iniettori sregolati causano un maggior inquinamento atmosferico","La regolazione elettronica dell'iniezione è applicabile solo ai motori a scoppio perché il gasolio è troppo lento ad incendiarsi","Gli iniettori pompa dei motori Diesel possono essere solo ad azionamento meccanico","In un motore Diesel, gli iniettori sregolati causano un peggior comfort di marcia","In un motore Diesel, gli iniettori sregolati sono segnalati da una spia verde che si accende sul cruscotto","In un motore Diesel, la pulizia degli iniettori sregolati può avvenire marciando in discesa a motore spento per poche centinaia di metri","In un motore Diesel, la quantità di gasolio iniettata può essere regolata manualmente dal conducente tramite manopola posta sul cruscotto","In un motore Diesel, la pulizia degli iniettori sregolati può avvenire con motore acceso, veicolo in folle e acceleratore premuto a fondo per una decina di secondi"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[1809,1810,1811,1812,1813,1814,1815,1816,1817,1818,1819,1820,1821,1822]
+nummin="112004"
+}
+continua()

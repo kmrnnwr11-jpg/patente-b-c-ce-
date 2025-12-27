@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=13028
+titolo="SOSPENSIONI"
+testo="Le sospensioni di un veicolo a motore sono elementi meccanici (molle, ecc.) che collegano il telaio alle ruote (sia anteriori che posteriori) e servono a smorzare gli urti trasmessi dalle asperità (irregolarità) del terreno e a garantire che le ruote rimangano aderenti al fondo stradale, collaborando a rendere più confortevole e sicura la marcia per conducente e passeggeri.<br /><br />Le sospensioni sono soggette ad usura e possono diventare inefficienti o rompersi, a causa del sovraccarico del veicolo (che può comportarne l’inefficienza temporanea ma anche la definitiva rottura) oppure di urti troppo forti.<br /><br />Un veicolo con sospensioni inefficienti (anche se il danno è limitato ad una sola di esse) ha meno confort di marcia, aumenta l’affaticamento alla guida del conducente, ha problemi di tenuta di strada (infatti le sospensioni collaborano alla dirigibilità del veicolo) e può presentare un anomalo orientamento dei proiettori anabbaglianti.<br /><br />È sbagliato affermare che le sospensioni servano a mantenere il veicolo fermo anche su strada in pendenza (compito a cui assolve il freno di stazionamento), che non entrino in funzione su strada rettilinea, che debbano essere sostituite dopo circa 30.000 km, che non subiscano danni o non abbiano bisogno di manutenzione. Aumentare la pressione degli pneumatici non aiuta a limitare i danni alle sospensioni, se il veicolo è sovraccarico."
+riferimento=[903,904]
+}
+suggerimenti.continua()

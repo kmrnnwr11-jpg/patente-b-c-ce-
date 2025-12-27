@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale temporaneo di PREAVVISO DI DEVIAZIONE per veicoli di massa superiore a 7 t"
+segnale="283"
+quizass=387
+sugg=226
+risposte=["Le panneau représenté signale aux véhicules de masse effective supérieure à 7 tonnes qui se dirigent vers Lucca qu'ils doivent changer de route","Le panneau représenté autorise les camions de masse totale en charge inférieure à 7 tonnes à continuer tout droit","Le panneau représenté n'autorise pas les véhicules de masse effective supérieure à 7 tonnes qui se dirigent vers Lucca à continuer tout droit","Le panneau représenté signale sur ce tronçon de route une limitation de circulation qui s'adresse aux véhicules de masse effective supérieure à 7 tonnes","Le panneau représenté se trouve en proximité d'un croisement qui anticipe un chantier","Le panneau représenté fait partie des panneaux temporaires qui s'utilisent pour indiquer des chantiers routiers","Le panneau représenté signale, à tous les véhicules, qu'on ne peut pas continuer tout droit pour rejoindre Lucca","Le panneau représenté impose à tous les véhicules de tourner à droite au croisement suivant","Le panneau représenté interdit aux auto-véhicules de masse totale en charge supérieure à 7 tonnes de doubler","Le panneau représenté interdit le passage aux véhicules de plus de 7 mètres de longueur"]
+rispostet=["Il segnale raffigurato indica ai veicoli di massa effettiva superiore a 7 tonnellate diretti a Lucca di cambiare strada","Il segnale raffigurato consente agli autocarri di massa a pieno carico inferiore a 7 tonnellate di proseguire diritto","Il segnale raffigurato non consente ai veicoli di massa effettiva superiore a 7 tonnellate diretti a Lucca di proseguire diritto","Il segnale raffigurato indica una limitazione di transito su un tratto di strada per i veicoli di massa effettiva superiore a 7 tonnellate","Il segnale raffigurato viene posto in vicinanza di un incrocio che anticipa un cantiere stradale","Il segnale raffigurato fa parte dei segnali temporanei per cantieri di lavoro sulla strada","Il segnale raffigurato indica, a tutti i veicoli, che non è possibile proseguire diritto per Lucca","Il segnale raffigurato obbliga tutti i veicoli a svoltare a destra al bivio seguente","Il segnale raffigurato vieta il sorpasso agli autoveicoli di massa totale superiore a 7 tonnellate","Il segnale raffigurato vieta il transito ai veicoli che superano 7 metri di lunghezza"]
+soluzioni="VVVVVVFFFF"
+rispass=[3577,3578,3579,3580,3581,3582,3583,3584,3585,3586]
+nummin="09008"
+}
+continua();

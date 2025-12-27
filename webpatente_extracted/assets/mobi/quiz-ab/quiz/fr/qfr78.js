@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere in presenza del segnale di PASSAGGIO A LIVELLO CON BARRIERE O SEMIBARRIERE"
+segnale="8"
+quizass=78
+sugg=8
+risposte=["Face au panneau représenté il faut réduire la vitesse pour être en mesure de s'arrêter au cas où les barrières seraient fermées","Face au panneau représenté il est interdit d'occuper le passage à niveau si le trafic intense ne permet pas de le libérer","Face au panneau représenté il faut s'arrêter si les deux lumières rouges clignotantes sont en fonction","Face au panneau représenté il faut s'arrêter si le dispositif sonore annonçant la fermeture des barrières est en fonction","Face au panneau représenté, si le véhicule s'arrête à cause d'une panne sur les rails, le conducteur doit faire tout le possible pour éviter des accidents","Face au panneau représenté on peut s'arrêter sur ou en proximité des passages à niveau","Face au panneau représenté il faut ralentir uniquement en cas de visibilité réduite","Face au panneau représenté il est permis de traverser les rails si ceux-ci sont barrés de petites barricades à rayures blanches et rouges","Face au panneau représenté il est possible de s'arrêter mais interdit de stationner sur ou en proximité des rails"]
+rispostet=["In presenza del segnale raffigurato è necessario moderare la velocità per essere pronti ad arrestarsi se le barriere sono chiuse","In presenza del segnale raffigurato non è consentito impegnare il passaggio a livello se il traffico intenso impedisce di sgomberarlo","In presenza del segnale raffigurato è necessario arrestarsi se sono in funzione le due luci rosse lampeggianti","In presenza del segnale raffigurato è necessario arrestarsi se è in funzione il dispositivo acustico che avverte della chiusura delle barriere","In presenza del segnale raffigurato, se il veicolo si ferma per avaria sui binari, il conducente deve adottare ogni iniziativa utile al fine di evitare incidenti","In presenza del segnale raffigurato è consentito sostare in corrispondenza o in prossimità dei passaggi a livelli","In presenza del segnale raffigurato è necessario rallentare solo in caso di scarsa visibilità","In presenza del segnale raffigurato è possibile attraversare i binari se sbarrati da cavalletti a strisce bianche e rosse","In presenza del segnale raffigurato sono consentite la fermata ma non la sosta in prossimità o in corrispondenza dei binari"]
+soluzioni="VVVVVFFFF"
+rispass=[731,732,733,734,735,736,737,738,739]
+nummin="02016"
+}
+continua();

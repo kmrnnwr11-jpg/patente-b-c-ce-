@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di FINE DEL DIVIETO DI SORPASSO PER GLI AUTOCARRI CHE SUPERANO 3,5 T"
+segnale="83"
+quizass=139
+sugg=87
+risposte=["Face au panneau représenté un camion remorque avec une masse égale à 44 tonnes peut doubler une voiture","Le panneau représenté signale la fin de l'interdiction de doubler précédemment indiquée","Face au panneau représenté un camion peut doubler un autobus","Le panneau représenté signale la fin de l'interdiction de doubler pour les véhicules transportant de la marchandise avec masse totale en charge supérieure à 3,5 tonnes","Le panneau représenté est un panneau de fin de prescription","Face au panneau représenté le passage des camions remorques et semi-remorques et autobus articulés est interdit","Face au panneau représenté les voitures doivent doubler les camions sur la voie de droite","Le panneau représenté signale la fin de l'interdiction de doubler pour les autobus avec masse totale en charge supérieure à 3,5 tonnes","Le panneau représenté est un panneau de danger","Le panneau représenté ne s'adresse pas aux camions avec masse totale égale à 7 tonnes"]
+rispostet=["In presenza del segnale raffigurato un autotreno di massa pari a 44 tonnellate può sorpassare un'autovettura","Il segnale raffigurato indica la fine del divieto di sorpasso precedentemente imposto","In presenza del segnale raffigurato un autocarro può sorpassare un autobus","Il segnale raffigurato indica la fine del divieto di sorpasso per veicoli merci di massa a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato è un segnale di fine prescrizione","In presenza del segnale raffigurato è vietato il transito degli autotreni, autosnodati, autoarticolati","In presenza del segnale raffigurato le autovetture devono sorpassare gli autocarri sulla corsia di destra","Il segnale raffigurato indica la fine del divieto di sorpasso per autobus di massa a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato è un segnale di pericolo","Il segnale raffigurato non vale per gli autocarri di massa complessiva pari a 7 tonnellate"]
+soluzioni="VVVVVFFFFF"
+rispass=[1572,1573,1574,1575,1576,1577,1578,1579,1580,1581]
+nummin="03033"
+}
+continua();

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti in presenza del segnale PREAVVISO DI DEVIAZIONE OBBLIGATORIA A DESTRA PER AUTOCARRI CHE SUPERANO 3,5 T"
+segnale="150"
+quizass=88
+sugg=0
+risposte=["Das abgebildete Verkehrszeichen kündigt die Pflicht für Lastkraftwagen mit einem Gesamtgewicht bei voller Zuladung von über 3,5 Tonnen an, nach rechts abzubiegen","Das abgebildete Verkehrszeichen verbietet es den Lastkraftwagen mit einem Gesamtgewicht bei voller Zuladung von über 3,5 Tonnen, geradeaus weiterzufahren","Das abgebildete Verkehrszeichen kündigt das Verbot für Lastkraftwagen mit einem Gewicht bei voller Zuladung von über 3,5 Tonnen an, nach links abzubiegen","Das abgebildete Verkehrszeichen kündigt die Pflicht für die auf dem Verkehrszeichen abgebildeten Fahrzeuge an, abzubiegen","Das abgebildete Verkehrszeichen kündigt an, dass es den Lastkraftwagen empfohlen ist, nach rechts abzubiegen","Das abgebildete Verkehrszeichen kündigt das Verbot für die auf dem Verkehrszeichen abgebildeten Fahrzeuge an, nach rechts abzubiegen","Das abgebildete Verkehrszeichen kündigt einen Parkplatz für Lastkraftwagen mit einem Gesamtgewicht bei voller Zuladung von über 3,5 Tonnen an","Das abgebildete Verkehrszeichen kündigt eine für die durchfahrenden Lastkraftwagen gefährliche Rechtskurve an"]
+rispostet=["Il segnale raffigurato preannuncia una svolta obbligatoria a destra per gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato vieta agli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate di proseguire diritto","Il segnale raffigurato preannuncia un divieto di svolta a sinistra per gli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato preannuncia una svolta obbligatoria per i veicoli rappresentati nel segnale stesso","Il segnale raffigurato preannuncia che per gli autocarri è consigliato svoltare a destra","Il segnale raffigurato preannuncia il divieto di svoltare a destra per i veicoli rappresentati in figura","Il segnale raffigurato preannuncia un'area di parcheggio riservata agli autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate","Il segnale raffigurato preannuncia una curva pericolosa a destra per gli autocarri in transito"]
+soluzioni="VVVVFFFF"
+rispass=[579,580,581,582,583,584,585,586]
+nummin="035030"
+}
+continua();

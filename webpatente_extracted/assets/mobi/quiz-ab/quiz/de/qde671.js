@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Obblighi del conducente del veicolo che viene sorpassato (1)"
+quizass=671
+sugg=289
+risposte=["Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, mit dem überholenden Fahrzeug nicht um die Wette zu fahren","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, nicht zu beschleunigen","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, so bald wie möglich anzuhalten, um den Verkehr vorbeizulassen, wenn er ein besonders langsames Fahrzeug fährt","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, sich auf Straßen mit nur einer Fahrspur pro Fahrtrichtung so nah wie möglich am rechten Fahrbahnrand zu halten","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, in Fahrbahnmitte zu fahren, damit nicht weitere Fahrzeuge gleich hinter dem ersten überholen","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, die Warnblinkanlage zu betätigen, um anzuzeigen, dass die Straße frei ist","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, die eigene Geschwindigkeit immer herabzusetzen","Der Fahrer des zu überholenden Fahrzeugs hat die Pflicht, die niedersten Gänge einzulegen, um das Überholen zu erleichtern"]
+rispostet=["Il conducente del veicolo da sorpassare ha l'obbligo di non gareggiare in velocità con il veicolo sorpassante","Il conducente del veicolo da sorpassare ha l'obbligo di non accelerare la propria andatura","Il conducente del veicolo da sorpassare ha l'obbligo di fermarsi appena possibile per far defluire il traffico se guida un veicolo molto lento","Il conducente del veicolo da sorpassare ha l'obbligo di tenersi il più possibile vicino al margine destro su strade ad unica corsia per senso di marcia","Il conducente del veicolo da sorpassare ha l'obbligo di portarsi al centro della carreggiata per evitare sorpassi in scia","Il conducente del veicolo da sorpassare ha l'obbligo di azionare la segnalazione luminosa di pericolo (lampeggio simultaneo di tutte le frecce) per segnalare che la strada è sgombra","Il conducente del veicolo da sorpassare ha l'obbligo di ridurre sempre la propria velocità","Il conducente del veicolo da sorpassare ha l'obbligo di inserire le marce più basse per facilitare il sorpasso"]
+soluzioni="VVVVFFFF"
+rispass=[5274,5275,5276,5277,5278,5279,5280,5281]
+nummin="15008"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Operazioni da compiere prima di iniziare a guidare un veicolo"
+quizass=682
+sugg=11048
+risposte=["Prima di iniziare a guidare un autoveicolo è opportuno regolare il sedile e il poggiatesta, secondo la propria statura","Prima di iniziare a guidare un autoveicolo è opportuno regolare gli specchi retrovisori interni ed esterni","Prima di iniziare a guidare un motociclo è opportuno regolare gli specchi secondo la propria statura","Quando si guida un veicolo a motore, bisogna avere con sé tutti i documenti necessari per la guida (carta di circolazione, certificato di assicurazione, patente ecc.), e in corso di validità","Prima di iniziare a guidare un veicolo a motore bisogna essere certi che la categoria di patente posseduta ne consenta la guida","Prima di iniziare a guidare un veicolo, bisogna essere certi del perfetto stato di efficienza del mezzo","Prima di iniziare a guidare un veicolo bisogna accertarsi che gli oggetti trasportati siano sistemati in modo da evitarne la caduta o dispersione","Prima di iniziare a guidare un veicolo, bisogna controllare che non sia compromessa la visibilità posteriore e laterale, per la presenza di passeggeri o per il carico mal posizionato","Prima di iniziare a guidare un autoveicolo, bisogna individuare i comandi (leve e pulsanti) necessari per la guida e comprenderne bene il funzionamento","Prima di iniziare a guidare un'autovettura, bisogna controllare che i passeggeri abbiano regolarmente allacciato le cinture di sicurezza","Prima di iniziare a guidare un veicolo a motore bisogna regolare il contachilometri parziale","Prima di iniziare a guidare un veicolo a motore bisogna disinserire l'airbag del lato conducente","Prima di iniziare a guidare un autoveicolo, bisogna verificare che le cinture di sicurezza siano dotate di pretensionatore","Prima di iniziare a guidare un veicolo, bisogna verificarne lo stato di efficienza solo se si deve intraprendere un lungo viaggio"]
+soluzioni="VVVVVVVVVVFFFF"
+rispass=[5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327]
+nummin="16003"
+}
+continua();

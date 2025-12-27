@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di PROGRESSIVA DISTANZIOMETRICA AUTOSTRADALE"
+segnale="206"
+quizass=338
+sugg=178
+risposte=["Das abgebildete Verkehrszeichen zeigt die Entfernung von der Ausfahrt an, von welcher aus man in die angegebene Ortschaft gelangt","Das abgebildete Verkehrszeichen steht entlang einer Autobahn","Das abgebildete Verkehrszeichen zeigt links die Entfernung vom Ausgangspunkt und rechts die Entfernung zur Ausfahrt nach Piacenza an","Das auf der linken Seite abgebildete Verkehrszeichen zeigt die Entfernung vom Ausgangspunkt der Autobahn an","Das abgebildete Verkehrszeichen weist darauf hin, dass bis zur Ausfahrtmautstelle bei Piacenza noch 4 Kilometer zurückzulegen sind","Das abgebildete Verkehrszeichen gehört zu den Hinweiszeichen","Das abgebildete Verkehrszeichen weist darauf hin, dass bis zur Ausfahrt nach Piacenza noch 54 Kilometer zurückzulegen sind","Das abgebildete Verkehrszeichen weist darauf hin, dass man die Autobahn Nr. 54 befährt","Das abgebildete Verkehrszeichen zeigt links die empfohlene Geschwindigkeit an","Das abgebildete Verkehrszeichen weist darauf hin, dass bereits 4 Kilometer ab Piacenza zurückgelegt worden sind","Das abgebildete Verkehrszeichen zeigt den Anfang einer geschlossenen Ortschaft an"]
+rispostet=["Il segnale raffigurato indica la distanza dallo svincolo d'uscita per la località indicata","Il segnale raffigurato è posto lungo un'autostrada","Il segnale raffigurato indica a sinistra la distanza progressiva e a destra quella dal casello d'uscita per Piacenza","Il segnale raffigurato nella parte sinistra indica la distanza progressiva dal luogo di origine dell'autostrada","Il segnale raffigurato indica che mancano 4 chilometri dal casello d'uscita per Piacenza","Il segnale raffigurato fa parte dei segnali di indicazione","Il segnale raffigurato indica cha mancano 54 chilometri dallo svincolo d'uscita per Piacenza","Il segnale raffigurato indica che si sta percorrendo l'autostrada n. 54","Il segnale raffigurato indica a sinistra la velocità consigliata","Il segnale raffigurato indica che sono stati già percorsi 4 chilometri da Piacenza","Il segnale raffigurato indica l'inizio di un centro abitato"]
+soluzioni="VVVVVVFFFFF"
+rispass=[2988,2989,2990,2991,2992,2993,2994,2995,2996,2997,2998]
+nummin="08009"
+}
+continua();

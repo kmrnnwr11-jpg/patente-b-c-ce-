@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:patente_b_flutter/services/course_service.dart';
 import '../models/quiz_question.dart';
 
 /// Service for loading and managing quiz data
@@ -9,19 +10,37 @@ class QuizService {
   List<QuizQuestion> _questions = [];
   Set<int> _wrongQuestionIds = {};
   bool _isLoaded = false;
+  LicenseType? _loadedLicense;
 
   List<QuizQuestion> get questions => _questions;
   List<QuizQuestion> get allQuestions => _questions;
   bool get isLoaded => _isLoaded;
+  LicenseType? get loadedLicense => _loadedLicense;
 
-  /// Load quiz questions from JSON asset
-  Future<void> loadQuestions() async {
-    if (_isLoaded) return;
+  /// Load quiz questions from JSON asset based on LicenseType
+  Future<void> loadQuestions({
+    LicenseType license = LicenseType.b,
+    bool forceReload = false,
+  }) async {
+    // If already loaded for this license, skip unless forced
+    if (_isLoaded && _loadedLicense == license && !forceReload) return;
+
+    // Determine which file to load based on license
+    String assetPath;
+    switch (license) {
+      case LicenseType.c:
+      case LicenseType.ce:
+        assetPath = 'assets/data/quiz_c.json';
+        break;
+      case LicenseType.b:
+      default:
+        assetPath = 'assets/data/quiz.json';
+        break;
+    }
 
     try {
-      final String jsonString = await rootBundle.loadString(
-        'assets/data/quiz.json',
-      );
+      debugPrint('Loading quiz data from: $assetPath');
+      final String jsonString = await rootBundle.loadString(assetPath);
       final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
 
       _questions = jsonList
@@ -30,8 +49,12 @@ class QuizService {
 
       await _loadWrongAnswers();
       _isLoaded = true;
+      _loadedLicense = license;
+      debugPrint(
+        'Loaded ${_questions.length} questions for license: ${license.name}',
+      );
     } catch (e) {
-      debugPrint('Error loading quiz questions: $e');
+      debugPrint('Error loading quiz questions for $assetPath: $e');
       _questions = [];
     }
   }

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Inversione di marcia (1)"
+quizass=565
+sugg=11038
+risposte=["Sur les routes à double sens de circulation on ne peut pas effectuer l'inversion du sens de circulation à proximité ou lors des virages","L'inversion du sens de circulation est interdite à proximité d'un croisement ou à un croisement","Sur les routes à double sens on ne peut pas effectuer l'inversion du sens de circulation si la visibilité est réduite","Sur les routes à double sens de circulation on ne peut pas effectuer l'inversion du sens de circulation à proximité ou en correspondance de dos d'âne","Quand le marquage horizontal est absent on ne peut pas effectuer d'inversions du sens de circulation","Si la ligne de marge de la chaussée est continue, on ne peut pas effectuer l'inversion du sens de circulation","Hors des agglomérations on ne peut pas effectuer l'inversion du sens de circulation","Sur les autoroutes à trois voies pour chaque sens de circulation, il est autorisé de faire demi-tour"]
+rispostet=["Nelle strade a doppio senso di circolazione non è consentito effettuare l'inversione del senso di marcia in vicinanza o in corrispondenza di curve","L'inversione del senso di marcia non è consentita in vicinanza o in corrispondenza degli incroci","Nelle strade a doppio senso non è consentito effettuare l'inversione del senso di marcia in tutti i casi di scarsa visibilità","Nelle strade a doppio senso di circolazione non è consentito effettuare l'inversione del senso di marcia in vicinanza o in corrispondenza di dossi","Quando manca la segnaletica orizzontale non è consentito effettuare manovre di inversione del senso di marcia","Qualora la linea di margine della carreggiata sia continua, non è consentito effettuare l'inversione di marcia","Fuori dai centri abitati non è consentito effettuare l'inversione di marcia","Sulle autostrade a tre corsie per ogni senso di marcia è consentito l'inversione del senso di marcia"]
+soluzioni="VVVVFFFF"
+rispass=[4623,4624,4625,4626,4627,4628,4629,4630]
+nummin="13029"
+}
+continua();

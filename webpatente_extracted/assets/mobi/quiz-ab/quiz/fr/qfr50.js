@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere verso gli utenti deboli della strada"
+quizass=50
+sugg=11016
+risposte=["Il faut être plus prudents à l'égard de personnes handicapées","Il faut être plus prudents à l'égard des personnes âgées","Il faut être plus prudents à l'égard des enfants qui traversent la route","Il faut être plus prudents à l'égard des conducteurs qui semblent incertains au volant","Il faut être plus prudents à l'égard des conducteurs de véhicules pour personnes handicapées","Il faut être plus prudents à l'égard des personnes en bicyclette et de celles qui semblent déambuler avec difficulté","Il faut être particulièrement prudents à l'égard des conducteurs qui ont obtenu le permis de conduire à l'étranger","Il faut être plus prudents à l'égard des conducteurs des véhicules électriques","Il faut être plus prudents à l'égard des conducteurs de taxi","Il faut être plus prudents à l'égard des conducteurs de tricycles à moteur","Il faut être plus prudents à l'égard des piétons qui ont un bâton blanc, mais pas de ceux avec un bâton blanc et rouge"]
+rispostet=["Bisogna usare maggiore prudenza nei confronti delle persone diversamente abili","Bisogna usare maggiore prudenza nei confronti delle persone anziane","Bisogna usare maggiore prudenza nei confronti dei bambini che attraversano la strada","Bisogna usare maggiore prudenza nei confronti dei conducenti che dimostrano una guida incerta","Bisogna usare maggiore prudenza nei confronti dei conducenti di veicoli adattati per persone diversamente abili","Bisogna usare maggiore prudenza nei confronti delle persone in bicicletta e di quelle con scarsa capacità di movimento","Bisogna usare particolare prudenza nei confronti dei conducenti che hanno conseguito la patente di guida in uno Stato estero","Bisogna usare maggiore prudenza nei confronti dei conducenti di autoveicoli elettrici","Bisogna usare maggiore prudenza nei confronti dei conducenti di taxi","Bisogna usare maggiore prudenza nei confronti dei conducenti di tricicli a motore","Bisogna usare maggiore prudenza nei confronti dei pedoni muniti di bastone bianco, ma non di quelli con bastone bianco-rosso"]
+soluzioni="VVVVVVFFFFF"
+rispass=[438,439,440,441,442,443,444,445,446,447,448]
+nummin="01042"
+}
+continua();

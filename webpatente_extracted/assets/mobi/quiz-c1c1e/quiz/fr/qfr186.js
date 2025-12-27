@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Uso delle cinture di sicurezza 3"
+quizass=186
+sugg=0
+risposte=["Des sanctions sont prévues pour qui, tout en faisant usage de la ceinture de sécurité, en altère ou entrave le bon fonctionnement","Le conducteur qui n'a pas attaché la ceinture de sécurité pendant le trajet, peut être projeté contre le pare-brise en cas de freinage soudain","Les femmes enceintes en état de risques particuliers, à condition qu'elles soient titulaires d'un certicat authentifié, ne sont pas obligées d'attacher les ceintures de sécurité","Les personnes qui souffrent de maladies particulières, à condition qu'elles soient titulaires d'un certificat authentifié, ne sont pas obligées d'attacher les ceintures de sécurité","Si le véhicule est équipé d'airbags frontaux et latéraux, on peut éviter d'attacher la ceinture de sécurité","Les ceintures de sécurité doivent être obligatoirement attachées seulement si on circule à une vitesse égale ou supérieure à 30 km/h","Les personnes âgées de plus de 65 ans ne sont pas obligées d'attacher les ceintures de sécurité","Ceux qui conduisent pour plus de 7 heures par jour sont exemptés de l'utilisation des ceintures de sécurité"]
+rispostet=["Sono previste sanzioni per chi, pur facendo uso della cintura di sicurezza, ne alteri o ostacoli il normale funzionamento","Il conducente che non abbia indossato la cintura di sicurezza durante la marcia, può essere proiettato contro il parabrezza in caso d'improvvisa frenata","Le donne in stato di gravidanza con particolari condizioni di rischio, purché opportunamente certificate, non sono obbligate ad indossare le cinture di sicurezza","Le persone che soffrono di particolari malattie, purché opportunamente certificate, non sono obbligate ad indossare la cintura di sicurezza","Se il veicolo è dotato di airbag frontali e laterali, si può fare a meno di indossare la cintura di sicurezza","Le cinture di sicurezza devono essere obbligatoriamente allacciate solo se si circola a velocità uguale o superiore a 30 km/h","Le persone di età superiore a 65 anni non sono obbligate ad indossare le cinture di sicurezza","Coloro che guidano per più di 7 ore al giorno sono esentati dall'uso delle cinture di sicurezza"]
+soluzioni="VVVVFFFF"
+rispass=[1333,1334,1335,1336,1337,1338,1339,1340]
+nummin="092004"
+}
+continua();

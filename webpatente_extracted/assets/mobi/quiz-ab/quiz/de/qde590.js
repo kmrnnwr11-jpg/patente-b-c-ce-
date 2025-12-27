@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti necessari per non costituire pericolo o intralcio per la circolazione"
+quizass=590
+sugg=410
+risposte=["Um den Verkehr nicht zu gefährden oder zu behindern, ist es notwendig, die Fahrweise dem Fahrzeug, dem Straßenzustand und der Verkehrslage anzupassen","Um den Verkehr nicht zu gefährden oder zu behindern, ist es notwendig, nicht nur die Verkehrsvorschriften zu befolgen, sondern auch mit gesundem Menschenverstand zu fahren","Um den Verkehr nicht zu gefährden oder zu behindern, ist es notwendig, sich mit Verantwortungsgefühl an die Grundregeln der Verkehrsordnung zu halten","Um den Verkehr nicht zu gefährden oder zu behindern, ist es nur notwendig, sich strikt an die vorgeschriebene Höchstgeschwindigkeit zu halten","Um den Verkehr nicht zu gefährden oder zu behindern, ist es notwendig, immer mit einer konstanten Geschwindigkeit zu fahren","Um den Verkehr nicht zu gefährden oder zu behindern, ist es notwendig, an Kreuzungen auf jeden Fall allen Fahrzeugen Vorfahrt zu gewähren","Um den Verkehr nicht zu gefährden oder zu behindern, ist es nur notwendig, sich strikt an die vorgeschriebene Mindestgeschwindigkeit zu halten"]
+rispostet=["Per non costituire pericolo o intralcio per la circolazione, è necessario guidare in modo adeguato alle caratteristiche del veicolo, della strada e del traffico","Per non costituire pericolo o intralcio per la circolazione, è necessario osservare non solo le norme sulla circolazione, ma anche le cautele dettate dal buonsenso","Per non costituire pericolo o intralcio per la circolazione, è necessario unire all'applicazione delle fondamentali norme sulla circolazione un forte senso civico","Per non costituire pericolo o intralcio per la circolazione, è necessario limitarsi ad osservare i limiti massimi di velocità","Per non costituire pericolo o intralcio per la circolazione, è necessario procedere sempre a velocità costante","Per non costituire pericolo o intralcio per la circolazione, è necessario dare, comunque, la precedenza a tutti i veicoli negli incroci","Per non costituire pericolo o intralcio per la circolazione, è necessario limitarsi ad osservare i limiti minimi di velocità"]
+soluzioni="VVVFFFF"
+rispass=[4452,4453,4454,4455,4456,4457,4458]
+nummin="13011"
+}
+continua();

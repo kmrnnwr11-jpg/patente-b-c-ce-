@@ -1,27 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// App theme with modern, premium design
+/// App theme with Duolingo-inspired design for accessibility
+/// Optimized for foreigners learning Italian driving theory
 class AppTheme {
-  // Primary colors
-  static const Color primaryColor = Color(0xFF2563EB);
-  static const Color primaryLight = Color(0xFF3B82F6);
-  static const Color primaryDark = Color(0xFF1D4ED8);
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLORI PRIMARI - Blu Patente (come cartello informativo)
+  // ═══════════════════════════════════════════════════════════════════════════
+  static const Color primaryColor = Color(0xFF1976D2);
+  static const Color primaryLight = Color(0xFF42A5F5);
+  static const Color primaryDark = Color(0xFF1565C0);
 
-  // Accent colors
-  static const Color accentGreen = Color(0xFF10B981);
-  static const Color accentRed = Color(0xFFEF4444);
-  static const Color accentOrange = Color(0xFFF59E0B);
-  static const Color accentPurple = Color(0xFF8B5CF6);
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLORI SEMANTICI - Feedback Quiz (come semaforo)
+  // ═══════════════════════════════════════════════════════════════════════════
+  static const Color successGreen = Color(0xFF4CAF50); // Risposta corretta
+  static const Color errorRed = Color(0xFFF44336); // Risposta sbagliata
+  static const Color warningOrange = Color(0xFFFF9800); // Attenzione
+  static const Color infoPurple = Color(0xFF9C27B0); // Info/Traduzione
 
-  // Background colors - Dark
-  static const Color backgroundColor = Color(0xFF0F172A);
-  static const Color surfaceColor = Color(0xFF1E293B);
-  static const Color cardColor = Color(0xFF334155);
+  // Alias per compatibilità
+  static const Color accentGreen = successGreen;
+  static const Color accentRed = errorRed;
+  static const Color accentOrange = warningOrange;
+  static const Color accentPurple = infoPurple;
 
-  // Text colors
-  static const Color textPrimary = Color(0xFFF8FAFC);
-  static const Color textSecondary = Color(0xFF94A3B8);
+  // ═══════════════════════════════════════════════════════════════════════════
+  // COLORI GAMIFICATION - Duolingo style
+  // ═══════════════════════════════════════════════════════════════════════════
+  static const Color streakOrange = Color(0xFFFF9500);
+  static const Color xpGold = Color(0xFFFFD700);
+  static const Color levelBlue = Color(0xFF58CC02);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SFONDO - Dark Theme
+  // ═══════════════════════════════════════════════════════════════════════════
+  static const Color backgroundColor = Color(0xFF121212);
+  static const Color surfaceColor = Color(0xFF1E1E1E);
+  static const Color cardColor = Color(0xFF2C2C2C);
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // TESTO
+  // ═══════════════════════════════════════════════════════════════════════════
+  static const Color textPrimary = Color(0xFFF5F5F5);
+  static const Color textSecondary = Color(0xFFB0B0B0);
 
   // Gradients
   static const LinearGradient primaryGradient = LinearGradient(

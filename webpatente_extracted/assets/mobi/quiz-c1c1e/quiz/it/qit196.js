@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Agganciamento tra trattore stradale e semirimorcio"
+quizass=196
+sugg=0
+risposte=["L'agganciamento fra trattore stradale e semirimorchio avviene tramite ralla e perno","La ralla a coda di rondine è fissata ad un falso telaio","L'avanzamento ralla varia il carico trasmesso dal semirimorchio al trattore","La ralla del trattore può oscillare per compensare i piccoli dislivelli del piano stradale","La ralla del trattore è dotata di ganascia e leva di blocco per garantire il bloccaggio del perno del semirimorchio anche sotto sforzo","Il perno del semirimorchio sopporta interamente la forza di trazione trasmessa dal trattore","Il perno del semirimorchio non può mai essere saldato per riparazione","Il rimorchio a volta corretta è dotato di due ralle circolari","La ralla del rimorchio permette la rotazione del timone rispetto al telaio","Il servoautodistributore garantisce la frenatura continua e automatica del semirimorchio","L'agganciamento fra trattore stradale e semirimorchio avviene tramite campana e timone","La ralla del trattore sopporta una minima parte della massa del semirimorchio","L'agganciamento fra motrice e rimorchio avviene tramite ralla e perno","Il valore dell'avanzamento ralla non è annotato sulla carta di circolazione","Il perno del semirimorchio deve avere ampio gioco all'interno del suo alloggiamento nella ralla, in modo da garantire la volta corretta del semirimorchio","Perno del semirimorchio e piano della ralla del trattore devono essere sempre lucidi e non devono presentare tracce di grasso","Il valore dell'avanzamento ralla può essere variato dall'autista, in funzione del tipo di strada che dovrà percorrere"]
+soluzioni="VVVVVVVVVVFFFFFFF"
+rispass=[1549,1550,1551,1552,1553,1554,1555,1556,1557,1558,1559,1560,1561,1562,1563,1564,1565]
+nummin="102001"
+}
+continua()

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Marcia per file parallele su una strada con tre corsie per senso di marcia"
+segnale="552"
+quizass=544
+sugg=11026
+risposte=["Auf einer Fahrbahn mit drei Fahrspuren pro Fahrtrichtung, wie sie in der Abbildung dargestellt ist, ist es Pflicht, in parallelen Reihen zu fahren"]
+rispostet=["È obbligatorio viaggiare per file parallele sulle carreggiate a tre corsie per senso di marcia, come quella in figura"]
+soluzioni="F"
+rispass=[4561]
+nummin="13022"
+}
+continua();

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DOPPIA CURVA PERICOLOSA, la prima A DESTRA"
+segnale="6"
+quizass=71
+sugg=6
+risposte=["Le panneau représenté annonce un double virage dangereux, dont le premier est à droite","Le panneau représenté annonce un tronçon de route qui n'est pas droit et qui implique une visibilité réduite","Le panneau représenté peut être intégré par un panonceau TORNANTI","Le panneau représenté implique la réduction de la vitesse pour permettre au véhicule de s'arrêter en cas d'obstacle imprévu","Le panneau représenté est un panneau de danger","Le panneau représenté annonce, généralement à 150 mètres, la présence d'un double virage dangereux","Face au panneau représenté il faut réduire la vitesse","Le panneau représenté annonce une déviation due à des travaux routiers","Le panneau représenté annonce une sortie d'autoroute","Le panneau représenté annonce une descente dangereuse","Le panneau représenté annonce un tronçon de route glissant","Le panneau représenté annonce un croisement","Le panneau représenté annonce un tronçon de route avec goudronnage irrégulier"]
+rispostet=["Il segnale raffigurato preannuncia una doppia curva pericolosa, la prima a destra","Il segnale raffigurato preannuncia un tratto di strada non rettilineo che limita la visibilità","Il segnale raffigurato può essere integrato con un pannello indicante TORNANTI","Il segnale raffigurato richiede di moderare la velocità per potersi arrestare in caso di un ostacolo improvviso","La figura rappresenta un segnale di pericolo","Il segnale raffigurato preannuncia, di norma a 150 metri, una doppia curva pericolosa","In presenza del segnale raffigurato bisogna moderare la velocità","Il segnale raffigurato preannuncia una deviazione per lavori in corso","Il segnale raffigurato preannuncia un raccordo di uscita autostradale","Il segnale raffigurato preannuncia una discesa pericolosa","Il segnale raffigurato preannuncia un tratto di strada con superficie sdrucciolevole","Il segnale raffigurato preannuncia un incrocio","Il segnale raffigurato preannuncia un tratto di strada con pavimentazione irregolare"]
+soluzioni="VVVVVVVFFFFFF"
+rispass=[662,663,664,665,667,668,669,670,671,672,673,674,675]
+nummin="02011"
+}
+continua();

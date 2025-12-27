@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di PRESELEZIONE URBANO"
+segnale="172"
+quizass=333
+sugg=162
+risposte=["Das abgebildete Verkehrszeichen steht an Ortsstraßen","Das abgebildete Verkehrszeichen gestattet es auf mehrspurigen Ortsstraßen, sich in die Einreihungsspuren einzuordnen","Das abgebildete Verkehrszeichen zeigt den Fahrern auf dem Weg zum Fremdenverkehrsort an, dass sie sich auf der mittleren Fahrspur einreihen sollen","Das abgebildete Verkehrszeichen zeigt den Fahrern auf dem Weg nach Terni an, dass sie sich auf der linken Fahrspur einreihen sollen","Das abgebildete Verkehrszeichen zeigt den Fahrern auf dem Weg ins Stadtzentrum an, dass sie sich auf der rechten Fahrspur einreihen sollen","Das abgebildete Verkehrszeichen kündigt eine Autobahnkreuzung an","Das abgebildete Verkehrszeichen zeigt an, wie man auf einen Parkplatz gelangt","Das abgebildete Verkehrszeichen weist darauf hin, dass man sich 500 Meter nach dem Abbiegen in Terni befindet","Das abgebildete Verkehrszeichen zeigt in den seitlichen Fahrspuren an, dass man wenden muss","Das abgebildete Verkehrszeichen weist darauf hin, dass die Straße nach Terni unterbrochen ist","Das abgebildete Verkehrszeichen weist darauf hin, dass es nicht mehr möglich ist, Fahrspur zu wechseln"]
+rispostet=["Il segnale raffigurato è posto su strade urbane","Il segnale raffigurato nelle strade urbane a più corsie consente di immettersi nelle corsie di canalizzazione","Il segnale raffigurato indica ai conducenti diretti alla località turistica di immettersi nella corsia di mezzo","Il segnale raffigurato indica ai conducenti diretti a Terni di mettersi nella corsia di sinistra","Il segnale raffigurato indica ai conducenti diretti al centro della città di occupare la corsia di destra","Il segnale raffigurato preavvisa un incrocio autostradale","Il segnale raffigurato indica come raggiungere un parcheggio","Il segnale raffigurato indica che Terni si trova 500 metri dopo aver effettuato la svolta","Il segnale raffigurato indica nelle corsie laterali di invertire il senso di marcia","Il segnale raffigurato indica che la strada per Terni è interrotta","Il segnale raffigurato indica che non è più possibile cambiare corsia"]
+soluzioni="VVVVVFFFFFF"
+rispass=[3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118]
+nummin="08020"
+}
+continua();

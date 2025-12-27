@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di CONFERMA AUTOSTRADALE"
+segnale="184"
+quizass=342
+sugg=167
+risposte=["Das abgebildete Verkehrszeichen ist ein Bestätigungszeichen für Autobahnen","Das abgebildete Verkehrszeichen zeigt die Ortschaften mit jeweiliger Entfernung in Kilometern an","Das abgebildete Verkehrszeichen mit blauem Hintergrund steht an Freilandstraßen","Das abgebildete Verkehrszeichen steht an einer Autobahn","Das abgebildete Verkehrszeichen zeigt an, dass bis Florenz noch 180 Kilometer zurückzulegen sind","Das abgebildete Verkehrszeichen zeigt auf der Autobahn die Entfernung zu den erreichbaren Ortschaften an","Das abgebildete Verkehrszeichen weist darauf hin, dass man von der nächsten Autobahnausfahrt aus alle angegebenen Ortschaften erreichen kann","Das abgebildete Verkehrszeichen weist darauf hin, dass man die Autobahn Nr. 472 befahren muss, um nach Mailand zu gelangen","Das abgebildete Verkehrszeichen zeigt an, dass bis zur Autobahnraststätte bei Florenz noch 180 Kilometer zurückzulegen sind","Das abgebildete Verkehrszeichen zeigt für jede Ortschaft die Nummer der Straße an, die man befahren muss","Das abgebildete Verkehrszeichen zeigt an, wie viele Kilometer man von den angezeigten Orten aus zurückgelegt hat","Das abgebildete Verkehrszeichen steht an Freilandstraßen"]
+rispostet=["Il segnale raffigurato è di conferma autostradale","Il segnale raffigurato riporta le località con le relative distanze in chilometri","Il segnale raffigurato se di colore blu, si trova su strade extraurbane","Il segnale raffigurato è posto su un'autostrada","Il segnale raffigurato indica che mancano 180 chilometri per Firenze","Il segnale raffigurato indica in autostrada la distanza delle località raggiungibili","Il segnale raffigurato indica che uscendo dal primo casello autostradale è possibile raggiungere tutte le località indicate","Il segnale raffigurato indica che per raggiungere Milano bisogna percorrere l'autostrada n. 472","Il segnale raffigurato indica che mancano 180 chilometri per l'area di servizio di Firenze","Il segnale raffigurato indica, per ogni località, il numero della strada da percorrere","Il segnale raffigurato indica i chilometri già fatti dalle località indicate","Il segnale raffigurato è posto sulle strade extraurbane"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[2909,2910,2911,2912,2913,2914,2915,2916,2917,2918,2919,2920]
+nummin="08001"
+}
+continua();

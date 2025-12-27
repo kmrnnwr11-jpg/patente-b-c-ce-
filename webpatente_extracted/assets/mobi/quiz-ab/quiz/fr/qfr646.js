@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Ordine di precedenza nell’incrocio di figura n. 617 (1)"
+segnale="617"
+quizass=646
+sugg=252
+risposte=["Dans le croisement représenté le conducteur du véhicule N termine en dernier le passage du croisement","Dans le croisement représenté le véhicule N doit céder le passage au véhicule A","Dans le croisement représenté le véhicule N a la priorité par rapport au véhicule R","Dans le croisement représenté le véhicule N peut finir de tourner à gauche après le passage des véhicules R et A","Dans le croisement représenté le véhicule N, après s'être déplacé au centre du croisement, doit attendre le passage des véhicules R et A","Dans le croisement représenté le véhicule N traverse en premier","Dans le croisement représenté le véhicule N doit céder le passage au véhicule R","Dans le croisement représenté le véhicule N a la priorité par rapport au véhicule A","Dans le croisement représenté le véhicule N passe après le passage du véhicule R mais avant le passage du véhicule A","Dans le croisement représenté le véhicule N occupe le croisement en dernier"]
+rispostet=["Nell'incrocio rappresentato nella figura il conducente del veicolo N conclude per ultimo l'attraversamento dell'incrocio","Nell'incrocio rappresentato nella figura il veicolo N deve dare la precedenza al veicolo A","Nell'incrocio rappresentato nella figura il veicolo N ha la precedenza rispetto al veicolo R","Nell'incrocio rappresentato nella figura il veicolo N può concludere la manovra di svolta a sinistra dopo il transito dei veicoli R e A","Nell'incrocio rappresentato nella figura il veicolo N, dopo essersi portato al centro dell'incrocio, deve attendere il transito dei veicoli R e A","Nell'incrocio rappresentato nella figura il veicolo N attraversa per primo","Nell'incrocio rappresentato nella figura il veicolo N deve dare la precedenza al veicolo R","Nell'incrocio rappresentato nella figura il veicolo N ha la precedenza rispetto al veicolo A","Nell'incrocio rappresentato nella figura il veicolo N passa dopo il transito del veicolo R ma prima che transiti il veicolo A","Nell'incrocio rappresentato nella figura il veicolo N impegna l'incrocio per ultimo"]
+soluzioni="VVVVVFFFFF"
+rispass=[4969,4970,4971,4972,4973,4974,4975,4976,4977,4978]
+nummin="14025"
+}
+continua();

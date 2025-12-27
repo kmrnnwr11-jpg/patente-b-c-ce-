@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Modulatore di pressione in funzione del carico"
+quizass=203
+sugg=0
+risposte=["Il modulatore di pressione in funzione del carico può essere montato sia sui rimorchi che sulle motrici","Il modulatore di pressione in funzione del carico è montato sul telaio ed è collegato con una leva all'assale","Il modulatore di pressione in funzione del carico garantisce la progressività della frenata col variare del carico","Il modulatore di pressione in funzione del carico controlla, generalmente, l'intensità della forza frenante applicata agli assi posteriori della motrice","Il modulatore di pressione in funzione del carico, se presente sul rimorchio, ne controlla la frenatura di tutti gli assi","Il modulatore di pressione in funzione del carico serve a dosare la forza frenante in base al carico gravante su un asse","Il modulatore di pressione in funzione del carico funziona automaticamente","Il modulatore di pressione in funzione del carico, in base alla distanza tra assale e telaio determinatasi in base al carico, modula la forza frenante da applicare all'asse stesso","Il modulatore di pressione in funzione del carico, limita la possibilità che le ruote dell'assale cui è applicato si blocchino in caso di frenata a veicolo scarico","Il modulatore di pressione in funzione del carico non è montato sui rimorchi","Il modulatore di pressione in funzione del carico è messo in funzione dal conducente prima della partenza","Il modulatore di pressione in funzione del carico è montato direttamente sull'assale","Il modulatore di pressione in funzione del carico garantisce la frenatura del rimorchio in caso di distacco accidentale","Il modulatore di pressione in funzione del carico garantisce la frenatura del rimorchio in caso di guasto del serbatoio del rimorchio"]
+soluzioni="VVVVVVVVVFFFFF"
+rispass=[1535,1536,1537,1538,1539,1540,1541,1542,1543,1544,1545,1546,1547,1548]
+nummin="101004"
+}
+continua()

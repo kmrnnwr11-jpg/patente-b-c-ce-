@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=11050
+titolo="ARRESTO E FERMATA"
+testo="Mentre l’ARRESTO è l’interruzione della marcia del veicolo dovuta ad esigenze della circolazione (ad esempio quando si attende il verde ad un semaforo, o il passaggio del treno in un passaggio a livello), la FERMATA è la temporanea (cioè di brevissima durata) sospensione della marcia per esigenze del conducente o dei passeggeri (ad esempio per consentire la salita o la discesa delle persone o per chiedere informazioni agli agenti del traffico).<br /><br />Chi effettua la fermata non deve creare intralcio alla circolazione, impedendo o rallentando il normale flusso del traffico, né determinare situazioni di pericolo per gli utenti della strada. Il conducente NON DEVE ALLONTANARSI DAL VEICOLO, deve invece essere sempre pronto a riprendere la marcia.<br /><br />In caso di fermata nei centri urbani, ove non esista marciapiede, deve lasciare uno spazio di almeno un metro per il transito dei pedoni; su strade extraurbane deve collocare il veicolo fuori della carreggiata o, se non è possibile, il più vicino possibile al margine destro della strada (senza occupare l’eventuale pista ciclabile).<br /><br />È sbagliato dire che la fermata può avere la durata massima di dieci minuti (deve essere breve ma non c’è un tempo massimo prescritto), che è vietata se i passeggeri che scendono sono più di uno, che il conducente può allontanarsi per brevissimo tempo o che se si allontana, deve lasciare il veicolo con il motore acceso (infatti il conducente non deve mai allontanarsi durante la fermata)."
+riferimento=[683,684,685]
+}
+suggerimenti.continua()

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Iniezione diretta o indiretta del combustibile nel motore Diesel"
+quizass=215
+sugg=0
+risposte=["Le moteur Diesel peut être conçu avec deux modes différents d'injection de carburant","Le moteur Diesel peut être à injection directe","Le moteur Diesel peut être à injection indirecte","Dans un moteur Diesel à injection directe, le gasoil est injecté directement dans la chambre à combustion","Dans un moteur Diesel à injection indirecte, le gasoil est injecté dans une pré-chambre à combustion","Dans un moteur Diesel à injection directe, le gasoil est d'abord injecté dans la pré-chambre de combustion","Dans un moteur Diesel à injection indirecte, le gasoil est injecté directement sur la partie supérieure du piston","Le moteur Diesel prévoit l'utilisation des bougies qui génèrent l'étincelle qui allume le gasoil","Le moteur Diesel à injection indirecte a un meilleur rendement que celui à injection directe","Le moteur Diesel à injection indirecte est moins polluant par rapport à celui à injection directe"]
+rispostet=["Il motore Diesel può essere progettato con due diverse modalità di iniezione del combustibile","Il motore Diesel può essere ad iniezione diretta","Il motore Diesel può essere ad iniezione indiretta","Nel motore Diesel ad iniezione diretta, il gasolio viene iniettato direttamente nella camera di combustione","Nel motore Diesel ad iniezione indiretta, il gasolio viene iniettato in una precamera di combustione","Nel motore Diesel ad iniezione diretta il gasolio viene prima iniettato nella precamera di combustione","Nel motore Diesel ad iniezione indiretta, il gasolio viene iniettato direttamente sulla parte superiore del pistone","Il motore Diesel prevede l'uso delle candele che generano la scintilla che fa accendere il gasolio","Il motore Diesel ad iniezione indiretta ha un rendimento migliore di quello ad iniezione diretta","Il motore Diesel ad iniezione indiretta è meno inquinante rispetto a quello ad iniezione diretta"]
+soluzioni="VVVVVFFFFF"
+rispass=[1713,1714,1715,1716,1717,1718,1719,1720,1721,1722]
+nummin="111012"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere in vicinanza di un posteggio riservato ai taxi"
+quizass=58
+sugg=11016
+risposte=["Le conducteur, en proximité d'un parking réservé aux taxis, doit ralentir et éventuellement s'arrêter s'il y a des piétons qui traversent la route sans regarder","Le conducteur, à proximité d'un parking réservé aux taxis, doit faire attention aux piétons qui montent ou descendent du taxi","Le conducteur d'un véhicule qui n'est pas un taxi ne peut pas stationner dans les emplacements réservés aux taxis","Le conducteur, à proximité d'un parking réservé aux taxis, doit faire attention aux piétons, qui pourraient traverser la route à l'improviste","Le conducteur, à proximité d'un parking réservé aux taxis, doit céder le passage aux taxis qui s'insèrent dans la circulation","Le conducteur, en proximité d'un parking réservé aux taxis, doit céder le passage aux taxis qui partent, si ceux-ci s'insèrent du côté gauche de la chaussée","Le conducteur d'un véhicule qui n'est pas un taxi peut stationner dans les emplacements réservés aux taxis de 20.00 h à 8.00 h"]
+rispostet=["Il conducente, in vicinanza di un posteggio riservato ai taxi, deve rallentare ed eventualmente fermarsi se vi sono pedoni che attraversano la strada, senza guardare","Il conducente, in vicinanza di un posteggio riservato ai taxi, deve fare attenzione ai pedoni che salgono o scendono dal taxi","Il conducente di un veicolo diverso dai taxi non può sostare nei posteggi riservati ai taxi","Il conducente, in vicinanza di un posteggio riservato ai taxi, deve fare attenzione ai pedoni, che possono attraversare improvvisamente la strada senza le dovute precauzioni","Il conducente, in vicinanza di un posteggio riservato ai taxi, deve dare la precedenza ai taxi che s'immettono sulla strada","Il conducente, in vicinanza di un posteggio riservato ai taxi, deve dare la precedenza ai taxi in partenza, qualora s'immettano dal lato sinistro della carreggiata","Il conducente di un veicolo diverso dai taxi può sostare nei posteggi riservati ai taxi dalle ore 20.00 alle ore 8.00"]
+soluzioni="VVVVFFF"
+rispass=[509,510,511,512,513,514,515]
+nummin="01048"
+}
+continua();

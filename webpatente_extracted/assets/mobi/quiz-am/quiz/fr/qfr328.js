@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Responsabilità penale derivante da incidente stradale "
+quizass=328
+sugg=222
+risposte=["La responsabilité pénale conséquence d'un accident de la route est effective si on provoque de graves lésions aux personnes","La responsabilité pénale conséquence d'un accident de la route est effective en cas d'homicide involontaire","La responsabilité pénale conséquence d'un accident de la route est effective quand les normes du Code Pénal ont été violées","La responsabilité pénale conséquence d'un accident de la route est personnelle","La responsabilité pénale conséquence d'un accident de la route est de celui qui a provoqué l'accident","La responsabilité pénale conséquence d'un accident de la route est effective quand celui-ci provoque des lésions quelle que soit leur gravité","La responsabilité pénale conséquence d'un accident de la route est effective dans tous les cas où le Code Pénal a été violé","La responsabilité pénale conséquence d'un accident de la route retombe toujours sur le parent, au cas où le conducteur est mineur","La responsabilité pénale conséquence d'un accident de la route est révoquée si on a secouru la victime"]
+rispostet=["La responsabilità penale derivante da incidente stradale sorge qualora esso provochi lesioni gravi a persone","La responsabilità penale derivante da incidente stradale sorge in caso di omicidio colposo","La responsabilità penale derivante da incidente stradale sorge allorché vengano violate norme contemplate dal codice penale","La responsabilità penale derivante da incidente stradale è personale","La responsabilità penale derivante da incidente stradale è di chi ha causato l'incidente","La responsabilità penale derivante da incidente stradale sorge qualora esso provochi lesioni di qualsiasi entità","La responsabilità penale derivante da incidente stradale sorge in ogni caso in cui sia violato il codice della strada","La responsabilità penale derivante da incidente stradale ricade sempre nei confronti del genitore, nel caso in cui il conducente sia minorenne","La responsabilità penale derivante da incidente stradale è esclusa quando si sia prestato soccorso alla vittima"]
+soluzioni="VVVVVFFFF"
+rispass=[1851,1852,1853,1854,1855,1856,1857,1858,1859]
+nummin="10003"
+}
+continua();

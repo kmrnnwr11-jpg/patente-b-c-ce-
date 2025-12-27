@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Ordine di precedenza nell’incrocio di figura n. 665"
+segnale="665"
+quizass=654
+sugg=244
+risposte=["Dans le croisement représenté les véhicules libèrent le croisement dans l'ordre suivant : A, E, V, H, C.","Dans le croisement représenté le véhicule V a la priorité sur le véhicule H","Dans le croisement représenté le véhicule C doit céder le passage au véhicule H","Dans le croisement représenté le véhicule E passe avant le véhicule H","Dans le croisement représenté le véhicule H passe après les véhicules A, E, V","Dans le croisement représenté le véhicule A passe en premier","Dans le croisement représenté les véhicules libèrent le croisement dans l'ordre suivant: A, H, C, E, V","Dans le croisement représenté les véhicules libèrent le croisement dans l'ordre suivant : A, E, C, V, H","Dans le croisement représenté le véhicule V doit attendre que les véhicules A, E, H soient passés","Dans le croisement représenté les véhicules A, V et C passent en même temps","Dans le croisement représenté le véhicule V passe après les véhicules C et H"]
+rispostet=["Nell'incrocio rappresentato in figura i veicoli disimpegnano l'incrocio nel seguente ordine: A, E, V, H, C","Nell'incrocio rappresentato in figura il veicolo V ha la precedenza sul veicolo H","Nell'incrocio rappresentato in figura il veicolo C deve dare la precedenza al veicolo H","Nell'incrocio rappresentato in figura il veicolo E passa prima del veicolo H","Nell'incrocio rappresentato in figura il veicolo H passa dopo i veicoli A, E, V","Nell'incrocio rappresentato in figura il veicolo A passa per primo","Nell'incrocio rappresentato in figura i veicoli disimpegnano l'incrocio nel seguente ordine: A, H, C, E, V","Nell'incrocio rappresentato in figura i veicoli disimpegnano l'incrocio nel seguente ordine: A, E, C, V, H","Nell'incrocio rappresentato in figura il veicolo V deve attendere che siano transitati i veicoli A, E, H","Nell'incrocio rappresentato in figura i veicoli A, V e C passano contemporaneamente","Nell'incrocio rappresentato in figura il veicolo V passa dopo i veicoli C e H"]
+soluzioni="VVVVVVFFFFF"
+rispass=[4880,4881,4882,4883,4884,4885,4886,4887,4888,4889,4890]
+nummin="14017"
+}
+continua();

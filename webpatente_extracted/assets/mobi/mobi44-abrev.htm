@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+
+	<!-- online <base href='/44/content/'> online -->    
+	<!-- offlineB --><base href='content/'><!-- offlineE -->
+
+	<title>WEBpatente A e B - Revisione</title>
+	<!-- online <?php
+	$mobi=true;
+	$pat="A e B - Revisione";
+	$patperc="abrev";
+	include("include/mobi-ab.php");
+	?> online -->
+
+<script type="text/javascript" src="mobi/versioni.js"></script>
+<script>
+
+
+// Imposta versione 
+var ver= new tversion("WEBpatente","4","4","7","mobi","wper44","wper","abrev",{
+	patenti:"A e B Revisione", 
+	lepatenti:"le patenti A e B (revisione)",
+	titolo:"WEBpatente A e B - Revisione",
+	verid:"wper44"
+});
+ver.mobi=true;
+// offlline e prot sono definiti in versioni.js caricato prima
+var onlineadd=prot+"//www.rmastri.it/quiz-patente-b-rev/" //NO mobi qui
+var questapat=pat[ver.pat].perc;
+
+// Variabili da impostare prima degli script (non sono opzionali!)
+var persinfo, maxquizesame=30, maxrispesame=1
+var maxerrori=3
+// var splashimg
+//
+var nosugg=false;
+var nomanu=false;
+// Percorsi di default
+var getphp =questapat;
+var pregrafica="";
+var presuoni=prot+"//www.rmastri.it/42/webpatente/"; //L'audio della rev è lo stesso
+var ban=prot+"//www.rmastri.it/42/webpatente/mobiban.htm";
+if (offtype=="andro"){
+	if (interjs.neton()==false) var ban=questapat+"mobioff.htm"
+}
+
+var esapreconf_default=(offline==true)?true:false; // Sì, se siamo offline
+
+</script>
+<script type="text/javascript" src="mobi/mobiext.js"></script>
+<link rel="stylesheet" type="text/css" href="mobi/mobistyle.css" />
+
+<script type="text/javascript" src="cookie.js"></script>
+<script type="text/javascript" src="../quiz-abrev/dati.js"></script>
+<script type="text/javascript" src="wpno.js"></script>
+
+<!-- Caricare DOPO EXT-->
+<script type="text/javascript" src="wpte.js"></script>
+<link rel="stylesheet" type="text/css" href="mobi/mobilayout.css" />
+<script type="text/javascript" src="mobi/mobilayout.js"></script>
+<script type="text/javascript" src="definiz.js"></script> 
+<script type="text/javascript" language="javascript" src="mobisound.js"></script>
+<script type="text/javascript" src="jslibs/lz-string-1.3.3-min.js"></script>
+<script type="text/javascript" src="../quiz-abrev/pers/comm.js"></script>
+<script type="text/javascript" src="../quiz-abrev/argomento.js"></script>
+<script type="text/javascript" src="../patenti.js"></script> 
+<script type="text/javascript" src="../pers/pers.js"></script>
+<script>
+// Dopo il caricamento degli script
+
+//precarica i pulsanti
+preloadImages(pregrafica+"grafica/but1o.png", pregrafica+"grafica/but1p.png")
+
+// Overwrite di wpte.js (che qui è caricato!)
+var domsplit=10
+// Non ci sono lingue	
+var lang="it";
+var plang="it/";
+
+
+var sceglilingua0={hidden:true};
+var sceglilingua1={hidden:true};
+var sceglilingua2={hidden:true};
+
+
+//Esame preconfezionato
+
+
+maxesamepreconf=139
+
+
+
+
+
+
+
+
+// Fine wpte.js
+
+// Overwrite di variabili -------------------------------
+
+var maxerresa=3 // 
+//var maxminuti=30;
+if (offtype=="andro") percsuoni="mobi/suonimp3/"; else var percsuoni="../suonimp3/" // Definito in mobiext.js (wpnojs.js) come percsuoni=presuoni+"suonimp3/")				
+//var prefimg="../immagini/s"	 // Definito in mobiext.js (wpnojs.js) come prefimg=pregrafica+"../immagini/s")
+
+var bloccacanc=true // REV Sì definito win wpno.js - impedisce di mostrare quesiti inesistenti
+
+// mobi
+var rissep="</tr><tr>" //Usato in mostraris() sovrascrive valore in wpno.js
+var termlun=500      //Usato in mostraris() sovrascrive valore in wpno.js
+var grafultlargbarr=28 //Usato in mostraris() sovrascrive valore in wpno.js
+var percalt="puls/"
+//
+
+
+
+//Crea opzioni specifihe
+//op.crea("sceglilingua",0,mb_menulingue, "Lingua","",1)
+op.crea("defvero",false,"Imposta tutte le soluzioni a VERO (dovrai selezionare solo le false)","Quiz")
+
+//Nascondi opzioni inutili
+op.opzioni["winmax"].nascondi=true
+op.opzioni["txtdif"].nascondi=true
+op.opzioni["avauto"].nascondi=true
+
+var pulsaiuto="<table style=border-collapse:collapse;margin-bottom:30px;'><tr><td style='padding-left:10px'>"+puls.create({width:365,height:100,caption:"Introduzione...",fontsize:"40px",handler:"finaiuto()"})+"</td><td style='padding-left:5px'>"+puls.create({width:365,height:100,caption:"Esperti on line...",fontsize:"40px",handler:"openbrowser(prot+\"//www.rmastri.it/chiediagliesperti.html\")"})+"</td><tr></table>"
+var pulserrori="<table style=border-collapse:collapse;margin-bottom:30px;'><tr><td style='padding-left:10px'>"+puls.create({width:365,height:100,caption:"Mostra errori...",fontsize:"40px",handler:"aprifinerrori()"})+"</td><td></td><tr></table>"
+var pulsesame="<table style=border-collapse:collapse;margin-bottom:30px;'><tr><td style='padding-left:10px'>"+puls.create({width:365,height:100,caption:"Esporta esame...",fontsize:"40px",handler:"casc.esporta()"})+"</td><td style='padding-left:5px'>"+puls.create({width:365,height:100,caption:"Argomenti...",fontsize:"40px",handler:"selargoesame()"})+"</td><tr></table>"
+if (offtype=="andro") var pulsaggiorna="<table style=border-collapse:collapse;margin-bottom:30px;'><tr><td style='padding-left:10px'>"+puls.create({width:735,height:100,caption:"Controlla aggiornamenti...",fontsize:"40px",handler:"contraggio()"})+"</td><td style='padding-left:5px'></td><tr></table>"
+
+var mostraopzioniitems=[
+   {id: '0', title: 'Generale', html:'<div id="opzioni1" class="opzioni">'+op.ritmostra()+'</div>'},
+   {id: '1', title: 'Quiz', html:'<div id="opzioni2" class="opzioni">'+op.ritmostra('Quiz')+'</div>'},
+//spazio menu lingue
+   {id: '6', title: 'Errori', html:pulserrori},
+   {id: '4', title: 'Esame', html:pulsesame},
+   {id: '5', title: 'Aiuto!', html:pulsaiuto},
+]
+if (patenti.length>1) mostraopzioniitems.push({id: '7', title: 'Scegli patente', html:'<div id="opzioni4" class="opzioni">'+menupatenti()+'</div>'})
+if (offtype=="andro") mostraopzioniitems.push({id: '8', title: 'Aggiornamenti', html:pulsaggiorna})
+
+mostraopzioniitems.push({id: '2', title: 'Informazioni', contentEl:'info'})
+
+// Sovrascrittura di una funzione di wpno.js (non puoi anteporla!)
+function  mostraesargo(){
+	if (typeof(mostraesargocallback) != "undefined"){
+		eval(mostraesargocallback);
+		return
+	}	
+	if (arg==null){
+		creascript("arg",getphp+"argomento.js")
+		return
+	}
+	esargo=false;
+	var argpuls="<table style=border-collapse:collapse;marGin-bottom:30px;'><tr>"+
+	"<td style='padding-left:0px'>"+puls.create({width:365,height:100,caption:"Attiva",fontsize:"40px",handler:"attivaesargo()"})+"</td>"+
+	"<td style='padding-left:5px'>"+puls.create({width:365,height:100,caption:"Disattiva",fontsize:"40px",handler:"winargoesa.hide()"})+"</td></tr><tr>"+
+	"<td style='padding:4px 0px 0px 0px'>"+puls.create({width:365,height:100,caption:"Azzera",fontsize:"40px",handler:"arg.res()"})+"</td>"+
+	"<td style='padding:5px 0px 0px 4px'>"+puls.create({width:365,height:100,caption:"Nuova scheda",fontsize:"40px",handler:"nuovaschedaesargo()"})+"</td></tr></table>"
+
+	getWin(winargoesa,'panargoesa').innerHTML=argpuls+arg.mo()+"<br/>"
+}
+// fine sovr
+
+var primavolta=false
+var sessionevalida=false
+var accdir=document.location.toString()
+/* online <?php
+	if (!empty($param)) 
+		print "var accdir='?$param' \n";
+	else
+		print "var accdir=document.location.toString()\n";	
+?> online */
+
+Ext.onReady(function(){	
+	//wpstart()
+}); 
+</script>
+<style>
+	td.graf {
+	background-color: #327ab6;	
+	background: linear-gradient(#000,#327ab6);	
+	background: -webkit-linear-gradient(#000,#327ab6);
+	background: -o-linear-gradient(#000,#327ab6);
+	background: -moz-linear-gradient(#000,#327ab6);	
+	}
+</style>	
+</head> 
+
+<body onload="wpstart()" style="background:url('grafica/wpms.png')">
+	 
+<div id="notoprint">	
+	
+<div id="info" class="x-hide-display"><script>informazioni()</script></div>
+
+<div id="primavolta" class="x-hide-display"><script>introduzione()</script></div>
+
+<div id='toplay'><audio id='audioele' /></div>
+</body>
+</html>

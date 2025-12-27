@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=181
+titolo="OBBLIGO DI  DARE LA PRECEDENZA A DESTRA E A SINISTRA"
+testo="Si deve dare la precedenza ai veicoli che provengono da destra e da sinistra:<br />- in presenza del segnale di STOP (fig. 41) e DARE PRECEDENZA (fig. 40);<br />- se si tratta di tram (o altri veicoli su rotaie), salvo diversa segnalazione;<br />- se si tratta di veicoli in servizio di emergenza (polizia, vigili del fuoco, ambulanze) con dispositivo di allarme acustico (sirena) in funzione;<br />- quando ci si immette nel flusso della circolazione, muovendosi dal bordo della strada, oppure uscendo da un passo carrabile o da un parcheggio;<br />- quando si effettua l'inversione del senso di marcia o si procede in retromarcia.<br /><br />Non è invece obbligatorio in casi come questi:<br />- in presenza del segnale DIRITTO DI PRECEDENZA (fig. 52 - In tal caso la precedenza è di chi incontra il segnale);<br />- quando si incrocia una strada a senso unico (in mancanza di altri segnali si deve dare al precedenza a destra);<br />- negli incroci con semaforo a luce gialla lampeggiante (si deve dare la precedenza a destra);<br />- quando si svolta a sinistra (si deve dare la precedenza ai veicoli che vengono da destra e di fronte);<br />- di notte (si applicano le medesime regole di precedenza che valgono di giorno);<br />- percorrendo un viale pedonale (essendo riservato ai pedoni non si può percorrere)."
+riferimento=[233,234]
+}
+suggerimenti.continua()

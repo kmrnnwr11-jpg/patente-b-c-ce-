@@ -1,0 +1,5 @@
+l=new tlez; with(l){
+intro="<div class='intro'>Un veicolo, in caso di incidente, può produrre danni ingenti, il cui ammontare può superare le immediate disponibilità finanziarie di chi ne ha la responsabilità civile; per questo la legge ha previsto che tutti i proprietari di veicoli debbano obbligatoriamente stipulare un <b>contratto di assicurazione</b> noto con la sigla <b>R.C.A.</b> (responsabilità civile auto - La sigla stessa ricorda che si qui si parla solo di danno &quot;civile&quot;: non esistono infatti coperture assicurative che possano sgravarci dalle conseguenze penali e amministrative delle nostre azioni). Oggetto della presente lezione saranno appunto le condizioni e le formule della polizza R.C.A., nonché di altre polizze facoltative.<br/><br/><b>Capitolo di riferimento: 23</b></div>"
+sugg=[11107,532,11108,533,534,11106,11109,11110]
+}
+manuale.continua()

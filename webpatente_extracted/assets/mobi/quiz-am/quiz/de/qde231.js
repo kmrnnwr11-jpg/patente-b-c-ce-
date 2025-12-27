@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere quando un pedone attraversa la strada fuori dalle strisce pedonali"
+quizass=231
+sugg=175
+risposte=["Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man die Geschwindigkeit verringern und gegebenenfalls anhalten","Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man langsamer zu fahren und ihn bei unmittelbarer Gefahr mit einem kurzen Hupzeichen warnen","Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man die Geschwindigkeit verringern und bei Bedarf rechtzeitig anhalten","Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man bei Nacht mit Aufblendlicht fahren, damit er uns bemerkt","Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man versuchen, seine Aufmerksamkeit mit allen Mitteln auf sich zu ziehen, damit er uns Vorfahrt gewährt","Wenn ein Fußgänger außerhalb des Fußgängerüberweges überquert, muss man trotzdem weiterfahren, weil wir Vorfahrt haben"]
+rispostet=["Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario ridurre la velocità ed eventualmente fermarsi","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario rallentare e avvisare il pedone con un breve colpo di clacson, in caso di pericolo immediato","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario ridurre la velocità fino a fermarsi tempestivamente, se occorre","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario, nelle ore notturne, procedere con gli abbaglianti accesi così che possa accorgersi di noi","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario cercare di richiamare la sua attenzione con qualsiasi mezzo, perché ci dia la precedenza","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario proseguire comunque perché abbiamo la precedenza"]
+soluzioni="VVVFFF"
+rispass=[1358,1359,1360,1361,1362,1363]
+nummin="07015"
+}
+continua();

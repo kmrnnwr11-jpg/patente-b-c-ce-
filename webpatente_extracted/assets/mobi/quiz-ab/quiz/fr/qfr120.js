@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di PREAVVISO DI SEMAFORO ORIZZONTALE"
+segnale="35"
+quizass=120
+sugg=32
+risposte=["Le panneau représenté annonce un feu avec lumières horizontales","Le panneau représenté est un panneau de danger","Sur le panneau représenté, le disque jaune peut être remplacé par une lumière jaune intermittente","Le panneau représenté signale qu'il faut réduire sa vitesse pour pouvoir, à l'occurrence, s'arrêter","Le panneau représenté se trouve, généralement, 150 mètres avant un feu","Le panneau représenté indique qu'il est obligatoire de s'arrêter au barrage routier institué par les organes de police","Le panneau représenté annonce la présence d'un pont mobile","Le panneau représenté annonce l'accès à l'embarcadère des ferry-boat","Le panneau représenté peut avoir le disque rouge remplacé par une lumière rouge intermittente","Le panneau représenté annonce un passage à niveau sans barrières","Le panneau représenté annonce un passage à niveau avec demi-barrières","Le panneau représenté annonce la présence de voies réversibles","Le panneau représenté annonce la présence de véhicules qui déblayent la neige","Le panneau représenté annonce un passage pour cyclistes"]
+rispostet=["Il segnale raffigurato preannuncia un impianto semaforico con disposizione delle luci in orizzontale","Il segnale raffigurato è un segnale di pericolo","Nel segnale raffigurato, il disco giallo può essere sostituito da una luce gialla lampeggiante","Il segnale raffigurato indica che bisogna moderare la velocità per potersi all'occorrenza fermare","Il segnale raffigurato è, di norma, posto 150 metri prima di un semaforo","Il segnale raffigurato indica l'obbligo di arresto ad un posto di blocco stradale istituito dagli organi di polizia","Il segnale raffigurato preannuncia la presenza di un ponte mobile","Il segnale raffigurato preannuncia l'accesso al pontile d'imbarco di navi traghetto","Il segnale raffigurato può avere il disco rosso sostituito da una luce rossa lampeggiante","Il segnale raffigurato preannuncia un attraversamento ferroviario senza barriere","Il segnale raffigurato preannuncia un passaggio a livello con semibarriere","Il segnale raffigurato preannuncia la presenza di corsie reversibili","Il segnale raffigurato preannuncia la presenza di macchine sgombraneve in azione","Il segnale raffigurato preannuncia un attraversamento ciclabile"]
+soluzioni="VVVVVFFFFFFFFF"
+rispass=[1184,1185,1186,1187,1188,1189,1190,1191,1192,1193,1194,1195,1196,1197]
+nummin="02054"
+}
+continua();

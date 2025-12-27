@@ -1,0 +1,794 @@
+html {
+	overflow: -moz-scrollbars-vertical; 
+	overflow-y: scroll;
+}
+
+body{
+	//background-color: #93C4F1;
+	//background-image: url('../grafica/sfondoaz.png');
+	background-color: #000;
+	background-position: left top;
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+  	/°overflow: hidden;*/
+  	text-align:center;
+  	font-family: verdana,arial,sans
+}
+table.graf{
+	width:100%;
+	border-collapse:collapse;
+}
+td.graf{
+	padding:0px;
+	background-color:#000;
+}
+.intest{
+	color: #fff;
+	font: 50px verdana,arial;
+	font-weight:bold;
+	height: 150px;
+
+}
+.mobitit{
+	margin-left:20px;
+	max-height: 2.8em;
+	line-height: 1.4em;
+	overflow:hidden;
+	padding-right:5px;
+}
+
+.intestprinc{
+	height: 150px;
+	color: #fff;
+	font: 80px verdana,arial;
+	font-weight:bold;
+}
+.corpoprinc{
+	background-color: #fff;
+	padding: 10px;
+}
+
+
+input{
+	height: 100px;
+	font-size: 50px;
+	font-weight: bold;
+}
+select{
+	width: 100%;
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+.closebutt{
+	float:right;
+}
+
+
+.x-hide-display{
+	display: none;
+}
+.viewport{
+	width:780px;
+	margin-left: auto ;
+  	margin-right: auto ;
+  	text-align: left;
+}
+div.msg{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+  	background-color: #000;
+  	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+  	text-align: center;
+ 
+}
+table.msg{
+	width: 600px;
+	height:100%;
+	margin: auto;
+}
+td.msg{
+	color: #fff;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 100px;
+  	font-weight: bold;
+  	opacity:1;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.panlab{
+	color: #fff;
+	background-color: #D1E6D7;
+	font-size: 25px;
+	font-weight: bold;
+	padding: 4px;
+	margin-bottom: 20px;
+}
+
+
+/*START*/
+.wpbut{
+	height: 164px;; /*150*/
+	width:100%;
+	text-align: center;
+	cursor: pointer;
+
+	background-image: url("../grafica/but1.png");
+	background-size:100% 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	color: #15428b;
+	vertical-align: middle;
+}
+
+div.wplab{
+	background-image: none;
+	margin: 50px 0px 6% 0px; /*7% 0px 7% 0px;*/
+	text-align: left;
+	height: 40%;
+	overflow: hidden;
+	
+	font-family: Tahoma,FreeSans,Arial,sans-serif;
+	font-size: 3em;
+	line-height: 140%;
+	font-weight: bold;
+	
+}
+img.wplab{
+	background-image: none;
+	margin:6%;
+	margin-top:50px;
+	margin-right:3%;
+	float: left;
+	height: 40%;
+}
+
+.wpbut:hover{
+	background-image:url("../grafica/but1o.png");
+}
+.wpbut:active{
+	background-image:url("../grafica/but1p.png");
+}
+
+#banspa{
+	width:475px;
+	height:65px;
+	
+ 	-moz-transform: scale(1.6, 1.6); 
+    -webkit-transform: scale(1.6, 1.6); 
+    -o-transform: scale(1.6, 1.6);
+    -ms-transform: scale(1.6, 1.6);
+    transform: scale(1.6, 1.6); 
+    -moz-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    -o-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+}   
+#conban{
+	clear:both;
+	height: 130px;
+}
+
+/* ESITO */
+.testoesito{
+	font-size: 30px;
+	margin-bottom: 20px;
+	text-align: justify;
+}
+.idoneo{
+	font-size: 50px;
+	font-weight: bold;
+	color: #089408;	
+	text-align: center;
+	margin-top: 6px;
+	margin-bottom: 18px;
+}
+.nonidoneo{
+	font-size:50px;
+	font-weight: bold;
+	color: #f00;	
+	text-align: center;
+	margin-top: 6px;
+	margin-bottom: 18px;
+}
+
+.suggesito{
+	font-size: 20px;
+	padding: 15px;
+	margin-top: 20px;
+	border: 1px solid #15428b;
+	color: #15428b;
+	text-align: justify;
+}
+table.commento{
+	border-collapse: collapse;
+	border: 10px solid #fff;
+}
+
+div.commento{
+	font-size: 20pt;
+	text-align: justify;
+}
+.profmastri{
+	margin-right: 20px;
+}
+
+
+/* risultati esame */
+
+.grafico_b{
+	width: 28px;
+	vertical-align: bottom;
+	background-image: url("../grafica/graficosM.gif");
+	height: 240px;
+	padding: 0px;
+}
+.grafico_n{
+	font-size: 16pt;
+	text-align: center;
+	height: 20px;
+	color: #15428b;
+}
+.grafico{
+	height: 260px;
+	border-collapse: collapse;
+	margin: auto;
+	margin-top:15px;
+	margin-bottom:10px;
+}
+.barris{
+	width: 26px;
+}
+.tabris{
+	border-collapse: collapse;
+	border: 1px solid #15428b;
+	font-size: 30px;
+	color: #15428b;
+	margin: auto;
+	width: 90%;
+	
+}
+.tdris{
+	border: 1px solid #15428b;
+	text-align: center;
+	padding: 4px;
+}
+.tdrisl{
+	border: 1px solid #15428b;
+	text-align: left;
+	padding: 4px;
+}
+.thris{
+	border: 1px solid #15428b;
+	text-align: center;
+	font-weight: bold;
+	padding: 4px;
+}
+.thrisl{
+	border: 1px solid #15428b;
+	text-align: left;
+	font-weight: bold;
+	padding: 4px;
+}
+#percfall1{
+	width: 160px;
+}
+#percerr1{
+	width: 160px;
+}
+
+#tabrisesa{
+}
+
+/* pargina risultati esame */
+
+.pagrisesa{
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 40px;
+}
+.pagrisesa_n{
+	vertical-align: top;
+	text-align: center;
+	padding-top: 20px; 	
+	/*height: 230px;*/
+}
+.pagrisesa_s{
+	vertical-align: top;
+	padding-top: 20px;
+}
+.pagrisesa_o{}
+.pagrisesa_e{}
+
+/* termometro */
+
+.term{
+	border-collapse: collapse;	
+	border-spacing: 0;
+	height: 26px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	margin:auto;	
+}
+
+.termr{
+	background-image: url("../grafica/termrM.gif");
+	text-align: center;
+	overflow: hidden;
+	float: left;
+	height: 26px;
+}
+.term0{
+	text-align: center;
+	overflow: hidden;
+	float: left;
+}
+
+.termv{
+	background-image: url("../grafica/termvM.gif");
+	text-align: center;
+	overflow: hidden;
+	float: right;
+	height: 26px;
+}
+.termb{
+	background-color: ButtonFace;
+	padding: 1px;
+	margin: 6px;
+}
+
+/* Risultati argomento */
+
+#tabcap{
+	font-size: 30px;
+	width: 90%;
+	
+}
+#tabrisargo{
+	width: 45%;
+	margin-bottom: 28px;
+}
+
+.pagrisargo{
+	width: 100%;
+	border-collapse: collapse;
+}
+.pagrisargo_n{
+	vertical-align: top;
+	padding-top: 28px; 	
+}
+.pagrisargo_s{
+	vertical-align: top;
+	padding-top: 28px; 	
+}
+.pagrisargo_o{}
+.pagrisargo_e{}
+
+
+/* Opzioni */
+
+.opcap{
+	font-size: 30px;
+	border-collapse: collapse;
+	margin: auto;
+	width: 90%;
+}
+.opcapcol1{
+	vertical-align: top;
+	padding-right: 10px;
+}
+.opcapcol2{
+	text-align: justify;
+}
+
+
+
+
+/* MANUALE */
+
+.intro{
+	font-size: 30px;
+	text-align: justify; 
+	font-style: italic;
+	margin-bottom: 10px;
+}
+.titolo{
+	font-size: 30px;
+	font-weight: bold;
+	text-align: justify; 
+}
+.titololez{
+	font-size: 40px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.testo{
+	font-size: 30px;
+	text-align: justify;
+	margin-bottom: 10px; 
+}
+.diraut{
+	color: red;
+	font-size: 14pt;
+	text-align: justify;
+	padding: 10px;
+	border: 1px solid;
+	margin-bottom: 20px;
+}
+.esercitati{
+	color: #009900;
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.altroaiuto{
+	text-align: justify;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #000;
+	background-color: #FFFFE1;
+	font-size: 24px;
+	padding: 12px;
+	clear: both;
+}
+
+.figura{
+	float: right;
+}
+
+
+/* Figure */
+
+.fig_intesta{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+#pr_fig_intesta{
+	display: none;
+}
+#selcategoria{
+}
+#manfigpan{
+	display: none;
+}
+#avind{
+}
+#cercafigura{
+}
+#pr_fig_esercitati{
+	margin-bottom: 30px;
+}
+
+.fig_figura{
+	width: 106px;
+	height: 106px;
+	cursor: pointer;
+	border: 1px solid #dddddd;
+	padding: 1px;
+}
+.fig_bordo{
+	border: 1px solid #fff;
+}
+.fig_figura_p{
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+	margin: 21px;
+}
+.fig_bordo_p{
+	width: 110px;
+	height: 110px;
+	background-color: #dddddd;
+	border: 1px solid #ffffff;
+}
+
+.fig_contfig{
+	display: inline;
+	float: left; 
+	margin: 0px 5px 5px 5px; 
+	text-align: center;
+}
+
+
+
+
+
+/* OPZIONI */
+
+.opzioni{
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.opckimg{
+	width: 80px;
+}
+.col1{
+	vertical-align: middle;
+	height: 100px;
+	}
+.col2{
+	vertical-align: middle;
+	text-align: justify;
+	padding-left: 10px;
+	
+}
+
+.info{
+	font-size: 30px;
+	text-align: justify;
+	color: #15428b;
+}
+
+/* figure */
+
+#panimg{
+	width: 100%;
+	text-align: center;
+}
+
+/* ingrandi */
+.deffig{
+	font-size:40px;
+	font-weight:bold;
+	text-align:left;
+}
+.tabfig{
+	vertical-align: top;
+}
+
+
+
+/* PER LAYOUT?? ----------------------------------------------------------*/
+
+
+.c_quesito{
+	width: 100%;
+	border-collapse: collapse;
+	border-left: 1px solid #FA66B3;
+	font-size: 9pt;
+	font-family: arial; 
+}
+
+.c_domanda{
+	height: 35px;
+	border-bottom: 1px solid #FA66B3;
+	border-top: 1px solid #FA66B3;
+	border-right: 1px solid #FA66B3;	
+	background-color: #FFDCDC;
+	padding: 2px;
+	background-repeat: no-repeat;
+}
+
+.c_txtdom{
+	padding-left: 15px;
+}
+
+.c_numdom{
+	color: #fff;
+	font-weight: bold;
+	font-size: 8pt;
+	position: absolute;
+	margin-top: -9px;
+	margin-left: -2px;
+	width: 10px;
+	text-align: center;
+}
+.c_risposta{
+	height: 35px;
+	padding: 2px;
+	border-right: 1px solid #FA66B3;
+}
+.v{
+	margin-right: 3px;	
+ 	margin-left: 6px;	
+ 	cursor: pointer;
+}
+.f{
+	margin-right: 6px;	
+ 	margin-left: 3px;	
+ 	cursor: pointer;
+}
+.vc{
+	margin-right: 3px;	
+ 	margin-left: 6px;	
+ }
+.fc{
+	margin-right: 6px;	
+ 	margin-left: 3px;	
+ }
+
+
+.c_pulsanti{
+	width: 60px;
+	padding-left: 6px;
+	text-align: left;
+}
+.b_solu{
+	cursor: pointer;
+}
+
+.b_solu_schedasolu{
+	visibility: hidden;
+}
+.b_solu_schedaargo{
+	visibility: hidden;
+}
+.b_solu_schedaesame{
+	visibility: hidden;
+}
+.b_sugg{
+	margin-left: 6px;
+}
+
+
+.c_segnale{
+	width: 140px;
+	height: 140px;
+	border-top: 1px solid #FA66B3;
+	border-right: 1px solid #FA66B3;	
+	border-left: 1px solid #FA66B3;
+	vertical-align: top;	
+}
+
+
+.i_segnale{
+	width: 140px;
+	height: 140px;
+	cursor: pointer;
+}
+table.riga{
+	width: 100%;
+	border-collapse: collapse;
+}
+td.riga{
+	height: 1px;
+	border-top: 1px solid #FA66B3;
+	font-size: 1px;
+}
+	
+.vuoto{
+	height: 2px;
+	overflow: hidden;
+}
+
+.selargo{
+	height: 45px;
+	width: 100%;
+	text-align: center;
+	/*border-collapse: collapse;*/
+	/*border-bottom: 1px solid #99BBE8;*/
+}
+.selargosel{
+	width: 95%;
+}
+
+.unselectable{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+/* sugg */
+.suggtext{
+	font-size:30px;
+	text-align: justify;
+}
+.suggcopy{
+	color: green;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+/* intro */
+.introduzione {
+    color: #15428B;
+    font-size: 20pt;
+    padding: 30px;
+    text-align: justify;
+
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+
+    
+}
+
+/* Esame su argomenti */
+#panargoesa{padding:10px;}
+.arg{vertical-align:middle;margin-left:90px;}
+.aop{padding-right:10px;padding-top:4px;}
+table.arg{border-collapse:collapse;}
+td.arg{font-size:30px;}
+table.cap{border-collapse:collapse;margin-top:.5em}
+td.cap{vertical-align:middle;font-size:30px;}
+td.aop{vertical-align:top;}
+
+
+/* Errori */
+
+#panerrori{
+	background-color:#d1e6d7;
+}
+table.errori{
+	background-color:#d1e6d7;
+	border-collapse:collapse;
+	width:100%;
+}
+td.errori{
+	padding:10px;
+}
+table.memerr{
+	border-radius: 10px;
+	border-collapse:collapse;
+	width:100%;
+	margin:auto;
+	background-color:#fff;
+}
+td.memerrgruppo{
+	padding:20px;
+	padding-bottom:0px;
+	font-size:20px;
+}
+td.memerr{
+	vertical-align:top;
+	padding:20px;
+	font-size:22px;
+	text-align:justify;
+}
+td.memerrL{
+	padding-left:0px;
+}
+td.memerrR{
+	width:100px;
+	text-align:right;
+	padding-left:0px;
+	padding-right:10px;
+}
+img.memerr{
+	height:100px;
+	cursor:pointer;
+}	
+ul.memerr{
+	list-style-type: disc;
+	padding-left: 2em;
+}
+td.memerrlinks{
+	padding:20px;
+	padding-top:0px;
+	font-size:22px;
+	font-weight:bold;
+}
+.memspc{
+	height:10px;
+}
+.memzero{
+	text-align:center;
+	font-size:80px;
+	font-weight: bold;
+	padding:20px;
+}
+.memsmiley{
+	margin-top:20px;
+}
+
+a{
+	text-decoration: none;
+	color: red;
+}
+a:hover {
+	text-decoration: underline;
+}
+.blockimg{
+	display: block;
+	margin: auto;
+}

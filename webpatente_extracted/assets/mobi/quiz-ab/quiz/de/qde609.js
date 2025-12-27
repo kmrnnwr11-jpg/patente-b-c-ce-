@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Ordine di precedenza nell’incrocio di figura n. 618"
+segnale="618"
+quizass=609
+sugg=234
+risposte=["In der in der Abbildung dargestellten Situation überquert das Fahrzeug L die Kreuzung als Erstes","In der in der Abbildung dargestellten Situation überquert das Fahrzeug H die Kreuzung als Letztes","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug L, Fahrzeug C, Fahrzeug H","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug C nach dem Fahrzeug L, aber vor dem Fahrzeug H","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug L gleichzeitig mit Fahrzeug C, dann Fahrzeug H","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug H, Fahrzeug C, Fahrzeug L","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug H, Fahrzeug L, Fahrzeug C","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug L, Fahrzeug H, Fahrzeug C","Die in der Abbildung dargestellte Kreuzung darf in folgender Reihenfolge überquert werden: Fahrzeug C, Fahrzeug H, Fahrzeug L"]
+rispostet=["Nella situazione rappresentata in figura il veicolo L attraversa l'incrocio per primo","Nella situazione rappresentata in figura il veicolo H attraversa l'incrocio per ultimo","È consentito attraversare l'incrocio in figura secondo l'ordine veicolo L, veicolo C, veicolo H","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo C dopo il veicolo L, ma prima del veicolo H","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo L contemporaneamente al veicolo C, poi il veicolo H","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo H, il veicolo C, il veicolo L","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo H, il veicolo L, il veicolo C","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo L, il veicolo H, il veicolo C","È consentito attraversare l'incrocio in figura secondo l'ordine il veicolo C, il veicolo H, il veicolo L"]
+soluzioni="VVVVFFFFF"
+rispass=[4761,4762,4763,4764,4765,4766,4767,4768,4769]
+nummin="14004"
+}
+continua();

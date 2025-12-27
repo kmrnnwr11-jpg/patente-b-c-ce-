@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Impianto di frenatura: servoautodistributore"
+quizass=202
+sugg=0
+risposte=["Das Anhängerbremsventil ist am Anhänger angebracht","Am Anhängerbremsventil sind zwei Eingangsleitungen angeschlossen, und zwar die Bremsleitung und die Vorratsleitung","Vom Anhängerbremsventil gehen zwei Schlauchverbindungen aus, wovon eine zum Behälter des Anhängers führt, die andere zu den Bremszylindern","Das Anhängerbremsventil gewährleistet die sofortige und automatische Bremsung des Anhängers im Falle eines unbeabsichtigten Abkoppelns","Beim Anhängerbremsventil ist eine Handbedienung für die Lösung der Feststellbremse des Anhängers vorhanden, wenn dieser vom Zugfahrzeug abgekoppelt ist","Das Anhängerbremsventil ist mit einem Druckhalteventil, einem Ausgangsventil und einem Eingangsventil ausgestattet","Beim Anhängerbremsventil bleibt das Eingangsventil geöffnet, solange das Bremspedal gedrückt wird","Wenn aufgrund einer Havarie ein Bremskreis des Zugfahrzeugs nicht funktioniert, stellt das Anhängerbremsventil auf jeden Fall die Bremsung des Anhängers sicher"]
+rispostet=["Il servoautodistributore è montato sul rimorchio","Al servoautodistributore sono collegati in ingresso due tubi, quello del moderabile e quello dell'automatico","Dal servoautodistributore sono collegati in uscita due tubi, uno che va al serbatoio del rimorchio e uno agli elementi frenanti","Il servoautodistributore garantisce la frenatura istantanea ed automatica del rimorchio in caso di sganciamento accidentale","Nel servoautodistributore esiste un comando manuale per lo sblocco dei freni di stazionamento del rimorchio quando lo stesso è sganciato dalla motrice","Il servoautodistributore è dotato di una valvola di ritenuta, una di scarico e una d'immissione","Nel servoautodistributore, la valvola d'immissione resta aperta finché viene premuto il pedale del freno","Quando per un'avaria non funziona una sezione dell'impianto frenante della motrice, il servoautodistributore garantisce comunque la frenatura del rimorchio"]
+soluzioni="VVVVVVFF"
+rispass=[1520,1521,1522,1523,1524,1525,1526,1531]
+nummin="101003"
+}
+continua();

@@ -1,15 +1,107 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Cache traduzioni parole
-    match /word_translations/{id} {
-      allow read, write: if request.auth != null;
+    
+    // Funzione helper per verificare autenticazione
+    function isAuthenticated() {
+      return request.auth != null;
     }
-
-    // Users (esempio basilare)
+    
+    // Funzione helper per verificare se è il proprietario
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // ========================================
+    // USERS - Solo il proprietario può leggere/scrivere
+    // ========================================
     match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) && 
+        // Non permettere di modificare isPremium direttamente (solo backend)
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['isPremium', 'premiumExpiresAt', 'stripeCustomerId', 'stripeSubscriptionId']));
+      allow delete: if false; // Mai cancellare utenti dal client
+    }
+    
+    // ========================================
+    // SUBSCRIPTIONS - Solo lettura, scrittura da backend
+    // ========================================
+    match /subscriptions/{subscriptionId} {
+      allow read: if isAuthenticated() && 
+        resource.data.userId == request.auth.uid;
+      allow write: if false; // Solo backend via admin SDK
+    }
+    
+    // ========================================
+    // PROMO CODES - Solo lettura
+    // ========================================
+    match /promocodes/{codeId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Solo admin
+    }
+    
+    // ========================================
+    // CREATORS - Lettura/scrittura limitata
+    // ========================================
+    match /creators/{creatorId} {
+      // Chiunque autenticato può leggere codici referral (per validazione)
+      allow read: if isAuthenticated();
+      
+      // Solo creazione di nuovi creator (se non esiste già)
+      allow create: if isAuthenticated() && 
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.commissionPercent == 30; // Forza 30%
+      
+      // Solo il proprietario può aggiornare (ma non i campi finanziari)
+      allow update: if isAuthenticated() && 
+        resource.data.userId == request.auth.uid &&
+        !request.resource.data.diff(resource.data).affectedKeys()
+          .hasAny(['totalEarnings', 'pendingPayout', 'paidOut', 'commissionPercent']);
+      
+      allow delete: if false;
+    }
+    
+    // ========================================
+    // REFERRALS - Solo backend
+    // ========================================
+    match /referrals/{referralId} {
+      // Creator può leggere i propri referral
+      allow read: if isAuthenticated() && (
+        resource.data.creatorId == request.auth.uid ||
+        resource.data.userId == request.auth.uid
+      );
+      
+      // Solo backend può scrivere
+      allow write: if false;
+    }
+    
+    // ========================================
+    // PAYOUT REQUESTS - Creator può creare e leggere
+    // ========================================
+    match /payoutRequests/{requestId} {
+      allow read: if isAuthenticated() && 
+        resource.data.creatorId == request.auth.uid;
+      
+      // Permetti creazione della richiesta
+      allow create: if isAuthenticated();
+      
+      allow update, delete: if false; // Solo admin
+    }
+    
+    // ========================================
+    // TRANSLATIONS - Solo lettura
+    // ========================================
+    match /translations/{docId} {
+      allow read: if true; // Pubblico
+      allow write: if false;
+    }
+    
+    // ========================================
+    // DEFAULT - Nega tutto il resto
+    // ========================================
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }
-

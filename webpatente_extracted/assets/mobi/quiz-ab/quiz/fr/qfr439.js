@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Pannello integrativo di INIZIO posto sotto il segnale di PERCORSO PEDONALE"
+segnale="963"
+quizass=439
+sugg=135
+risposte=["Le panneau représenté indique où commence l'allée piétonne"]
+rispostet=["Il segnale raffigurato evidenzia il punto d'inizio del viale pedonale"]
+soluzioni="V"
+rispass=[3760]
+nummin="10007"
+}
+continua();

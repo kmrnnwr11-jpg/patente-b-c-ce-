@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DIVIETO DI SOSTA (2)"
+segnale="84"
+quizass=169
+sugg=88
+risposte=["Das abgebildete Verkehrszeichen verbietet das Parken, nicht jedoch das Halten","Das abgebildete Verkehrszeichen kennzeichnet die Bereiche, in denen das Parken von Fahrzeugen verboten ist","Das abgebildete Verkehrszeichen zeigt an Freilandstraßen ein durchgehendes Parkverbot an, falls keine ergänzenden Hinweise vorhanden sind","Das abgebildete Verkehrszeichen verbietet das Parken auf der Straßenseite, auf welcher es steht","Das abgebildete Verkehrszeichen verbietet das Parken nicht","Das abgebildete Verkehrszeichen erlaubt auf Freilandstraßen das Parken nach 20.00 Uhr","Das abgebildete Verkehrszeichen erlaubt nur zweirädrigen Fahrzeugen das Parken","Das abgebildete Verkehrszeichen erlaubt vierrädrigen Kraftfahrzeugen das Parken","Das abgebildete Verkehrszeichen verbietet in geschlossenen Ortschaften das Parken von 20.00 bis 8.00 Uhr, falls nicht anders angezeigt","Das abgebildete Verkehrszeichen weist darauf hin, dass das Parken durch Parkscheibe geregelt wird","Das abgebildete Verkehrszeichen kann, wenn es entsprechend ergänzt ist, das Parken in doppelter Reihe verbieten"]
+rispostet=["Il segnale raffigurato vieta la sosta, ma non la fermata","Il segnale raffigurato contraddistingue le aree dove è proibito lasciare in sosta un veicolo","Il segnale raffigurato, lungo strade extraurbane, indica divieto permanente di sosta in assenza di indicazioni integrative","Il segnale raffigurato vieta la sosta sul lato della strada dove è posto","Il segnale raffigurato non vieta la fermata","Il segnale raffigurato, nelle strade extraurbane, consente la sosta dopo le ore 20.00","Il segnale raffigurato consente la sosta soltanto ai veicoli a due ruote","Il segnale raffigurato consente la sosta ai quadricicli a motore","Il segnale raffigurato, nei centri urbani, prescrive il divieto di sosta dalle ore 20.00 alle ore 8.00, salvo diversa indicazione","Il segnale raffigurato indica che la sosta è regolamentata mediante disco orario","Il segnale raffigurato, opportunamente integrato, può vietare la sosta in doppia fila"]
+soluzioni="VVVVVFFFFFF"
+rispass=[1597,1598,1599,1602,1605,1606,1607,1608,1609,1610,1612]
+nummin="03035"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Cautele da adottare in caso di sosta nell’aprire le portiere e nello scendere dal veicolo (1)"
+quizass=688
+sugg=11052
+risposte=["Le conducteur d'un véhicule automobile en stationnement sur le côté droit d'une route urbaine, avant d'ouvrir la portière, doit faire particulièrement attention aux véhicules à l'approche","Le conducteur d'un véhicule automobile en stationnement sur une route étroite, avant de descendre doit contrôler qu'il n'y ait pas de véhicules à l'approche","Il serait préférable que le conducteur d'un véhicule automobile, en stationnement sur le côté gauche d'une route urbaine à sens unique, rappelle au passager de faire particulièrement attention aux véhicules à l'approche avant d'ouvrir la portière","Il serait préférable que le conducteur d'un véhicule, en stationnement sur le côté droit d'une route urbaine, rappelle au passager qui ouvre la portière de droite de faire attention aux piétons qui passent","Le conducteur d'un véhicule automobile peut laisser le moteur allumé s'il ne stationne que pour quelques instants","Le conducteur d'un véhicule automobile en stationnement sur une route étroite, avant de descendre doit faire attention aux véhicules venant de derrière, mais pas d'en face"]
+rispostet=["Il conducente di un autoveicolo in sosta sul lato destro di una strada urbana, prima di aprire la portiera, deve fare particolare attenzione ai veicoli che sopraggiungono","Il conducente di un autoveicolo in sosta su una strada stretta, prima di scendere deve controllare che non sopraggiungano veicoli","È opportuno che il conducente di un autoveicolo in sosta sul lato sinistro in una strada urbana a senso unico, ricordi al passeggero di prestare particolare attenzione ai veicoli che sopraggiungono, prima di aprire la portiera","È opportuno che il conducente di un autoveicolo, in sosta sul lato destro di una strada urbana, ricordi al passeggero che apre la portiera di destra di fare attenzione ai pedoni in transito","Il conducente di un autoveicolo può lasciare il motore acceso se sosta per poco tempo","Il conducente di un autoveicolo in sosta su una strada stretta, prima di scendere deve preoccuparsi dei veicoli che sopraggiungono da dietro, ma non di quelli di fronte"]
+soluzioni="VVVVFF"
+rispass=[5308,5309,5310,5311,5312,5313]
+nummin="16002"
+}
+continua();

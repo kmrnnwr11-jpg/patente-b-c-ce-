@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Cautele da adottare nell’uso dei freni (1)"
+quizass=899
+sugg=11122
+risposte=["En cas de freinage d'urgence, dans l'action avec ABS, il faut continuer à appuyer avec force sur la pédale de frein, sans relâcher la pression","L'action de freinage exercée par le moteur est maximale si l'on engage le premier rapport","La surchauffe des freins suite a l'utilisation prolongée et à plusieurs reprises, implique la réduction de l'efficacité du freinage","En roulant sur des descentes longues et raides il faut engager un rapport inférieur (réduit) pour éviter la surchauffe des freins","Après le lavage du véhicule il faut effectuer un essai de freinage","En cas de freinage d'urgence, dans l'action avec ABS, il faut immédiatement réduire la pression exercée sur la pédale des freins","Tous les véhicules disposent du frein de stationnement actionné par une commande manuelle","On utilise le frein de stationnement pendant la conduite, pour freiner ou arrêter le véhicule","En roulant sur des descentes longues et raides, le mieux est de rouler avec l'embrayage au point mort pour économiser le carburant et les freins"]
+rispostet=["In caso di frenata di emergenza, con entrata in azione dell'ABS, bisogna continuare a premere con forza il pedale, senza allentare la pressione","L'azione frenante esercitata dal motore è massima se si inserisce la prima marcia del cambio di velocità","L'uso prolungato e ripetuto dei freni, provocandone il surriscaldamento, comporta la diminuzione dell'efficienza frenante","Percorrendo lunghe e ripide discese è necessario inserire una marcia bassa per evitare di surriscaldare i freni","Dopo il lavaggio del veicolo, è opportuno eseguire una prova di frenata","In caso di frenata di emergenza, con entrata in azione dell'ABS, bisogna immediatamente diminuire la pressione esercitata sul pedale del freno","Tutti i veicoli sono dotati del freno di stazionamento che si aziona con comando manuale","Il freno di stazionamento si utilizza durante la marcia, per frenare o arrestare il veicolo","Percorrendo lunghe e ripide discese è opportuno marciare con il cambio in folle per risparmiare carburante e freni"]
+soluzioni="VVVVVFFFF"
+rispass=[6953,6954,6955,6956,6957,6958,6959,6960,6961]
+nummin="25015"
+}
+continua();

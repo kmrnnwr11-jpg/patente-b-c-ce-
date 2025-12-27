@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DISCESA PERICOLOSA CON PENDENZA DEL 10%"
+segnale="17"
+quizass=94
+sugg=16
+risposte=["Le panneau représenté se trouve avant une descente dangereuse","Le panneau représenté annonce une descente particulièrement dangereuse","Le panneau représenté annonce un tronçon de route sur lequel l'espace de freinage du véhicule augmente","Le panneau représenté annonce une descente et en précise la pente","Le panneau représenté implique une réduction de vitesse","Le panneau représenté impose d'insérer un rapport de vitesse peu élevé approprié","Le panneau représenté annonce une montée à parcourir avec un rapport de vitesse peu élevé approprié","Le panneau représenté annonce un tronçon de route dangereux à cause de la chaussée en mauvais état","Le panneau représenté précise la pente de la montée","Le panneau représenté annonce un tronçon de route qu'il vaut mieux parcourir avec la pédale d'embrayage baissée","Le panneau représenté annonce une montée dangereuse","Le panneau représenté signale qu'il est interdit de rouler à plus de 10 km/h","Face au panneau représenté le danger est inférieur en cas de pluie"]
+rispostet=["Il segnale raffigurato è posto prima di una discesa pericolosa","Il segnale raffigurato preannuncia una discesa particolarmente pericolosa","Il segnale raffigurato preannuncia un tratto di strada sul quale aumenta lo spazio di frenatura del veicolo","Il segnale raffigurato preannuncia una discesa e ne specifica la pendenza","Il segnale raffigurato comporta di moderare la velocità","Il segnale raffigurato richiede di inserire una marcia adeguatamente bassa","Il segnale raffigurato preannuncia una salita da percorrere con marcia adeguatamente bassa","Il segnale raffigurato preannuncia un tratto di strada pericoloso per il fondo dissestato","Il segnale raffigurato specifica la pendenza di una salita","Il segnale raffigurato preannuncia un tratto di strada che è bene percorrere con il pedale della frizione abbassato","Il segnale raffigurato preannuncia una salita pericolosa","Il segnale raffigurato indica che non è consentito superare la velocità di 10 km/h","In presenza del segnale raffigurato il pericolo è minore in caso di pioggia"]
+soluzioni="VVVVVVFFFFFFF"
+rispass=[873,874,875,876,877,878,879,880,881,882,883,884,885]
+nummin="02028"
+}
+continua();

@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=11013
+titolo="DOVERI DEL CONDUCENTE: COMPORTAMENTI DA OSSERVARE"
+testo="L’uso responsabile della strada comporta di osservare i seguenti comportamenti:<br /><br />- LASCIARE LIBERI, in caso di traffico intenso o di formazione di code: incroci (regolati o meno) e immissioni stradali (confluenze ingressi di parcheggi, ecc), passaggi a livello e binari del tram, attraversamenti pedonali e ciclabili (ma non cavalcavia, gallerie, sottovie e ingressi privati).<br /><br />- Quando si viaggia IN FILA CON ALTRI VEICOLI: mantenere la distanza di sicurezza; porre attenzione non solo al veicolo che precede, ma anche in lontananza, per controllare la situazione del traffico (ma senza spostarsi troppo a sinistra); non distrarsi anche se si procede a bassa velocità. Non tentare di superare subito il veicolo che precede (anche se solleva polvere). Non cambiare ripetutamente corsia o accelerare bruscamente per sorpassare gli altri veicoli.<br /><br />- ENTRANDO IN UN CENTRO ABITATO: mantenere la concentrazione alla guida, anche se potrebbero aumentare i motivi per distrarsi; essere più attenti, prudenti e tolleranti, a causa del maggior numero di utenti della strada che vi si incontrano; tener conto di una maggiore presenza di pedoni e ciclisti e dell’intralcio che può derivare da arresto, partenza e cambio di direzione degli altri veicoli; far attenzione a eventuali cambiamenti della precedenza agli incroci."
+riferimento=[40,42,43,44]
+}
+suggerimenti.continua()

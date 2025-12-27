@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere in presenza del segnale di PASSAGGIO A LIVELLO SENZA BARRIERE"
+segnale="9"
+quizass=80
+sugg=9
+risposte=["Face au panneau représenté il faut ralentir en fonction de la visibilité de la voie ferrée","Face au panneau représenté il faut être prudent au maximum","Face au panneau représenté il faut ralentir pour pouvoir, à l'occurrence, arrêter son véhicule avant de traverser la voie ferrée","Face au panneau représenté il faut, avant de traverser, s'assurer qu'il n'y ait pas de train à l'approche, ni à droite ni à gauche","Face au panneau représenté l'arrêt et le stationnement sur ou en proximité des rails sont interdits","Face au panneau représenté il faut ralentir uniquement en cas de brouillard","Face au panneau représenté il faut s'arrêter avant les rails si les lumières ou les dispositifs sonores ne sont pas en fonction","Face au panneau représenté il est permis de traverser les rails si ceux-ci sont barrés de petites barricades à rayures blanches et rouges","Face au panneau représenté il est obligatoire d'utiliser le klaxon avant de traverser les rails","Face au panneau représenté on peut doubler en envahissant la voie opposée"]
+rispostet=["In presenza del segnale raffigurato è necessario rallentare in relazione alla visibilità della linea ferroviaria","In presenza del segnale raffigurato è necessario usare la massima prudenza","In presenza del segnale raffigurato è necessario rallentare per potere, eventualmente, arrestare il veicolo prima dell'attraversamento ferroviario","In presenza del segnale raffigurato è necessario, prima di attraversare, assicurarsi che non ci siano treni in arrivo sia da destra che da sinistra","In presenza del segnale raffigurato non è consentito sostare o fermarsi in prossimità o in corrispondenza dei binari","In presenza del segnale raffigurato è necessario rallentare esclusivamente in caso di nebbia","In presenza del segnale raffigurato è obbligatorio fermarsi prima dei binari se le segnalazioni luminose o acustiche non sono in funzione","In presenza del segnale raffigurato è possibile attraversare i binari nel caso siano sbarrati da cavalletti a strisce bianche e rosse","In presenza del segnale raffigurato è obbligatorio usare il segnalatore acustico (clacson) prima di attraversare i binari","In presenza del segnale raffigurato è consentito il sorpasso invadendo la corsia opposta"]
+soluzioni="VVVVVFFFFF"
+rispass=[754,755,756,757,758,759,760,761,762,763]
+nummin="02018"
+}
+continua();

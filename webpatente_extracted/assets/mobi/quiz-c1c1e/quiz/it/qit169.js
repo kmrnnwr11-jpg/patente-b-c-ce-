@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Visibilità diretta della strada"
+quizass=169
+sugg=0
+risposte=["Per garantire una miglior visibilità diretta della strada, è necessario evitare di lasciare sul cruscotto cartine, agende, appunti, in particolare se di colore chiaro, perché potrebbero creare pericolosi riflessi sul parabrezza","Per garantire una miglior visibilità diretta della strada, è necessario sostituire le spazzole tergicristallo quando non sono più in buono stato di efficienza","Per garantire una miglior visibilità diretta della strada, è necessario evitare di tenere accese le luci interne del veicolo nelle ore di buio, perché limitano l'adattamento dell'occhio alla visione notturna","Per garantire una miglior visibilità diretta della strada, è necessario evitare l'appannamento del parabrezza e delle vetrate laterali","Per garantire una miglior visibilità diretta della strada, è necessario che il sedile di guida sia regolato correttamente in altezza","Per garantire una miglior visibilità diretta della strada è necessario evitare di usare le alette parasole","Per garantire una miglior visibilità diretta della strada è necessario accendere le luci interne del veicolo in ogni condizione di scarsa visibilità","Per garantire una miglior visibilità diretta della strada è necessario sostituire le spazzole tergicristallo ad ogni cambio del filtro del gasolio","Per garantire una miglior visibilità diretta della strada è necessario oscurare completamente i finestrini laterali destri quando il sole tramonta da quel lato","Per garantire una miglior visibilità diretta della strada è necessario pulire la parte interna del parabrezza con un panno leggermente cosparso di grasso siliconato"]
+soluzioni="VVVVVFFFFF"
+rispass=[1186,1187,1188,1189,1190,1196,1197,1198,1199,1200]
+nummin="081003"
+}
+continua()

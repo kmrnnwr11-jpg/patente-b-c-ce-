@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere quando si intralciano i veicoli che seguono"
+quizass=310
+sugg=237
+risposte=["Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut réduire la vitesse et s'arrêter pour donner la possibilité aux véhicules qui suivent de doubler","Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut s'arrêter dès que possible pour laisser passer la circulation qui s'est formée derrière nous","Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut laisser doubler les véhicules plus rapides qui suivent dès qu'on a rejoint un endroit sûr","Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut se déplacer vers le centre de la route","Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut faire demi-tour","Si, en conduisant un quadricycle léger à moteur, on gêne les véhicules derrière nous, il faut mettre le clignotant gauche"]
+rispostet=["Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre ridurre la velocità e fermarsi per dare la possibilità ai veicoli che seguono di superare","Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre fermarsi appena possibile per far defluire il traffico retrostante","Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre permettere il sorpasso ai veicoli più veloci che seguono appena si sia giunti in un punto sicuro","Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre portarsi al centro della strada","Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre invertire il senso di marcia","Se, conducendo un quadriciclo leggero a motore, si intralciano i veicoli che seguono, occorre azionare l'indicatore di direzione sinistro"]
+soluzioni="VVVFFF"
+rispass=[1989,1990,1991,1992,1993,1994]
+nummin="10025"
+}
+continua();

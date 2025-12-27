@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Obblighi per chi intende cambiare corsia (1)"
+quizass=546
+sugg=293
+risposte=["Le conducteur qui a l'intention de changer de voie doit contrôler que la voie qu'il veut occuper soit libre et avec suffisamment de place devant","Le conducteur qui a l'intention de changer de voie doit contrôler que la voie qu'il veut occuper soit libre et avec suffisamment de place à l'arrière","Le conducteur qui a l'intention de changer de voie, pour doubler, doit contrôler que le véhicule devant lui n'ait pas commencé la même manœuvre","Le conducteur qui a l'intention de changer de voie doit signaler sa manœuvre à l'avance à l'aide du clignotant","Le conducteur qui a l'intention de changer de voie ne doit pas être un obstacle ou un danger pour ceux qui parcourent la voie qu'il veut occuper","Le conducteur qui a l'intention de changer de voie ne doit pas activer le clignotant si la route est libre","Le conducteur qui a l'intention de changer de voie doit obligatoirement signaler sa manœuvre avec le klaxon","Avant de changer de voie il faut s'assurer que les voies soient séparées par une ligne blanche continue"]
+rispostet=["Chi intende cambiare corsia deve controllare che la corsia che vuole occupare sia libera davanti per un tratto sufficiente","Chi intende cambiare corsia deve controllare che la corsia che vuole occupare sia libera dietro per un tratto sufficiente","Chi intende cambiare corsia, per effettuare un sorpasso, deve controllare che il veicolo che sta davanti non abbia segnalato l'inizio della stessa manovra","Chi intende cambiare corsia deve segnalare la manovra in anticipo, tramite l'indicatore di direzione","Chi intende cambiare corsia non deve creare intralcio o pericolo per chi percorre la corsia che vuole impegnare","Chi intende cambiare corsia non deve azionare l'indicatore di direzione se la strada è libera","Chi intende cambiare corsia ha l'obbligo di segnalare la manovra con l'uso dell'avvisatore acustico (clacson o trombe)","Prima di cambiare corsia è necessario accertare che le corsie siano separate da una striscia continua"]
+soluzioni="VVVVVFFF"
+rispass=[4481,4482,4483,4484,4485,4486,4487,4488]
+nummin="13015"
+}
+continua();

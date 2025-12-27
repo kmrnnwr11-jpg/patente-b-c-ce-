@@ -1,0 +1,5 @@
+l=new tlez; with(l){
+intro="<div class='intro'>Prendiamo ora in esame i diversi tipi di segnalazioni luminose che possiamo trovare sulle strada. Anzitutto i semafori. Oltre al classico <b>semaforo veicolare a tre luci</b>, che tutti abbiamo ben presente, tratteremo di quelli veicolari <b>di corsia</b>, quelli per <b>corsie reversibili</b>, per <b>pedoni</b>, per <b>biciclette</b> e quelli per i <b>mezzi pubblici</b>.</div><div class='intro'>Completano la lezione informazioni su altre particolari segnalazioni a <b>luce rossa</b>.<br/><br/><b>Capitolo di riferimento: 4</b></div><!--<div align=justify style='font-size:8pt'><b>Su questo argomento si può vedere anche:</b><br><img height=8 src='pix.gif'><br>&nbsp;<a href='09lucegiallalucerossa.php' target=esperto>&#187; Le differenze: luce gialla e luce rossa</a></div>-->"
+sugg=[301,302,304,1003,309,310,313,314,1004]
+}
+manuale.continua()

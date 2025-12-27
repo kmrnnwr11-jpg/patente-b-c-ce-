@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DIREZIONI CONSENTITE DIRITTO E DESTRA (1)"
+segnale="99"
+quizass=196
+sugg=104
+risposte=["Das abgebildete Verkehrszeichen schreibt vor, an der Kreuzung entweder geradeaus weiterzufahren oder nach rechts abzubiegen","Das abgebildete Verkehrszeichen erlaubt es nur, geradeaus weiterzufahren oder nach rechts abzubiegen","Das abgebildete Verkehrszeichen lässt das Linksabbiegen an der Kreuzung nicht zu","Das abgebildete Verkehrszeichen zeigt an, dass es unmöglich ist, links einzubiegen","Das abgebildete Verkehrszeichen zeigt die einzig zulässigen Fahrtrichtungen an","Das abgebildete Verkehrszeichen ist ein Vorschriftszeichen","Das abgebildete Verkehrszeichen ist ein Gebotszeichen","Das abgebildete Verkehrszeichen erlaubt es nur, geradeaus weiterzufahren","Das abgebildete Verkehrszeichen weist darauf hin, dass es nur erlaubt ist, nach rechts abzubiegen","Das abgebildete Verkehrszeichen schreibt vor, rechts an einer Straßenbaustelle vorbeizufahren","Das abgebildete Verkehrszeichen ist ein Hinweiszeichen","Das abgebildete Verkehrszeichen ist ein Gefahrenzeichen","Das abgebildete Verkehrszeichen zeigt den baldigen Anfang einer den langsamen Fahrzeugen vorbehaltene Zusatzfahrspur an"]
+rispostet=["Il segnale raffigurato obbliga a proseguire diritto o svoltare a destra all'incrocio","Il segnale raffigurato consente solo di proseguire diritto o svoltare a destra","Il segnale raffigurato non consente la svolta a sinistra all'incrocio","Il segnale raffigurato indica l'impossibilità di svoltare a sinistra","Il segnale raffigurato indica le uniche direzioni consentite","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato è un segnale di obbligo","Il segnale raffigurato consente solo di proseguire diritto","Il segnale raffigurato indica che è consentito soltanto svoltare a destra","Il segnale raffigurato obbliga a passare a destra di un cantiere stradale","Il segnale raffigurato è un segnale di indicazione","Il segnale raffigurato è un segnale di pericolo","Il segnale raffigurato indica il prossimo inizio di una corsia supplementare riservata ai veicoli lenti"]
+soluzioni="VVVVVVVFFFFFF"
+rispass=[1867,1868,1869,1870,1871,1872,1873,1874,1875,1876,1877,1878,1879]
+nummin="04012"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Frizione 4"
+quizass=254
+sugg=0
+risposte=["La frizione consente di collegare e scollegare il motore con gli altri organi di trasmissione","La frizione consente di far partire il veicolo collegando gradualmente l'albero motore con le ruote motrici attraverso gli organi di trasmissione","La frizione consente di tenere in funzionamento il motore quando il veicolo è fermo con marcia inserita","La frizione si dice &quot;innestata&quot; quando il pedale che la comanda è sollevato","Il comando idraulico della frizione sfrutta la pressione dell'olio per ridurre lo sforzo del conducente","La frizione consente di cambiare marcia quando il veicolo è in movimento","La frizione deve essere innestata in maniera graduale","Il piede sinistro del conducente, quando non agisce sul comando per effettuare un cambio di marcia, non deve appoggiare sul pedale della frizione","La frizione permette di effettuare una partenza graduale con un veicolo carico di merce","Per migliorare la postura di guida, il conducente deve tenere appoggiato il piede sinistro sul pedale della frizione durante la marcia","La frizione serve a dirigere il veicolo durante la marcia","Il comando idraulico della frizione migliora la stabilità del veicolo in curva","Il comando idraulico della frizione sfrutta la pressione dell'aria per ridurre lo sforzo del conducente","La frizione consente di connettere e disconnettere gradualmente il motore con la pompa di iniezione","La frizione non consente di cambiare marcia quando il veicolo è in movimento","Il comando idraulico della frizione sfrutta la pressione dell'olio motore per ridurre lo sforzo del conducente","La frizione si dice &quot;innestata&quot; quando il pedale che la comanda è abbassato","La frizione si dice &quot;innestata&quot; quando il pedale che la comanda è premuto a fondo dal conducente","Tutti i veicoli che non sono dotati di pedale della frizione sono detti &quot;a presa diretta&quot;"]
+soluzioni="VVVVVVVVVFFFFFFFFFF"
+rispass=[2175,2176,2177,2179,2180,2181,2182,2184,2189,2190,2194,2200,2201,2202,2203,2204,2205,2206,2207]
+nummin="115013"
+}
+continua()

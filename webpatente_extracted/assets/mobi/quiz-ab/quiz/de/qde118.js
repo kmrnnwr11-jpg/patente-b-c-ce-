@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di CADUTA MASSI DA DESTRA"
+segnale="33"
+quizass=118
+sugg=30
+risposte=["Das abgebildete Verkehrszeichen kündigt Steinschlaggefahr von rechts an","Das abgebildete Verkehrszeichen kündigt einen Straßenabschnitt an, auf welchem Gefahr von Steinen auf der Fahrbahn besteht","Das abgebildete Verkehrszeichen kündigt die Gefahr an, dass Steine von der Felswand herabfallen könnten","Wo das abgebildete Verkehrszeichen steht, ist es angebracht, die Geschwindigkeit herabzusetzen, um etwaige auf die Fahrbahn gefallene Steine zu meiden","Wo das abgebildete Verkehrszeichen steht, muss man auf mögliche abrupte Bremsmanöver der vorausfahrenden Fahrzeuge achten","Das abgebildete Verkehrszeichen kündigt einen rutschigen Straßenabschnitt an","Das abgebildete Verkehrszeichen kündigt eine Engstelle auf der rechten Seite an","Das abgebildete Verkehrszeichen kündigt einen nicht asphaltierten Straßenabschnitt an","Das abgebildete Verkehrszeichen kündigt unbefestigte Bankette an","Das abgebildete Verkehrszeichen kündigt einen Straßenabschnitt an, auf welchem man nicht schneller als 30 km/h fahren darf","Das abgebildete Verkehrszeichen kündigt möglichen Hagelschlag an"]
+rispostet=["Il segnale raffigurato preannuncia il pericolo di caduta di massi da destra","Il segnale raffigurato preannuncia un tratto di strada ove esiste il pericolo di presenza di pietre sulla carreggiata","Il segnale raffigurato preannuncia il pericolo di caduta di pietre dalla parete rocciosa","In presenza del segnale raffigurato è opportuno moderare la velocità per evitare di urtare eventuali massi caduti sulla carreggiata","In presenza del segnale raffigurato bisogna far attenzione a possibili brusche frenate da parte dei veicoli che precedono","Il segnale raffigurato preannuncia un tratto di strada sdrucciolevole","Il segnale raffigurato preannuncia una strettoia a destra","Il segnale raffigurato preannuncia un tratto di strada non asfaltato","Il segnale raffigurato preannuncia banchine cedevoli","Il segnale raffigurato preannuncia un tratto di strada dove non si può circolare ad oltre 30 km/h","Il segnale raffigurato preannuncia possibili grandinate"]
+soluzioni="VVVVVFFFFFF"
+rispass=[1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091]
+nummin="02045"
+}
+continua();

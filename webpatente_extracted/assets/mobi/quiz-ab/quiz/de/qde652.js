@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Ordine di precedenza nell’incrocio di figura n. 608"
+segnale="608"
+quizass=652
+sugg=232
+risposte=["In der in der Abbildung dargestellten Situation muss das Fahrzeug B den anderen beiden Fahrzeugen keine Vorfahrt gewähren","In der in der Abbildung dargestellten Situation fährt das Fahrzeug H als Zweites durch","In der in der Abbildung dargestellten Situation darf das Fahrzeug C die Kreuzung als Letztes besetzen","In der in der Abbildung dargestellten Situation fährt das Fahrzeug B als Erstes durch","In der in der Abbildung dargestellten Situation muss das Fahrzeug C dem Fahrzeug H Vorfahrt gewähren","In der in der Abbildung dargestellten Situation fährt das Fahrzeug H als Erstes durch","In der in der Abbildung dargestellten Situation fahren die Fahrzeuge B und C gleichzeitig als Erste durch","In der in der Abbildung dargestellten Situation darf das Fahrzeug H die Kreuzung erst nach der Durchfahrt der Fahrzeuge B und C besetzen","In der in der Abbildung dargestellten Situation hat das Fahrzeug H Vorfahrt gegenüber dem Fahrzeug C, weil es sich um einen Autobus handelt","In der in der Abbildung dargestellten Situation fährt das Fahrzeug C als Erstes durch"]
+rispostet=["Nella situazione rappresentata in figura il veicolo B non deve dare la precedenza agli altri due veicoli","Nella situazione rappresentata in figura il veicolo H passa per secondo","Nella situazione rappresentata in figura il veicolo C deve disimpegnare l'incrocio per ultimo","Nella situazione rappresentata in figura il veicolo B passa per primo","Nella situazione rappresentata in figura il veicolo C deve dare la precedenza al veicolo H","Nella situazione rappresentata in figura il veicolo H passa per primo","Nella situazione rappresentata in figura passano per primi e contemporaneamente i veicoli B e C","Nella situazione rappresentata in figura il veicolo H deve impegnare l'incrocio dopo il passaggio dei veicoli B e C","Nella situazione rappresentata in figura il veicolo H ha la precedenza sul veicolo C, in quanto è un autobus","Nella situazione rappresentata in figura il veicolo C passa per primo"]
+soluzioni="VVVVVFFFFF"
+rispass=[4739,4740,4741,4742,4743,4744,4745,4746,4747,4748]
+nummin="14002"
+}
+continua();

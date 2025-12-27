@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Iniezione diretta o indiretta del combustibile nel motore Diesel"
+quizass=215
+sugg=0
+risposte=["Der Dieselmotor kann mit zwei unterschiedlichen Kraftstoffeinspritzungssystemen ausgelegt sein","Der Dieselmotor kann eine Direkteinspritzung aufweisen","Der Dieselmotor kann eine indirekte Einspritzung aufweisen","Bei einem Dieselmotor mit Direkteinspritzung wird der Dieselkraftstoff direkt in die Brennkammer eingespritzt","Bei einem Dieselmotor mit indirekter Einspritzung wird der Dieselkraftstoff in eine Vorkammer eingespritzt","Bei einem Dieselmotor mit Direkteinspritzung wird der Dieselkraftstoff zuerst in die Vorkammer eingespritzt","Bei einem Dieselmotor mit Direkteinspritzung wird der Dieselkraftstoff direkt auf die Oberseite des Kolbens gespritzt","Beim Dieselmotor kommen Kerzen zum Einsatz, welche den Funken erzeugen, der den Dieselkraftstoff entzündet","Der Dieselmotor mit indirekter Einspritzung hat einen höheren Wirkungsgrad als jener mit Direkteinspritzung","Der Dieselmotor mit indirekter Einspritzung ist weniger umweltbelastend als jener mit Direkteinspritzung"]
+rispostet=["Il motore Diesel può essere progettato con due diverse modalità di iniezione del combustibile","Il motore Diesel può essere ad iniezione diretta","Il motore Diesel può essere ad iniezione indiretta","Nel motore Diesel ad iniezione diretta, il gasolio viene iniettato direttamente nella camera di combustione","Nel motore Diesel ad iniezione indiretta, il gasolio viene iniettato in una precamera di combustione","Nel motore Diesel ad iniezione diretta il gasolio viene prima iniettato nella precamera di combustione","Nel motore Diesel ad iniezione indiretta, il gasolio viene iniettato direttamente sulla parte superiore del pistone","Il motore Diesel prevede l'uso delle candele che generano la scintilla che fa accendere il gasolio","Il motore Diesel ad iniezione indiretta ha un rendimento migliore di quello ad iniezione diretta","Il motore Diesel ad iniezione indiretta è meno inquinante rispetto a quello ad iniezione diretta"]
+soluzioni="VVVVVFFFFF"
+rispass=[1713,1714,1715,1716,1717,1718,1719,1720,1721,1722]
+nummin="111012"
+}
+continua();

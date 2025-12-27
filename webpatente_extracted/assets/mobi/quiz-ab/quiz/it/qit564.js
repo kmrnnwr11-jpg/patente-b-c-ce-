@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Obblighi per chi intende effettuare l’inversione di marcia"
+quizass=564
+sugg=11038
+risposte=["Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve dare la precedenza ai veicoli che sopraggiungono","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve rinunciare a compiere la manovra, qualora vi sia traffico intenso e continuo","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve rinunciare ad eseguire la manovra, se vi è scarsa visibilità","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve azionare l'indicatore di direzione","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso non deve creare pericolo o intralcio agli altri utenti della strada","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso deve azionare la segnalazione luminosa di pericolo","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso può compiere la manovra anche in curva, se dà precedenza a tutti i veicoli","Il conducente che può effettuare l'inversione di marcia su una strada a doppio senso deve accertarsi se la linea di mezzeria è continua","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso può compiere la manovra anche con scarsa visibilità, se la linea di mezzeria è tratteggiata","Il conducente che intende effettuare l'inversione di marcia su una strada a doppio senso può effettuarla solo sulle strade larghe, che permettono di eseguirla con una sola manovra"]
+soluzioni="VVVVVFFFFF"
+rispass=[4613,4614,4615,4616,4617,4618,4619,4620,4621,4622]
+nummin="13028"
+}
+continua();

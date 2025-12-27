@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Controlli da effettuare prima della partenza su un autobus"
+quizass=371
+sugg=0
+risposte=["Prima della partenza, il conducente dell'autobus deve verificare la presenza a bordo della cassetta di pronto soccorso","Prima della partenza, il conducente dell'autobus deve verificare la presenza degli eventuali martelletti per i vetri delle uscite di sicurezza","Prima della partenza, il conducente dell'autobus deve verificare che gli estintori siano stati revisionati da non più di sei mesi","Prima della partenza, il conducente dell'autobus di massa superiore a 3,5 t deve verificare che il veicolo sia dotato dei cunei ferma ruota","Prima della partenza, il conducente dell'autobus deve verificare la presenza del triangolo di emergenza","Prima di partire, il conducente deve eseguire il controllo dell'efficienza dei sistemi di salita e discesa dei passeggeri","Prima della partenza, il conducente deve controllare l'efficienza dei sistemi di apertura delle porte e delle bagagliere","Prima della partenza, il conducente dell'autobus deve controllare il livello dell'olio nel cambio","Prima della partenza, il conducente dell'autobus deve controllare il livello del liquido lubrificante nella scatola del differenziale","Prima della partenza, il conducente dell'autobus deve verificare l'efficienza della cinghia della pompa dell'acqua","Prima della partenza, il conducente dell'autobus deve controllare il funzionamento corretto dell'apparato di iniezione","Prima della partenza, il conducente dell'autobus deve verificare la pulizia del filtro dell'aria condizionata","Prima della partenza, il conducente dell'autobus deve verificare la presenza del pannello dei carichi sporgenti","Prima della partenza, il conducente deve verificare la presenza a bordo di bibite di rinfresco per i passeggeri"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281]
+nummin="161006"
+}
+continua()

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Pannello integrativo di strada sdrucciolevole PER PIOGGIA"
+segnale="139"
+quizass=465
+sugg=146
+risposte=["Die dargestellte Zusatztafel zeigt einen bei Regen gefährlichen Straßenabschnitt an","Die dargestellte Zusatztafel fordert auf, bei Regen den Sicherheitsabstand zu erhöhen","Die dargestellte Zusatztafel zeigt an, dass die Straße bei Regen rutschig werden kann","Die dargestellte Zusatztafel zeigt an, dass man bei Regen auf Schlamm auf der Straße treffen kann","Die dargestellte Zusatztafel zeigt einen bei Regen rutschigen Straßenabschnitt an","Die dargestellte Zusatztafel fordert auf, bei Regen die Geschwindigkeit herabzusetzen, weil die Straße rutschig wird","Die dargestellte Zusatztafel zeigt eine Autowaschanlage in der Nähe an","Die dargestellte Zusatztafel zeigt die Gegenwart einer Wetterstation in der Nähe an","Die dargestellte Zusatztafel fordert auf, auf die vorbeifahrenden Lastkraftwagen zu achten, weil diese die Ladung verlieren könnten","Die dargestellte Zusatztafel zeigt einen Straßenabschnitt mit möglicher Staubwolkenbildung an","Die abgebildete Tafel zeigt einen Bereich an, wo es oft regnet","Die dargestellte Zusatztafel zeigt Steinschlaggefahr auf der Straße an"]
+rispostet=["Il pannello integrativo raffigurato indica un tratto di strada pericoloso in caso di pioggia","Il pannello integrativo raffigurato invita, in caso di pioggia, ad aumentare la distanza di sicurezza","Il pannello integrativo raffigurato indica che quando piove la strada può diventare sdrucciolevole","Il pannello integrativo raffigurato indica che in caso di pioggia si può trovare del fango sulla strada","Il pannello integrativo raffigurato segnala un tratto di strada sdrucciolevole in caso di pioggia","Il pannello integrativo raffigurato invita a diminuire la velocità in caso di pioggia, perché la strada diventa sdrucciolevole","Il pannello integrativo raffigurato indica un autolavaggio nelle vicinanze","Il pannello integrativo raffigurato indica la presenza di una stazione meteorologica nelle vicinanze","Il pannello integrativo raffigurato indica di fare attenzione agli autocarri in transito, per la possibile perdita del carico trasportato","Il pannello integrativo raffigurato indica un tratto di strada con probabile formazione di nuvole di polvere","Il pannello raffigurato indica una zona dove piove spesso","Il pannello integrativo raffigurato indica caduta di pietre sulla strada"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[3875,3876,3877,3878,3879,3880,3881,3882,3883,3884,3885,3886]
+nummin="10018"
+}
+continua();

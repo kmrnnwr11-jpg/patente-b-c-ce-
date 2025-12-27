@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di SOSTA CONSENTITA A PARTICOLARI CATEGORIE"
+segnale="91"
+quizass=179
+sugg=91
+risposte=["Das abgebildete Verkehrszeichen erlaubt Fahrzeugen für den Transport von Invaliden das Parken mit entsprechendem Ausweis","Das abgebildete Verkehrszeichen ist ein Vorschriftszeichen","Das abgebildete Verkehrszeichen stellt eine besondere Ausnahme vom Parkverbot dar","Das abgebildete Verkehrszeichen erlaubt nur Fahrzeugen von Invaliden das Parken","Das abgebildete Verkehrszeichen erlaubt das Parken von Schulbussen","Das abgebildete Verkehrszeichen zeigt eine den Fahrzeugen für den Transport von Invaliden vorbehaltene Fahrspur an","Das abgebildete Verkehrszeichen zeigt ein Parkverbot für Fahrzeuge für den Transport von Invaliden an und gibt den nächsten Parkplatz an","Das abgebildete Verkehrszeichen kündigt einen für den normalen Verkehr gesperrten Bereich an, der für Invaliden ausgerüstet ist","Das abgebildete Verkehrszeichen erlaubt auf der Straße, an der es steht, nur Fahrzeugen für den Transport von Invaliden die Durchfahrt","Das abgebildete Verkehrszeichen erlaubt das Parken von Kleinkrafträdern und von Krafträdern","Das abgebildete Verkehrszeichen erlaubt das Parken, wenn der Parkschein eines Parkscheinautomaten ausgelegt wird"]
+rispostet=["Il segnale raffigurato consente la sosta ai veicoli al servizio di persone invalide munite dell'apposito contrassegno","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato rappresenta una specifica eccezione al divieto di sosta","Il segnale raffigurato non consente la sosta a veicoli diversi da quelli al servizio di persone invalide","Il segnale raffigurato consente la sosta agli scuolabus","Il segnale raffigurato indica una corsia riservata ai veicoli al servizio di persone invalide","Il segnale raffigurato è un divieto di sosta per i veicoli al servizio di invalidi, ed indica il più vicino parcheggio","Il segnale raffigurato preavvisa una zona vietata al traffico regolare perché attrezzata per persone invalide","Il segnale raffigurato, nella strada ove è posto, consente il transito ai soli veicoli al servizio di persone invalide","Il segnale raffigurato consente la sosta ai ciclomotori e ai motocicli","Il segnale raffigurato consente la sosta esponendo il tagliando emesso da un parchimetro"]
+soluzioni="VVVVFFFFFFF"
+rispass=[1678,1679,1680,1681,1682,1683,1684,1685,1686,1687,1688]
+nummin="03042"
+}
+continua();

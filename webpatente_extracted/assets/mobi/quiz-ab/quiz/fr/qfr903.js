@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Sospensioni"
+quizass=903
+sugg=13028
+risposte=["Les suspensions d'un véhicule à moteur se trouvent entre le châssis et les roues","Les suspensions d'un véhicule à moteur servent à garantir un bon confort de voyage","Les suspensions d'un véhicule à moteur servent à garantir que les roues restent adhérentes au revêtement routier","Les suspensions d'un véhicule à moteur servent à amorcer les heurts transmis par les aspérités du terrain","Les suspensions d'un véhicule à moteur participent à rendre la conduite plus confortable et plus sûre","Les suspensions d'un véhicule à moteur servent à maintenir bloqué le véhicule, même sur une route en pente","Les suspensions d'un véhicule à moteur se trouvent en général sur les roues avant, mais pas sur les roues arrière","Les suspensions d'un véhicule à moteur servent à rendre le véhicule plus rigide, de manière à ce que le conducteur puisse sentir clairement tous les sautillements du véhicule dus aux irrégularités de la route","Les suspensions d'un véhicule à moteur n'entrent pas en fonction sur les routes rectilignes"]
+rispostet=["Le sospensioni di un veicolo a motore sono poste tra il telaio e le ruote","Le sospensioni di un veicolo a motore servono a garantire un buon confort di marcia","Le sospensioni di un veicolo a motore servono a garantire che le ruote rimangano aderenti al fondo stradale","Le sospensioni di un veicolo a motore servono a smorzare gli urti trasmessi dalle asperità del terreno","Le sospensioni di un veicolo a motore collaborano a rendere più confortevole e sicura la guida","Le sospensioni di un veicolo a motore servono a mantenere il veicolo fermo anche su strada in pendenza","Le sospensioni di un veicolo a motore sono in genere poste sulle ruote anteriori, ma non su quelle posteriori","Le sospensioni di un veicolo a motore servono a irrigidire il veicolo, in modo che il conducente percepisca chiaramente tutti i saltellamenti del veicolo dovuti ad irregolarità della strada","Le sospensioni di un veicolo a motore non entrano in funzione su strada rettilinea"]
+soluzioni="VVVVVFFFF"
+rispass=[7025,7026,7027,7028,7029,7030,7031,7032,7033]
+nummin="25022"
+}
+continua();

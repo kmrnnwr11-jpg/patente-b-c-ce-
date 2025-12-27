@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Posizionamento del veicolo in caso di fermata"
+quizass=685
+sugg=11050
+risposte=["Wo es keinen erhöhten Gehsteig gibt, muss der Fahrer beim Halten mindestens einen Meter für den Durchgang der Fußgänger frei lassen","Außerhalb der geschlossenen Ortschaften muss der Fahrer das Fahrzeug beim Halten wenn möglich außerhalb der Fahrbahn stellen","Außerhalb der geschlossenen Ortschaften muss der Fahrer das Fahrzeug beim Halten wenn möglich außerhalb der Fahrbahn stellen, jedoch nicht auf die Fahrradwege","Außerhalb der geschlossenen Ortschaften muss der Fahrer, wenn es nicht möglich ist, außerhalb der Fahrbahn zu halten, das Fahrzeug so nah wie möglich an den rechten Fahrbahnrand stellen","Beim Halten auf einer Ortsstraße, wo es keinen erhöhten Gehsteig gibt, muss der Fahrer das Fahrzeug so nah wie möglich an den rechten Fahrbahnrand stellen","Außerhalb der geschlossenen Ortschaften hat der Fahrer beim Halten die Pflicht, das Fahrzeug außerhalb der Fahrbahn zu stellen, gegebenenfalls auf einen Radweg"]
+rispostet=["In caso di fermata, ove non esista marciapiede rialzato, il conducente deve lasciare uno spazio non inferiore ad un metro per il transito dei pedoni","Fuori dei centri abitati, il conducente, in caso di fermata, deve collocare, se possibile, il veicolo fuori della carreggiata","Fuori dei centri abitati, il conducente, in caso di fermata, deve collocare il veicolo fuori della carreggiata, ma non sulle piste ciclabili","Fuori dei centri abitati, se non è possibile collocare il veicolo fuori della carreggiata, il conducente deve effettuare la fermata il più vicino possibile al margine destro della carreggiata","In caso di fermata su strada urbana in cui non esiste il marciapiede rialzato, il conducente deve collocare il veicolo il più vicino possibile al margine destro della carreggiata","Fuori dei centri abitati, il conducente, in caso di fermata ha l'obbligo di collocare il veicolo fuori della carreggiata, eventualmente su una pista ciclabile"]
+soluzioni="VVVVFF"
+rispass=[5345,5346,5347,5348,5349,5350]
+nummin="16006"
+}
+continua();

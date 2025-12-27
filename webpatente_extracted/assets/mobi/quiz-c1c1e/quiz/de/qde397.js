@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Obblighi del conducente nei confronti del destinatario delle cose trasportate"
+quizass=397
+sugg=0
+risposte=["Im Falle, dass der Empfänger nicht erreichbar ist oder die Ablieferung der beförderten Güter verspätet fordert bzw. sich weigert, sie zu fordern, muss der Fahrzeugführer beim Verantwortlichen des Unternehmens, bei welchem er angestellt ist, sofort Anweisungen einholen","Der Fahrzeugführer muss die beförderten Güter dem Empfänger an dem Ort, zu dem Zeitpunkt und auf die Art und Weise zur Verfügung stellen, wie es das Unternehmen, bei welchem er beschäftigt ist, vorschreibt","Im Falle, dass der Empfänger nicht erreichbar ist oder die Übernahme der beförderten Güter verweigert, muss der Frachtführer dieselben unverzüglich zum Absender zurückbringen","Im Falle, dass der Empfänger nicht erreichbar ist oder die Übernahme der beförderten Güter verweigert, muss der Frachtführer die Polizeibehörden rufen","Im Falle, dass der Empfänger nicht erreichbar ist oder die Ablieferung der beförderten Güter verspätet fordert bzw. sich weigert, sie zu fordern, muss der Fahrer dieselben dem nächstgelegen öffentlichen Lager anvertrauen","Der Fahrzeugführer muss die beförderten Güter dem Empfänger an einer öffentlichen Lagerstelle zur Verfügung stellen"]
+rispostet=["Se il destinatario è irreperibile ovvero si rifiuta o ritarda a chiedere la riconsegna delle cose trasportate, il conducente deve domandare immediatamente istruzioni al responsabile dell'impresa di cui è dipendente","Il conducente deve mettere le cose trasportate a disposizione del destinatario nel luogo, nel termine e con le modalità indicati dall'impresa da cui dipende","Se il destinatario è irreperibile o si rifiuta di ricevere le cose trasportate, il conducente deve riportarle immediatamente al mittente","Se il destinatario è irreperibile o si rifiuta di ricevere le cose trasportate, il conducente deve chiamare gli organi di polizia","Se il destinatario è irreperibile ovvero si rifiuta o ritarda a chiedere la riconsegna delle cose trasportate, il conducente deve affidare le cose al magazzino pubblico più vicino","Il conducente deve mettere le cose trasportate a disposizione del destinatario in un luogo di pubblico deposito"]
+soluzioni="VVFFFF"
+rispass=[3439,3442,3447,3448,3468,3473]
+nummin="171001"
+}
+continua();

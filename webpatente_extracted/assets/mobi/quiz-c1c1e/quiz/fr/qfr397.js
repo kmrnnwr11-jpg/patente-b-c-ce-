@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Obblighi del conducente nei confronti del destinatario delle cose trasportate"
+quizass=397
+sugg=0
+risposte=["Si le destinataire est introuvable ou s'il refuse ou tarde à demander la livraison des marchandises transportées, le conducteur doit demander immédiatement des instructions au responsable de l'entreprise pour laquelle il travaille","Le conducteur doit mettre les marchandises transportées à disposition du destinataire dans le lieu, le délai et avec les modalités indiquées par l'entreprise dont il dépend","Si le destinataire est introuvable ou se refuse à recevoir les marchandises transportées, le conducteur doit immédiatement les reporter à l'expéditeur","Si le destinataire est introuvable ou se refuse à recevoir les marchandises transportées, le conducteur doit appeller les services de police","Si le destinataire est introuvable ou s'il refuse ou tarde de demander la livraison des marchandises transportées, le conducteur doit confier la marchandise à l'entrepôt public le plus proche","Le conducteur doit mettre les marchandises transportées à disposition du destinataire dans un lieu de dépôt public"]
+rispostet=["Se il destinatario è irreperibile ovvero si rifiuta o ritarda a chiedere la riconsegna delle cose trasportate, il conducente deve domandare immediatamente istruzioni al responsabile dell'impresa di cui è dipendente","Il conducente deve mettere le cose trasportate a disposizione del destinatario nel luogo, nel termine e con le modalità indicati dall'impresa da cui dipende","Se il destinatario è irreperibile o si rifiuta di ricevere le cose trasportate, il conducente deve riportarle immediatamente al mittente","Se il destinatario è irreperibile o si rifiuta di ricevere le cose trasportate, il conducente deve chiamare gli organi di polizia","Se il destinatario è irreperibile ovvero si rifiuta o ritarda a chiedere la riconsegna delle cose trasportate, il conducente deve affidare le cose al magazzino pubblico più vicino","Il conducente deve mettere le cose trasportate a disposizione del destinatario in un luogo di pubblico deposito"]
+soluzioni="VVFFFF"
+rispass=[3439,3442,3447,3448,3468,3473]
+nummin="171001"
+}
+continua();

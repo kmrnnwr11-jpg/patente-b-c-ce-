@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=13013
+titolo="PATENTE B"
+testo="Consente di guidare:<br />- autoveicoli (autovetture, autocaravan, autocarri) di massa massima autorizzata non superiore a 3,5 t, anche se trainanti un rimorchio leggero (cioè con massa fino a 750 kg) o un rimorchio non leggero (massa oltre 750 kg); la massa massima autorizzata del complesso (cioè la somma delle masse dei due veicoli) non deve superare 3,5 t;<br />- macchine agricole, comprese quelle definite eccezionali;<br />- macchine operatrici (sgombraneve, ecc.) non eccezionali (fino a 3,5 t);<br />- tutti i veicoli che si possono condurre con le patenti AM e B1 (tutti i tipi di ciclomotori e di quadricicli)<br />- solo sul territorio nazionale (Italia), i veicoli che si possono condurre con la patente A1 e se il conducente ha almeno 21 anni, anche tricicli a motore di potenza superiore a 15 kW<br /><br />Si può conseguire a 18 anni. Per il primo anno (e non per tre anni) dal conseguimento della patente B non si possono guidare autovetture con rapporto potenza/peso oltre 55 kW/t e con potenza assoluta (cioè: indipendentemente dal peso) oltre 70 kW.<br /><br />È sbagliato affermare che la patente di categoria B, abilita a condurre solo autovetture con al massimo 9 posti compreso il conducente (infatti si possono guidare anche altri tipi di veicolo), che, se conseguita dopo i 24 anni di età, abilita alla guida di tutti i motocicli (per guidare tutti i motocicli è necessaria la patente A, mentre la patente B equivale, solo in Italia, alla patente A1), che consente di guidare tutti gli autocaravan (ossia i camper: si possono guidare solo quelli di massa non superiore a 3,5 t) o che permette di condurre autobus."
+riferimento=[809]
+}
+suggerimenti.continua()

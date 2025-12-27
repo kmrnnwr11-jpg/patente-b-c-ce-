@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Classificazione dei veicoli: le autovetture"
+quizass=28
+sugg=11006
+risposte=["La voiture est un véhicule à moteur à quatre roues destiné au transport d'un maximum de neuf personnes, y compris le conducteur","La voiture fait partie des véhicules automobiles","La voiture ne peut pas avoir plus de neuf places, y compris celle pour le conducteur","L'autobus n'est pas une voiture","Les voitures peuvent être équipées d'un moteur électrique","Les voitures doivent périodiquement faire une révision","On considère des voitures tous les véhicules à moteur avec traction postérieure","Les voitures ne peuvent pas tracter des petites remorques ou des remorques","On appelle voitures tous les véhicules avec moteur antérieur","La voiture est un véhicule avec dix places totales, y compris celle pour le conducteur","On appelle voiture un véhicule blindé spécialement équipé pour transporter des objets précieux","Le camion est une voiture","La voiture peut avoir, au maximum, cinq places","Les voitures doivent faire une révision tous les cinq ans"]
+rispostet=["L'autovettura è un veicolo a motore con quattro ruote, destinato al trasporto di massimo nove persone, compreso il conducente","L'autovettura fa parte degli autoveicoli","L'autovettura non può avere più di nove posti, compreso il conducente","L'autobus non è un'autovettura","Le autovetture possono avere motore elettrico","Le autovetture sono soggette a revisione periodica","Si definiscono autovetture tutti i veicoli a motore che hanno la trazione posteriore","Le autovetture non possono trainare carrelli-appendice o rimorchi","Vengono definite autovetture tutti i veicoli con motore anteriore","L'autovettura è un veicolo con dieci posti in totale, compreso il conducente","Si definisce autovettura il veicolo blindato e appositamente attrezzato per il trasporto di valori","L'autocarro è un'autovettura","L'autovettura può avere, al massimo, cinque posti","Le autovetture sono soggette a revisione ogni cinque anni"]
+soluzioni="VVVVVVFFFFFFFF"
+rispass=[334,335,336,337,338,339,340,341,342,343,344,345,346,347]
+nummin="01032"
+}
+continua();

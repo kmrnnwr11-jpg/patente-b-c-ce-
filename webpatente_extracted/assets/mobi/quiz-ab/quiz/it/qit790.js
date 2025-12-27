@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Airbag"
+quizass=790
+sugg=11081
+risposte=["L'airbag è un cuscino gonfiabile di nylon o altro materiale sintetico","L'airbag entra in funzione in caso di incidente stradale con urto violento","L'airbag può essere pericoloso se si attiva mentre non si indossa la cintura di sicurezza","L'airbag serve a limitare i danni agli occupanti del veicolo per urti contro superfici interne del veicolo in caso di urto violento a seguito di incidente","L'airbag può essere talvolta disattivabile","L'airbag si gonfia automaticamente grazie al comando di un sensore","L'airbag si gonfia in pochi millisecondi","L'airbag si gonfia in pochi secondi","L'airbag si gonfia premendo un pulsante posto sul cruscotto","L'airbag deve essere gonfiato periodicamente per verificarne l'efficienza","L'airbag è utile soltanto nei percorsi extraurbani","L'airbag non va usato insieme alle cinture di sicurezza","L'airbag non può essere montato su vetture con meno di 4 porte","Il conducente può tarare, con apposito comando, la velocità minima d'urto al di sopra della quale far attivare l'airbag"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[6062,6063,6064,6065,6066,6067,6068,6069,6070,6071,6072,6073,6074,6075]
+nummin="19008"
+}
+continua();

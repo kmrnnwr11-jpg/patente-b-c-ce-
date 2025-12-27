@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Limiti massimi di velocità sui vari tipi di strada per i diversi tipi di veicoli (1)"
+quizass=499
+sugg=11027
+risposte=["Il limite massimo di velocità sulle autostrade è di 80 km/h per le autovetture con rimorchio","Il limite massimo di velocità sulle autostrade è ordinariamente di 130 km/h per i motocicli","Il limite massimo di velocità sulle autostrade è ordinariamente di 130 km/h per autocaravan di massa complessiva fino a 3,5 tonnellate","Il limite massimo di velocità sulle autostrade è di 80 km/h per l'autovettura che traina un caravan","Il limite massimo di velocità sulle strade extraurbane principali è ordinariamente di 110 km/h per i motocicli","Il limite massimo di velocità sulle strade extraurbane principali è di 70 km/h per autovetture con rimorchio per trasporto imbarcazioni","Il limite massimo di velocità sulle strade extraurbane secondarie è di 90 km/h per i motocicli","Il limite massimo di velocità sulle autostrade è di 130 km/h per le autovetture con rimorchio","Il limite massimo di velocità sulle autostrade è di 90 km/h per i motocicli","Il limite massimo di velocità sulle autostrade è di 90 km/h per autocaravan","Il limite massimo di velocità sulle autostrade è di 70 km/h per autovettura che traina un caravan","Il limite massimo di velocità su strade extraurbane principali è di 100 km/h per i motocicli","Il limite massimo di velocità sulle strade extraurbane principali è di 80 km/h per autovetture con rimorchio per trasporto di imbarcazioni","Il limite massimo di velocità sulle strade extraurbane secondarie è di 70 km/h per i motocicli"]
+soluzioni="VVVVVVVFFFFFFF"
+rispass=[4053,4054,4055,4056,4057,4059,4060,4062,4063,4064,4065,4067,4068,4069]
+nummin="04006"
+}
+continua();

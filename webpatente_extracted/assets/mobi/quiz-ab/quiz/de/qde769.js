@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Uso dei proiettori di profondità (abbaglianti) "
+quizass=769
+sugg=460
+risposte=["Das Fahren mit Aufblendlicht ist innerhalb von Ortschaften in der Regel verboten","Das Fahren mit Aufblendlicht ist außerhalb der Ortschaften notwendig, wenn die öffentliche Beleuchtung unzureichend ist und wenn man keine anderen Fahrzeuge kreuzt","Das Fahren mit Aufblendlicht ist außerhalb der Ortschaften notwendig, wenn die öffentliche Beleuchtung fehlt und wenn man keine anderen Fahrzeuge kreuzt","Wenn man andere Fahrzeuge kreuzt, muss man das Aufblendlicht durch das Abblendlicht ersetzen","Das Fahren mit Aufblendlicht ist in der Stadt in der Regel bei dichtem Nebel erlaubt","Das Fahren mit Aufblendlicht ist in Einbahntunnels innerhalb der Ortschaften notwendig","Das Fahren mit Aufblendlicht ist immer erlaubt, wenn man schwer verletzte oder kranke Personen befördert","Das Fahren mit Aufblendlicht ist bei Tag notwendig, wenn man auf der Autobahn der Sonne entgegen fährt"]
+rispostet=["L'uso dei proiettori a luce abbagliante è vietato, di norma, durante la marcia nei centri abitati","L'uso dei proiettori a luce abbagliante è necessario, fuori dei centri abitati, quando l'illuminazione pubblica è insufficiente e non si incrociano altri veicoli","L'uso dei proiettori a luce abbagliante è necessario, fuori dei centri abitati, quando l'illuminazione pubblica manca e non si incrociano altri veicoli","L'uso dei proiettori a luce abbagliante va sostituito con quello dei proiettori a luce anabbagliante quando si incrociano altri veicoli","L'uso dei proiettori a luce abbagliante è di norma consentito in città, in caso di nebbia fitta","L'uso dei proiettori a luce abbagliante è necessario nelle gallerie urbane a senso unico","L'uso dei proiettori a luce abbagliante è sempre ammesso quando si trasportano feriti o ammalati gravi","L'uso dei proiettori a luce abbagliante è necessario, di giorno, se si circola su un'autostrada viaggiando controsole"]
+soluzioni="VVVVFFFF"
+rispass=[5934,5935,5936,5937,5938,5939,5940,5941]
+nummin="18015"
+}
+continua();

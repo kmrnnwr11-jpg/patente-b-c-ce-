@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Intervento in soccorso degli infortunati dopo un incidente"
+quizass=847
+sugg=11104
+risposte=["Suite à un accident, le sauveteur qui intervient doit bien évaluer la situation, pour protéger les blessés ou les personnes impliquées dans l'accident","Suite à un accident, le sauveteur qui intervient doit assister les personnes impliquées selon ses capacités, mais sans prendre des initiatives de compétence spécifiquement médicale","Suite à un accident, le sauveteur qui intervient doit assister les blessés, selon ses possibilités et compétences","Les personnes impliquées dans un accident doivent toujours et immédiatement s'éloigner du lieu de l'accident","En cas d'accident, il faut seulement attendre que les secours arrivent, sans rien faire","En cas d'accident, la première chose que le sauveteur doit faire est identifier le blessé en lui demandant prénom et nom","En cas d'accident de la route, le secoureur doit donner des médicaments à la victime, si celle-ci n'a pas de compétences médicales"]
+rispostet=["Dopo un incidente stradale, il soccorritore che interviene deve valutare bene la situazione, per proteggere gli infortunati da altri pericoli","Dopo un incidente stradale, il soccorritore che interviene deve assistere gli infortunati al meglio delle sue possibilità, senza però prendere iniziative di specifica competenza medica","Dopo un incidente stradale, il soccorritore che interviene deve prestare assistenza agli infortunati, secondo le proprie possibilità e conoscenze","Chi è coinvolto in un incidente stradale deve allontanarsi sempre e subito dal luogo in cui si è verificato","In caso di incidente stradale, bisogna aspettare solo l'arrivo dei soccorsi, senza fare nulla","In caso di incidente stradale, la prima cosa che deve fare il soccorritore è identificare l'infortunato, chiedendogli nome e cognome","In caso di incidente stradale, il soccorritore deve somministrare farmaci alla vittima, se la stessa non ha specifica competenza medica"]
+soluzioni="VVVFFFF"
+rispass=[6621,6622,6623,6624,6625,6626,6627]
+nummin="22018"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="La manovra del sorpasso (1)"
+quizass=657
+sugg=285
+risposte=["Bevor man mit dem Überholmanöver beginnt, muss man den Fahrtrichtungsanzeiger betätigen","Das Überholmanöver wird in der Regel links ausgeführt","Beim Überholen muss ein angemessener Seitenabstand zum überholten Fahrzeug eingehalten werden","Nach dem Überholmanöver muss sich der Fahrer des Fahrzeugs so rasch wie möglich wieder rechts einordnen, ohne den Verkehr zu gefährden oder zu behindern","Das Überholmanöver darf nicht ausgeführt werden, wenn die Sicht nicht ausreicht, um den Vorgang in aller Sicherheit zu Ende zu führen","Das Überholmanöver darf nicht ausgeführt werden, wenn die Fahrbahn nicht breit genug ist","Der Fahrer, der überholen will, hat die Pflicht, die Hupe zu betätigen","Der Fahrer, der zum Überholen ansetzt, hat keine Pflicht, den Fahrtrichtungsanzeiger zu betätigen","Nach dem Überholen darf sich das Fahrzeug sofort wieder rechts einordnen, wenn es dem überholten Fahrzeug den Weg abschneidet","Das Überholmanöver ist auch dann auszuführen, wenn die Sicht nicht ausreicht, um den Vorgang in aller Sicherheit zu Ende zu führen"]
+rispostet=["Prima di iniziare una manovra di sorpasso occorre azionare l'indicatore di direzione","La manovra di sorpasso si effettua, di norma, a sinistra","Il sorpasso si effettua tenendo una adeguata distanza laterale dal veicolo che si sorpassa","Dopo aver effettuato una manovra di sorpasso il conducente del veicolo deve riportarsi a destra appena possibile senza creare pericolo o intralcio","La manovra di sorpasso non va effettuata se lo spazio visibile risulta insufficiente per completarla in sicurezza","La manovra di sorpasso non va effettuata se la carreggiata non è sufficientemente larga","Il conducente che intende effettuare il sorpasso ha l'obbligo di azionare il segnale acustico","Il conducente che intende iniziare una manovra di sorpasso non ha l'obbligo di azionare l'indicatore di direzione","Dopo il sorpasso il veicolo può immediatamente spostarsi a destra se taglia la strada a quello sorpassato","La manovra di sorpasso si effettua anche se lo spazio visibile risulta insufficiente per completarla in sicurezza"]
+soluzioni="VVVVVVFFFF"
+rispass=[5156,5157,5158,5159,5162,5163,5164,5165,5166,5168]
+nummin="15002"
+}
+continua();

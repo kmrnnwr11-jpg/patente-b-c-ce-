@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere avvicinandosi ad un incrocio"
+quizass=574
+sugg=298
+risposte=["Wenn man sich einer Kreuzung nähert, muss man sich darauf vorbereiten, die Vorfahrtsregeln zu beachten","Wenn man sich einer Kreuzung nähert, muss man sich rechtzeitig in die Fahrspur begeben, die für die beabsichtigte Richtung bestimmt ist","Wenn man sich einer Kreuzung nähert, muss man die Absicht, abzubiegen, rechtzeitig ankündigen","Wenn man sich mit einem zweirädrigen Fahrzeug einer Kreuzung nähert, muss man sich hinter den anderen wartenden Fahrzeugen aufreihen","Wenn man zu einer Kreuzung kommt, darf man diese nur dann besetzen, wenn man die Möglichkeit hat, weiterzufahren und sie zu räumen","Wenn man sich einer Kreuzung nähert, muss man höchste Vorsicht walten lassen, um Unfälle zu vermeiden","Wenn man sich einer Kreuzung nähert, muss man immer vor den Fahrzeugen durchfahren, die von rechts kommen","Wenn man sich einer Kreuzung nähert, muss man schnell links überholen, wenn man nach rechts abbiegen will","Wenn man sich einer Kreuzung in geschlossenen Ortschaften nähert, muss man hupen"]
+rispostet=["Giungendo in vicinanza di un incrocio bisogna predisporsi ad osservare le norme di precedenza","Giungendo in vicinanza di un incrocio ci si deve spostare per tempo sulla corsia destinata alla direzione che si intende prendere","Giungendo in vicinanza di un incrocio si deve segnalare per tempo l'intenzione di svoltare","Giungendo alla guida di un veicolo a due ruote in vicinanza di un incrocio, bisogna incolonnarsi dietro gli altri veicoli in attesa","Giungendo ad un incrocio è consentito impegnarlo solo se si ha la possibilità di proseguire e liberarlo","Giungendo in vicinanza di un incrocio si deve usare la massima prudenza per evitare incidenti","Giungendo in vicinanza di un incrocio bisogna passare sempre prima dei veicoli che arrivano da destra","Giungendo in vicinanza di un incrocio bisogna sorpassare velocemente a sinistra se si vuole svoltare a destra","Giungendo in vicinanza di un incrocio nei centri abitati occorre suonare il clacson"]
+soluzioni="VVVVVVFFF"
+rispass=[4576,4577,4578,4579,4580,4581,4582,4583,4584]
+nummin="13024"
+}
+continua();

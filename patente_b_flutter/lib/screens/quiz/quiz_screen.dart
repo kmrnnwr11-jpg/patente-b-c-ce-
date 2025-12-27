@@ -8,6 +8,8 @@ import '../../services/stats_service.dart';
 import '../../services/achievement_service.dart';
 import '../../services/translation_service.dart';
 import '../../services/language_preference_service.dart';
+import 'package:provider/provider.dart';
+import '../../services/course_service.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/audio/audio_button.dart';
 import '../../widgets/translation/language_selector.dart';
@@ -27,10 +29,12 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final QuizService _quizService = QuizService();
-  final BookmarkService _bookmarkService = BookmarkService();
-  final StatsService _statsService = StatsService();
-  final AchievementService _achievementService = AchievementService();
+  late QuizService _quizService;
+  late BookmarkService _bookmarkService;
+  late StatsService _statsService;
+  late AchievementService _achievementService;
+  late TranslationService _translationService;
+  late LanguagePreferenceService _languagePreferenceService;
 
   List<QuizQuestion> _questions = [];
   int _currentIndex = 0;
@@ -44,19 +48,181 @@ class _QuizScreenState extends State<QuizScreen> {
   AppLanguage _selectedLanguage = AppLanguage.italian;
   Set<int> _bookmarkedIds = {};
   bool _showTranslation = false;
-  final TranslationService _translationService = TranslationService();
-  final LanguagePreferenceService _languagePreferenceService =
-      LanguagePreferenceService();
 
   // Answer feedback overlay
   bool _showAnswerOverlay = false;
   bool? _lastAnswerCorrect;
 
+  // Quiz preferences
+  bool _instantCorrection = true; // Show correct/wrong immediately
+  bool _translationsEnabled = true; // Enable translations
+  bool _preferencesShown = false; // Track if dialog was shown
+
   @override
   void initState() {
     super.initState();
-    _loadQuestions();
-    _loadServices();
+    _languagePreferenceService = LanguagePreferenceService();
+
+    // Defer loading to didChangeDependencies
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        _loadServices();
+        _loadQuestions();
+        if (!_preferencesShown) {
+          _showQuizPreferencesDialog();
+        }
+      }
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _quizService = context.read<QuizService>();
+    _bookmarkService = context.read<BookmarkService>();
+    _statsService = context.read<StatsService>();
+    _achievementService = context.read<AchievementService>();
+    _translationService = context.read<TranslationService>();
+  }
+
+  /// Show quiz preferences dialog at start
+  void _showQuizPreferencesDialog() {
+    _preferencesShown = true;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        bool tempInstantCorrection = _instantCorrection;
+        bool tempTranslationsEnabled = _translationsEnabled;
+
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              backgroundColor: AppTheme.surfaceColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Title in Italian
+                  const Text(
+                    'Vuoi la correzione istantanea durante il test?',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 8),
+                  // Translation in user's language
+                  Text(
+                    _getPreferenceTranslation(_selectedLanguage),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: AppTheme.textSecondary,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 24),
+                  // Translation toggle
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Disabilita Traduzioni ?',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      Switch(
+                        value: !tempTranslationsEnabled,
+                        onChanged: (value) {
+                          setDialogState(() {
+                            tempTranslationsEnabled = !value;
+                          });
+                        },
+                        activeColor: AppTheme.primaryColor,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              actions: [
+                // No button
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () {
+                      setState(() {
+                        _instantCorrection = false;
+                        _translationsEnabled = tempTranslationsEnabled;
+                      });
+                      Navigator.pop(context);
+                    },
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'No',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                // Si button
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _instantCorrection = true;
+                        _translationsEnabled = tempTranslationsEnabled;
+                      });
+                      Navigator.pop(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppTheme.primaryColor,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text(
+                      'Si',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              actionsAlignment: MainAxisAlignment.center,
+              actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  /// Get translated text for preferences dialog
+  String _getPreferenceTranslation(AppLanguage language) {
+    switch (language) {
+      case AppLanguage.urdu:
+        return 'کیا آپ ٹیسٹ کے دوران فوری نتیجہ دیکھنا چاہتے ہیں؟';
+      case AppLanguage.punjabi:
+        return 'ਕੀ ਤੁਸੀਂ ਟੈਸਟ ਦੌਰਾਨ ਤੁਰੰਤ ਹੀ ਰਿਜ਼ਲਟ ਦੇਖਣਾ ਚਾਹੁੰਦੇ ਹੋ?';
+      case AppLanguage.hindi:
+        return 'क्या आप टेस्ट के दौरान तुरंत परिणाम देखना चाहते हैं?';
+      case AppLanguage.english:
+        return 'Do you want instant correction during the test?';
+      case AppLanguage.italian:
+      default:
+        return '';
+    }
   }
 
   Future<void> _loadServices() async {
@@ -77,7 +243,8 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Future<void> _loadQuestions() async {
-    await _quizService.loadQuestions();
+    final courseService = context.read<CourseService>();
+    await _quizService.loadQuestions(license: courseService.currentLicense);
 
     List<QuizQuestion> questions;
     switch (widget.mode) {

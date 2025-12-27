@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Semaforo per conducenti di biciclette"
+segnale="158"
+quizass=304
+sugg=310
+risposte=["Le feu représenté se trouve à la sortie d'une piste cyclable pour règlementer l'intersection avec la route","Le panneau lumineux représenté est un feu réservé aux conducteurs de bicyclettes","Le feu représenté, avec lumière rouge allumée, impose l'arrêt des bicyclettes","Le feu représenté, avec lumière jaune fixe allumée, impose aux conducteurs de bicyclettes de laisser le croisement libre, s'ils l'ont déjà occupé","Le feu représenté, avec lumière verte allumée, autorise le croisement uniquement aux conducteurs de bicyclettes","Le feu représenté signale une voie réservée aux bicyclettes et aux motocycles légers","Le feu représenté signale le déroulement d'une compétition pour cyclistes","Le feu représenté signale qu'il y a un chantier pour la construction d'une piste cyclable","Le feu représenté signale une voie réservée aux motocycles","Le feu représenté signale l'interdiction de passage pour les bicyclettes","Le feu représenté s'adresse à tous les véhicules à deux roues"]
+rispostet=["Il semaforo in figura si trova all'uscita di una pista ciclabile, per regolare l'attraversamento della strada","Il segnale luminoso in figura è un semaforo riservato ai conducenti di biciclette","Il semaforo in figura, con luce rossa accesa, impone l'arresto alle biciclette","Il semaforo in figura, con luce gialla fissa accesa, impone ai conducenti di biciclette di liberare velocemente l'incrocio se lo hanno già impegnato","Il semaforo in figura, con luce verde accesa, consente soltanto ai conducenti di biciclette di attraversare l'incrocio","Il semaforo in figura indica una corsia riservata alle biciclette e ai ciclomotori","Il semaforo in figura indica lo svolgimento di una gara ciclistica","Il semaforo in figura indica che ci sono lavori in corso per la costruzione di una pista ciclabile","Il semaforo in figura indica una corsia riservata ai motocicli","Il semaforo in figura indica il divieto di transito per le biciclette","Il semaforo in figura vale per tutti i veicoli a due ruote"]
+soluzioni="VVVVVFFFFFF"
+rispass=[2802,2803,2804,2805,2806,2807,2808,2809,2810,2811,2812]
+nummin="07016"
+}
+continua();

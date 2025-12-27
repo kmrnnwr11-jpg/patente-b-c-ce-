@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Uso e manutenzione della frizione 2"
+quizass=259
+sugg=0
+risposte=["La frizione è generalmente autoregolante al fine di recuperare il gioco dovuto all'usura delle guarnizione d'attrito (ferodi), in caso contrario deve venire periodicamente &quot;registrata&quot; in officina","Se la frizione slitta è possibile che sia entrato olio dal motore o dal cambio","Se la frizione slitta è possibile che il materiale d'attrito del disco sia usurato","Se la frizione slitta è possibile che il disco sia imbrattato dall'olio del servocomando","Se la frizione slitta è possibile che sia guasto il sistema di molle dello spingi-disco","Se la frizione slitta e non si interviene è possibile che si verifichino danni maggiori a causa del surriscaldamento di tutto il meccanismo","Per evitare lo slittamento in fase di partenza, la frizione può essere sostituita da un collegamento a ingranaggi","Se la frizione tende a slittare bisogna circolare senza cambiare mai marcia","Se la frizione slitta, può essere opportuno introdurvi gesso o sabbia dall'apposito sportellino","È sempre bene mantenere il piede appoggiato sulla frizione durante la marcia, in modo da velocizzare le cambiate di marcia","Durante i mesi invernali vi è il rischio che la frizione si blocchi per formazione di ghiaccio al suo interno","Se la frizione diventa &quot;troppo dura&quot; è bene togliere una delle sue molle di regolazione","In discesa è bene viaggiare con frizione premuta per ottenere un risparmio di carburante","In discesa è bene viaggiare con frizione premuta per evitarne il surriscaldamento","Il pedale della frizione va spinto con molta gradualità e va invece lasciato con movimento rapido e secco"]
+soluzioni="VVVVVVFFFFFFFFF"
+rispass=[2038,2039,2040,2041,2042,2043,2053,2058,2059,2060,2064,2065,2067,2068,2070]
+nummin="115004"
+}
+continua()

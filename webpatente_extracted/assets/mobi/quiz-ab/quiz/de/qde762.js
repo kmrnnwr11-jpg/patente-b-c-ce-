@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Uso delle luci (1)"
+quizass=762
+sugg=11077
+risposte=["In geschlossenen Ortschaften ist es Pflicht, ab einer halben Stunde nach Sonnenuntergang bis zu einer halben Stunde vor Sonnenaufgang mit Abblendlicht zu fahren","Bei witterungsbedingter schlechter Sicht (Schnee, Regen, Nebel) ist es Pflicht, mit Standlicht und mit Abblendlicht zu fahren","Bei Nebel mit Sicht unter 50 Metern muss man die Nebelrückleuchte betätigen, wenn das Fahrzeug damit ausgestattet ist","In geschlossenen Ortschaften darf das am Fahrbahnrand geparkte Fahrzeug nachts mit dem Standlicht angezeigt werden","Von Sonnenuntergang bis Sonnenaufgang ist es Pflicht, mit Aufblendlicht zu fahren","Wenn man nachts außerhalb der Fahrbahn parkt, ist es Pflicht, das Abblendlicht eingeschaltet zu lassen","Wenn man das Fahrzeug in einem zulässigen Parkplatz stehen lässt, ist es Pflicht, die ganze Zeit das Standlicht eingeschaltet zu lassen"]
+rispostet=["Durante la marcia nei centri abitati, è obbligatorio tenere accese le luci anabbaglianti da mezz'ora dopo il tramonto del sole a mezz'ora prima del suo sorgere","Durante la marcia, in caso di scarsa visibilità per condizioni atmosferiche (neve, pioggia, nebbia), è obbligatorio tenere accese le luci di posizione e quelle anabbaglianti","Durante la marcia, in caso di nebbia con visibilità inferiore a 50 metri, bisogna usare la luce posteriore per nebbia, se il veicolo ne è dotato","Di notte, nei centri abitati, il veicolo in sosta al margine della carreggiata, può essere segnalato con le luci di sosta","Durante la marcia, è obbligatorio tenere accese le luci abbaglianti, a partire dal tramonto del sole fino al suo sorgere","Di notte, in caso di sosta fuori dalla carreggiata, è obbligatorio tenere accese le luci anabbaglianti","Se si lascia il veicolo in un parcheggio autorizzato, è obbligatorio tenere accese per tutto il tempo le luci di sosta"]
+soluzioni="VVVVFFF"
+rispass=[5836,5837,5838,5839,5840,5841,5842]
+nummin="18002"
+}
+continua();

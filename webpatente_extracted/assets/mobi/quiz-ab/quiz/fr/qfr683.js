@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Fermata e arresto"
+quizass=683
+sugg=11050
+risposte=["L'arrêt en circulation est une interruption de circulation d'un véhicule dû à des exigences de circulation, comme par exemple un feu rouge","L'arrêt momentané d'un véhicule est l'interruption momentanée de la circulation pour permettre aux passagers de monter ou descendre","L'arrêt momentané d'un véhicule est l'interruption momentanée de la circulation pour des exigences de courte durée, comme par exemple demander des informations aux agents de la circulation","L'arrêt momentané d'un véhicule est l'interruption momentanée de la circulation pour des exigences de très courte durée","L'arrêt en circulation est l'interruption momentanée de la circulation pour des exigences du conducteur ou des passagers d'un véhicule","L'arrêt momentané est l'interruption momentanée de la circulation due aux exigences de la circulation","L'arrêt momentané pour des exigences du conducteur peut durer au maximum dix minutes","L'arrêt momentané d'un véhicule est interdit si les passagers qui descendent du véhicule sont plus d'un"]
+rispostet=["L'arresto è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione, come ad esempio ad un semaforo rosso","La fermata di un veicolo è la temporanea sospensione della marcia per consentire la salita o la discesa delle persone","La fermata di un veicolo è la temporanea sospensione della marcia per esigenze di brevissima durata, come ad esempio per chiedere informazioni agli agenti del traffico","La fermata di un veicolo è la temporanea sospensione della marcia per esigenze di brevissima durata","L'arresto è la temporanea sospensione della marcia per esigenze del conducente o dei passeggeri di un veicolo","La fermata è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione","La fermata per esigenze del conducente può avere la durata massima di dieci minuti","La fermata di un veicolo è vietata se i passeggeri che scendono sono più di uno"]
+soluzioni="VVVVFFFF"
+rispass=[5328,5329,5330,5331,5332,5333,5334,5335]
+nummin="16004"
+}
+continua();

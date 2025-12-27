@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme/app_theme.dart';
+import 'screens/main_navigation_screen.dart';
 import 'screens/dashboard_screen.dart';
 import 'screens/italian_dashboard_screen.dart';
 import 'screens/course_selection_screen.dart';
+import 'screens/license_selection_screen.dart';
+import 'screens/auth/splash_screen.dart';
+import 'screens/auth/login_screen.dart';
 import 'services/firebase_service.dart';
 import 'services/course_service.dart';
 import 'services/achievement_service.dart';
@@ -13,6 +17,7 @@ import 'services/quiz_service.dart';
 import 'services/bookmark_service.dart';
 import 'services/stats_service.dart';
 import 'services/translation_service.dart';
+import 'providers/auth_provider.dart';
 import 'widgets/achievement_overlay_handler.dart';
 
 void main() async {
@@ -52,6 +57,7 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => courseService),
         Provider(create: (_) => achievementService),
         Provider(create: (_) => theoryService),
@@ -73,27 +79,6 @@ class PatenteBApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return achievementHandlerWrapper(
-      child: Consumer<CourseService>(
-        builder: (context, courseService, child) {
-          return MaterialApp(
-            title: 'Patente B Quiz',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.darkTheme,
-            home: _getHomeScreen(courseService),
-          );
-        },
-      ),
-    );
-  }
-
-  // Helper to wrap with achievement handler but keep context clean
-  Widget achievementHandlerWrapper({required Widget child}) {
-    // We need to put the Handler BELOW MaterialApp usually for Context/Overlay...
-    // WAIT. Overlay is provided by MaterialApp.
-    // So AchievementOverlayHandler MUST be a child of MaterialApp.
-    // My previous logic was flawed: "wrap app with handler".
-    // I must put Handler INSIDE MaterialApp.
     return Consumer<CourseService>(
       builder: (context, courseService, child) {
         return MaterialApp(
@@ -103,7 +88,12 @@ class PatenteBApp extends StatelessWidget {
           builder: (context, child) {
             return AchievementOverlayHandler(child: child!);
           },
-          home: _getHomeScreen(courseService),
+          home: SplashScreen(
+            authenticatedScreen: _getHomeScreen(courseService),
+            loginScreen: LoginScreen(
+              destinationScreen: _getHomeScreen(courseService),
+            ),
+          ),
         );
       },
     );
@@ -116,7 +106,11 @@ class PatenteBApp extends StatelessWidget {
 
     switch (service.currentCourse) {
       case CourseType.patente:
-        return const DashboardScreen();
+        // Check if license selected, otherwise show license selection
+        if (!service.hasSelectedLicense) {
+          return const LicenseSelectionScreen();
+        }
+        return const MainNavigationScreen();
       case CourseType.italiano:
         return const ItalianDashboardScreen();
     }

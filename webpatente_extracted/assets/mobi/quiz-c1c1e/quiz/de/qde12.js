@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Tempi di disponibilità 2"
+segnale="804"
+quizass=12
+sugg=0
+risposte=["Die Bereitschaftszeiten werden anhand des in der Abbildung wiedergegebenen Symbols dargestellt"]
+rispostet=["I tempi di disponibilità sono convenzionalmente rappresentati dal simbolo in figura"]
+soluzioni="V"
+rispass=[56]
+nummin="011007"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Inquinamento atmosferico provocato dai veicoli (2)"
+quizass=878
+sugg=11112
+risposte=["La pollution de l'air provoquée par les véhicules peut dépendre d'un fonctionnement irrégulier du moteur","La pollution de l'air provoquée par les véhicules diminue en contrôlant que le véhicule se trouve toujours dans les conditions les meilleures de consommation et de rendement","En adoptant un style de conduite qui limite la consommation de carburant, il est possible de réduire la pollution de l'air","La pollution de l'air provoquée par les véhicules peut être réduite, en contrôlant que le filtre de l'air ne soit pas sale ou obstrué","La pollution de l'air provoquée par les véhicules disparaît complètement en appuyant à fond sur l'accélérateur, parce que la haute température permet une consommation rapide du carburant","La pollution de l'air provoquée par les véhicules diminue si on laisse la climatisation allumée","La pollution atmosphérique est nulle pour ce qui est des véhicules qui respectent la discipline antipollution &quot;Euro 0&quot;"]
+rispostet=["L'inquinamento dell'aria prodotto dai veicoli può dipendere da un funzionamento irregolare del motore","L'inquinamento dell'aria può essere ridotto, controllando che il veicolo sia sempre nelle condizioni ottimali di consumo e rendimento","Adottando uno stile di guida che limiti i consumi di carburante, è possibile ridurre l'inquinamento dell'aria","L'inquinamento atmosferico prodotto dai veicoli può essere ridotto, controllando che il filtro dell'aria non sia sporco o intasato","L'inquinamento atmosferico prodotto dai veicoli scompare del tutto accelerando a fondo, perché l'alta temperatura fa consumare in fretta il carburante","L'inquinamento dell'aria prodotto dai veicoli diminuisce se si lascia acceso il climatizzatore","L'inquinamento atmosferico è nullo nei veicoli che rispettano la normativa antinquinamento &quot;Euro 0&quot;"]
+soluzioni="VVVVFFF"
+rispass=[6794,6795,6796,6797,6798,6799,6800]
+nummin="24007"
+}
+continua();

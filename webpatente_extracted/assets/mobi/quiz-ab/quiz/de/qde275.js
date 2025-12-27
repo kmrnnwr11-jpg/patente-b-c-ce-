@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Corsie di preselezione"
+segnale="574"
+quizass=275
+sugg=345
+risposte=["Alle drei in der Abbildung dargestellten Fahrspuren erlauben es dem Fahrer, geradeaus weiterzufahren","Die in der Abbildung dargestellte linke Fahrspur erlaubt es dem Fahrer, geradeaus weiterzufahren oder nach links abzubiegen","Die in der Abbildung dargestellte mittlere Fahrspur erlaubt es dem Fahrer nur, geradeaus weiterzufahren","Die in der Abbildung dargestellte rechte Fahrspur erlaubt es dem Fahrer, geradeaus weiterzufahren oder nach rechts abzubiegen","Es ist möglich, Fahrspur zu wechseln, solange die Linien noch unterbrochen (gestrichelt) sind","Das in der Abbildung dargestellte Fahrzeug kann nach links abbiegen, ohne Fahrspur zu wechseln","Die in der Abbildung dargestellte linke Fahrspur erlaubt es dem Fahrer nur, nach links abzubiegen","Die in der Abbildung dargestellte rechte Fahrspur ist langsamen Fahrzeugen vorbehalten","Die in der Abbildung dargestellte rechte Fahrspur erlaubt es dem Fahrer nur, nach rechts abzubiegen","Bei der in der Abbildung dargestellten Markierung darf der Fahrer Fahrspur wechseln, auch wenn er dazu die durchgehende Längslinie überfahren muss"]
+rispostet=["Tutte e tre le corsie rappresentate in figura consentono al conducente di proseguire dritto","La corsia di sinistra rappresentata in figura consente al conducente di proseguire dritto o svoltare a sinistra","La corsia di mezzo rappresentata in figura consente al conducente solo di proseguire diritto","La corsia di destra rappresentata in figura consente al conducente di proseguire diritto o svoltare a destra","È possibile cambiare corsia finché le strisce sono ancora discontinue (tratteggiate)","Il veicolo rappresentato in figura può svoltare a sinistra rimanendo nella stessa corsia","La corsia di sinistra rappresentata in figura consente al conducente solo di svoltare a sinistra","La corsia di destra rappresentata in figura è riservata ai veicoli lenti","La corsia di destra rappresentata in figura consente al conducente solo di svoltare a destra","Con la segnaletica rappresentata in figura è consentito al conducente cambiare corsia anche superando la striscia continua"]
+soluzioni="VVVVVVFFFF"
+rispass=[2497,2498,2499,2500,2501,2502,2503,2504,2505,2506]
+nummin="06013"
+}
+continua();

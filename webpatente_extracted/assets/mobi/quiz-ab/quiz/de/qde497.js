@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Limiti massimi di velocità su strade extraurbane principali"
+quizass=497
+sugg=11027
+risposte=["Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Personenkraftwagen 110 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für einen Personenkraftwagen, der einen Wohnanhänger mit einem Gewicht von 900 Kilogramm zieht, 70 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Kraftwagen bis zu 3,5 Tonnen 110 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Lastzüge 70 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Lastkraftwagen mit einem Gesamtgewicht bis zu 3,5 Tonnen 100 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Campingfahrzeuge mit einem Gesamtgewicht bis 3,5 Tonnen 100 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Personenkraftwagen mit leichtem Anhänger 80 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Krafträder 100 km/h","Auf erstrangigen Freilandstraßen beträgt die Höchstgeschwindigkeit für Personenkraftwagen mit Anhängekarren 100 km/h"]
+rispostet=["Su strade extraurbane principali il limite massimo di velocità è di 110 km/h per le autovetture","Su strade extraurbane principali il limite massimo di velocità è di 70 km/h per autovettura che traina caravan da 900 chilogrammi","Su strade extraurbane principali il limite massimo di velocità è di 110 km/h per autoveicoli fino a 3,5t","Su strade extraurbane principali il limite massimo di velocità è di 70 km/h per autotreni","Su strade extraurbane principali il limite massimo di velocità è di 100 km/h per autocarri di massa complessiva fino a 3,5 t","Su strade extraurbane principali il limite massimo di velocità è di 100 km/h per autocaravan di massa complessiva fino a 3,5 t","Su strade extraurbane principali il limite massimo di velocità è di 80 km/h per autovetture con rimorchio leggero","Su strade extraurbane principali il limite massimo di velocità è di 100 km/h per motocicli","Su strade extraurbane principali il limite massimo di velocità è di 100 km/h per le autovetture con carrello appendice"]
+soluzioni="VVVVFFFFF"
+rispass=[4095,4096,4097,4098,4099,4100,4101,4102,4103]
+nummin="11010"
+}
+continua();

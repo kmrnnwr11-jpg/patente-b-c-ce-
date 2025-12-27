@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Fermata e arresto"
+quizass=683
+sugg=11050
+risposte=["Das Anhalten besteht in der verkehrsbedingten Unterbrechung der Fahrt, wie beispielsweise vor einer roten Ampel","Unter Halten eines Fahrzeug versteht man die zeitweilige Unterbrechung der Fahrt, um Personen ein- bzw. aussteigen zu lassen","Unter Halten eines Fahrzeugs versteht man die zeitweilige Unterbrechung der Fahrt für sehr kurzfristige Erfordernisse, wie beispielsweise um die Verkehrsbeamten um Auskunft zu bitten","Unter Halten eines Fahrzeugs versteht man die zeitweilige Unterbrechung der Fahrt für sehr kurzfristige Erfordernisse","Unter Anhalten versteht man die zeitweilige Unterbrechung der Fahrt im Zusammenhang mit Erfordernissen des Fahrers oder der Fahrgäste eines Fahrzeugs","Das Halten ist eine verkehrsbedingte Unterbrechung der Fahrt","Das Halten aufgrund der Erfordernisse des Fahrers darf maximal zehn Minuten dauern","Das Halten eines Fahrzeugs ist verboten, wenn mehrere Fahrgäste aussteigen"]
+rispostet=["L'arresto è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione, come ad esempio ad un semaforo rosso","La fermata di un veicolo è la temporanea sospensione della marcia per consentire la salita o la discesa delle persone","La fermata di un veicolo è la temporanea sospensione della marcia per esigenze di brevissima durata, come ad esempio per chiedere informazioni agli agenti del traffico","La fermata di un veicolo è la temporanea sospensione della marcia per esigenze di brevissima durata","L'arresto è la temporanea sospensione della marcia per esigenze del conducente o dei passeggeri di un veicolo","La fermata è l'interruzione della marcia del veicolo dovuta ad esigenze della circolazione","La fermata per esigenze del conducente può avere la durata massima di dieci minuti","La fermata di un veicolo è vietata se i passeggeri che scendono sono più di uno"]
+soluzioni="VVVVFFFF"
+rispass=[5328,5329,5330,5331,5332,5333,5334,5335]
+nummin="16004"
+}
+continua();

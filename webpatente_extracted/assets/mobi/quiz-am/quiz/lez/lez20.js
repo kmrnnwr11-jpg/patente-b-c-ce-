@@ -1,0 +1,6 @@
+l=new tlez; with(l){
+intro="<div class='intro'>In questa lezione abbiamo riunito la trattazione dei principali doveri che gravano sui conducenti dei ciclomotori. Si tratta di un cospicuo elenco di obblighi e divieti che potrebbe essere anche piuttosto noioso per i nostri lettori. Per rincuorarli, vorremo però far notare che i quesiti relativi a questi argomenti (i più fortunati potranno trovarne anche sei sulla scheda di esame) saranno <b>i più facili</b> da risolvere. Tutti sanno, per esempio, che se si circola impennando è più facile farsi male o che non è molto prudente inviare un SMS mentre si guida. E anche per quanto non si sa, nella maggior parte dei casi, per rispondere correttamente può bastare un po’ di buon senso.<br/>Altra cosa è <b>come poi ci si comporta effettivamente</b> quando si è sulla strada. Ma questo, come si usa dire, è un altro paio di maniche: per indurre al rispetto di obblighi e divieti non bastano i quiz.<br/><br/>Iniziamo da una panoramica generale, poi vedremo più in dettaglio alcuni obblighi e divieti specifici e chiuderemo con alcuni comportamenti non obbligatori, ma consigliati.<br/><br/><b>Capitoli di riferimento: 9 e 10</b></div>"
+intro=cercafig(intro);
+sugg=[207,214,208,210,240,232,204,203,178,216]
+}
+manuale.continua()

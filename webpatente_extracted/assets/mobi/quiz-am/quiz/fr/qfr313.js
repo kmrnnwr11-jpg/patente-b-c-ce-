@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere quando, al segnale di via libera, il veicolo che sta davanti non riparte subito"
+quizass=313
+sugg=220
+risposte=["Quand, à un croisement, on est autorisé à passer et que le véhicule qui est devant nous ne démarre pas tout de suite, il est souhaitable d'attendre patiemment la reprise de la circulation","Quand, à un croisement, on est autorisé à passer et que le véhicule qui est devant nous ne démarre pas tout de suite, il est souhaitable d'éviter de klaxonner","Quand, à un croisement, on est autorisé à passer et que le véhicule qui est devant nous ne démarre pas tout de suite, il est souhaitable d'éviter de le doubler en faisant des manoeuvres incorrectes et inadéquates","Quand, à un croisement, on est autorisé à passer et que le véhicule qui est devant nous ne démarre pas tout de suite, il est souhaitable de klaxonner avec insistance pour solliciter le conducteur à redémarrer","Quand, à un croisement, on est autorisé à passer et que le véhicule qui est devant nous ne démarre pas tout de suite, il est souhaitable d essayer de dégager au plus vite la route, même en faisant demi-tour"]
+rispostet=["Quando, ad un incrocio, al segnale di via libera il veicolo che sta davanti non riparte subito, è opportuno attendere pazientemente la ripresa della marcia","Quando, ad un incrocio, al segnale di via libera il veicolo che sta davanti non riparte subito, è opportuno evitare di strombazzare","Quando, ad un incrocio, al segnale di via libera il veicolo che sta davanti non riparte subito, è opportuno evitare di superarlo con manovre errate o improprie","Quando, ad un incrocio, al segnale di via libera il veicolo che sta davanti non riparte subito, è opportuno suonare insistentemente per sollecitare il conducente a rimettersi in moto","Quando, ad un incrocio, al segnale di via libera il veicolo che sta davanti non riparte subito, è opportuno cercare di sgomberare al più presto la strada, anche invertendo il senso di marcia"]
+soluzioni="VVVFF"
+rispass=[1838,1839,1840,1841,1842]
+nummin="10001"
+}
+continua();

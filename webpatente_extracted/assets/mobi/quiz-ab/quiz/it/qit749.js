@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Traino di un rimorchio (4)"
+quizass=749
+sugg=13001
+risposte=["Durante la circolazione, i rimorchi devono essere assicurati con la stessa polizza della motrice","Il rapporto di traino, entro i limiti di quello tecnicamente ammesso per il veicolo, non deve superare il valore di 1, nel caso di rimorchi muniti di freno di servizio e di massa fino a 3,5 tonnellate","Il massimo rapporto di traino per un rimorchio sprovvisto di qualsiasi dispositivo di frenatura è di 0,5","Durante la circolazione, i rimorchi con massa massima a pieno carico fino a 3,5 tonnellate, devono essere segnalati con strisce posteriori e laterali retroriflettenti","È possibile trainare rimorchi non immatricolati, se di massa inferiore ai 750 chilogrammi","Il rimorchio si considera parte integrante del veicolo se ha una massa fino a 3,5 tonnellate","La larghezza del rimorchio non deve superare quella del veicolo trainante","Il rimorchio è parte integrante del veicolo a cui è stato abbinato in fase di collaudo e non può essere agganciato a un altro veicolo","Il titolare di patente di guida della categoria BE che, successivamente, consegue la patente della categoria C, può guidare anche veicoli della categoria CE","Per i complessi di veicoli con rimorchi fino a 3,5 tonnellate di massa, non vige l'obbligo di apporre nella parte posteriore i contrassegni indicanti i limiti massimi di velocità specifici loro imposti","Se nella carta di circolazione manca il valore della massa rimorchiabile, ciò significa che il veicolo è atto al traino di rimorchi di qualsiasi massa","I rimorchi devono essere sottoposti a revisione periodica insieme al veicolo trainante"]
+soluzioni="VVVFFFFFFFFF"
+rispass=[5776,5778,5779,5784,5785,5786,5787,5788,5792,5793,5796,5797]
+nummin="17038"
+}
+continua();

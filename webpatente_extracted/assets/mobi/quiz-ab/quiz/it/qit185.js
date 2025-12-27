@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Segnale di DIREZIONE OBBLIGATORIA A SINISTRA (1)"
+segnale="94"
+quizass=185
+sugg=97
+risposte=["Il segnale raffigurato indica l'obbligo di svoltare a sinistra","Il segnale raffigurato non consente di svoltare a destra","Il segnale raffigurato, posto prima di un incrocio, obbliga a svoltare a sinistra","Il segnale raffigurato, in corrispondenza di un incrocio, non consente di proseguire diritto","Il segnale raffigurato indica l'unica direzione consentita","Il segnale raffigurato è un segnale di prescrizione","Il segnale raffigurato è un segnale di direzione obbligatoria","Il segnale raffigurato è un segnale di obbligo","Il segnale raffigurato consente di andare diritto all'incrocio","Il segnale raffigurato consente di svoltare a destra all'incrocio","Il segnale raffigurato indica l'inizio del senso unico di circolazione dopo una svolta a sinistra","Il segnale raffigurato indica la fine del doppio senso di circolazione dopo una svolta a destra","Il segnale raffigurato indica che è obbligatorio passare a sinistra di un ostacolo posto sulla carreggiata","Il segnale raffigurato è un segnale di indicazione","Il segnale raffigurato è un segnale di divieto","Il segnale raffigurato indica che la strada che si incrocia è a senso unico verso sinistra","Il segnale raffigurato indica un senso unico parallelo"]
+soluzioni="VVVVVVVVFFFFFFFFF"
+rispass=[1752,1753,1754,1755,1756,1757,1758,1759,1760,1761,1762,1763,1764,1765,1766,1767,1768]
+nummin="04003"
+}
+continua();

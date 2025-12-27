@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Impianti di frenatura 3"
+quizass=310
+sugg=0
+risposte=["La frenatura pneumatica è tipica dei veicoli di massa elevata, per i quali è necessaria una grande potenza frenante","Nella frenatura pneumoidraulica sono presenti sia un circuito idraulico che uno pneumatico","La frenatura di stazionamento di un autoveicolo con frenatura pneumatica, avviene per svuotamento di una camera del bielemento frenante (contenente aria compressa a veicolo sfrenato)","La forza necessaria alla frenatura di stazionamento di un autoveicolo con frenatura pneumatica è di tipo meccanico ed è garantita da molle","In un autoveicolo devono essere presenti ed efficienti il freno di servizio, quello di stazionamento e quello di soccorso","Se si è alla guida di un autoveicolo di recente costruzione, la rottura del tubo dell'aria dei freni della ruota anteriore destra ci permette comunque di raggiungere un'officina, anche se a velocità estremamente ridotta","Sugli autoveicoli di massa superiore a 3,5 tonnellate, il freno di soccorso interviene automaticamente in caso di malore del conducente","La frenatura di stazionamento e quella di soccorso sono due diversi modi di definire lo stesso tipo di frenatura","Sugli autoveicoli dotati di frenatura pneumatica, la condotta automatica del freno non è mai in pressione","Sugli autoveicoli dotati di frenatura pneumatica, la condotta moderabile del freno è sempre in pressione","Non esistono circuiti frenanti di tipo pneumoidraulico","Sugli autoveicoli dotati di frenatura pneumatica, la rottura del tubo dell'aria dei freni della ruota anteriore destra richiede l'arresto immediato del veicolo, ovunque ci si trovi, con contestuale richiesta di soccorso"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[2764,2765,2766,2767,2768,2769,2770,2771,2772,2773,2774,2775]
+nummin="141003"
+}
+continua()

@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di STRETTOIA ASIMMETRICA A DESTRA"
+segnale="21"
+quizass=101
+sugg=20
+risposte=["Das abgebildete Verkehrszeichen kündigt eine Engstelle auf der rechten Fahrbahnseite an","Das abgebildete Verkehrszeichen kündigt eine Engstelle wegen eines ortsfesten Hindernisses auf der rechten Seite an","Das abgebildete Verkehrszeichen kündigt eine gefährliche Verengung auf der rechten Fahrbahnseite an","Das abgebildete Verkehrszeichen kündigt die Fahrbahnverengung durch eine Mauer oder ein anderes Hindernis auf der rechten Seite an","Das abgebildete Verkehrszeichen kann auch an Gegenverkehrsstraßen stehen","Das abgebildete Verkehrszeichen steht, wenn es einen gelben Hintergrund hat, an einer Straßenbaustelle, durch welche die Fahrbahn verengt wird","Das abgebildete Verkehrszeichen zeigt das Ende des Gegenverkehrs an","Das abgebildete Verkehrszeichen schreibt vor, den aus der Gegenrichtung kommenden Fahrzeugen Vorfahrt zu gewähren","Das abgebildete Verkehrszeichen erlaubt das Fahren in parallelen Reihen","Das abgebildete Verkehrszeichen zeigt an, dass sich die Fahrzeuge in zwei Reihen einordnen sollen","Das abgebildete Verkehrszeichen kündigt eine Einmündung von rechts an","Das abgebildete Verkehrszeichen kündigt den Beginn einer Einbahn an"]
+rispostet=["Il segnale raffigurato preannuncia una strettoia sulla destra della carreggiata","Il segnale raffigurato preannuncia una strettoia causata da un ostacolo fisso sul lato destro","Il segnale raffigurato preannuncia un restringimento pericoloso sulla destra della carreggiata","Il segnale raffigurato preannuncia il restringimento della carreggiata causato da muretti o altro ostacolo sul lato destro","Il segnale raffigurato può trovarsi anche su strada a doppio senso di circolazione","Il segnale raffigurato, se a fondo giallo, è posto in presenza di un cantiere che riduce la larghezza della carreggiata","Il segnale raffigurato indica la fine del doppio senso di circolazione","Il segnale raffigurato obbliga a dare la precedenza ai veicoli provenienti dal senso opposto","Il segnale raffigurato autorizza la marcia per file parallele","Il segnale raffigurato indica di disporsi su due file","Il segnale raffigurato preannuncia una confluenza da destra","Il segnale raffigurato preannuncia l'inizio di un senso unico"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[934,935,936,937,938,939,940,941,942,943,944,945]
+nummin="02033"
+}
+continua();

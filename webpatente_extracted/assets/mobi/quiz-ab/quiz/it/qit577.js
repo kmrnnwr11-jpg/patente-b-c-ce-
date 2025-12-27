@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Comportamento ad un incrocio quando, al semaforo verde, il veicolo che precede tarda a riprendere la marcia"
+quizass=577
+sugg=430
+risposte=["Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno attendere pazientemente la ripresa della marcia","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno evitare di suonare il clacson con insistenza e di provocare una situazione di intolleranza negli altri automobilisti","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno, se c'è bisogno ed è possibile farlo senza pericolo, prestare aiuto all'automobilista rimasto fermo","Nei centri abitati è vietato l'uso del segnalatore acustico per sollecitare il conducente del veicolo che precede a riprendere la marcia quando il semaforo diventa verde","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, non si deve superarlo con manovre pericolose","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno suonare insistentemente per sollecitare il conducente a rimettersi in moto","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno richiamare con il clacson l'attenzione degli automobilisti che seguono","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno tirare il freno a mano e scendere per cercare un agente del traffico che prenda i dovuti provvedimenti","Quando ad un incrocio urbano, al segnale di via libera, il veicolo che precede tarda a riprendere la marcia, è opportuno cercare di sgombrare al più presto la carreggiata, anche invertendo il senso di marcia"]
+soluzioni="VVVVVFFFF"
+rispass=[4433,4434,4435,4436,4437,4438,4439,4440,4441]
+nummin="13009"
+}
+continua();

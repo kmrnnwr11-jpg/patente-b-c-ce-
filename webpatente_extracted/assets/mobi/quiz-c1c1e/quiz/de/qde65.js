@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Comportamenti in presenza del segnale DOPPIA CURVA, LA PRIMA A DESTRA alla guida di un veicolo per il trasporto di cose"
+segnale="6"
+quizass=65
+sugg=0
+risposte=["Wo das abgebildete Verkehrszeichen steht, muss man die Geschwindigkeit herabsetzen, um keine Gefahr zu laufen, dass die beförderten Güter verrutschen und die Fahrzeugstabilität beeinträchtigen","Wo das abgebildete Verkehrszeichen steht, muss man die Geschwindigkeit besonders herabsetzen, wenn man ein beladenes Tankfahrzeug fährt, insbesondere wenn es nicht ganz voll ist","Wo das abgebildete Verkehrszeichen steht, muss man die Geschwindigkeit besonders herabsetzen, wenn man ein beladenes Tankfahrzeug fährt, und zwar umso mehr, wenn die Straße ein starkes Gefälle aufweist","Das abgebildete Verkehrszeichen kündigt einen Straßenabschnitt an, in welchem die Pflicht besteht, untersetzte Gänge einzulegen, wenn das Getriebe damit versehen ist","Das abgebildete Verkehrszeichen ist an Bergstraßen nie zu finden","Das abgebildete Verkehrszeichen kündigt eine gefährliche Linkskurve an","Das abgebildete Verkehrszeichen schreibt Lastkraftwagen mit einem Gesamtgewicht bei voller Zuladung von über 3,5 Tonnen eine Höchstgeschwindigkeit von 70 km/h vor"]
+rispostet=["In presenza del segnale raffigurato occorre moderare la velocità per non rischiare che le merci trasportate si spostino, compromettendo la stabilità di marcia","In presenza del segnale raffigurato occorre moderare particolarmente la velocità se si è alla guida di una autocisterna carica, soprattutto se non completamente piena","In presenza del segnale raffigurato occorre moderare particolarmente la velocità se si è alla guida di una autocisterna carica, ancor più se la strada è in forte pendenza","Il segnale raffigurato preannuncia un tratto di strada in cui è obbligatorio mettere le marce ridotte se il cambio di velocità ne è dotato","Il segnale raffigurato non si incontra mai sulle strade di montagna","Il segnale raffigurato preannuncia una curva pericolosa a sinistra","Il segnale raffigurato impone il limite di velocità di 70 km/h ad autocarri di massa complessiva a pieno carico superiore a 3,5 tonnellate"]
+soluzioni="VVVFFFF"
+rispass=[433,434,435,436,437,438,439]
+nummin="035007"
+}
+continua();

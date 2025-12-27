@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Luce rossa del semaforo"
+segnale="154"
+quizass=295
+sugg=301
+risposte=["Face à la lumière rouge les véhicules doivent s'arrêter","Dans les feux verticaux la lumière rouge se trouve en haut, dans ceux horizontaux elle se trouve à gauche","Sur un feu la lumière rouge peut être plus grande que les autres lumières","Quand la lumière rouge du feu est allumée, il faut s'arrêter avant la ligne transversale d'arrêt","Pendant que la lumière rouge du feu est allumée, les véhicules ne doivent pas dépasser la ligne d'arrêt","La lumière rouge du feu allumée autorise à tourner à droite avec prudence, en cédant le passage aux piétons qui traversent la route","La lumière rouge du feu allumée autorise à repartir lentement quand apparaît le feu jaune pour les autres véhicules","La lumière rouge du feu allumée autorise l'occupation du croisement avec beaucoup de prudence à condition qu'il n'y ait pas de véhicules ou de piétons","La lumière rouge du feu allumée autorise à passer le croisement, à condition qu'il soit libre","La lumière rouge du feu allumée impose d'accélérer pour laisser libre le croisement le plus vite possible"]
+rispostet=["In presenza della luce semaforica rossa i veicoli devono arrestarsi","Nei semafori sistemati in verticale la luce rossa si trova in alto, in quelli posti in orizzontale si trova a sinistra","Nel semaforo la luce rossa può essere di dimensioni più grandi delle altre","Quando è accesa la luce rossa del semaforo bisogna arrestarsi prima della striscia trasversale d'arresto","Durante il periodo di accensione della luce rossa i veicoli non devono superare la striscia di arresto","La luce rossa accesa del semaforo consente di svoltare a destra con prudenza, dando precedenza ai pedoni che attraversano la strada","La luce rossa accesa del semaforo consente di ripartire lentamente quando appare il giallo per gli altri veicoli","La luce rossa accesa del semaforo consente di impegnare l'incrocio con molta prudenza a condizione che non ci siano altri veicoli o pedoni","La luce rossa accesa del semaforo consente l'attraversamento dell'incrocio, purché sia libero","La luce rossa accesa del semaforo obbliga ad affrettarsi per liberare velocemente l'incrocio"]
+soluzioni="VVVVVFFFFF"
+rispass=[2656,2657,2658,2659,2660,2661,2662,2663,2664,2665]
+nummin="07001"
+}
+continua();

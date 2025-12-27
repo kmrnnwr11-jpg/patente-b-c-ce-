@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Pericoli derivanti dall'uso di droghe"
+quizass=306
+sugg=230
+risposte=["Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil sie Unvorsichtigkeit beim Fahren verursachen kann","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil sie einen mehrere Stunden lang anhaltenden Verwirrtheitszustand hervorrufen kann","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil sie auch nur vorübergehend eine verzerrte Wahrnehmung der Realität verursachen kann","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil sie die Aufmerksamkeit und die Konzentration beeinträchtigen kann","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil sie das Urteilsvermögen und das Sicherheitsgefühl steigert","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil man der Einziehung des Fahrzeuges unterliegt","Die Aufnahme von Drogen, auch wenn sie einmalig erfolgt, ist gefährlich, weil man der amtlichen Stilllegung des Fahrzeugs unterliegt"]
+rispostet=["L'uso di droghe, anche se fatto una sola volta, è pericoloso perché può causare imprudenza nella guida","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché può far durare lo stato confusionale per parecchie ore","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché può modificare, anche temporaneamente, la percezione della realtà","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché può causare disturbi dell'attenzione e della concentrazione","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché aumenta la capacità di giudizio e il senso di sicurezza","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché si incorre nella confisca del veicolo","L'uso di droghe, anche se fatto una sola volta, è pericoloso perché si incorre nel fermo amministrativo del veicolo"]
+soluzioni="VVVVFFF"
+rispass=[2032,2033,2034,2035,2036,2037,2038]
+nummin="10032"
+}
+continua();

@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere quando un pedone attraversa la strada fuori dalle strisce pedonali"
+quizass=231
+sugg=175
+risposte=["Quand un piéton traverse la route en dehors des passages pour piétons, il faut réduire la vitesse et éventuellement s'arrêter","Quand un piéton traverse la route en dehors des passages pour piétons, il faut ralentir et avertir le piéton avec un bref coup de klaxon, en cas de danger immédiat","Quand un piéton traverse la route en dehors des passages pour piétons, il faut réduire la vitesse et s'arrêter rapidement, si cela est nécessaire","Quand un piéton traverse la route en dehors des passages pour piétons, il faut, la nuit, rouler avec les feux de route allumés, de sorte qu'il puisse nous apercevoir","Quand un piéton traverse la route en dehors des passages pour piétons, il faut essayer d'attirer son attention de toutes les façons possibles, pour qu'il nous cède le passage","Quand un piéton traverse la route en dehors des passages pour piétons, il faut de toute manière continuer car on a la priorité"]
+rispostet=["Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario ridurre la velocità ed eventualmente fermarsi","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario rallentare e avvisare il pedone con un breve colpo di clacson, in caso di pericolo immediato","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario ridurre la velocità fino a fermarsi tempestivamente, se occorre","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario, nelle ore notturne, procedere con gli abbaglianti accesi così che possa accorgersi di noi","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario cercare di richiamare la sua attenzione con qualsiasi mezzo, perché ci dia la precedenza","Quando un pedone attraversa la strada fuori dalle strisce pedonali è necessario proseguire comunque perché abbiamo la precedenza"]
+soluzioni="VVVFFF"
+rispass=[1358,1359,1360,1361,1362,1363]
+nummin="07015"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Uso del casco (2)"
+quizass=796
+sugg=11082
+risposte=["Il casco subisce un processo di invecchiamento dovuto a luce e calore","La pulizia del casco deve essere effettuata con detersivi non corrosivi","Il casco non deve essere pulito con solventi","Il casco non deve essere pulito con benzina","Il casco deve essere di taglia corretta","Il casco deve essere sostituito dopo che abbia subito un forte urto, anche se non mostra deformazioni sulla calotta esterna","La robustezza della calotta esterna del casco potrebbe essere compromessa da solventi presenti in vernici o colle","Durante la marcia, il casco deve essere sempre correttamente allacciato","Indossare il casco in modo errato o senza averlo correttamente allacciato può comportare gravi rischi alla salute in caso di caduta o incidente","La visiera del casco deve essere sostituita se rigata o danneggiata","La visiera del casco deve garantire la perfetta visibilità con qualunque condizione di luce o illuminazione","Sul casco possono essere applicati adesivi di qualunque tipo, purché non coprano la visiera","Il casco deve essere periodicamente pulito con benzina o acquaragia per sgrassarlo ed eliminare resti di insetti","Il casco conserva invariate le sue caratteristiche protettive per periodi lunghissimi, di oltre venti anni","La visiera del casco peggiora notevolmente la visibilità e quindi va usata il meno possibile","La calotta del casco può essere riparata con nastro adesivo di tipo speciale, se presenta una rottura inferiore ai tre centimetri","La visiera del casco può essere riparata con nastro adesivo, purché sia di tipo ultra trasparente"]
+soluzioni="VVVVVVVVVVVFFFFFF"
+rispass=[6076,6077,6078,6079,6084,6085,6086,6087,6088,6091,6092,6095,6096,6101,6106,6107,6108]
+nummin="06009"
+}
+continua();

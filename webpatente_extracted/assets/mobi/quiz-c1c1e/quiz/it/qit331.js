@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Collegamenti tra motrice e rimochio negli impianti di frenatura pneumatici"
+quizass=331
+sugg=0
+risposte=["Negli impianti di frenatura ad aria compressa, il collegamento tra motrice e rimorchio prevede un collegamento meccanico, uno pneumatico e uno elettrico","Negli impianti di frenatura ad aria compressa, il collegamento pneumatico tra motrice e rimorchio è realizzato mediante due tubi flessibili e due coppie di semigiunti omologati","Negli impianti di frenatura ad aria compressa dotati di ABS, il collegamento tra motrice e rimorchio deve prevedere anche uno specifico collegamento elettrico per l'ABS stesso","Negli impianti di frenatura ad aria compressa, le due coppie di semigiunti che realizzano il collegamento pneumatico tra motrice e rimorchio hanno colore differente tra loro","Negli impianti di frenatura ad aria compressa, l'autista che realizzi il collegamento pneumatico tra motrice e rimorchio deve indossare idonei guanti protettivi","Negli impianti di frenatura ad aria compressa, il collegamento pneumatico tra motrice e rimorchio è realizzato mediante tubi rigidi e due giunti di accoppiamento di colore verde","Negli impianti di frenatura ad aria compressa, il collegamento pneumatico tra motrice e rimorchio può essere di tipo &quot;wireless&quot; (senza fili)","Negli impianti di frenatura ad aria compressa, il collegamento tra motrice e rimorchio prevede un collegamento idraulico, uno pneumatico e uno elettrico di tipo wireless (senza fili)","Negli impianti di frenatura ad aria compressa, il collegamento pneumatico tra motrice e rimorchio è realizzato mediante quattro tubi flessibili e quattro coppie di semigiunti omologati","Negli impianti di frenatura ad aria compressa, il collegamento pneumatico tra motrice e rimorchio deve essere realizzato da operaio specializzato in officina opportunamente attrezzata e autorizzata"]
+soluzioni="VVVVVFFFFF"
+rispass=[2940,2941,2942,2943,2944,2945,2946,2947,2948,2949]
+nummin="141018"
+}
+continua()

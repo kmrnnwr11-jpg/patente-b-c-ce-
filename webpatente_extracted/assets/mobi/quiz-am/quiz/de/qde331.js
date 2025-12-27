@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Comportamenti da tenere per ridurre l'inquinamento atmosferico prodotto dai ciclomotori (2)"
+quizass=331
+sugg=234
+risposte=["Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer die Kraftstoff-Versorgungsanlage in gutem Zustand erhalten","Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer die Zündungsanlage in gutem Zustand erhalten","Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer den Luftfilter in den vom Hersteller empfohlenen Zeitabständen austauschen","Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer den Reifendruck verringern","Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer mit der gemäß der Straßenverkehrsordnung und den Verkehrsschildern höchstzulässigen Geschwindigkeit fahren","Um die von den Fahrzeugen verursachte Luftverschmutzung zu verringern, muss der Fahrer wiederholt im Stehen Gas geben, damit der Motor warm bleibt und mehr Leistung hervorbringt"]
+rispostet=["Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori, il conducente deve mantenere in buono stato di manutenzione gli organi di alimentazione","Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori, il conducente deve mantenere in buono stato di manutenzione gli organi di accensione","Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori il conducente deve sostituire il filtro dell'aria nei tempi suggeriti dalla casa costruttrice del veicolo","Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori il conducente deve ridurre la pressione di gonfiaggio dei pneumatici","Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori il conducente deve marciare alle più elevate velocità permesse dal codice e dai segnali stradali","Per ridurre l'inquinamento dell'aria provocato dalla circolazione dei ciclomotori il conducente deve accelerare ripetutamente da fermo per tenere caldo il motore e migliorarne il rendimento"]
+soluzioni="VVVFFF"
+rispass=[1951,1952,1953,1954,1955,1956]
+nummin="10019"
+}
+continua();

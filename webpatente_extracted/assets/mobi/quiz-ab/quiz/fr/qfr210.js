@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di FINE DEL LIMITE MINIMO DI VELOCITA’ DI 30 KM/H"
+segnale="106"
+quizass=210
+sugg=111
+risposte=["Le panneau représenté signale la fin d'une prescription","Le panneau représenté signale la fin de la limite minimale de vitesse","Le panneau représenté signale qu'on n'est plus obligé de rouler à une vitesse au moins égale à celle indiquée","Le panneau représenté autorise à rouler entre les limitations de vitesse imposées sur cette route","Le panneau représenté autorise à rouler à une vitesse supérieure à celle indiquée","Le panneau représenté signale la fin de la limitation maximale de vitesse","Le panneau représenté signale la fin de l'interdiction de passage pour les véhicules avec masse de 30 tonnes","Le panneau représenté interdit la circulation aux véhicules de masse supérieure à 30 tonnes","Le panneau représenté signale la fin de la limite de longueur maximale des véhicules articulés","Le panneau représenté signale la fin de l'obligation de la distance de sécurité d'au moins 30 mètres du véhicule qui précède","Le panneau représenté interdit de circuler à une vitesse de 30 km/h"]
+rispostet=["Il segnale raffigurato indica la fine di una prescrizione","Il segnale raffigurato indica la fine del limite minimo di velocità","Il segnale raffigurato indica che non si ha più l'obbligo di circolare ad una velocità almeno pari a quella indicata","Il segnale raffigurato consente di circolare entro i limiti massimi di velocità vigenti per quella strada","Il segnale raffigurato consente di circolare a velocità superiore a quella indicata","Il segnale raffigurato indica la fine del limite massimo di velocità","Il segnale raffigurato indica la fine del divieto di transito ai veicoli con massa complessiva superiore a 30 tonnellate","Il segnale raffigurato vieta la circolazione ai veicoli di massa superiore a 30 tonnellate","Il segnale raffigurato indica la fine del limite di lunghezza massima dei complessi di veicoli","Il segnale raffigurato indica la fine dell'obbligo di mantenere la distanza di almeno 30 metri dal veicolo che precede","Il segnale raffigurato vieta di circolare alla velocità di 30 km/h"]
+soluzioni="VVVVVFFFFFF"
+rispass=[2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014]
+nummin="04025"
+}
+continua();

@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Cambio di velocità 2"
+quizass=261
+sugg=0
+risposte=["L'uso del cambio consente al conducente di variare la forza di trazione in relazione al carico del veicolo","Il cambio serve a variare il rapporto tra i giri del motore ed i giri dell'albero di trasmissione","Il cambio permette di trasmettere alle ruote una forza variabile a seconda della marcia innestata","In genere, nei veicoli &quot;pesanti&quot;, la leva del cambio non agisce direttamente sul selettore delle marce, bensì su di un servocomando di tipo pneumatico o idraulico","Il cambio contiene olio lubrificante nel quale sono parzialmente immersi gli ingranaggi","Il cambio dei veicoli pesanti può talvolta avere più di dieci marce","Il cambio automatico rende più uniforme la velocità del veicolo, anche durante i cambi di marcia","I gruppi &quot;epicicloidali&quot; sono sistemi di ingranaggi di cui sono dotati alcuni cambi di veicoli pesanti","In uscita dal cambio di velocità può talvolta trovarsi il rallentatore","Il cambio dei veicoli pesanti ha normalmente due sole marce, una normale e una ridotta","Quando si necessita di un cambio silenzioso, le ruote dentate sono sostituite da innesti a frizione","I cambi automatici possono avere al massimo 5 marce","Per risparmiare carburante è bene cambiare marcia senza usare la frizione","Tramite il contagiri posto sul cruscotto, è possibile conoscere il numero di giri delle ruote motrici","Il turbocompressore del motore entra in azione quando si innesta una marcia superiore alla terza","Alcuni veicoli per cava e cantiere hanno il cambio raffreddato ad acqua","Il cambio serve a mantenere la velocità rotativa dell'albero di trasmissione costante, indipendentemente dal numero dei giri del motore","Il cambio automatico deve essere disinserito nelle discese ripide"]
+soluzioni="VVVVVVVVVFFFFFFFFF"
+rispass=[2084,2085,2086,2089,2090,2093,2094,2097,2101,2103,2108,2109,2110,2114,2115,2116,2117,2118]
+nummin="115006"
+}
+continua()

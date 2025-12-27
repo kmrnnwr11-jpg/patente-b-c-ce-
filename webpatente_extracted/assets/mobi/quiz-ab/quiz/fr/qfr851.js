@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Trattamento di un ferito in stato di incoscienza"
+quizass=851
+sugg=446
+risposte=["Si un blessé est inconscient, il faut vérifier s'il respire encore, en mettant une main sur la partie latérale inférieure du thorax ou sur le ventre","Si un blessé de la route est sans connaissance, il ne peut être déplacé uniquement si l'on est certain qu'il n'aie pas un traumatisme à la colonne vertébrale","Si un blessé est inconscient et respire difficilement, il faut immédiatement libérer son nez et sa bouche des éventuelles obstruction","Si un blessé est inconscient, il faut contrôler ses conditions de santé jusqu'à l'arrivée de l'ambulance","Si un blessé de la route est sans connaissance, il faut lui donner à boire des boissons alcoolisées","Si un blessé est inconscient il faut immobiliser ses mains","Si un blessé est inconscient il faut lui panser la tête","Si un blessé de la route est sans connaissance, il faut l'installer en position à demi-assise"]
+rispostet=["Se un ferito della strada è in stato di incoscienza, bisogna verificare se respira ancora, mettendo una mano sulla parte laterale bassa del torace o sull'addome","Se un ferito della strada è in stato di incoscienza, può essere mosso solo se si è certi che non abbia traumi alla colonna vertebrale","Se un ferito della strada è in stato di incoscienza e fa fatica a respirare, bisogna liberare subito il naso e la bocca da eventuali ostruzioni","Se un ferito della strada è in stato di incoscienza, bisogna controllare spesso le sue condizioni di salute fino all'arrivo dell'ambulanza","Se un ferito della strada è in stato di incoscienza, bisogna somministrargli bevande alcooliche","Se un ferito della strada è in stato di incoscienza bisogna bloccargli le mani","Se un ferito della strada è in stato di incoscienza bisogna fasciargli la testa","Se un ferito della strada è in stato di incoscienza bisogna metterlo in posizione semiseduta"]
+soluzioni="VVVVFFFF"
+rispass=[6592,6593,6594,6595,6596,6597,6598,6599]
+nummin="22014"
+}
+continua();

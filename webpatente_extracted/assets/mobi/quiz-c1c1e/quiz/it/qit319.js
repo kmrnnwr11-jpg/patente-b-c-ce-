@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Freno a disco e freno a tamburo"
+quizass=319
+sugg=0
+risposte=["Fa parte del freno a disco di un autoveicolo, un disco metallico che gira solidale con la ruota","È parte del freno a disco di un autoveicolo, una pinza che contiene gli elementi d'attrito e, tramite un sistema idraulico, permette di stringerli fortemente al disco durante la frenatura","Fanno parte del freno a disco i pistoncini, azionati da una pompa idraulica","È parte del freno a tamburo, un'asta con puntale a cuneo che, spinta da una membrana, permette di schiacciare le ganasce contro i tamburi generando attrito","Nei freni a tamburo, le ganasce sono ricoperte di guarnizione di attrito (ferodo)","I freni a disco possono essere del tipo autoventilato","Fanno parte del freno a disco i pistoncini, azionati direttamente dall'aria compressa","È parte del freno a tamburo un disco metallico attorno al quale si stringono le ganasce ricoperte di guarnizione di attrito (ferodo)","I freni a disco e quelli a tamburo sono costruttivamente uguali, a parte il tipo di guarnizione di attrito usata in ciascuno dei due","Nei veicoli pesanti di maggiori dimensioni (M3 ed N3), su ogni ruota sono montati insieme sia un freno a disco che uno a tamburo, per avere una maggior potenza frenante","In un impianto frenante pneumatico, il regolatore di pressione ha il compito di mantenere l'impianto a una pressione sempre superiore a 18 bar","I freni a tamburo possono essere del tipo autoventilato","I freni a tamburo non possono essere montati su veicoli dotati di rallentatore","I freni a disco non possono essere montati su veicoli dotati di rallentatore elettromagnetico"]
+soluzioni="VVVVVVFFFFFFFF"
+rispass=[2746,2747,2748,2750,2751,2752,2755,2757,2758,2759,2760,2761,2762,2763]
+nummin="141002"
+}
+continua()

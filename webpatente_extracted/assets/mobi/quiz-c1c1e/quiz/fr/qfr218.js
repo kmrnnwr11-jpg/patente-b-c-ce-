@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Motore a scoppio"
+quizass=218
+sugg=0
+risposte=["Dans un moteur à combustion, la pédale de l'accélérateur a une influence sur la position de la vanne à papillon","Les moteurs à combustion sont des moteurs à allumage commandé","Le moteur à combustion peut fonctionner aussi s'il est alimenté à méthane ou à GPL","Les bougies à étincelles sont caractéristiques d'un moteur à combustion","Dans le moteur à combustion, l'allumage du carburant (étincelle de la bougie) est d'autant plus anticipé que la rotation du moteur est plus rapide","Dans les moteurs modernes à combustion, à la place des bougies on utilise les injecteurs","Dans un moteur à combustion le mélange essence-air se réalise dans le réservoir du carburant","L'anticipation de l'allumage dans le moteur à combustion doit diminuer au fur et à mesure que le nombre de tours/minute augmente","Si le moteur à combustion fonctionne à méthane, il n'a pas besoin du pot catalytique","Si le moteur à combustion fonctionne à GPL, il n'a pas besoin du pot catalytique"]
+rispostet=["In un motore a scoppio, il pedale dell'acceleratore influisce sulla posizione della valvola a farfalla","I motori a scoppio sono motori ad accensione comandata","Il motore a scoppio può funzionare anche con alimentazione a metano o a GPL","Le candele a scintilla sono caratteristiche di un motore a scoppio","Nel motore a scoppio, l'accensione del carburante (scintilla della candela) è tanto più anticipata quanto più veloce è la rotazione del motore","Nei moderni motori a scoppio, in luogo delle candele vengono impiegati gli iniettori","In un motore a scoppio la miscela benzina-aria si realizza nel serbatoio del carburante","L'anticipo dell'accensione nel motore a scoppio deve diminuire man mano che aumenta il numero dei giri","Se il motore a scoppio funziona a metano, non ha bisogno della marmitta catalitica","Se il motore a scoppio funziona a GPL, non ha bisogno della marmitta catalitica"]
+soluzioni="VVVVVFFFFF"
+rispass=[1637,1638,1639,1640,1641,1642,1643,1644,1645,1646]
+nummin="111004"
+}
+continua();

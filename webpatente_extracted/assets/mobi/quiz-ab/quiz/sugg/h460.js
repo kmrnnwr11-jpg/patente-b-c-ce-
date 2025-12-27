@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=460
+titolo="USO DEI PROIETTORI ABBAGLIANTI"
+testo="L’uso dei proiettori a luce abbagliante è necessario, fuori dei centri abitati (e nelle gallerie extraurbane), quando l’illuminazione pubblica manca o è insufficiente (le sole luci anabbaglianti in tale circostanza non bastano) e non si incrociano altri veicoli.<br /><br />È vietato, di norma, durante la marcia nei centri abitati (comprese le gallerie urbane) e va in ogni caso sostituito con quello dei proiettori a luce anabbagliante: quando si incrociano altri veicoli; quando si segue un veicolo a breve distanza (non solo se si tratta di un’autovettura); quando vi sia il pericolo di abbagliare altri utenti della strada (compresi i conducenti di veicoli che circolino su altre strade e i pedoni). <br /><br />È consentito l’uso intermittente dei proiettori di profondità (a luce abbagliante), in sostituzione del clacson, per dare avvertimenti utili al fine di evitare incidenti (non solo in caso di pericolo immediato, ma anche per segnalare l’intenzione di effettuare un sorpasso), sia di giorno che di notte (quindi, non solo quando la pubblica illuminazione manchi o sia insufficiente), sia nei centri abitati che fuori.<br /><br />È sbagliato dire che l’uso dei proiettori a luce abbagliante è sempre ammesso se si circola in autostrada viaggiando controsole, quando si trasportano feriti o ammalati gravi (in tal caso si devono tenere accesi i proiettori anabbaglianti) o con nebbia fitta, oppure che i proiettori abbaglianti debbano essere spenti fuori dei centri abitati o dopo un loro uso prolungato, per evitare di scaricare la batteria."
+riferimento=[769,770,771]
+}
+suggerimenti.continua()

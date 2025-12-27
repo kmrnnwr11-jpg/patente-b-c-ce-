@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Sistema di iniezione multijet"
+quizass=235
+sugg=0
+risposte=["In un motore Diesel, il sistema d'iniezione multijet ottimizza la combustione del gasolio nei cilindri","In un motore Diesel, il sistema d'iniezione multijet riduce l'inquinamento acustico causato dal motore","In un motore Diesel, il sistema d'iniezione multijet riduce l'inquinamento atmosferico causato dal motore","In un motore Diesel, il sistema d'iniezione multijet arriva fino a 8 iniezioni per ciclo di funzionamento","In un motore Diesel, il sistema d'iniezione multijet permette una riduzione dei consumi","In un motore Diesel, il sistema d'iniezione multijet abbassa l'inquinamento acustico causato dal motore","In un motore Diesel, il sistema d'iniezione multijet aumenta la potenza del motore aumentandone notevolmente i consumi","I motori che adottano il sistema d'iniezione multijet sono generalmente appartenenti alle categorie antinquinamento euro zero o euro uno","In un motore Diesel, il sistema d'iniezione multijet è usato solo nei motori a benzina turbocompressi","In un motore Diesel, il sistema d'iniezione multijet ha sempre due iniezioni di gasolio nel ciclo di funzionamento"]
+soluzioni="VVVVVVFFFF"
+rispass=[1907,1908,1909,1910,1911,1912,1913,1914,1915,1916]
+nummin="112013"
+}
+continua()

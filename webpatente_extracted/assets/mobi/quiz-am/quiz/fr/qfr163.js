@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Svolta a destra"
+quizass=163
+sugg=152
+risposte=["On tourne à droite en se tenant le plus près possible du côté droit de la route","On tourne à droite en mettant son clignotant avec suffisamment d'avance","On tourne à droite en adaptant la vitesse au fur et à mesure qu'on approche du croisement","On tourne à droite en se tenant le près plus possible du côté gauche de la route","On tourne à droite en se déplaçant sur la voie de gauche","On tourne à droite en se mettant au centre du croisement"]
+rispostet=["La svolta a destra si effettua tenendosi il più vicino possibile al margine destro della strada","La svolta a destra si effettua azionando l'indicatore di direzione con sufficiente anticipo","La svolta a destra si effettua regolando la velocità man mano che ci si avvicina all'incrocio","La svolta a destra si effettua tenendosi il più vicino possibile al margine sinistro della strada","La svolta a destra si effettua spostandosi sulla corsia di sinistra","La svolta a destra si effettua portandosi al centro dell'incrocio"]
+soluzioni="VVVFFF"
+rispass=[1121,1122,1123,1124,1125,1126]
+nummin="05023"
+}
+continua();

@@ -1,0 +1,8 @@
+s=new tsugg;
+with(s){
+numero=289
+titolo="QUANDO SI VIENE SORPASSATI"
+testo="Il conducente del veicolo che viene sorpassato ha l’obbligo di agevolare la manovra di sorpasso (se si viene sorpassati ed avviene un incidente, si può avere una parte di responsabilità, se non si è fatto il possibile per facilitare tale manovra). Deve perciò tenersi il più possibile vicino al margine destro della strada (nelle strade ad una corsia per senso di marcia), evitare di accelerare e gareggiare in velocità con il veicolo sorpassante.<br /><br />Se si viene sorpassati mentre sopraggiunge un veicolo dal senso opposto, occorre spostarsi il più vicino possibile al margine destro della carreggiata ed è consigliabile ridurre la velocità (non si deve invece segnalare il pericolo azionando l’indicatore di direzione destro o tenendo accesi i proiettori abbaglianti).<br />Chi guida un veicolo molto lento ha l’obbligo di fermarsi appena possibile per far defluire il traffico.<br /><br />È sbagliato dire che si deve: ridurre sempre la propria velocità o mantenerla obbligatoriamente uguale (costante); azionare i lampeggianti di emergenza (le 4 frecce) per segnalare che la strada è sgombra (libera); che occorre portarsi al centro della carreggiata per evitare sorpassi in scia (in coda) o che si deve inserire una marcia più bassa per facilitare il sorpasso."
+riferimento=[670,671,672]
+}
+suggerimenti.continua()

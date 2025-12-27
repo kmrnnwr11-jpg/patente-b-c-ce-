@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Veicoli ammessi a circolare sulle autostrade e sulle strade extraurbane principali"
+quizass=712
+sugg=11073
+risposte=["Sulle autostrade e strade extraurbane principali è vietata la circolazione di velocipedi, ciclomotori, motocicli di cilindrata inferiore a 150 cm3","Sulle autostrade e strade extraurbane principali è vietata la circolazione di autovetture che non sono in grado di sviluppare per costruzione la velocità in piano di almeno 80 km/h","Sulle autostrade e strade extraurbane principali è vietata la circolazione di macchine agricole","Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli con carico disordinato e non solidamente assicurato o sporgente oltre i limiti consentiti","Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli a tenuta non stagna e con carico scoperto, se trasportano materiali che possono disperdersi","Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli le cui condizioni di uso, equipaggiamento e gommatura possono costituire pericolo per la circolazione","Sulle autostrade e strade extraurbane principali è vietata la circolazione di autobus per trasporto di studenti","Sulle autostrade e strade extraurbane principali è consigliabile evitare la circolazione di veicoli a tenuta non stagna e con carico scoperto, se trasportano materiali che possono disperdersi","Sulle autostrade e strade extraurbane principali è vietata la circolazione di veicoli che trasportano animali vivi","Sono ammessi a circolare su autostrade e strade extraurbane principali i ciclomotori che sviluppano una velocità di almeno 50 km/h","Sono ammesse a circolare su autostrade e strade extraurbane principali le macchine agricole, non trainanti un rimorchio","Sono ammessi a circolare su autostrade e strade extraurbane principali i veicoli non muniti di pneumatici, se assicurati"]
+soluzioni="VVVVVVFFFFFF"
+rispass=[5538,5539,5540,5541,5542,5543,5544,5545,5546,5547,5548,5549]
+nummin="17008"
+}
+continua();

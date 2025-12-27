@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Classificazione dei veicoli: i ciclomotori"
+quizass=23
+sugg=11002
+risposte=["Les véhicules à deux roues, avec moteur thermique jusqu'à 50 cm3 de cylindrée et vitesse maximale de 45 km/h sont des motocycles légers","Les motocycles légers peuvent avoir deux ou trois roues","Pas tous les véhicules à moteur à deux roues peuvent être classifiés des motocycles légers","Les motocycles légers à deux roues ne peuvent pas avoir un moteur thermique de cylindrée supérieure à 50 cm3","Les motocycles légers sont soumis à une révision quatre ans après la première immatriculation et successivement tous les deux ans","Les motocycles légers ne possèdent jamais plus de deux roues","Les bicyclettes assistées, équipées d'un moteur auxiliaire de puissance maximale 0,25 kW, sont classifiées comme des motocycles légers","On appelle motocycles légers tous les véhicules à deux roues avec cylindrée supérieure à 50 cm3","Les motocycles légers, pour être considérés tels, doivent être équipés d'un embrayage manuel","Les motocycles légers peuvent circuler à vitesse de 60 km/h hors des agglomérations","Les motocycles légers ne sont pas soumis à une révision périodique"]
+rispostet=["I veicoli a due ruote, con motore termico fino a 50 cm3 di cilindrata e velocità massima di 45 km/h sono ciclomotori","I ciclomotori possono avere due o tre ruote","Non tutti i veicoli a motore a due ruote vengono classificati ciclomotori","I ciclomotori a due ruote non possono avere un motore termico di cilindrata superiore a 50 cm3","I ciclomotori sono soggetti a revisione dopo quattro anni dalla prima immatricolazione, successivamente ogni due anni","I ciclomotori non hanno più di due ruote","Le biciclette con pedalata assistita, dotate di motore elettrico ausiliario di potenza massima fino a 0,25 kW, sono definite ciclomotori","Si definiscono ciclomotori tutti i veicoli a due ruote di cilindrata superiore a 50 cm3","I ciclomotori, per essere definiti tali, devono essere muniti di cambio manuale","I ciclomotori possono circolare alla velocità di 60 km/h fuori dai centri urbani","I ciclomotori non sono soggetti a revisione periodica"]
+soluzioni="VVVVVFFFFFF"
+rispass=[230,231,232,233,234,235,236,237,238,239,240]
+nummin="01023"
+}
+continua();

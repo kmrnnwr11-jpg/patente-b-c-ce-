@@ -1,0 +1,11 @@
+q= new tquiz; with (q){
+domanda="Campo di visibilità di un autocarro"
+quizass=761
+sugg=11098
+risposte=["Avant de redémarrer, le conducteur d'un camion doit faire particulièrement attention à la présence possible d'un piéton ou d'un cycliste devant son véhicule","Le conducteur d'un camion à l'arrêt au feu doit prévoir la présence de piétons et de cyclistes qui pourraient être exclus de son champs de vision limité","La visibilité réduite du pare-brise des camions, qui empêche au conducteur de bien voir juste devant son véhicule, rend l'arrêt en file très dangereux, en présence de piétons ou de véhicules à deux roues","Le champ visuel des camions permet le contrôle sûr des aires immédiatement antérieures et latérales","Un piéton peut traverser la route en toute sécurité même s'il passe près de la partie frontale d'un camion à l'arrêt en queue qui va redémarrer, car il va sûrement être aperçu par le conducteur","Quand ils redémarrent après l'arrêt au feu, les conducteurs des camions aperçoivent facilement les piétons ou les cyclistes qui se trouvent devant ou sur les côtés de leurs véhicules"]
+rispostet=["Prima di riprendere la marcia, il conducente di un autocarro deve prestare particolare attenzione alla possibile presenza di un pedone o di un ciclista nella zona immediatamente antistante il proprio veicolo fermo","Il conducente di un autocarro fermo al semaforo deve prevedere la presenza di pedoni e ciclisti il cui avvistamento è precluso dalla sagoma del proprio veicolo","La limitata visuale offerta dal parabrezza degli autocarri nella zona immediatamente antistante il veicolo rende pericolosa la fermata di tali mezzi in colonna, qualora siano presenti pedoni o mezzi a due ruote","Il campo di visibilità degli autocarri permette il controllo sicuro di tutta la zona immediatamente antistante e laterale","Un pedone può attraversare la strada in tutta sicurezza passando a distanza ravvicinata rispetto alla parte frontale di un autocarro fermo in colonna che sta per ripartire, in quanto sicuramente avvistabile dal conducente","Quando stanno per riprendere la marcia dopo un arresto al semaforo, i conducenti di autocarri possono facilmente avvistare pedoni o ciclisti che affiancano e sfiorano la parte anteriore dei propri veicoli"]
+soluzioni="VVVFFF"
+rispass=[5691,5692,5693,5694,5695,5696]
+nummin="17030"
+}
+continua();

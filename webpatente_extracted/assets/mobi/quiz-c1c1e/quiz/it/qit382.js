@@ -1,0 +1,10 @@
+q= new tquiz; with (q){
+domanda="Compiti e competenze del conducente 2"
+quizass=382
+sugg=0
+risposte=["È compito del conducente segnalare il malfunzionamento del veicolo al responsabile del parco macchine o dell'officina di riparazione dell'azienda","Il conducente deve essere in grado di distinguere i guasti che sconsigliano la prosecuzione del viaggio da quelli che ne possono permettere, pur con le dovute cautele, la continuazione","Per ridurre al massimo i problemi di manutenzione, il conducente deve avere uno stile di guida che limiti le sollecitazioni alle parti meccaniche del veicolo","Per ridurre al massimo i problemi di manutenzione, il conducente deve avere uno stile di guida che limiti al massimo i consumi delle parti del veicolo soggette a usura","Per ridurre al massimo i problemi di manutenzione, il conducente deve segnalare subito in azienda qualunque possibile difetto o anomalia riscontrata durante il suo turno di lavoro","È compito del conducente, prima della partenza, regolare la pressione dell'aria dei freni in base al carico del veicolo","Il conducente si deve accorgere di una perdita di pressione dall'impianto dei freni ascoltando l'inconfondibile sibilo dell'aria che esce dai tubi","Per ridurre al massimo i problemi di manutenzione, il conducente deve segnalare subito al collega del turno successivo qualunque possibile difetto o anomalia riscontrata durante il suo turno di lavoro","Per ridurre al massimo i problemi di manutenzione, il conducente deve provare a riparare subito qualunque possibile difetto o anomalia riscontrata durante il suo turno di lavoro","È compito del conducente, prima di partire, ripulire con uno straccio gli iniettori","Per ridurre al massimo i problemi di manutenzione, il conducente deve viaggiare a motore spento nelle lunghe discese","Per ridurre al massimo i problemi di manutenzione, il conducente deve effettuare frenate a fondo di prova al termine di ogni turno di lavoro"]
+soluzioni="VVVVVFFFFFFF"
+rispass=[3316,3317,3320,3321,3322,3328,3329,3330,3331,3332,3333,3334]
+nummin="163002"
+}
+continua()

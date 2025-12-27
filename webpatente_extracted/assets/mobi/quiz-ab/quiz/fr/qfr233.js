@@ -1,0 +1,12 @@
+q= new tquiz; with (q){
+domanda="Segnale di DIRITTO DI PRECEDENZA (2)"
+segnale="52"
+quizass=233
+sugg=44
+risposte=["Le panneau représenté peut être placé au début d'une route d'agglomération ou hors agglomération qui a le droit de priorité","Le panneau représenté peut être répété en petit format avant et après chaque croisement","Le panneau représenté implique la présence sur les routes qu'on croise des panneaux CÉDEZ LE PASSAGE ou STOP","Face au panneau représenté il faut réduire la vitesse en arrivant aux croisements","Le panneau représenté se trouve au début d'une route sans droit de priorité","Le panneau représenté se trouve au début d'une autoroute","Le panneau représenté se trouve exclusivement au début d'une route nationale","Face au panneau représenté la prudence n'est pas nécessaire car on dispose de la priorité","Le panneau représenté se trouve à la fin d'une route avec droit de priorité","Le panneau représenté se trouve à la fin d'une route nationale","Le panneau représenté signale que l'on a la priorité jusqu'à ce qu'on sorte de l'agglomération"]
+rispostet=["Il segnale raffigurato si può trovare all'inizio di una strada urbana o extraurbana che gode del diritto di precedenza","Il segnale raffigurato può essere ripetuto in formato piccolo prima e dopo ogni incrocio","Il segnale raffigurato comporta la presenza sulle strade che si incrociano del segnale DARE PRECEDENZA o STOP","In presenza del segnale raffigurato è comunque necessario moderare la velocità in prossimità degli incroci","Il segnale raffigurato si trova all'inizio di una strada senza diritto di precedenza","Il segnale raffigurato si trova all'inizio di un'autostrada","Il segnale raffigurato si trova esclusivamente all'inizio di una strada statale","In presenza del segnale raffigurato non occorrono particolari cautele perché si ha la precedenza","Il segnale raffigurato si trova alla fine di una strada con diritto di precedenza","Il segnale raffigurato si trova alla fine di una strada statale","Il segnale raffigurato indica che si ha la precedenza fino all'uscita del centro abitato"]
+soluzioni="VVVVFFFFFFF"
+rispass=[2363,2364,2366,2367,2368,2369,2370,2371,2372,2373,2374]
+nummin="05018"
+}
+continua();
