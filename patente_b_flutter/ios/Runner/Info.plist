@@ -45,6 +45,13 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
+		<!-- Privacy Usage Descriptions -->
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>L'app necessita di accedere alla tua galleria per permetterti di caricare una foto profilo.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>L'app necessita di accedere alla fotocamera per scattare una foto profilo.</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>L'app necessita di accedere al microfono per le funzionalità vocali.</string>
 		<!-- Deep Links: URL Schemes -->
 		<key>CFBundleURLTypes</key>
 		<array>
