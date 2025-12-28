@@ -14,6 +14,7 @@ class AppUser {
   final String? stripeSubscriptionId;
   final DateTime createdAt;
   final DateTime lastLogin;
+  final String role; // 'user', 'creator', 'admin'
 
   AppUser({
     required this.uid,
@@ -28,6 +29,7 @@ class AppUser {
     this.stripeSubscriptionId,
     required this.createdAt,
     required this.lastLogin,
+    this.role = 'user',
   });
 
   /// Crea AppUser da Firestore document
@@ -52,6 +54,7 @@ class AppUser {
       lastLogin: data['lastLogin'] != null
           ? (data['lastLogin'] as Timestamp).toDate()
           : DateTime.now(),
+      role: data['role'] ?? 'user',
     );
   }
 
@@ -72,6 +75,7 @@ class AppUser {
       'stripeSubscriptionId': stripeSubscriptionId,
       'createdAt': Timestamp.fromDate(createdAt),
       'lastLogin': Timestamp.fromDate(lastLogin),
+      'role': role,
     };
   }
 
@@ -96,6 +100,7 @@ class AppUser {
     String? stripeSubscriptionId,
     DateTime? createdAt,
     DateTime? lastLogin,
+    String? role,
   }) {
     return AppUser(
       uid: uid ?? this.uid,
@@ -110,6 +115,7 @@ class AppUser {
       stripeSubscriptionId: stripeSubscriptionId ?? this.stripeSubscriptionId,
       createdAt: createdAt ?? this.createdAt,
       lastLogin: lastLogin ?? this.lastLogin,
+      role: role ?? this.role,
     );
   }
 }

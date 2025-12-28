@@ -22,6 +22,9 @@ class TranslationService {
   // Audio URL maps (key = question ID)
   final Map<int, String> _audioUrlsUr = {}; // Urdu audio URLs
   final Map<int, String> _audioUrlsPa = {}; // Punjabi audio URLs
+  final Map<int, String> _audioUrlsPs = {}; // Pashto audio URLs
+  final Map<int, String> _audioUrlsBn = {}; // Bengali audio URLs
+  final Map<int, String> _audioUrlsAr = {}; // Arabic audio URLs
 
   bool _isLoaded = false;
   bool _firestoreLoaded = false;
@@ -121,6 +124,30 @@ class TranslationService {
             data['pa_audio'].toString().isNotEmpty) {
           _audioUrlsPa[numericId] = data['pa_audio'].toString();
           paAudioCount++;
+        }
+
+        // Pashto Audio URL
+        if (numericId != null &&
+            data.containsKey('ps_audio') &&
+            data['ps_audio'] != null &&
+            data['ps_audio'].toString().isNotEmpty) {
+          _audioUrlsPs[numericId] = data['ps_audio'].toString();
+        }
+
+        // Bengali Audio URL
+        if (numericId != null &&
+            data.containsKey('bn_audio') &&
+            data['bn_audio'] != null &&
+            data['bn_audio'].toString().isNotEmpty) {
+          _audioUrlsBn[numericId] = data['bn_audio'].toString();
+        }
+
+        // Arabic Audio URL
+        if (numericId != null &&
+            data.containsKey('ar_audio') &&
+            data['ar_audio'] != null &&
+            data['ar_audio'].toString().isNotEmpty) {
+          _audioUrlsAr[numericId] = data['ar_audio'].toString();
         }
       }
 
@@ -336,6 +363,18 @@ class TranslationService {
       case AppLanguage.punjabi:
         final url = _audioUrlsPa[questionId];
         debugPrint('🎵 Punjabi audio URL for $questionId: $url');
+        return url;
+      case AppLanguage.pashto:
+        final url = _audioUrlsPs[questionId];
+        debugPrint('🎵 Pashto audio URL for $questionId: $url');
+        return url;
+      case AppLanguage.bengali:
+        final url = _audioUrlsBn[questionId];
+        debugPrint('🎵 Bengali audio URL for $questionId: $url');
+        return url;
+      case AppLanguage.arabic:
+        final url = _audioUrlsAr[questionId];
+        debugPrint('🎵 Arabic audio URL for $questionId: $url');
         return url;
       default:
         debugPrint('🎵 No audio for language ${language.code}');

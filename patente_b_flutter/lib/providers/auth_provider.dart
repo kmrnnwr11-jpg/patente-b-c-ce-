@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/auth_service.dart';
+import '../services/session_monitor.dart';
 import '../models/user_model.dart';
 
 /// Provider per gestire lo stato di autenticazione nell'app
@@ -38,6 +39,13 @@ class AuthProvider extends ChangeNotifier {
     );
   }
 
+  /// Avvia il monitoraggio della sessione con il contesto
+  void startSessionMonitoring(BuildContext context) {
+    if (isLoggedIn) {
+      SessionMonitor().startMonitoring(context);
+    }
+  }
+
   /// Callback quando lo stato di autenticazione cambia
   Future<void> _onAuthStateChanged(User? user) async {
     _firebaseUser = user;
@@ -47,6 +55,7 @@ class AuthProvider extends ChangeNotifier {
       await _loadUserData(user.uid);
     } else {
       _appUser = null;
+      SessionMonitor().stopMonitoring();
     }
 
     _isLoading = false;

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'security_service.dart';
 
 /// Service to handle Firebase Authentication
 class AuthService {
@@ -13,6 +14,10 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final SecurityService _securityService = SecurityService();
+
+  String? _deviceFingerprint;
+  String? get deviceFingerprint => _deviceFingerprint;
 
   /// Stream of authentication state changes
   Stream<User?> get authStateChanges => _auth.authStateChanges();
@@ -33,6 +38,10 @@ class AuthService {
         email: email.trim(),
         password: password,
       );
+
+      // Controllo Sicurezza post-login
+      await _performSecurityPostLogin(userCredential.user!.uid);
+
       debugPrint('✅ Signed in as: ${userCredential.user?.email}');
 
       // Update last login
@@ -43,6 +52,19 @@ class AuthService {
       debugPrint('❌ Email sign in failed: ${e.code}');
       throw _getReadableError(e.code);
     }
+  }
+
+  /// Esegue i controlli di sicurezza post-login
+  Future<void> _performSecurityPostLogin(String userId) async {
+    final token = await currentUser!.getIdToken();
+    final status = await _securityService.performAppStartCheck(userId, token!);
+
+    if (!status.allowed) {
+      await signOut();
+      throw status.reason ?? 'security_blocked';
+    }
+
+    _deviceFingerprint = status.deviceFingerprint;
   }
 
   /// Sign up with Email and Password

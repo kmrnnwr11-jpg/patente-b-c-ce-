@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/translation.dart';
 import '../../services/language_preference_service.dart';
-import '../../theme/app_theme.dart';
 import 'tutor_topic_screen.dart';
 
 class AiTutorLandingScreen extends StatefulWidget {

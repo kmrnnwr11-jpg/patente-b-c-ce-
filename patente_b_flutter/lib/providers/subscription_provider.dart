@@ -96,9 +96,8 @@ class SubscriptionProvider extends ChangeNotifier {
 
   /// Calcola il prezzo finale
   double calculateFinalPrice() {
-    const originalPrice = 20.00; // Prezzo Premium mensile
     return _subscriptionService.calculateFinalPrice(
-      originalPrice: originalPrice,
+      originalPrice: SubscriptionService.defaultPremiumPrice,
       promoCode: _appliedPromoCode,
       hasReferral: _hasReferral,
     );

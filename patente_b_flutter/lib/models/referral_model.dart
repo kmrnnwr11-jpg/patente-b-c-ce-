@@ -104,6 +104,9 @@ class Referral {
     }
   }
 
+  /// Controlla se il referral è attivo
+  bool get isActive => status == ReferralStatus.active;
+
   /// Controlla se il referral genera ancora commissioni
   bool get isEarning {
     return status == ReferralStatus.active && monthsPaid < 12;

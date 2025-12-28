@@ -17,6 +17,26 @@ class AppleGlassTheme {
     stops: [0.0, 0.5, 1.0],
   );
 
+  // Light Mode: Moroccan Cream Gradient
+  static const LinearGradient bgGradientLight = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color(0xFFFAF3E0), // Moroccan Cream (Light)
+      Color(0xFFE8DCCA), // Moroccan Beige (Darker)
+    ],
+    stops: [0.0, 1.0],
+  );
+
+  // Light Mode Card Colors
+  // Light Mode Card Colors (Water Glass)
+  static const Color cardBgLight = Color(
+    0x80E0F7FA,
+  ); // Water Blue (50% opacity)
+  static const Color cardBorderLight = Color(
+    0x99FFFFFF,
+  ); // White border (60% opacity)
+
   // Mesh gradient overlay colors
   static const Color meshPurple = Color(0x1F7877C6); // 12% opacity
   static const Color meshPink = Color(0x14FF7773); // 8% opacity
@@ -69,6 +89,17 @@ class AppleGlassTheme {
   static const Color textSecondary = Color(0x99FFFFFF); // 60%
   static const Color textTertiary = Color(0x66FFFFFF); // 40%
   static const Color textQuaternary = Color(0x40FFFFFF); // 25%
+
+  // Text Colors for Light Background
+  // Text Colors for Light Background (Deep Teal/Cyan)
+  // Text Colors for Light Background (Deep Teal/Cyan)
+  static const Color textPrimaryDark = Color(0xFF000000); // Black (Primary)
+  static const Color textSecondaryDark = Color(
+    0xB3000000,
+  ); // Black 70% (Secondary)
+  static const Color textTertiaryDark = Color(
+    0x80000000,
+  ); // Black 50% (Tertiary)
 
   // ═══════════════════════════════════════════════════════════════════════════
   // TYPOGRAPHY
@@ -176,6 +207,21 @@ class AppleGlassTheme {
               ],
             )
           : null,
+    );
+  }
+
+  static BoxDecoration glassDecorationLight({double radius = radiusXl}) {
+    return BoxDecoration(
+      color: cardBgLight,
+      borderRadius: BorderRadius.circular(radius),
+      border: Border.all(color: cardBorderLight, width: 1.5),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 20,
+          offset: const Offset(0, 8),
+        ),
+      ],
     );
   }
 

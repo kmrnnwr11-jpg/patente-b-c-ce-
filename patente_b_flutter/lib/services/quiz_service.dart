@@ -92,6 +92,16 @@ class QuizService {
     return _questions.where((q) => q.argomento == topic).toList();
   }
 
+  /// Get random questions by topic (shuffled, limited to count for exam-like experience)
+  List<QuizQuestion> getRandomByTopic(String topic, {int count = 30}) {
+    final topicQuestions = _questions
+        .where((q) => q.argomento == topic)
+        .toList();
+    if (topicQuestions.isEmpty) return [];
+    topicQuestions.shuffle();
+    return topicQuestions.take(count).toList();
+  }
+
   /// Get all unique topics
   List<String> getTopics() {
     return _questions.map((q) => q.argomento).toSet().toList();

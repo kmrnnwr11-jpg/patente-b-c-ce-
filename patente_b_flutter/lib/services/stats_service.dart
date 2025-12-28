@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 
 /// Model for user statistics and progress
 class UserStats {
@@ -87,7 +88,7 @@ class TopicStats {
 }
 
 /// Service for managing user statistics and gamification
-class StatsService {
+class StatsService with ChangeNotifier {
   static const String _storageKey = 'user_stats';
 
   UserStats _stats = UserStats();
@@ -105,9 +106,11 @@ class StatsService {
         _stats = UserStats.fromJson(json.decode(jsonString));
       }
       _isLoaded = true;
+      notifyListeners();
     } catch (e) {
       print('Error loading stats: $e');
       _stats = UserStats();
+      notifyListeners();
     }
   }
 
@@ -116,6 +119,7 @@ class StatsService {
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString(_storageKey, json.encode(_stats.toJson()));
+      notifyListeners();
     } catch (e) {
       print('Error saving stats: $e');
     }

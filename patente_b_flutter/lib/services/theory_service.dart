@@ -104,9 +104,9 @@ class PdfTheoryChapter {
 /// Service for loading and managing theory content
 class TheoryService {
   List<TheoryChapter> _chapters = [];
-  List<PdfTheoryChapter> _pdfManuale = [];
-  List<PdfTheoryChapter> _pdfGrafiche = [];
-  List<Map<String, dynamic>> _pdfImages = [];
+  final List<PdfTheoryChapter> _pdfManuale = [];
+  final List<PdfTheoryChapter> _pdfGrafiche = [];
+  final List<Map<String, dynamic>> _pdfImages = [];
   bool _isLoaded = false;
 
   /// Load theory chapters from the new PDF extracted content with images

@@ -247,25 +247,24 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 110,
+          height: 110,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [theme.colorScheme.primary, theme.colorScheme.secondary],
-            ),
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(22),
             boxShadow: [
               BoxShadow(
                 color: theme.colorScheme.primary.withOpacity(0.4),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
+                blurRadius: 25,
+                offset: const Offset(0, 8),
               ),
             ],
           ),
-          child: const Icon(
-            Icons.drive_eta_rounded,
-            size: 50,
-            color: Colors.white,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(22),
+            child: Image.asset(
+              'assets/images/app_icon_512.png',
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         const SizedBox(height: 24),

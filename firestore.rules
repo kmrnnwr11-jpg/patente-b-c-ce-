@@ -98,6 +98,34 @@ service cloud.firestore {
     }
     
     // ========================================
+    // USER DEVICES - Per Single-Device login
+    // ========================================
+    match /user_devices/{deviceId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false; // Solo backend
+    }
+
+    // ========================================
+    // SECURITY - Logs e Bans
+    // ========================================
+    match /security_logs/{logId} {
+      allow read, write: if false; // Solo admin/backend
+    }
+
+    match /user_bans/{banId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false; // Solo backend
+    }
+
+    // ========================================
+    // PURCHASES - Ricevute d'acquisto
+    // ========================================
+    match /purchase_receipts/{receiptId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow write: if false; // Solo backend
+    }
+
+    // ========================================
     // DEFAULT - Nega tutto il resto
     // ========================================
     match /{document=**} {

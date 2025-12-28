@@ -324,6 +324,15 @@ class AchievementService {
     return unlocked;
   }
 
+  /// Reset all achievements
+  Future<void> reset() async {
+    for (final achievement in _achievements.values) {
+      achievement.isUnlocked = false;
+      achievement.unlockedAt = null;
+    }
+    await _save();
+  }
+
   /// Get achievement count
   int get unlockedCount => getUnlocked().length;
   int get totalCount => _achievements.length;

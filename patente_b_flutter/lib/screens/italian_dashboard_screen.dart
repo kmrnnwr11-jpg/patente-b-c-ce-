@@ -14,6 +14,16 @@ class ItalianDashboardScreen extends StatelessWidget {
         title: const Text('Lingua Italiana'),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => const CourseSelectionScreen(),
+              ),
+            );
+          },
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.swap_horiz),

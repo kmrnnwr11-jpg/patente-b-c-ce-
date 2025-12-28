@@ -31,6 +31,12 @@ dependencies:
   url_launcher: ^6.2.3
   qr_flutter: ^4.1.0
   uuid: ^4.3.3
+  crypto: ^3.0.3
+  device_info_plus: ^9.1.1
+  package_info_plus: ^8.1.0
+  pinput: ^3.0.1
+  image_picker: ^1.2.1
+  firebase_storage: ^12.4.10
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +49,7 @@ flutter:
   
   assets:
     - assets/data/
+    - assets/images/
     - assets/images/quiz/
     - assets/images/segnali/
     - assets/images/theory-icons/
@@ -51,6 +58,9 @@ flutter:
     - assets/images/theory/lesson4/
     - assets/images/theory/lesson5/
     - assets/images/theory/lesson7/
+    - assets/images/theory/thumbnails/
+    - assets/images/dashboard/
+    - assets/images/licenses/
     - assets/data/italian-tests/
 
 # Splash Screen Configuration

@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../models/theory_chapter.dart';
 import '../../services/theory_service.dart';
+import '../../theme/apple_glass_theme.dart';
+import '../../widgets/glass/glass_card.dart';
 
 import 'theory_detail_screen.dart';
+import '../../providers/theme_provider.dart';
+import 'package:provider/provider.dart';
+import '../../widgets/common/theme_toggle_button.dart';
 
-/// Main theory screen with signal categories and theory chapters
+/// Main theory screen with "Neo-Glass Academy" redesign
 class TheoryScreen extends StatefulWidget {
   const TheoryScreen({super.key});
 
@@ -13,357 +18,436 @@ class TheoryScreen extends StatefulWidget {
   State<TheoryScreen> createState() => _TheoryScreenState();
 }
 
-class _TheoryScreenState extends State<TheoryScreen> {
+class _TheoryScreenState extends State<TheoryScreen>
+    with SingleTickerProviderStateMixin {
   final TheoryService _theoryService = TheoryService();
-  List<TheoryChapter> _pdfLessons = [];
+  List<TheoryChapter> _allLessons = [];
   bool _isLoading = true;
+
+  // Scroll Controller for sticky headers effects
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
     _loadLessons();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadLessons() async {
     await _theoryService.loadTheory();
     setState(() {
-      _pdfLessons = _theoryService.getAllChapters();
+      _allLessons = _theoryService.getAllChapters();
       _isLoading = false;
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF5FB894), Color(0xFF4AA9D0), Color(0xFF3B9ED9)],
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              // Header
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
-                    ),
-                    const Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                            'Teoria e Segnali',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            'Studia la teoria per argomento',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 48),
-                  ],
-                ),
-              ),
-
-              // Content
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 8),
-
-                      // Theory lessons header
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        child: Row(
-                          children: [
-                            const Text('📖', style: TextStyle(fontSize: 24)),
-                            const SizedBox(width: 8),
-                            const Text(
-                              'Manuale di Teoria Completo',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Spacer(),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text(
-                                '${_pdfLessons.length} lezioni',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                      // Loading or PDF lessons list
-                      if (_isLoading)
-                        const Center(
-                          child: Padding(
-                            padding: EdgeInsets.all(32),
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      else
-                        GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 12,
-                                mainAxisSpacing: 12,
-                                childAspectRatio: 0.95,
-                              ),
-                          itemCount: _pdfLessons.length,
-                          itemBuilder: (context, index) {
-                            final lesson = _pdfLessons[index];
-                            return _LessonGridCard(
-                              lessonNumber: index + 1,
-                              title: lesson.title,
-                              sectionsCount: lesson.sections.length,
-                              onTap: () => _navigateToLesson(context, lesson),
-                            );
-                          },
-                        ),
-
-                      const SizedBox(height: 100), // Bottom padding
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _navigateToLesson(BuildContext context, TheoryChapter lesson) {
+  void _navigateToLesson(TheoryChapter lesson) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) =>
-            TheoryDetailScreen(chapter: lesson, allChapters: _pdfLessons),
+            TheoryDetailScreen(chapter: lesson, allChapters: _allLessons),
       ),
     );
   }
-}
 
-class _SignalCategoryCard extends StatefulWidget {
-  final String title;
-  final IconData icon;
-  final Color color;
-  final VoidCallback onTap;
-  final bool fullWidth = false;
-
-  const _SignalCategoryCard({
-    required this.title,
-    required this.icon,
-    required this.color,
-    required this.onTap,
-  });
-
-  @override
-  State<_SignalCategoryCard> createState() => _SignalCategoryCardState();
-}
-
-class _SignalCategoryCardState extends State<_SignalCategoryCard>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-  bool _isPressed = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 150),
-      vsync: this,
-    );
-    _scaleAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.95,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _onTapDown(TapDownDetails details) {
-    setState(() => _isPressed = true);
-    _controller.forward();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() => _isPressed = false);
-    _controller.reverse();
-    widget.onTap();
-  }
-
-  void _onTapCancel() {
-    setState(() => _isPressed = false);
-    _controller.reverse();
+  List<TheoryChapter> _getLessonsForModule(int start, int end) {
+    if (_allLessons.isEmpty) return [];
+    // Ensure indices are within bounds
+    final s = (start - 1).clamp(0, _allLessons.length);
+    final e = end.clamp(0, _allLessons.length);
+    return _allLessons.sublist(s, e);
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _scaleAnimation,
-      child: GestureDetector(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: EdgeInsets.all(widget.fullWidth ? 20 : 16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                widget.color.withOpacity(_isPressed ? 0.8 : 0.6),
-                widget.color.withOpacity(_isPressed ? 0.5 : 0.3),
-              ],
-            ),
-            borderRadius: BorderRadius.circular(28),
-            border: Border.all(
-              color: Colors.white.withOpacity(_isPressed ? 0.4 : 0.25),
-              width: 1.5,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: widget.color.withOpacity(0.3),
-                blurRadius: _isPressed ? 8 : 16,
-                offset: Offset(0, _isPressed ? 2 : 6),
-                spreadRadius: _isPressed ? 0 : 2,
-              ),
-              BoxShadow(
-                color: Colors.white.withOpacity(0.1),
-                blurRadius: 1,
-                offset: const Offset(0, -1),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.all(widget.fullWidth ? 16 : 12),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.15),
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
+    // Determine gradient based on theme mode (light/dark) logic
+    final themeProvider = context.watch<ThemeProvider>();
+    final isDarkMode = themeProvider.isDarkMode;
+    final isLightMode = !isDarkMode;
+
+    final backgroundGradient = isDarkMode
+        ? AppleGlassTheme.bgGradient
+        : AppleGlassTheme.bgGradientLight;
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(gradient: backgroundGradient),
+        child: SafeArea(
+          bottom: false,
+          child: _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : CustomScrollView(
+                  controller: _scrollController,
+                  slivers: [
+                    // 1. Custom Hero Header (App Bar + Progress)
+                    SliverAppBar(
+                      expandedHeight: 280,
+                      backgroundColor:
+                          Colors.transparent, // Glass handled by background
+                      elevation: 0,
+                      pinned: true,
+                      stretch: true,
+                      leading: Container(
+                        margin: const EdgeInsets.all(8),
+                        child: GlassCard(
+                          isDarkMode: !isLightMode,
+                          borderRadius: 12,
+                          padding: EdgeInsets.zero,
+                          child: IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: isLightMode
+                                  ? AppleGlassTheme.textPrimaryDark
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      actions: [
+                        Container(
+                          margin: const EdgeInsets.all(8),
+                          child: GlassCard(
+                            isDarkMode: !isLightMode,
+                            borderRadius: 12,
+                            padding: EdgeInsets.zero,
+                            child: ThemeToggleButton(
+                              size: 20,
+                              color: isLightMode
+                                  ? AppleGlassTheme.textPrimaryDark
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                      flexibleSpace: FlexibleSpaceBar(
+                        background: _HeroDashboard(
+                          nextLesson: _allLessons.isNotEmpty
+                              ? _allLessons[0]
+                              : null, // Logic for next lesson
+                          isLightMode: isLightMode,
+                          onContinue: () {
+                            if (_allLessons.isNotEmpty) {
+                              _navigateToLesson(_allLessons[0]);
+                            }
+                          },
+                        ),
+                      ),
                     ),
+
+                    // 2. Search Bar Integration (Floating)
+                    // _TheorySearchBar(),
+                    const SliverToBoxAdapter(child: SizedBox(height: 24)),
+
+                    // 3. Module 1: Segnali Stradali (1-10)
+                    _buildModuleHeader(
+                      "Segnali Stradali",
+                      "Lezioni 1-10",
+                      Icons.traffic_rounded,
+                      Colors.orange,
+                      isLightMode,
+                    ),
+                    _buildLessonList(_getLessonsForModule(1, 10), isLightMode),
+
+                    const SliverToBoxAdapter(child: SizedBox(height: 32)),
+
+                    // 4. Module 2: Norme di Circolazione (11-18)
+                    _buildModuleHeader(
+                      "Norme di Circolazione",
+                      "Lezioni 11-18",
+                      Icons.menu_book_rounded,
+                      Colors.blue,
+                      isLightMode,
+                    ),
+                    _buildLessonList(_getLessonsForModule(11, 18), isLightMode),
+
+                    const SliverToBoxAdapter(child: SizedBox(height: 32)),
+
+                    // 5. Module 3: Il Veicolo e Sicurezza (19-25+)
+                    _buildModuleHeader(
+                      "Veicolo e Sicurezza",
+                      "Lezioni 19-30",
+                      Icons.car_crash_rounded,
+                      Colors.pink,
+                      isLightMode,
+                    ),
+                    _buildLessonList(_getLessonsForModule(19, 30), isLightMode),
+
+                    const SliverToBoxAdapter(child: SizedBox(height: 100)),
                   ],
                 ),
-                child: Icon(
-                  widget.icon,
-                  color: Colors.white,
-                  size: widget.fullWidth ? 32 : 28,
-                ),
-              ),
-              const SizedBox(height: 14),
-              Text(
-                widget.title,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: widget.fullWidth ? 16 : 13,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.3,
-                  shadows: [
-                    Shadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 4,
-                      offset: const Offset(0, 1),
-                    ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
         ),
       ),
     );
   }
+
+  Widget _buildModuleHeader(
+    String title,
+    String subtitle,
+    IconData icon,
+    Color color,
+    bool isLightMode,
+  ) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.15),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: color, size: 24),
+            ),
+            const SizedBox(width: 12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: isLightMode
+                        ? AppleGlassTheme.textPrimaryDark
+                        : Colors.white,
+                  ),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: isLightMode
+                        ? AppleGlassTheme.textSecondaryDark
+                        : Colors.white70,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLessonList(List<TheoryChapter> lessons, bool isLightMode) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate((context, index) {
+        final lesson = lessons[index];
+        // Calculate original index to display correct lesson number
+        final originalIndex = _allLessons.indexOf(lesson) + 1;
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          child: _NeoGlassLessonCard(
+            lessonNumber: originalIndex,
+            title: lesson.title,
+            sectionsCount: lesson.sections.length,
+            isLightMode: isLightMode,
+            onTap: () => _navigateToLesson(lesson),
+          ),
+        );
+      }, childCount: lessons.length),
+    );
+  }
 }
 
-/// Card for PDF lessons list - Modern animated version
-class _PdfLessonCard extends StatefulWidget {
+class _HeroDashboard extends StatelessWidget {
+  final TheoryChapter? nextLesson;
+  final bool isLightMode;
+  final VoidCallback onContinue;
+
+  const _HeroDashboard({
+    this.nextLesson,
+    required this.isLightMode,
+    required this.onContinue,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 60, 20, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Bentornato!",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: isLightMode
+                          ? AppleGlassTheme.textSecondaryDark
+                          : Colors.white70,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    "Theory Academy",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: isLightMode
+                          ? AppleGlassTheme.textPrimaryDark
+                          : Colors.white,
+                      height: 1.1,
+                    ),
+                  ),
+                ],
+              ),
+              // Progress Ring
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator(
+                      value: 0.24, // Mock 24%
+                      backgroundColor: isLightMode
+                          ? Colors.grey.withOpacity(0.2)
+                          : Colors.white12,
+                      valueColor: const AlwaysStoppedAnimation(
+                        AppleGlassTheme.accentBlue,
+                      ),
+                      strokeWidth: 5,
+                    ),
+                  ),
+                  Text(
+                    "24%",
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: isLightMode
+                          ? AppleGlassTheme.textPrimaryDark
+                          : Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          // Continue Lesson Card
+          GestureDetector(
+            onTap: onContinue,
+            child: GlassCard(
+              isDarkMode: !isLightMode,
+              borderRadius: 24,
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(
+                      color: AppleGlassTheme.accentBlue.withOpacity(0.2),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.play_arrow_rounded,
+                      color: AppleGlassTheme.accentBlue,
+                      size: 32,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Continua a studiare",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isLightMode
+                                ? AppleGlassTheme.textSecondaryDark
+                                : Colors.white70,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          nextLesson != null
+                              // Remove "1. " from title
+                              ? nextLesson!.title.replaceFirst(
+                                  RegExp(r'^\d+\.\s*'),
+                                  '',
+                                )
+                              : "Caricamento...",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: isLightMode
+                                ? AppleGlassTheme.textPrimaryDark
+                                : Colors.white,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NeoGlassLessonCard extends StatefulWidget {
   final int lessonNumber;
   final String title;
   final int sectionsCount;
+  final bool isLightMode;
   final VoidCallback onTap;
 
-  const _PdfLessonCard({
+  const _NeoGlassLessonCard({
     required this.lessonNumber,
     required this.title,
     required this.sectionsCount,
+    required this.isLightMode,
     required this.onTap,
   });
 
   @override
-  State<_PdfLessonCard> createState() => _PdfLessonCardState();
+  State<_NeoGlassLessonCard> createState() => _NeoGlassLessonCardState();
 }
 
-class _PdfLessonCardState extends State<_PdfLessonCard>
+class _NeoGlassLessonCardState extends State<_NeoGlassLessonCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
-  bool _isPressed = false;
 
   @override
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 120),
+      duration: const Duration(milliseconds: 100),
       vsync: this,
     );
     _scaleAnimation = Tween<double>(
       begin: 1.0,
-      end: 0.97,
+      end: 0.96,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
@@ -373,444 +457,107 @@ class _PdfLessonCardState extends State<_PdfLessonCard>
     super.dispose();
   }
 
-  void _onTapDown(TapDownDetails details) {
-    setState(() => _isPressed = true);
-    _controller.forward();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() => _isPressed = false);
-    _controller.reverse();
-    widget.onTap();
-  }
-
-  void _onTapCancel() {
-    setState(() => _isPressed = false);
-    _controller.reverse();
-  }
-
-  // Get icon based on lesson content
   IconData _getIcon() {
-    final lowerTitle = widget.title.toLowerCase();
-    if (lowerTitle.contains('segnali') || lowerTitle.contains('segnaletica')) {
-      return Icons.signpost;
-    } else if (lowerTitle.contains('velocità') ||
-        lowerTitle.contains('limiti')) {
-      return Icons.speed;
-    } else if (lowerTitle.contains('distanza')) {
-      return Icons.social_distance;
-    } else if (lowerTitle.contains('precedenza') ||
-        lowerTitle.contains('incroci')) {
-      return Icons.call_split;
-    } else if (lowerTitle.contains('sorpasso')) {
-      return Icons.swap_horiz;
-    } else if (lowerTitle.contains('fermata') || lowerTitle.contains('sosta')) {
-      return Icons.local_parking;
-    } else if (lowerTitle.contains('autostrada') ||
-        lowerTitle.contains('extraurban')) {
-      return Icons.add_road;
-    } else if (lowerTitle.contains('luci') || lowerTitle.contains('clacson')) {
-      return Icons.wb_twilight;
-    } else if (lowerTitle.contains('spie')) {
-      return Icons.warning_amber;
-    } else if (lowerTitle.contains('cintur') ||
-        lowerTitle.contains('casco') ||
-        lowerTitle.contains('airbag')) {
-      return Icons.health_and_safety;
-    } else if (lowerTitle.contains('trasporto') ||
-        lowerTitle.contains('carico')) {
-      return Icons.local_shipping;
-    } else if (lowerTitle.contains('patente') ||
-        lowerTitle.contains('document')) {
-      return Icons.badge;
-    } else if (lowerTitle.contains('incidenti') ||
-        lowerTitle.contains('responsabil')) {
-      return Icons.car_crash;
-    } else if (lowerTitle.contains('alcol') ||
-        lowerTitle.contains('droga') ||
-        lowerTitle.contains('soccorso')) {
-      return Icons.medical_services;
-    } else if (lowerTitle.contains('inquinamento') ||
-        lowerTitle.contains('consum') ||
-        lowerTitle.contains('ambiente')) {
-      return Icons.eco;
-    } else if (lowerTitle.contains('veicolo') ||
-        lowerTitle.contains('pneumatici') ||
-        lowerTitle.contains('freni')) {
-      return Icons.build;
-    } else if (lowerTitle.contains('stabilit')) {
-      return Icons.trending_flat;
-    } else if (lowerTitle.contains('semafori') ||
-        lowerTitle.contains('agenti')) {
-      return Icons.traffic;
-    } else if (lowerTitle.contains('definizion')) {
-      return Icons.menu_book;
-    } else if (lowerTitle.contains('posizione') ||
-        lowerTitle.contains('svolta') ||
-        lowerTitle.contains('corsia')) {
-      return Icons.directions;
-    } else if (lowerTitle.contains('ingombro') ||
-        lowerTitle.contains('fermo')) {
-      return Icons.warning;
-    } else if (lowerTitle.contains('funzionari') ||
-        lowerTitle.contains('occhiali')) {
-      return Icons.visibility;
-    } else {
-      return Icons.book;
-    }
+    // Simple mock logic for icon
+    return Icons.auto_stories_rounded;
   }
 
-  // Get gradient colors based on lesson number
-  List<Color> _getGradientColors() {
-    if (widget.lessonNumber <= 11) {
-      return [
-        Colors.orange.withOpacity(_isPressed ? 0.7 : 0.5),
-        Colors.deepOrange.withOpacity(_isPressed ? 0.5 : 0.3),
-      ];
-    } else if (widget.lessonNumber <= 18) {
-      return [
-        Colors.blue.withOpacity(_isPressed ? 0.7 : 0.5),
-        Colors.indigo.withOpacity(_isPressed ? 0.5 : 0.3),
-      ];
-    } else if (widget.lessonNumber <= 24) {
-      return [
-        Colors.purple.withOpacity(_isPressed ? 0.7 : 0.5),
-        Colors.deepPurple.withOpacity(_isPressed ? 0.5 : 0.3),
-      ];
-    } else {
-      return [
-        Colors.teal.withOpacity(_isPressed ? 0.7 : 0.5),
-        Colors.cyan.withOpacity(_isPressed ? 0.5 : 0.3),
-      ];
-    }
-  }
-
-  Color _getShadowColor() {
-    if (widget.lessonNumber <= 11) return Colors.orange;
+  Color _getModuleColor() {
+    if (widget.lessonNumber <= 10) return Colors.orange;
     if (widget.lessonNumber <= 18) return Colors.blue;
-    if (widget.lessonNumber <= 24) return Colors.purple;
-    return Colors.teal;
+    return Colors.pink;
   }
 
   @override
   Widget build(BuildContext context) {
+    final cleanTitle = widget.title.replaceFirst(RegExp(r'^\d+\.\s*'), '');
+    final color = _getModuleColor();
+
     return ScaleTransition(
       scale: _scaleAnimation,
       child: GestureDetector(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          margin: const EdgeInsets.only(bottom: 14),
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: _getGradientColors(),
-            ),
-            borderRadius: BorderRadius.circular(22),
-            border: Border.all(
-              color: Colors.white.withOpacity(_isPressed ? 0.35 : 0.2),
-              width: 1.5,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: _getShadowColor().withOpacity(0.25),
-                blurRadius: _isPressed ? 6 : 12,
-                offset: Offset(0, _isPressed ? 2 : 5),
-                spreadRadius: _isPressed ? 0 : 1,
-              ),
-            ],
-          ),
+        onTapDown: (_) => _controller.forward(),
+        onTapUp: (_) {
+          _controller.reverse();
+          widget.onTap();
+        },
+        onTapCancel: () => _controller.reverse(),
+        child: GlassCard(
+          isDarkMode: !widget.isLightMode,
+          borderRadius: 20,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Row(
             children: [
-              // Lesson number badge
+              // 1. Icon Container
+              // 1. Icon Container
               Container(
-                width: 48,
-                height: 48,
+                width: 56,
+                height: 56,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.18),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.white.withOpacity(0.15)),
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: color.withOpacity(0.3), width: 1.5),
                 ),
-                child: Center(
-                  child: Text(
-                    '${widget.lessonNumber}',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      shadows: [
-                        Shadow(
-                          color: Colors.black.withOpacity(0.2),
-                          blurRadius: 4,
+                clipBehavior: Clip.antiAlias,
+                child: Image.asset(
+                  'assets/images/theory/thumbnails/lesson_${widget.lessonNumber}.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Text(
+                        "${widget.lessonNumber}",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          color: color,
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
-              const SizedBox(width: 14),
-              // Lesson info
+              const SizedBox(width: 16),
+
+              // 2. Info
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.title.replaceFirst(RegExp(r'^\d+\.\s*'), ''),
+                      cleanTitle,
                       style: TextStyle(
-                        color: Colors.white,
                         fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.2,
-                        shadows: [
-                          Shadow(
-                            color: Colors.black.withOpacity(0.25),
-                            blurRadius: 3,
-                          ),
-                        ],
+                        fontWeight: FontWeight.w600,
+                        color: widget.isLightMode
+                            ? AppleGlassTheme.textPrimaryDark
+                            : Colors.white,
+                        letterSpacing: -0.2,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 4),
                     Text(
-                      '${widget.sectionsCount} sezioni',
+                      "${widget.sectionsCount} argomenti",
                       style: TextStyle(
-                        color: Colors.white.withOpacity(0.75),
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        color: widget.isLightMode
+                            ? AppleGlassTheme.textSecondaryDark
+                            : Colors.white60,
                       ),
                     ),
                   ],
                 ),
               ),
-              // Icon container
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.12),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(_getIcon(), color: Colors.white, size: 24),
-              ),
-              const SizedBox(width: 6),
+
+              // 3. Action Icon
               Icon(
                 Icons.chevron_right_rounded,
-                color: Colors.white.withOpacity(0.7),
-                size: 26,
+                color: widget.isLightMode
+                    ? AppleGlassTheme.textSecondaryDark.withOpacity(0.5)
+                    : Colors.white38,
               ),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Grid card for lessons - 2x2 layout with modern animated style
-class _LessonGridCard extends StatefulWidget {
-  final int lessonNumber;
-  final String title;
-  final int sectionsCount;
-  final VoidCallback onTap;
-
-  const _LessonGridCard({
-    required this.lessonNumber,
-    required this.title,
-    required this.sectionsCount,
-    required this.onTap,
-  });
-
-  @override
-  State<_LessonGridCard> createState() => _LessonGridCardState();
-}
-
-class _LessonGridCardState extends State<_LessonGridCard>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-  bool _isPressed = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 120),
-      vsync: this,
-    );
-    _scaleAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.95,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _onTapDown(TapDownDetails details) {
-    setState(() => _isPressed = true);
-    _controller.forward();
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() => _isPressed = false);
-    _controller.reverse();
-    widget.onTap();
-  }
-
-  void _onTapCancel() {
-    setState(() => _isPressed = false);
-    _controller.reverse();
-  }
-
-  IconData _getIcon() {
-    final lowerTitle = widget.title.toLowerCase();
-    if (lowerTitle.contains('pericolo')) return Icons.warning_amber_rounded;
-    if (lowerTitle.contains('precedenza')) return Icons.arrow_upward_rounded;
-    if (lowerTitle.contains('divieto')) return Icons.block_rounded;
-    if (lowerTitle.contains('obbligo')) return Icons.arrow_circle_right_rounded;
-    if (lowerTitle.contains('indicazione')) return Icons.info_outline_rounded;
-    if (lowerTitle.contains('velocità')) return Icons.speed_rounded;
-    if (lowerTitle.contains('distanza')) return Icons.social_distance_rounded;
-    if (lowerTitle.contains('sorpasso')) return Icons.swap_horiz_rounded;
-    if (lowerTitle.contains('sosta')) return Icons.local_parking_rounded;
-    if (lowerTitle.contains('semafori')) return Icons.traffic_rounded;
-    if (lowerTitle.contains('luci')) return Icons.wb_twilight_rounded;
-    if (lowerTitle.contains('definizion')) return Icons.menu_book_rounded;
-    if (lowerTitle.contains('patente')) return Icons.badge_rounded;
-    if (lowerTitle.contains('incidenti')) return Icons.car_crash_rounded;
-    if (lowerTitle.contains('alcol')) return Icons.medical_services_rounded;
-    if (lowerTitle.contains('ambiente')) return Icons.eco_rounded;
-    return Icons.auto_stories_rounded;
-  }
-
-  List<Color> _getGradientColors() {
-    final n = widget.lessonNumber;
-    if (n <= 6) {
-      return [
-        Colors.red.withOpacity(_isPressed ? 0.8 : 0.6),
-        Colors.red.shade700.withOpacity(_isPressed ? 0.6 : 0.4),
-      ];
-    } else if (n <= 12) {
-      return [
-        Colors.amber.withOpacity(_isPressed ? 0.85 : 0.65),
-        Colors.orange.withOpacity(_isPressed ? 0.65 : 0.45),
-      ];
-    } else if (n <= 18) {
-      return [
-        Colors.blue.withOpacity(_isPressed ? 0.8 : 0.6),
-        Colors.indigo.withOpacity(_isPressed ? 0.6 : 0.4),
-      ];
-    } else if (n <= 24) {
-      return [
-        Colors.green.withOpacity(_isPressed ? 0.8 : 0.6),
-        Colors.teal.withOpacity(_isPressed ? 0.6 : 0.4),
-      ];
-    } else {
-      return [
-        Colors.purple.withOpacity(_isPressed ? 0.8 : 0.6),
-        Colors.deepPurple.withOpacity(_isPressed ? 0.6 : 0.4),
-      ];
-    }
-  }
-
-  Color _getShadowColor() {
-    final n = widget.lessonNumber;
-    if (n <= 6) return Colors.red;
-    if (n <= 12) return Colors.orange;
-    if (n <= 18) return Colors.blue;
-    if (n <= 24) return Colors.green;
-    return Colors.purple;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _scaleAnimation,
-      child: GestureDetector(
-        onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
-        onTapCancel: _onTapCancel,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: _getGradientColors(),
-            ),
-            borderRadius: BorderRadius.circular(24),
-            border: Border.all(
-              color: Colors.white.withOpacity(_isPressed ? 0.4 : 0.25),
-              width: 1.5,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: _getShadowColor().withOpacity(0.3),
-                blurRadius: _isPressed ? 6 : 14,
-                offset: Offset(0, _isPressed ? 2 : 6),
-                spreadRadius: _isPressed ? 0 : 2,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.18),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(_getIcon(), color: Colors.white, size: 32),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  widget.title.replaceFirst(RegExp(r'Lezione \d+:\s*'), ''),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w700,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 4,
-                      ),
-                    ],
-                  ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 6),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.15),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    '${widget.sectionsCount} sezioni',
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.85),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
-            ),
           ),
         ),
       ),

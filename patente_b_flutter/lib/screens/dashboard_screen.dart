@@ -3,12 +3,16 @@ import 'package:provider/provider.dart';
 
 import '../services/language_preference_service.dart';
 import '../services/course_service.dart';
+import '../services/stats_service.dart';
 import '../models/translation.dart';
 import '../theme/app_theme.dart';
 import '../theme/apple_glass_theme.dart';
 import '../widgets/glass/glass_card.dart';
 import '../widgets/glass/progress_ring.dart';
 // Removed: import '../widgets/core/progress_circle.dart';
+import '../providers/theme_provider.dart';
+import '../widgets/common/theme_toggle_button.dart';
+import '../widgets/user_avatar_widget.dart';
 import 'quiz/quiz_screen.dart';
 import 'quiz/topic_selection_screen.dart';
 import 'theory/theory_screen.dart';
@@ -18,6 +22,7 @@ import 'documents/documents_screen.dart';
 import 'ai_tutor/tutor_topic_screen.dart';
 import 'stats/stats_screen.dart';
 import 'license_selection_screen.dart';
+import 'profile/profile_screen.dart';
 
 /// Dashboard principale con design Duolingo-style
 /// Gamificazione, progresso visivo, accesso rapido alle funzioni
@@ -33,11 +38,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       LanguagePreferenceService();
   AppLanguage _selectedLanguage = AppLanguage.italian;
 
-  // Mock progress data (in real app, from StatsService)
-  final double _overallProgress = 0.42;
-  final int _streak = 3;
-  final int _quizCompleted = 12;
-  final int _totalQuiz = 30;
+  // Stats are now fetched from StatsService via Provider
 
   @override
   void initState() {
@@ -54,26 +55,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // theme variable removed as we use AppleGlassTheme
+    final themeProvider = context.watch<ThemeProvider>();
+    final isDarkMode = themeProvider.isDarkMode;
 
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(gradient: AppleGlassTheme.bgGradient),
+        decoration: BoxDecoration(
+          gradient: isDarkMode
+              ? AppleGlassTheme.bgGradient
+              : AppleGlassTheme.bgGradientLight,
+        ),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildHeader(context),
+                _buildHeader(context, isDarkMode),
                 const SizedBox(height: 24),
-                _buildProgressSection(context),
+                _buildProgressSection(context, isDarkMode),
                 const SizedBox(height: 24),
-                _buildQuickActions(context),
+                _buildQuickActions(
+                  context,
+                ), // Actions usually have their own colored cards, check text inside
                 const SizedBox(height: 24),
-                _buildStudySection(context),
+                _buildStudySection(context, isDarkMode),
                 const SizedBox(height: 24),
-                _buildWeakTopicsSection(context),
+                _buildWeakTopicsSection(context, isDarkMode),
               ],
             ),
           ),
@@ -84,16 +92,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   // ═══════════════════════════════════════════════════════════════════════════
   // HEADER con saluto e streak
+  // HEADER con saluto e streak
   // ═══════════════════════════════════════════════════════════════════════════
-  Widget _buildHeader(BuildContext context) {
-    // final theme = Theme.of(context); // Not needed with AppleGlassTheme
+  Widget _buildHeader(BuildContext context, bool isDarkMode) {
     final courseService = context.watch<CourseService>();
+    final statsService = context.watch<StatsService>();
+    final stats = statsService.stats;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // License badge with change button
         GlassCard(
+          isDarkMode: isDarkMode,
           borderRadius: AppleGlassTheme.radiusLg,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           accentColor: courseService.licenseColor,
@@ -130,37 +141,74 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Ciao! 👋', style: AppleGlassTheme.bodyMedium),
-                Text('Pronto per studiare?', style: AppleGlassTheme.titleLarge),
+                Text(
+                  'Ciao! 👋',
+                  style: isDarkMode
+                      ? AppleGlassTheme.bodyMedium
+                      : AppleGlassTheme.bodyMedium.copyWith(
+                          color: AppleGlassTheme.textSecondaryDark,
+                        ),
+                ),
+                Text(
+                  'Pronto per studiare?',
+                  style: isDarkMode
+                      ? AppleGlassTheme.titleLarge
+                      : AppleGlassTheme.titleLarge.copyWith(
+                          color: AppleGlassTheme.textPrimaryDark,
+                        ),
+                ),
               ],
             ),
-            // Streak badge
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration:
-                  AppleGlassTheme.glassDecoration(
-                    radius: AppleGlassTheme.radiusLg,
-                  ).copyWith(
-                    border: Border.all(
-                      color: AppTheme.streakOrange,
-                      width: 1.5,
-                    ),
-                    color: AppTheme.streakOrange.withValues(alpha: 0.15),
+            // Right side: Avatar, Streak, Theme toggle
+            Row(
+              children: [
+                // User Avatar (cliccabile per andare al profilo)
+                GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const ProfileScreen()),
                   ),
-              child: Row(
-                children: [
-                  const Text('🔥', style: TextStyle(fontSize: 20)),
-                  const SizedBox(width: 6),
-                  Text(
-                    '$_streak',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppTheme.streakOrange,
-                    ),
+                  child: const UserAvatarWidget(size: 40),
+                ),
+                const SizedBox(width: 12),
+                // Streak badge
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
                   ),
-                ],
-              ),
+                  decoration:
+                      AppleGlassTheme.glassDecoration(
+                        radius: AppleGlassTheme.radiusLg,
+                      ).copyWith(
+                        border: Border.all(
+                          color: AppTheme.streakOrange,
+                          width: 1.5,
+                        ),
+                        color: AppTheme.streakOrange.withValues(alpha: 0.15),
+                      ),
+                  child: Row(
+                    children: [
+                      const Text('🔥', style: TextStyle(fontSize: 20)),
+                      const SizedBox(width: 6),
+                      Text(
+                        '${stats.currentStreak}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.streakOrange,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 12),
+                ThemeToggleButton(
+                  color: isDarkMode
+                      ? Colors.white
+                      : AppleGlassTheme.textPrimaryDark,
+                ),
+              ],
             ),
           ],
         ),
@@ -207,11 +255,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   // ═══════════════════════════════════════════════════════════════════════════
   // PROGRESSO con cerchio animato
+  // PROGRESSO con cerchio animato
   // ═══════════════════════════════════════════════════════════════════════════
-  Widget _buildProgressSection(BuildContext context) {
-    // final theme = Theme.of(context);
+  Widget _buildProgressSection(BuildContext context, bool isDarkMode) {
+    final statsService = context.watch<StatsService>();
+    final stats = statsService.stats;
+
+    // Accuracy usually 0-100, normalize to 0-1 for progress ring
+    // Or use quiz completion as progress?
+    // Let's use quiz completed ratio if available, otherwise accuracy
+    // Assuming 500 questions total for now roughly? No, let's use accuracy/100 as proxy for skill mastery
+    // Or just 0 if new.
+    final double uiProgress = stats.totalQuizzes > 0
+        ? (stats.correctAnswers /
+              (stats.totalQuestions > 0 ? stats.totalQuestions : 1))
+        : 0.0;
 
     return GlassCard(
+      isDarkMode: isDarkMode,
       child: Padding(
         padding: const EdgeInsets.all(
           4,
@@ -222,10 +283,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ProgressRing(
-                progress: _overallProgress,
+                progress: uiProgress,
                 size: 90,
                 strokeWidth: 8,
                 color: AppleGlassTheme.accentBlue,
+                textColor: isDarkMode
+                    ? AppleGlassTheme.textPrimary
+                    : Colors.black,
               ),
             ),
             const SizedBox(width: 16),
@@ -234,17 +298,38 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Il Tuo Progresso', style: AppleGlassTheme.titleMedium),
+                  Text(
+                    'Il Tuo Progresso',
+                    style: isDarkMode
+                        ? AppleGlassTheme.titleMedium
+                        : AppleGlassTheme.titleMedium.copyWith(
+                            color: AppleGlassTheme.textPrimaryDark,
+                          ),
+                  ),
                   const SizedBox(height: 8),
-                  _buildStatRow(
-                    '📝',
+                  _buildStatRowWithIcon(
+                    Icons.edit_note_rounded,
                     'Quiz completati',
-                    '$_quizCompleted/$_totalQuiz',
+                    '${stats.totalQuizzes}',
+                    isDarkMode,
+                    AppleGlassTheme.accentBlue,
                   ),
                   const SizedBox(height: 4),
-                  _buildStatRow('🎯', 'Precisione', '78%'),
+                  _buildStatRowWithIcon(
+                    Icons.gps_fixed_rounded,
+                    'Precisione',
+                    '${stats.accuracy.toStringAsFixed(1)}%',
+                    isDarkMode,
+                    AppleGlassTheme.success,
+                  ),
                   const SizedBox(height: 4),
-                  _buildStatRow('📚', 'Teoria letta', '65%'),
+                  _buildStatRowWithIcon(
+                    Icons.menu_book_rounded,
+                    'Teoria letta',
+                    '0%',
+                    isDarkMode,
+                    AppleGlassTheme.accentPurple,
+                  ), // Placeholder
                 ],
               ),
             ),
@@ -254,13 +339,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  Widget _buildStatRow(String emoji, String label, String value) {
+  Widget _buildStatRowWithIcon(
+    IconData icon,
+    String label,
+    String value,
+    bool isDarkMode,
+    Color iconColor,
+  ) {
     return Row(
       children: [
-        Text(emoji, style: const TextStyle(fontSize: 16)),
+        Icon(icon, size: 18, color: iconColor),
         const SizedBox(width: 8),
-        Expanded(child: Text(label, style: AppleGlassTheme.statLabel)),
-        Text(value, style: AppleGlassTheme.statValue),
+        Expanded(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: isDarkMode
+                  ? Colors.white70
+                  : AppleGlassTheme.textSecondaryDark,
+            ),
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: isDarkMode ? Colors.white : AppleGlassTheme.textPrimaryDark,
+          ),
+        ),
       ],
     );
   }
@@ -273,10 +382,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
       children: [
         Expanded(
           child: _ActionCard(
-            icon: Icons.play_arrow_rounded,
+            assetPath: 'assets/images/dashboard/quiz_start.png',
+            fallbackIcon: Icons.play_arrow_rounded,
             title: 'Inizia Quiz',
             subtitle: 'Esercitati!',
             color: AppleGlassTheme.accentBlue,
+            isDarkMode:
+                true, // Always dark mode style for action cards as they have colored backgrounds
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const TopicSelectionScreen()),
@@ -286,10 +398,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(width: 12),
         Expanded(
           child: _ActionCard(
-            icon: Icons.school_rounded,
+            assetPath: 'assets/images/dashboard/simulation.png',
+            fallbackIcon: Icons.school_rounded,
             title: 'Simulazione',
             subtitle: '30 domande',
             color: AppleGlassTheme.success,
+            isDarkMode: true, // Always dark mode style for action cards
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -305,18 +419,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // ═══════════════════════════════════════════════════════════════════════════
   // SEZIONE STUDIO
   // ═══════════════════════════════════════════════════════════════════════════
-  Widget _buildStudySection(BuildContext context) {
+  Widget _buildStudySection(BuildContext context, bool isDarkMode) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Studia', style: AppleGlassTheme.titleLarge),
+        Text(
+          'Studia',
+          style: isDarkMode
+              ? AppleGlassTheme.titleLarge
+              : AppleGlassTheme.titleLarge.copyWith(
+                  color: AppleGlassTheme.textPrimaryDark,
+                ),
+        ),
         const SizedBox(height: 12),
         // Video Lezioni - Full Width
         _StudyCard(
-          icon: '🎬',
+          assetPath: 'assets/images/dashboard/video_lessons.png',
+          fallbackEmoji: '🎬',
           title: 'Video Lezioni',
           subtitle: 'Tutorial in ${_selectedLanguage.name}',
           color: AppleGlassTheme.accentPurple,
+          isDarkMode: isDarkMode,
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -330,10 +453,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             Expanded(
               child: _StudyCard(
-                icon: '📖',
+                assetPath: 'assets/images/dashboard/theory_book.png',
+                fallbackEmoji: '📖',
                 title: 'Teoria',
                 subtitle: '30 capitoli',
                 color: AppleGlassTheme.accentBlue,
+                isDarkMode: isDarkMode,
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const TheoryScreen()),
@@ -343,10 +468,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(width: 10),
             Expanded(
               child: _StudyCard(
-                icon: '⚠️',
+                assetPath: 'assets/images/dashboard/signals.png',
+                fallbackEmoji: '⚠️',
                 title: 'Segnali',
                 subtitle: '81 segnali',
                 color: AppleGlassTheme.warning,
+                isDarkMode: isDarkMode,
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -365,10 +492,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             Expanded(
               child: _StudyCard(
-                icon: '🔄',
+                assetPath: 'assets/images/dashboard/review_errors.png',
+                fallbackEmoji: '🔄',
                 title: 'Ripasso Errori',
                 subtitle: 'Rivedi gli errori',
                 color: AppleGlassTheme.error,
+                isDarkMode: isDarkMode,
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const StatsScreen()),
@@ -378,10 +507,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(width: 10),
             Expanded(
               child: _StudyCard(
-                icon: '📋',
+                assetPath: 'assets/images/dashboard/documents.png',
+                fallbackEmoji: '📋',
                 title: 'Documenti',
                 subtitle: 'Info utili',
                 color: AppleGlassTheme.success,
+                isDarkMode: isDarkMode,
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const DocumentsScreen()),
@@ -397,7 +528,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // ═══════════════════════════════════════════════════════════════════════════
   // ARGOMENTI DEBOLI
   // ═══════════════════════════════════════════════════════════════════════════
-  Widget _buildWeakTopicsSection(BuildContext context) {
+  Widget _buildWeakTopicsSection(BuildContext context, bool isDarkMode) {
     // Mock data - in real app from StatsService
     final weakTopics = [
       {'name': 'Precedenza', 'accuracy': 45},
@@ -411,7 +542,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('⚡ Da Ripassare', style: AppleGlassTheme.titleLarge),
+            Text(
+              '⚡ Da Ripassare',
+              style: isDarkMode
+                  ? AppleGlassTheme.titleLarge
+                  : AppleGlassTheme.titleLarge.copyWith(
+                      color: AppleGlassTheme.textPrimaryDark,
+                    ),
+            ),
             TextButton(
               onPressed: () {},
               child: const Text(
@@ -428,6 +566,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: _WeakTopicItem(
               name: topic['name'] as String,
               accuracy: topic['accuracy'] as int,
+              isDarkMode: isDarkMode,
               onTap: () {
                 // Navigate to specific topic quiz
               },
@@ -450,58 +589,94 @@ class _DashboardScreenState extends State<DashboardScreen> {
 // WIDGET HELPER
 // ═══════════════════════════════════════════════════════════════════════════
 
-/// Card azione principale con gradiente e glass
+/// Card azione principale - iOS style with solid gradient background
 class _ActionCard extends StatelessWidget {
-  final IconData icon;
+  final String assetPath;
+  final IconData fallbackIcon;
   final String title;
   final String subtitle;
   final Color color;
+  final bool isDarkMode;
   final VoidCallback onTap;
 
   const _ActionCard({
-    required this.icon,
+    required this.assetPath,
+    required this.fallbackIcon,
     required this.title,
     required this.subtitle,
     required this.color,
+    required this.isDarkMode,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GlassCard(
-      onTap: onTap,
-      accentColor: color,
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: AppleGlassTheme.glowShadow(color),
-            ),
-            child: Icon(icon, color: Colors.white, size: 24),
+    // Create a gradient from the accent color
+    final gradient = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [color, color.withValues(alpha: 0.8)],
+    );
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 150),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            gradient: gradient,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: color.withValues(alpha: 0.3),
+                blurRadius: 16,
+                offset: const Offset(0, 6),
+              ),
+              BoxShadow(
+                color: color.withValues(alpha: 0.2),
+                blurRadius: 6,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
-          const SizedBox(height: 16),
-          Text(
-            title,
-            style: const TextStyle(
-              color: AppleGlassTheme.textPrimary,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Icon(fallbackIcon, color: Colors.white, size: 28),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.8),
+                  fontSize: 12,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 4),
-          Text(
-            subtitle,
-            style: TextStyle(
-              color: AppleGlassTheme.textSecondary,
-              fontSize: 12,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -509,23 +684,28 @@ class _ActionCard extends StatelessWidget {
 
 /// Card studio glass
 class _StudyCard extends StatelessWidget {
-  final String icon;
+  final String assetPath;
+  final String fallbackEmoji;
   final String title;
   final String subtitle;
   final Color color;
+  final bool isDarkMode;
   final VoidCallback onTap;
 
   const _StudyCard({
-    required this.icon,
+    required this.assetPath,
+    required this.fallbackEmoji,
     required this.title,
     required this.subtitle,
     required this.color,
+    required this.isDarkMode,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GlassCardLight(
+      isDarkMode: isDarkMode,
       onTap: onTap,
       accentColor: color, // Light accent for border/glow interaction
       padding: const EdgeInsets.all(14),
@@ -539,8 +719,18 @@ class _StudyCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: color.withValues(alpha: 0.3)),
             ),
+            padding: const EdgeInsets.all(4), // Padding for the image
             child: Center(
-              child: Text(icon, style: const TextStyle(fontSize: 22)),
+              child: Image.asset(
+                assetPath,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) {
+                  return Text(
+                    fallbackEmoji,
+                    style: const TextStyle(fontSize: 22),
+                  );
+                },
+              ),
             ),
           ),
           const SizedBox(width: 12),
@@ -550,23 +740,32 @@ class _StudyCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    color: AppleGlassTheme.textPrimary,
+                    color: isDarkMode
+                        ? AppleGlassTheme.textPrimary
+                        : AppleGlassTheme.textPrimaryDark,
                   ),
                 ),
                 Text(
                   subtitle,
                   style: TextStyle(
                     fontSize: 12,
-                    color: AppleGlassTheme.textSecondary,
+                    color: isDarkMode
+                        ? AppleGlassTheme.textSecondary
+                        : AppleGlassTheme.textSecondaryDark,
                   ),
                 ),
               ],
             ),
           ),
-          Icon(Icons.chevron_right, color: AppleGlassTheme.textTertiary),
+          Icon(
+            Icons.chevron_right,
+            color: isDarkMode
+                ? AppleGlassTheme.textTertiary
+                : AppleGlassTheme.textSecondaryDark,
+          ),
         ],
       ),
     );
@@ -577,11 +776,13 @@ class _StudyCard extends StatelessWidget {
 class _WeakTopicItem extends StatelessWidget {
   final String name;
   final int accuracy;
+  final bool isDarkMode;
   final VoidCallback onTap;
 
   const _WeakTopicItem({
     required this.name,
     required this.accuracy,
+    required this.isDarkMode,
     required this.onTap,
   });
 
@@ -592,6 +793,7 @@ class _WeakTopicItem extends StatelessWidget {
         : AppleGlassTheme.warning;
 
     return GlassCardLight(
+      isDarkMode: isDarkMode,
       onTap: onTap,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       borderRadius: AppleGlassTheme.radiusMd,
@@ -602,7 +804,12 @@ class _WeakTopicItem extends StatelessWidget {
           Expanded(
             child: Text(
               name,
-              style: AppleGlassTheme.bodyLarge.copyWith(fontSize: 14),
+              style: isDarkMode
+                  ? AppleGlassTheme.bodyLarge.copyWith(fontSize: 14)
+                  : AppleGlassTheme.bodyLarge.copyWith(
+                      fontSize: 14,
+                      color: AppleGlassTheme.textPrimaryDark,
+                    ),
             ),
           ),
           Container(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
 import 'package:provider/provider.dart';
 import '../services/course_service.dart';
 import '../theme/apple_glass_theme.dart';
 import 'main_navigation_screen.dart';
+import 'course_selection_screen.dart';
 
 /// Schermata di selezione licenza (B, C, CE)
 /// Design basato su UI_DESIGN_PLAN.md
@@ -25,6 +27,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       name: 'Patente B',
       description: 'Auto e moto fino a 125cc',
       icon: '🚗',
+      assetPath: 'assets/images/licenses/license_b.png',
       color: AppleGlassTheme.accentBlue,
       gradient: LinearGradient(
         colors: [
@@ -45,6 +48,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       name: 'Patente C',
       description: 'Camion oltre 3.5 tonnellate',
       icon: '🚛',
+      assetPath: 'assets/images/licenses/license_c.png',
       color: AppleGlassTheme.accentOrange,
       gradient: LinearGradient(
         colors: [
@@ -58,6 +62,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       lessonCount: 17,
       signalCount: 620,
       isNew: true,
+      comingSoon: true,
       requirement: 'Richiede patente B',
       examInfo: '40 dom / 40 min / 4 err',
     ),
@@ -66,6 +71,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       name: 'Patente CE',
       description: 'Camion + Rimorchio pesante',
       icon: '🚚',
+      assetPath: 'assets/images/licenses/license_ce.png',
       color: AppleGlassTheme.accentRed,
       gradient: LinearGradient(
         colors: [
@@ -79,6 +85,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       lessonCount: 17,
       signalCount: 620,
       isNew: true,
+      comingSoon: true,
       requirement: 'Richiede patente C',
       examInfo: '40 dom / 40 min / 4 err',
     ),
@@ -91,6 +98,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       name: 'CQC Merci',
       description: 'Autista Camion Professionale',
       icon: '📦',
+      assetPath: 'assets/images/licenses/cqc_merci.png',
       color: AppleGlassTheme.accentPurple,
       gradient: LinearGradient(
         colors: [
@@ -104,6 +112,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       lessonCount: 13,
       signalCount: 0,
       isNew: true,
+      comingSoon: true,
       requirement: 'Richiede patente C/CE',
       examInfo: '70 dom / 90 min / 7 err',
       isCQC: true,
@@ -113,6 +122,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       name: 'CQC Persone',
       description: 'Autista Autobus Professionale',
       icon: '🚌',
+      assetPath: 'assets/images/licenses/cqc_persone.png',
       color: AppleGlassTheme.accentCyan,
       gradient: LinearGradient(
         colors: [
@@ -126,6 +136,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       lessonCount: 13,
       signalCount: 0,
       isNew: true,
+      comingSoon: true,
       requirement: 'Richiede patente D/DE',
       examInfo: '70 dom / 90 min / 7 err',
       isCQC: true,
@@ -171,12 +182,8 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
   }
 
   void _selectLicense(String licenseType) {
-    // Animazione di selezione
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => _buildSelectionDialog(licenseType),
-    );
+    // Go directly to dashboard without confirmation dialog
+    _navigateToDashboard(licenseType);
   }
 
   Widget _buildSelectionDialog(String licenseType) {
@@ -184,79 +191,175 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
 
     return Dialog(
       backgroundColor: Colors.transparent,
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [const Color(0xFF1A1A2E), license.color.withOpacity(0.2)],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
+      elevation: 0,
+      insetPadding: const EdgeInsets.all(20),
+      child: Center(
+        child: Container(
+          width: double.infinity,
+          constraints: const BoxConstraints(maxWidth: 400),
+          decoration: BoxDecoration(
+            color: const Color(0xFF1A1A2E).withOpacity(0.85),
+            borderRadius: BorderRadius.circular(32),
+            border: Border.all(
+              color: license.color.withOpacity(0.4),
+              width: 1.5,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                blurRadius: 40,
+                spreadRadius: 0,
+                offset: const Offset(0, 20),
+              ),
+              BoxShadow(
+                color: license.color.withOpacity(0.2),
+                blurRadius: 20,
+                spreadRadius: -5,
+                offset: const Offset(0, 0),
+              ),
+            ],
           ),
-          borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: license.color.withOpacity(0.5), width: 2),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(license.icon, style: const TextStyle(fontSize: 64)),
-            const SizedBox(height: 16),
-            Text(
-              license.name,
-              style: TextStyle(
-                color: license.color,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Iniziamo!',
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.7),
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(height: 24),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.pop(context),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.white70,
-                      side: BorderSide(color: Colors.white.withOpacity(0.3)),
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(32),
+            child: BackdropFilter(
+              filter: ui.ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+              child: Padding(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // Icon with Glow
+                    Container(
+                      height: 120,
+                      width: 120,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: RadialGradient(
+                          colors: [
+                            license.color.withOpacity(0.3),
+                            Colors.transparent,
+                          ],
+                        ),
+                      ),
+                      child: Center(
+                        child: SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Image.asset(
+                            license.assetPath,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stack) => Text(
+                              license.icon,
+                              style: const TextStyle(fontSize: 64),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    child: const Text('Annulla'),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      _navigateToDashboard(licenseType);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: license.color,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                    const SizedBox(height: 24),
+
+                    // Title
+                    Text(
+                      license.name,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                            color: license.color.withOpacity(0.5),
+                            blurRadius: 10,
+                          ),
+                        ],
                       ),
                     ),
-                    child: const Text(
-                      'Conferma',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    const SizedBox(height: 8),
+
+                    // Subtitle
+                    Text(
+                      'Stai per attivare il corso per ${license.name}.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        fontSize: 16,
+                        height: 1.4,
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 32),
+
+                    // Buttons
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.white70,
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
+                            child: const Text(
+                              'Annulla',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  license.color,
+                                  license.color.withOpacity(0.8),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: license.color.withOpacity(0.4),
+                                  blurRadius: 12,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                _navigateToDashboard(licenseType);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.transparent,
+                                foregroundColor: Colors.white,
+                                shadowColor: Colors.transparent,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                              ),
+                              child: const Text(
+                                'Conferma',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -308,7 +411,21 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20),
+                // Back button to return to course selection
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const CourseSelectionScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(height: 10),
 
                 // Header
                 Center(
@@ -399,21 +516,48 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
 
   Widget _buildLicenseCard(LicenseOption license) {
     return GestureDetector(
-      onTap: () => _selectLicense(license.type),
+      onTap: license.comingSoon
+          ? () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    '${license.name} sarà disponibile a breve!',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: Colors.grey.shade800,
+                  behavior: SnackBarBehavior.floating,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            }
+          : () => _selectLicense(license.type),
       child: Container(
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              license.color.withOpacity(0.15),
-              license.color.withOpacity(0.05),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          color: license.comingSoon
+              ? Colors.grey.shade900.withOpacity(0.5)
+              : null,
+          gradient: license.comingSoon
+              ? null
+              : LinearGradient(
+                  colors: [
+                    license.color.withOpacity(0.15),
+                    license.color.withOpacity(0.05),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: license.color.withOpacity(0.3), width: 1),
+          border: Border.all(
+            color: license.comingSoon
+                ? Colors.grey.shade800
+                : license.color.withOpacity(0.3),
+            width: 1,
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -421,7 +565,21 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
             // Header row
             Row(
               children: [
-                Text(license.icon, style: const TextStyle(fontSize: 40)),
+                Opacity(
+                  opacity: license.comingSoon ? 0.5 : 1.0,
+                  child: SizedBox(
+                    width: 56,
+                    height: 56,
+                    child: Image.asset(
+                      license.assetPath,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stack) => Text(
+                        license.icon,
+                        style: const TextStyle(fontSize: 40),
+                      ),
+                    ),
+                  ),
+                ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Column(
@@ -432,12 +590,34 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
                           Text(
                             license.name,
                             style: TextStyle(
-                              color: license.color,
+                              color: license.comingSoon
+                                  ? Colors.grey.shade500
+                                  : license.color,
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          if (license.isNew) ...[
+                          if (license.comingSoon) ...[
+                            const SizedBox(width: 8),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade700,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Text(
+                                'SOSPESO',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ] else if (license.isNew) ...[
                             const SizedBox(width: 8),
                             Container(
                               padding: const EdgeInsets.symmetric(
@@ -464,7 +644,9 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
                       Text(
                         license.description,
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.7),
+                          color: license.comingSoon
+                              ? Colors.grey.shade600
+                              : Colors.white.withOpacity(0.7),
                           fontSize: 14,
                         ),
                       ),
@@ -472,8 +654,12 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
                   ),
                 ),
                 Icon(
-                  Icons.arrow_forward_ios,
-                  color: license.color.withOpacity(0.7),
+                  license.comingSoon
+                      ? Icons.lock_outline
+                      : Icons.arrow_forward_ios,
+                  color: license.comingSoon
+                      ? Colors.grey.shade700
+                      : license.color.withOpacity(0.7),
                   size: 20,
                 ),
               ],
@@ -482,23 +668,29 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
             const SizedBox(height: 16),
 
             // Stats row
-            Row(
-              children: [
-                _buildStatChip('✓ ${license.quizCount} quiz', license.color),
-                const SizedBox(width: 8),
-                _buildStatChip(
-                  '✓ ${license.lessonCount} lezioni',
-                  license.color,
-                ),
-                const SizedBox(width: 8),
-                _buildStatChip(
-                  '✓ ${license.signalCount}+ segnali',
-                  license.color,
-                ),
-              ],
+            Opacity(
+              opacity: license.comingSoon ? 0.3 : 1.0,
+              child: Row(
+                children: [
+                  _buildStatChip(
+                    '✓ ${license.quizCount} quiz',
+                    license.comingSoon ? Colors.grey : license.color,
+                  ),
+                  const SizedBox(width: 8),
+                  _buildStatChip(
+                    '✓ ${license.lessonCount} lezioni',
+                    license.comingSoon ? Colors.grey : license.color,
+                  ),
+                  const SizedBox(width: 8),
+                  _buildStatChip(
+                    '✓ ${license.signalCount}+ segnali',
+                    license.comingSoon ? Colors.grey : license.color,
+                  ),
+                ],
+              ),
             ),
 
-            if (license.requirement != null) ...[
+            if (license.requirement != null && !license.comingSoon) ...[
               const SizedBox(height: 12),
               Text(
                 license.requirement!,
@@ -538,69 +730,90 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
   }
 
   Widget _buildBundleCard() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: const Color(0xFFF59E0B).withOpacity(0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          const Text('⭐', style: TextStyle(fontSize: 36)),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Row(
-                  children: [
-                    Text(
-                      'BUNDLE PROFESSIONALE',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Text(
-                      'PRO',
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'B + C + CE • Risparmia 40%',
-                  style: TextStyle(
-                    color: Colors.white.withOpacity(0.8),
-                    fontSize: 14,
-                  ),
-                ),
-              ],
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text(
+              'Il Bundle PRO sarà disponibile con il rilascio delle patenti C/CE.',
+              style: TextStyle(color: Colors.white),
             ),
+            backgroundColor: Colors.grey.shade800,
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            duration: const Duration(seconds: 3),
           ),
-          Icon(
-            Icons.arrow_forward_ios,
-            color: Colors.white.withOpacity(0.7),
-            size: 20,
-          ),
-        ],
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade900.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.grey.shade800, width: 1),
+        ),
+        child: Row(
+          children: [
+            const Opacity(
+              opacity: 0.5,
+              child: Text('⭐', style: TextStyle(fontSize: 36)),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        'BUNDLE PROFESSIONALE',
+                        style: TextStyle(
+                          color: Colors.white54,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade700,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Text(
+                          'SOSPESO',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'B + C + CE • Disponibile a breve',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.4),
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.lock_outline,
+              color: Colors.white.withOpacity(0.3),
+              size: 20,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -612,6 +825,7 @@ class LicenseOption {
   final String name;
   final String description;
   final String icon;
+  final String assetPath;
   final Color color;
   final Gradient gradient;
   final int quizCount;
@@ -621,18 +835,21 @@ class LicenseOption {
   final String? requirement;
   final String? examInfo;
   final bool isCQC;
+  final bool comingSoon;
 
   LicenseOption({
     required this.type,
     required this.name,
     required this.description,
     required this.icon,
+    required this.assetPath,
     required this.color,
     required this.gradient,
     required this.quizCount,
     required this.lessonCount,
     required this.signalCount,
     this.isNew = false,
+    this.comingSoon = false,
     this.requirement,
     this.examInfo,
     this.isCQC = false,

@@ -4,7 +4,10 @@ enum AppLanguage {
   english('en', 'English', '🇬🇧'),
   hindi('hi', 'हिन्दी', '🇮🇳'),
   urdu('ur', 'اردو', '🇵🇰'),
-  punjabi('pa', 'ਪੰਜਾਬੀ', '🇮🇳');
+  punjabi('pa', 'ਪੰਜਾਬੀ', '🇮🇳'),
+  pashto('ps', 'پښتو', '🇦🇫'),
+  bengali('bn', 'বাংলা', '🇧🇩'),
+  arabic('ar', 'العربية', '🇸🇦');
 
   final String code;
   final String name;
@@ -31,6 +34,9 @@ class TranslatedQuestion {
   final String? argomentoEn;
   final String? urAudio;
   final String? paAudio;
+  final String? psAudio; // Pashto
+  final String? bnAudio; // Bengali
+  final String? arAudio; // Arabic
 
   TranslatedQuestion({
     required this.id,
@@ -42,6 +48,9 @@ class TranslatedQuestion {
     this.argomentoEn,
     this.urAudio,
     this.paAudio,
+    this.psAudio,
+    this.bnAudio,
+    this.arAudio,
   });
 
   factory TranslatedQuestion.fromJson(Map<String, dynamic> json) {
@@ -55,6 +64,9 @@ class TranslatedQuestion {
       argomentoEn: json['argomento_en'],
       urAudio: json['ur_audio'],
       paAudio: json['pa_audio'],
+      psAudio: json['ps_audio'],
+      bnAudio: json['bn_audio'],
+      arAudio: json['ar_audio'],
     );
   }
 
@@ -85,6 +97,12 @@ class TranslatedQuestion {
         return urAudio;
       case AppLanguage.punjabi:
         return paAudio;
+      case AppLanguage.pashto:
+        return psAudio;
+      case AppLanguage.bengali:
+        return bnAudio;
+      case AppLanguage.arabic:
+        return arAudio;
       default:
         return null;
     }

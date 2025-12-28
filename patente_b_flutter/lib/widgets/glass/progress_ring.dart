@@ -12,6 +12,7 @@ class ProgressRing extends StatelessWidget {
   final Color? backgroundColor;
   final Widget? child;
   final bool showPercentage;
+  final Color? textColor;
 
   const ProgressRing({
     super.key,
@@ -21,6 +22,7 @@ class ProgressRing extends StatelessWidget {
     this.color,
     this.backgroundColor,
     this.child,
+    this.textColor,
     this.showPercentage = true,
   });
 
@@ -70,7 +72,7 @@ class ProgressRing extends StatelessWidget {
               style: TextStyle(
                 fontSize: size * 0.22,
                 fontWeight: FontWeight.w700,
-                color: AppleGlassTheme.textPrimary,
+                color: textColor ?? AppleGlassTheme.textPrimary,
               ),
             ),
         ],

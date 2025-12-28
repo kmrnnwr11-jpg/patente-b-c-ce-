@@ -3,6 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/translation.dart';
 import '../../services/stats_service.dart';
 import '../../services/bookmark_service.dart';
+import '../../services/achievement_service.dart';
+import '../../providers/auth_provider.dart';
+import '../subscription/subscription_plans_screen.dart';
+import '../creator/creator_dashboard_screen.dart';
+import '../admin/admin_dashboard_screen.dart';
+import 'package:provider/provider.dart';
 
 /// Settings screen with app preferences
 class SettingsScreen extends StatefulWidget {
@@ -151,6 +157,66 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       const Divider(height: 32),
 
+                      // Account & Subscription section
+                      _buildSectionHeader('💎', 'Account'),
+                      Consumer<AuthProvider>(
+                        builder: (context, auth, _) {
+                          final isPremium = auth.appUser?.isPremium ?? false;
+                          final isAdmin = auth.appUser?.role == 'admin';
+                          return Column(
+                            children: [
+                              _buildActionTile(
+                                isPremium
+                                    ? 'Abbonamento Attivo'
+                                    : 'Passa a Premium',
+                                isPremium
+                                    ? 'Gestisci il tuo piano'
+                                    : 'Sblocca tutte le funzionalità',
+                                Icons.stars_rounded,
+                                () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        const SubscriptionPlansScreen(),
+                                  ),
+                                ),
+                                iconColor: Colors.amber[700],
+                              ),
+                              if (auth.appUser?.role == 'creator' ||
+                                  auth.appUser?.role == 'admin')
+                                _buildActionTile(
+                                  'Dashboard Promoter',
+                                  'Gestisci i tuoi referral e guadagni',
+                                  Icons.campaign_rounded,
+                                  () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const CreatorDashboardScreen(),
+                                    ),
+                                  ),
+                                  iconColor: Colors.purple[700],
+                                ),
+                              if (isAdmin)
+                                _buildActionTile(
+                                  'Admin Dashboard',
+                                  'Gestisci Creator, Promo Codes, Statistiche',
+                                  Icons.admin_panel_settings_rounded,
+                                  () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          const AdminDashboardScreen(),
+                                    ),
+                                  ),
+                                  iconColor: Colors.deepPurple,
+                                ),
+                            ],
+                          );
+                        },
+                      ),
+                      const Divider(height: 32),
+
                       // Data section
                       _buildSectionHeader('💾', 'Dati'),
                       _buildActionTile(
@@ -264,15 +330,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
     IconData icon,
     VoidCallback onTap, {
     bool isDestructive = false,
+    Color? iconColor,
   }) {
     return ListTile(
-      leading: Icon(icon, color: isDestructive ? Colors.red : Colors.grey[600]),
+      leading: Icon(
+        icon,
+        color: iconColor ?? (isDestructive ? Colors.red : Colors.grey[600]),
+      ),
       title: Text(
         title,
-        style: TextStyle(color: isDestructive ? Colors.red : null),
+        style: TextStyle(
+          color: isDestructive ? Colors.red : null,
+          fontWeight: FontWeight.w600,
+        ),
       ),
       subtitle: Text(subtitle, style: const TextStyle(fontSize: 12)),
-      trailing: const Icon(Icons.chevron_right),
+      trailing: const Icon(Icons.chevron_right, size: 20),
       onTap: onTap,
     );
   }
@@ -356,13 +429,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
               // Reset all data
               final statsService = StatsService();
               final bookmarkService = BookmarkService();
+              final achievementService = AchievementService();
+
               await statsService.reset();
               await bookmarkService.clearAll();
+              await achievementService.reset();
 
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Tutti i progressi sono stati cancellati'),
+                    content: Text(
+                      'Tutti i progressi sono stati cancellati! Riavvia l\'app per l\'esperienza iniziale.',
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );

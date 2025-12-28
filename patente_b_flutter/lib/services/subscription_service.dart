@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../models/subscription_model.dart';
 import '../models/promo_code_model.dart';
 
@@ -18,6 +19,9 @@ class SubscriptionService {
   // O se usi Firebase Hosting con rewrites: https://patenteapp.com/api
   static const String _backendUrl =
       'https://us-central1-patente-b-quiz.cloudfunctions.net';
+
+  // Prezzo predefinito per l'abbonamento Premium
+  static const double defaultPremiumPrice = 20.00;
 
   // Stripe Price ID per abbonamento Premium (da Stripe Dashboard)
   static const String stripePriceId = 'price_XXXXXXX'; // TODO: Sostituire
@@ -59,12 +63,15 @@ class SubscriptionService {
     String? referralCode,
   }) async {
     try {
-      // Questa chiamata va al tuo backend, che a sua volta chiama Stripe
+      final token = await FirebaseAuth.instance.currentUser?.getIdToken();
+
       final response = await http.post(
-        Uri.parse('$_backendUrl/create-checkout-session'),
-        headers: {'Content-Type': 'application/json'},
+        Uri.parse('$_backendUrl/createCheckoutSession'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
         body: jsonEncode({
-          'userId': userId,
           'email': email,
           'priceId': stripePriceId,
           'promoCode': promoCode,
@@ -87,9 +94,14 @@ class SubscriptionService {
   /// Annulla un abbonamento
   Future<bool> cancelSubscription(String subscriptionId) async {
     try {
+      final token = await FirebaseAuth.instance.currentUser?.getIdToken();
+
       final response = await http.post(
-        Uri.parse('$_backendUrl/cancel-subscription'),
-        headers: {'Content-Type': 'application/json'},
+        Uri.parse('$_backendUrl/cancelSubscription'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
         body: jsonEncode({'subscriptionId': subscriptionId}),
       );
 

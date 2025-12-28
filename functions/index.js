@@ -38,9 +38,19 @@ async function verifyAuth(req) {
     const idToken = authHeader.split("Bearer ")[1];
     try {
         const decodedToken = await admin.auth().verifyIdToken(idToken);
+
+        // Verifica se l'utente è bannato
+        const banDoc = await db.collection("user_bans").doc(decodedToken.uid).get();
+        if (banDoc.exists && banDoc.data().isActive) {
+            const ban = banDoc.data();
+            if (!ban.expiresAt || ban.expiresAt.toDate() > new Date()) {
+                throw new Error(`Banned: ${ban.reason || "Suspicious activity"}`);
+            }
+        }
+
         return decodedToken;
     } catch (error) {
-        throw new Error("Unauthorized - Invalid token");
+        throw new Error(error.message || "Unauthorized - Invalid token");
     }
 }
 
@@ -577,6 +587,453 @@ exports.getSubscriptionStatus = functions.https.onRequest((req, res) => {
         } catch (error) {
             console.error("Error getting subscription status:", error);
             return res.status(500).json({ error: error.message });
+        }
+    });
+});
+
+// ============================================
+// SINGLE DEVICE & SECURITY
+// ============================================
+
+/**
+ * Verifica e registra l'avvio dell'app (Single-Device & Security)
+ * POST /appStartSecurityCheck
+ * Body: { deviceFingerprint, deviceModel, osVersion, appVersion, apkSignature, isRooted, isEmulator }
+ */
+exports.appStartSecurityCheck = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "POST") return res.status(405).send("Method Not Allowed");
+
+        try {
+            const decodedToken = await verifyAuth(req);
+            const userId = decodedToken.uid;
+            const { deviceFingerprint, apkSignature, isRooted, isEmulator } = req.body;
+
+            // 1. Verifica Firma APK (Anti-Mod)
+            // Sostituisci con la tua vera firma SHA-256
+            const EXPECTED_SIGNATURE = process.env.VALID_APK_SIGNATURE || "YOUR_PROD_SIGNATURE_HERE";
+            if (apkSignature && apkSignature !== EXPECTED_SIGNATURE && EXPECTED_SIGNATURE !== "YOUR_PROD_SIGNATURE_HERE") {
+                await db.collection("security_logs").add({
+                    userId,
+                    type: "signature_mismatch",
+                    details: `Expected ${EXPECTED_SIGNATURE}, got ${apkSignature}`,
+                    timestamp: admin.firestore.FieldValue.serverTimestamp()
+                });
+                return res.status(403).json({ allowed: false, reason: "invalid_app" });
+            }
+
+            // 2. Log anomalie (Root/Emulator) - Non blocchiamo subito ma logghiamo
+            if (isRooted || isEmulator) {
+                await db.collection("security_logs").add({
+                    userId,
+                    type: isRooted ? "root_detected" : "emulator_detected",
+                    timestamp: admin.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
+            // 3. Sistema Single-Device
+            const sessionQuery = await db.collection("user_sessions")
+                .where("userId", "==", userId)
+                .where("isValid", "==", true)
+                .get();
+
+            let currentSession;
+
+            // Invalida altre sessioni se il fingerprint è diverso
+            const batch = db.batch();
+            sessionQuery.forEach(doc => {
+                if (doc.data().deviceFingerprint !== deviceFingerprint) {
+                    batch.update(doc.ref, {
+                        isValid: false,
+                        invalidatedAt: admin.firestore.FieldValue.serverTimestamp(),
+                        reason: "new_device_login"
+                    });
+                } else {
+                    currentSession = doc;
+                }
+            });
+
+            if (!currentSession) {
+                // Crea nuova sessione
+                const sessionRef = db.collection("user_sessions").doc();
+                batch.set(sessionRef, {
+                    userId,
+                    deviceFingerprint,
+                    deviceModel: req.body.deviceModel,
+                    osVersion: req.body.osVersion,
+                    appVersion: req.body.appVersion,
+                    isValid: true,
+                    createdAt: admin.firestore.FieldValue.serverTimestamp(),
+                    lastActiveAt: admin.firestore.FieldValue.serverTimestamp()
+                });
+            } else {
+                batch.update(currentSession.ref, {
+                    lastActiveAt: admin.firestore.FieldValue.serverTimestamp()
+                });
+            }
+
+            await batch.commit();
+
+            return res.status(200).json({
+                allowed: true,
+                serverTime: new Date().toISOString()
+            });
+
+        } catch (error) {
+            return res.status(500).json({ error: error.message });
+        }
+    });
+});
+
+/**
+ * Verifica se la sessione corrente è ancora valida
+ * GET /checkSession?deviceFingerprint=...
+ */
+exports.checkSession = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        try {
+            const decodedToken = await verifyAuth(req);
+            const { deviceFingerprint } = req.query;
+
+            const sessionQuery = await db.collection("user_sessions")
+                .where("userId", "==", decodedToken.uid)
+                .where("deviceFingerprint", "==", deviceFingerprint)
+                .limit(1)
+                .get();
+
+            if (sessionQuery.empty || !sessionQuery.docs[0].data().isValid) {
+                return res.status(200).json({
+                    valid: false,
+                    reason: sessionQuery.empty ? "no_session" : "new_device_login"
+                });
+            }
+
+            return res.status(200).json({ valid: true });
+        } catch (error) {
+            return res.status(401).json({ error: error.message });
+        }
+    });
+});
+
+// ============================================
+// ADMIN FUNCTIONS - GESTIONE CREATOR/PROMOTER
+// ============================================
+
+// Lista degli admin (sostituisci con i tuoi UID Firebase)
+const ADMIN_UIDS = [
+    "Kak0P3NOGjaMy0A5kBFShrWZCzH3", // kmrnnwr11@gmail.com
+    // Aggiungi altri admin qui se necessario
+];
+
+/**
+ * Helper: Verifica che l'utente sia un Admin
+ */
+async function verifyAdmin(req) {
+    const decodedToken = await verifyAuth(req);
+
+    // Metodo 1: Controlla se è nella lista hardcoded
+    if (ADMIN_UIDS.includes(decodedToken.uid)) {
+        return decodedToken;
+    }
+
+    // Metodo 2: Controlla il ruolo in Firestore
+    const userDoc = await db.collection("users").doc(decodedToken.uid).get();
+    if (userDoc.exists && userDoc.data().role === "admin") {
+        return decodedToken;
+    }
+
+    throw new Error("Forbidden - Admin access required");
+}
+
+/**
+ * Promuove un utente a Creator/Promoter
+ * POST /admin/promoteToCreator
+ * Body: { userId, referralCode, socialLinks? }
+ */
+exports.promoteToCreator = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "POST") {
+            return res.status(405).json({ error: "Method not allowed" });
+        }
+
+        try {
+            await verifyAdmin(req);
+
+            const { userId, referralCode, socialLinks } = req.body;
+
+            if (!userId || !referralCode) {
+                return res.status(400).json({ error: "userId and referralCode are required" });
+            }
+
+            // Verifica che l'utente esista
+            const userDoc = await db.collection("users").doc(userId).get();
+            if (!userDoc.exists) {
+                return res.status(404).json({ error: "User not found" });
+            }
+
+            // Verifica che il referralCode sia univoco
+            const existingCreator = await db.collection("creators")
+                .where("referralCode", "==", referralCode.toUpperCase())
+                .limit(1)
+                .get();
+
+            if (!existingCreator.empty) {
+                return res.status(400).json({ error: "Referral code already exists" });
+            }
+
+            // Verifica che l'utente non sia già un Creator
+            const existingUser = await db.collection("creators")
+                .where("userId", "==", userId)
+                .limit(1)
+                .get();
+
+            if (!existingUser.empty) {
+                return res.status(400).json({ error: "User is already a creator" });
+            }
+
+            // Crea il Creator
+            const creatorData = {
+                userId: userId,
+                referralCode: referralCode.toUpperCase(),
+                socialLinks: socialLinks || {},
+                isActive: true,
+                totalReferrals: 0,
+                activeSubscriptions: 0,
+                pendingPayout: 0,
+                paidOut: 0,
+                totalEarnings: 0,
+                createdAt: admin.firestore.FieldValue.serverTimestamp(),
+                createdBy: "admin"
+            };
+
+            const creatorRef = await db.collection("creators").add(creatorData);
+
+            // Aggiorna il ruolo dell'utente
+            await db.collection("users").doc(userId).update({
+                role: "creator"
+            });
+
+            console.log(`✅ User ${userId} promoted to Creator with code ${referralCode}`);
+
+            return res.status(200).json({
+                success: true,
+                creatorId: creatorRef.id,
+                referralCode: referralCode.toUpperCase(),
+                referralLink: `https://patenteapp.com/ref/${referralCode.toUpperCase()}`
+            });
+
+        } catch (error) {
+            console.error("Error promoting to creator:", error);
+            return res.status(error.message.includes("Forbidden") ? 403 : 500).json({ error: error.message });
+        }
+    });
+});
+
+/**
+ * Ottiene la lista di tutti i Creator
+ * GET /admin/getCreators
+ */
+exports.getCreators = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "GET") {
+            return res.status(405).json({ error: "Method not allowed" });
+        }
+
+        try {
+            await verifyAdmin(req);
+
+            const creatorsSnapshot = await db.collection("creators")
+                .orderBy("createdAt", "desc")
+                .get();
+
+            const creators = [];
+            for (const doc of creatorsSnapshot.docs) {
+                const data = doc.data();
+
+                // Ottieni info utente
+                const userDoc = await db.collection("users").doc(data.userId).get();
+                const userData = userDoc.exists ? userDoc.data() : {};
+
+                creators.push({
+                    id: doc.id,
+                    ...data,
+                    email: userData.email || "N/A",
+                    displayName: userData.displayName || "N/A",
+                    createdAt: data.createdAt?.toDate?.() || null
+                });
+            }
+
+            return res.status(200).json({ creators });
+
+        } catch (error) {
+            console.error("Error getting creators:", error);
+            return res.status(error.message.includes("Forbidden") ? 403 : 500).json({ error: error.message });
+        }
+    });
+});
+
+/**
+ * Revoca il ruolo Creator di un utente
+ * POST /admin/revokeCreator
+ * Body: { creatorId }
+ */
+exports.revokeCreator = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "POST") {
+            return res.status(405).json({ error: "Method not allowed" });
+        }
+
+        try {
+            await verifyAdmin(req);
+
+            const { creatorId } = req.body;
+
+            if (!creatorId) {
+                return res.status(400).json({ error: "creatorId is required" });
+            }
+
+            const creatorDoc = await db.collection("creators").doc(creatorId).get();
+            if (!creatorDoc.exists) {
+                return res.status(404).json({ error: "Creator not found" });
+            }
+
+            const creatorData = creatorDoc.data();
+
+            // Disattiva il Creator (non eliminiamo per mantenere lo storico)
+            await db.collection("creators").doc(creatorId).update({
+                isActive: false,
+                revokedAt: admin.firestore.FieldValue.serverTimestamp()
+            });
+
+            // Rimuovi il ruolo creator dall'utente
+            await db.collection("users").doc(creatorData.userId).update({
+                role: "user"
+            });
+
+            console.log(`❌ Creator ${creatorId} revoked`);
+
+            return res.status(200).json({ success: true });
+
+        } catch (error) {
+            console.error("Error revoking creator:", error);
+            return res.status(error.message.includes("Forbidden") ? 403 : 500).json({ error: error.message });
+        }
+    });
+});
+
+/**
+ * Crea un nuovo Promo Code
+ * POST /admin/createPromoCode
+ * Body: { code, discountType, discountValue, maxUses?, expiresAt? }
+ */
+exports.createPromoCode = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "POST") {
+            return res.status(405).json({ error: "Method not allowed" });
+        }
+
+        try {
+            await verifyAdmin(req);
+
+            const { code, discountType, discountValue, maxUses, expiresAt, description } = req.body;
+
+            if (!code || !discountType || discountValue === undefined) {
+                return res.status(400).json({ error: "code, discountType, and discountValue are required" });
+            }
+
+            // Verifica che il codice non esista già
+            const existingCode = await db.collection("promocodes")
+                .where("code", "==", code.toUpperCase())
+                .limit(1)
+                .get();
+
+            if (!existingCode.empty) {
+                return res.status(400).json({ error: "Promo code already exists" });
+            }
+
+            const promoData = {
+                code: code.toUpperCase(),
+                discountType: discountType, // "percentage" or "fixed"
+                discountValue: discountValue,
+                maxUses: maxUses || null,
+                currentUses: 0,
+                description: description || "",
+                isActive: true,
+                expiresAt: expiresAt ? admin.firestore.Timestamp.fromDate(new Date(expiresAt)) : null,
+                createdAt: admin.firestore.FieldValue.serverTimestamp(),
+                usedByUserIds: []
+            };
+
+            const promoRef = await db.collection("promocodes").add(promoData);
+
+            console.log(`✅ Promo code ${code} created`);
+
+            return res.status(200).json({
+                success: true,
+                promoId: promoRef.id,
+                code: code.toUpperCase()
+            });
+
+        } catch (error) {
+            console.error("Error creating promo code:", error);
+            return res.status(error.message.includes("Forbidden") ? 403 : 500).json({ error: error.message });
+        }
+    });
+});
+
+/**
+ * Ottiene statistiche Admin Dashboard
+ * GET /admin/getStats
+ */
+exports.getAdminStats = functions.https.onRequest((req, res) => {
+    cors(req, res, async () => {
+        if (req.method !== "GET") {
+            return res.status(405).json({ error: "Method not allowed" });
+        }
+
+        try {
+            await verifyAdmin(req);
+
+            // Conta utenti totali
+            const usersSnapshot = await db.collection("users").get();
+            const totalUsers = usersSnapshot.size;
+
+            // Conta utenti premium
+            const premiumSnapshot = await db.collection("users")
+                .where("isPremium", "==", true)
+                .get();
+            const premiumUsers = premiumSnapshot.size;
+
+            // Conta creators attivi
+            const creatorsSnapshot = await db.collection("creators")
+                .where("isActive", "==", true)
+                .get();
+            const activeCreators = creatorsSnapshot.size;
+
+            // Calcola totale commissioni pending
+            let totalPendingPayout = 0;
+            creatorsSnapshot.forEach(doc => {
+                totalPendingPayout += doc.data().pendingPayout || 0;
+            });
+
+            // Conta referral attivi
+            const referralsSnapshot = await db.collection("referrals")
+                .where("status", "==", "active")
+                .get();
+            const activeReferrals = referralsSnapshot.size;
+
+            return res.status(200).json({
+                totalUsers,
+                premiumUsers,
+                activeCreators,
+                totalPendingPayout,
+                activeReferrals,
+                conversionRate: totalUsers > 0 ? ((premiumUsers / totalUsers) * 100).toFixed(2) + "%" : "0%"
+            });
+
+        } catch (error) {
+            console.error("Error getting admin stats:", error);
+            return res.status(error.message.includes("Forbidden") ? 403 : 500).json({ error: error.message });
         }
     });
 });

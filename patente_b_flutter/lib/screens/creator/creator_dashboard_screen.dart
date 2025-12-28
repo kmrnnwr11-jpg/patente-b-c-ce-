@@ -189,6 +189,7 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     if (_isLoading) {
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
@@ -199,115 +200,161 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
     }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Creator Dashboard'),
+        title: const Text(
+          'Dashboard Promoter',
+          style: TextStyle(fontWeight: FontWeight.w900),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            color: theme.colorScheme.onSurface,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
-      body: RefreshIndicator(
-        onRefresh: _loadCreatorData,
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Card principale con codice
-              _buildMainCard(theme),
-              const SizedBox(height: 24),
+      body: Stack(
+        children: [
+          // Sfondo con gradienti (Coerente con SubscriptionPlansScreen)
+          Positioned(
+            top: -100,
+            left: -50,
+            child: _buildBlurCircle(Colors.purple.withOpacity(0.15), 300),
+          ),
+          Positioned(
+            bottom: -50,
+            right: -50,
+            child: _buildBlurCircle(Colors.blue.withOpacity(0.1), 250),
+          ),
 
-              // Statistiche
-              _buildStatsGrid(theme),
-              const SizedBox(height: 24),
+          RefreshIndicator(
+            onRefresh: _loadCreatorData,
+            color: Colors.purple,
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(24, 120, 24, 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Card Principale (Premium Look)
+                  _buildMainCard(theme, isDark),
+                  const SizedBox(height: 32),
 
-              // Guadagni
-              _buildEarningsCard(theme),
-              const SizedBox(height: 24),
+                  // Statistiche Rapide
+                  _buildStatsGrid(theme, isDark),
+                  const SizedBox(height: 32),
 
-              // Strumenti condivisione
-              _buildShareTools(theme),
-              const SizedBox(height: 24),
+                  // Guadagni (Vibrant Card)
+                  _buildEarningsCard(theme, isDark),
+                  const SizedBox(height: 32),
 
-              // Lista referral
-              _buildReferralsList(theme),
-            ],
+                  // Strumenti Condivisione (Modern Layout)
+                  _buildShareTools(theme, isDark),
+                  const SizedBox(height: 40),
+
+                  // Lista Referral (Clean List)
+                  _buildReferralsList(theme, isDark),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBlurCircle(Color color, double size) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: Center(
+        child: Container(
+          width: size * 0.8,
+          height: size * 0.8,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.3),
+            shape: BoxShape.circle,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildMainCard(ThemeData theme) {
+  Widget _buildMainCard(ThemeData theme, bool isDark) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.purple.shade400, Colors.purple.shade700],
+          colors: [Colors.purple.shade600, Colors.blue.shade700],
         ),
-        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
             color: Colors.purple.withOpacity(0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+            blurRadius: 30,
+            offset: const Offset(0, 15),
           ),
         ],
       ),
       child: Column(
         children: [
-          const Icon(Icons.verified, color: Colors.white, size: 48),
-          const SizedBox(height: 12),
+          const Icon(
+            Icons.verified_user_rounded,
+            color: Colors.white,
+            size: 56,
+          ),
+          const SizedBox(height: 20),
           const Text(
-            'Sei un Creator!',
+            'PROMOTER VERIFICATO',
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 2,
+              color: Colors.white70,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           const Text(
-            'Il tuo codice referral:',
-            style: TextStyle(color: Colors.white70),
+            'Il tuo codice referral',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
+              color: Colors.white.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.white.withOpacity(0.2)),
             ),
             child: Text(
               _creator!.referralCode,
               style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+                fontSize: 32,
+                fontWeight: FontWeight.w900,
                 color: Colors.white,
-                letterSpacing: 4,
+                letterSpacing: 6,
               ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              IconButton(
-                onPressed: _copyLink,
-                icon: const Icon(Icons.copy, color: Colors.white),
-                tooltip: 'Copia link',
-              ),
-              IconButton(
-                onPressed: _shareLink,
-                icon: const Icon(Icons.share, color: Colors.white),
-                tooltip: 'Condividi',
-              ),
-              IconButton(
-                onPressed: _showQRCode,
-                icon: const Icon(Icons.qr_code, color: Colors.white),
-                tooltip: 'QR Code',
-              ),
+              _buildIconButton(Icons.copy_rounded, 'Copia', _copyLink),
+              const SizedBox(width: 20),
+              _buildIconButton(Icons.share_rounded, 'Condividi', _shareLink),
+              const SizedBox(width: 20),
+              _buildIconButton(Icons.qr_code_2_rounded, 'QR Code', _showQRCode),
             ],
           ),
         ],
@@ -315,7 +362,35 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
     );
   }
 
-  Widget _buildStatsGrid(ThemeData theme) {
+  Widget _buildIconButton(IconData icon, String label, VoidCallback onTap) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Icon(icon, color: Colors.white, size: 24),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 10,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatsGrid(ThemeData theme, bool isDark) {
     final activeReferrals = _referrals
         .where((r) => r.status == ReferralStatus.active)
         .length;
@@ -325,20 +400,22 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
         Expanded(
           child: _buildStatCard(
             theme,
-            Icons.people,
-            'Referral totali',
+            'TOTAL REFERRALS',
             '${_creator!.totalReferrals}',
-            Colors.blue,
+            Icons.people_alt_rounded,
+            Colors.blue.shade600,
+            isDark,
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width: 16),
         Expanded(
           child: _buildStatCard(
             theme,
-            Icons.check_circle,
-            'Attivi',
+            'ACTIVE USERS',
             '$activeReferrals',
-            Colors.green,
+            Icons.check_circle_rounded,
+            Colors.green.shade600,
+            isDark,
           ),
         ),
       ],
@@ -347,35 +424,47 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
 
   Widget _buildStatCard(
     ThemeData theme,
-    IconData icon,
     String label,
     String value,
+    IconData icon,
     Color color,
+    bool isDark,
   ) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: color.withOpacity(0.3)),
+        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: color.withOpacity(0.2)),
+        boxShadow: [
+          if (!isDark)
+            BoxShadow(
+              color: color.withOpacity(0.05),
+              blurRadius: 20,
+              offset: const Offset(0, 10),
+            ),
+        ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: color, size: 32),
-          const SizedBox(height: 8),
+          Icon(icon, color: color, size: 28),
+          const SizedBox(height: 16),
           Text(
             value,
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
+            style: theme.textTheme.headlineLarge?.copyWith(
+              fontWeight: FontWeight.w900,
               color: theme.colorScheme.onSurface,
             ),
           ),
+          const SizedBox(height: 4),
           Text(
             label,
             style: TextStyle(
-              color: theme.colorScheme.onSurface.withOpacity(0.6),
-              fontSize: 12,
+              fontSize: 10,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1,
+              color: theme.colorScheme.onSurface.withOpacity(0.4),
             ),
           ),
         ],
@@ -383,80 +472,115 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
     );
   }
 
-  Widget _buildEarningsCard(ThemeData theme) {
+  Widget _buildEarningsCard(ThemeData theme, bool isDark) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(32),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        color: isDark ? Colors.grey.shade900 : Colors.white,
+        borderRadius: BorderRadius.circular(32),
+        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.05)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 30,
+            offset: const Offset(0, 15),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'I tuoi guadagni',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: theme.colorScheme.onSurface,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'GUADAGNI & PAYOUT',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 1,
+                  color: theme.colorScheme.onSurface.withOpacity(0.4),
+                ),
+              ),
+              Icon(
+                Icons.account_balance_wallet_rounded,
+                color: Colors.green.shade600,
+                size: 20,
+              ),
+            ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildEarningItem(
                 theme,
-                'Da incassare',
+                'Da Incassare',
                 '€${_creator!.pendingPayout.toStringAsFixed(2)}',
-                Colors.orange,
+                Colors.orange.shade700,
               ),
               _buildEarningItem(
                 theme,
-                'Totale guadagnato',
+                'Totale Guadagni',
                 '€${_creator!.totalEarnings.toStringAsFixed(2)}',
-                Colors.green,
-              ),
-              _buildEarningItem(
-                theme,
-                'Già pagato',
-                '€${_creator!.paidOut.toStringAsFixed(2)}',
-                Colors.blue,
+                Colors.green.shade700,
               ),
             ],
           ),
-          if (_creator!.canRequestPayout) ...[
-            const SizedBox(height: 20),
+          const SizedBox(height: 32),
+          const Divider(),
+          const SizedBox(height: 24),
+          if (_creator!.canRequestPayout)
             SizedBox(
               width: double.infinity,
-              child: ElevatedButton.icon(
+              height: 56,
+              child: ElevatedButton(
                 onPressed: _requestPayout,
-                icon: const Icon(Icons.account_balance_wallet),
-                label: Text(
-                  'Richiedi Payout (€${_creator!.pendingPayout.toStringAsFixed(2)})',
-                ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.green.shade600,
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  elevation: 0,
+                ),
+                child: const Text(
+                  'PRELEVA FONDI',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 1,
                   ),
                 ),
               ),
-            ),
-          ] else ...[
-            const SizedBox(height: 12),
-            Text(
-              'Minimo €50 per richiedere il pagamento',
-              style: TextStyle(
-                fontSize: 12,
-                color: theme.colorScheme.onSurface.withOpacity(0.5),
+            )
+          else
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.onSurface.withOpacity(0.03),
+                borderRadius: BorderRadius.circular(16),
               ),
-              textAlign: TextAlign.center,
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.info_outline_rounded,
+                    color: theme.colorScheme.onSurface.withOpacity(0.4),
+                    size: 20,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      'Raggiungi €50.00 per richiedere il payout',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: theme.colorScheme.onSurface.withOpacity(0.5),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
         ],
       ),
     );
@@ -469,107 +593,123 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
     Color color,
   ) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           value,
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
             color: color,
           ),
         ),
+        const SizedBox(height: 4),
         Text(
-          label,
+          label.toUpperCase(),
           style: TextStyle(
-            fontSize: 11,
-            color: theme.colorScheme.onSurface.withOpacity(0.6),
+            fontSize: 10,
+            fontWeight: FontWeight.w700,
+            color: theme.colorScheme.onSurface.withOpacity(0.4),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildShareTools(ThemeData theme) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Condividi il tuo link',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: theme.colorScheme.onSurface,
-            ),
+  Widget _buildShareTools(ThemeData theme, bool isDark) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'STRUMENTI DI CONDIVISIONE',
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1,
+            color: theme.colorScheme.onSurface.withOpacity(0.4),
           ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              Expanded(
-                child: _buildShareButton(
-                  icon: Icons.copy,
-                  label: 'Copia',
-                  color: Colors.grey,
-                  onTap: _copyLink,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildShareButton(
-                  icon: Icons.share,
-                  label: 'Condividi',
-                  color: Colors.blue,
-                  onTap: _shareLink,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildShareButton(
-                  icon: Icons.qr_code,
-                  label: 'QR Code',
-                  color: Colors.purple,
-                  onTap: _showQRCode,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 20),
+        _buildShareOption(
+          theme,
+          'Copia Link',
+          'Condividi il tuo link personale ovunque.',
+          Icons.link_rounded,
+          Colors.blue,
+          _copyLink,
+          isDark,
+        ),
+        const SizedBox(height: 12),
+        _buildShareOption(
+          theme,
+          'Mostra QR Code',
+          'Incontra i tuoi amici e fagli scansionare il codice.',
+          Icons.qr_code_scanner_rounded,
+          Colors.purple,
+          _showQRCode,
+          isDark,
+        ),
+      ],
     );
   }
 
-  Widget _buildShareButton({
-    required IconData icon,
-    required String label,
-    required Color color,
-    required VoidCallback onTap,
-  }) {
+  Widget _buildShareOption(
+    ThemeData theme,
+    String title,
+    String subtitle,
+    IconData icon,
+    Color color,
+    VoidCallback onTap,
+    bool isDark,
+  ) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
+          color: isDark ? Colors.white.withOpacity(0.03) : Colors.grey.shade50,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: theme.colorScheme.outline.withOpacity(0.05),
+          ),
         ),
-        child: Column(
+        child: Row(
           children: [
-            Icon(icon, color: color),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                color: color,
-                fontWeight: FontWeight.w500,
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: color.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(16),
               ),
+              child: Icon(icon, color: color, size: 24),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: theme.colorScheme.onSurface.withOpacity(0.5),
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: theme.colorScheme.onSurface.withOpacity(0.2),
+              size: 16,
             ),
           ],
         ),
@@ -577,110 +717,112 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
     );
   }
 
-  Widget _buildReferralsList(ThemeData theme) {
+  Widget _buildReferralsList(ThemeData theme, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'I tuoi referral',
+          'LISTA REFERRAL RECENTI',
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: theme.colorScheme.onSurface,
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1,
+            color: theme.colorScheme.onSurface.withOpacity(0.4),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
         if (_referrals.isEmpty)
-          Container(
-            padding: const EdgeInsets.all(32),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.person_add_disabled,
-                  size: 48,
-                  color: theme.colorScheme.onSurface.withOpacity(0.3),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Nessun referral ancora',
-                  style: TextStyle(
-                    color: theme.colorScheme.onSurface.withOpacity(0.6),
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'Condividi il tuo link per iniziare a guadagnare!',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: theme.colorScheme.onSurface.withOpacity(0.4),
-                  ),
-                ),
-              ],
-            ),
-          )
+          _buildEmptyReferrals(theme, isDark)
         else
-          ...(_referrals.map(
-            (referral) => _buildReferralItem(theme, referral),
-          )),
+          ..._referrals.map((r) => _buildReferralItem(theme, r, isDark)),
       ],
     );
   }
 
-  Widget _buildReferralItem(ThemeData theme, Referral referral) {
-    final statusColor = referral.status == ReferralStatus.active
-        ? Colors.green
-        : referral.status == ReferralStatus.pending
-        ? Colors.orange
-        : Colors.grey;
+  Widget _buildEmptyReferrals(ThemeData theme, bool isDark) {
+    return Container(
+      padding: const EdgeInsets.all(40),
+      decoration: BoxDecoration(
+        color: isDark ? Colors.white.withOpacity(0.03) : Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(32),
+      ),
+      child: Column(
+        children: [
+          Icon(
+            Icons.person_add_rounded,
+            size: 48,
+            color: theme.colorScheme.onSurface.withOpacity(0.1),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Inizia a condividere',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: theme.colorScheme.onSurface.withOpacity(0.5),
+            ),
+          ),
+          Text(
+            'Non hai ancora nessun referral registrato.',
+            style: TextStyle(
+              fontSize: 12,
+              color: theme.colorScheme.onSurface.withOpacity(0.3),
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildReferralItem(ThemeData theme, Referral referral, bool isDark) {
+    final statusColor = referral.isActive ? Colors.green : Colors.orange;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: statusColor.withOpacity(0.3)),
+        color: isDark ? Colors.white.withOpacity(0.04) : Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.05)),
       ),
       child: Row(
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: statusColor.withOpacity(0.1),
-              shape: BoxShape.circle,
-            ),
+          CircleAvatar(
+            backgroundColor: statusColor.withOpacity(0.1),
             child: Icon(
-              referral.status == ReferralStatus.active
-                  ? Icons.check
-                  : referral.status == ReferralStatus.pending
-                  ? Icons.hourglass_empty
-                  : Icons.close,
+              referral.isActive
+                  ? Icons.check_rounded
+                  : Icons.access_time_rounded,
               color: statusColor,
               size: 20,
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  referral.statusText,
+                  referral.statusText.toUpperCase(),
                   style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onSurface,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 0.5,
+                    color: statusColor,
                   ),
                 ),
                 Text(
-                  'Registrato: ${_formatDate(referral.dateReferred)}',
+                  'ID: ${referral.userId.substring(0, 8)}...',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
+                  'Dalla data: ${_formatDate(referral.dateReferred)}',
                   style: TextStyle(
-                    fontSize: 12,
-                    color: theme.colorScheme.onSurface.withOpacity(0.6),
+                    fontSize: 11,
+                    color: theme.colorScheme.onSurface.withOpacity(0.4),
                   ),
                 ),
               ],
@@ -691,17 +833,19 @@ class _CreatorDashboardScreenState extends State<CreatorDashboardScreen> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  '€${referral.monthlyCommission.toStringAsFixed(2)}/mese',
+                  '+€${referral.monthlyCommission.toStringAsFixed(2)}',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                     color: Colors.green.shade600,
+                    fontSize: 16,
                   ),
                 ),
                 Text(
-                  '${referral.monthsRemaining} mesi rimasti',
+                  'Comm. Mensile',
                   style: TextStyle(
-                    fontSize: 11,
-                    color: theme.colorScheme.onSurface.withOpacity(0.5),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onSurface.withOpacity(0.3),
                   ),
                 ),
               ],

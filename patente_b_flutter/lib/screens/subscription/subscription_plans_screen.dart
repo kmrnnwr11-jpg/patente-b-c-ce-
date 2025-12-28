@@ -101,10 +101,10 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     return Consumer2<AuthProvider, SubscriptionProvider>(
       builder: (context, authProvider, subscriptionProvider, child) {
-        // Se già premium, mostra schermata abbonamento
         if (subscriptionProvider.isPremium) {
           return const MySubscriptionScreen();
         }
@@ -114,89 +114,121 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
         final hasDiscount = finalPrice < plan.price;
 
         return Scaffold(
+          extendBodyBehindAppBar: true,
           appBar: AppBar(
-            title: const Text('Passa a Premium'),
             backgroundColor: Colors.transparent,
             elevation: 0,
-          ),
-          body: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Header Premium
-                _buildPremiumHeader(theme),
-                const SizedBox(height: 32),
-
-                // Card Piano Premium
-                _buildPlanCard(theme, plan, finalPrice, hasDiscount),
-                const SizedBox(height: 24),
-
-                // Campo Codice Promo
-                _buildPromoCodeSection(theme, subscriptionProvider),
-                const SizedBox(height: 32),
-
-                // Bottone Abbonati
-                _buildSubscribeButton(theme, subscriptionProvider, finalPrice),
-                const SizedBox(height: 16),
-
-                // Info garanzia
-                _buildGuaranteeInfo(theme),
-                const SizedBox(height: 24),
-
-                // Comparazione Free vs Premium
-                _buildComparisonTable(theme),
-              ],
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: theme.colorScheme.onSurface,
+              ),
+              onPressed: () => Navigator.pop(context),
             ),
+          ),
+          body: Stack(
+            children: [
+              // Sfondo con gradienti sfumati (Premium Look)
+              Positioned(
+                top: -100,
+                right: -50,
+                child: _buildBlurCircle(Colors.amber.withOpacity(0.2), 300),
+              ),
+              Positioned(
+                bottom: -50,
+                left: -50,
+                child: _buildBlurCircle(Colors.orange.withOpacity(0.15), 250),
+              ),
+
+              SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.fromLTRB(24, 120, 24, 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Header Premium (Vibrant)
+                    _buildPremiumHeader(theme),
+                    const SizedBox(height: 48),
+
+                    // Card Piano Premium (Glassmorphism & Gold)
+                    _buildPlanCard(theme, plan, finalPrice, hasDiscount),
+                    const SizedBox(height: 32),
+
+                    // Campo Codice Promo (Modern)
+                    _buildPromoCodeSection(theme, subscriptionProvider, isDark),
+                    const SizedBox(height: 40),
+
+                    // Bottone Abbonati (Grandioso)
+                    _buildSubscribeButton(
+                      theme,
+                      subscriptionProvider,
+                      finalPrice,
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Info garanzia
+                    _buildGuaranteeInfo(theme, isDark),
+                    const SizedBox(height: 40),
+
+                    // Comparazione Free vs Premium (Scrittura chiara)
+                    _buildComparisonSection(theme, isDark),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
     );
   }
 
+  Widget _buildBlurCircle(Color color, double size) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: Center(
+        child: Container(
+          width: size * 0.8,
+          height: size * 0.8,
+          decoration: BoxDecoration(
+            color: color.withOpacity(0.3),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildPremiumHeader(ThemeData theme) {
     return Column(
       children: [
-        Container(
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.amber.shade600, Colors.orange.shade700],
+        ShaderMask(
+          shaderCallback: (bounds) => LinearGradient(
+            colors: [Colors.amber.shade400, Colors.orange.shade700],
+          ).createShader(bounds),
+          child: const Icon(Icons.stars_rounded, size: 80, color: Colors.white),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          'Passa al Prossimo Livello',
+          style: theme.textTheme.headlineMedium?.copyWith(
+            fontWeight: FontWeight.w900,
+            letterSpacing: -0.5,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            'L\'unico strumento completo per superare l\'esame della patente al primo colpo.',
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurface.withOpacity(0.6),
+              height: 1.4,
             ),
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.amber.withOpacity(0.4),
-                blurRadius: 20,
-                offset: const Offset(0, 10),
-              ),
-            ],
+            textAlign: TextAlign.center,
           ),
-          child: const Icon(
-            Icons.workspace_premium,
-            size: 50,
-            color: Colors.white,
-          ),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          'Sblocca tutto il potenziale',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: theme.colorScheme.onSurface,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Preparati al meglio per l\'esame della patente',
-          style: TextStyle(
-            fontSize: 16,
-            color: theme.colorScheme.onSurface.withOpacity(0.6),
-          ),
-          textAlign: TextAlign.center,
         ),
       ],
     );
@@ -210,125 +242,172 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
   ) {
     return Container(
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Colors.amber.shade600, Colors.orange.shade700],
+          colors: [
+            theme.brightness == Brightness.dark
+                ? Colors.grey.shade900
+                : Colors.white,
+            theme.brightness == Brightness.dark
+                ? Colors.black
+                : Colors.grey.shade50,
+          ],
         ),
-        borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.amber.withOpacity(0.3),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 30,
+            offset: const Offset(0, 15),
+          ),
+          BoxShadow(
+            color: Colors.amber.withOpacity(0.2),
+            blurRadius: 40,
+            offset: const Offset(0, 5),
+            spreadRadius: -10,
           ),
         ],
+        border: Border.all(
+          color: Colors.amber.shade600.withOpacity(0.3),
+          width: 1.5,
+        ),
       ),
-      child: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Badge popolare
-                if (plan.isPopular)
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: const Text(
-                      '⭐ PIÙ POPOLARE',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                const SizedBox(height: 16),
-
-                // Nome piano
-                Text(
-                  plan.name,
-                  style: const TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(32),
+        child: Stack(
+          children: [
+            // Angolo Oro
+            Positioned(
+              top: -20,
+              right: -20,
+              child: Container(
+                width: 100,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.amber.withOpacity(0.1),
+                  shape: BoxShape.circle,
                 ),
-                const SizedBox(height: 8),
+              ),
+            ),
 
-                // Prezzo
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    if (hasDiscount) ...[
+            Padding(
+              padding: const EdgeInsets.all(32),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       Text(
-                        '€${plan.price.toStringAsFixed(2)}',
+                        plan.name.toUpperCase(),
                         style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white.withOpacity(0.6),
-                          decoration: TextDecoration.lineThrough,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 2,
+                          color: Colors.amber.shade700,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                    ],
-                    Text(
-                      '€${finalPrice.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '/mese',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white.withOpacity(0.8),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-
-                // Features
-                ...plan.features.map(
-                  (feature) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: Row(
-                      children: [
+                      if (plan.isPopular)
                         Container(
-                          padding: const EdgeInsets.all(4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.amber.shade600,
+                                Colors.orange.shade700,
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          child: const Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 16,
+                          child: const Text(
+                            'CONSIGLIATO',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 12),
-                        Text(
-                          feature,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 24),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        '€${finalPrice.toStringAsFixed(2)}',
+                        style: theme.textTheme.displayMedium?.copyWith(
+                          fontWeight: FontWeight.w900,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 12, left: 4),
+                        child: Text(
+                          '/mese',
+                          style: theme.textTheme.bodyLarge?.copyWith(
+                            color: theme.colorScheme.onSurface.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (hasDiscount)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        'Invece di €${plan.price.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          color: theme.colorScheme.error,
+                          decoration: TextDecoration.lineThrough,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 32),
+                  const Divider(),
+                  const SizedBox(height: 24),
+                  ...plan.features.map(
+                    (feature) => _buildFeatureItem(theme, feature),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeatureItem(ThemeData theme, String feature) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.amber.withOpacity(0.15),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.check_rounded,
+              color: Colors.amber.shade800,
+              size: 18,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Text(
+              feature,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w500,
+                color: theme.colorScheme.onSurface.withOpacity(0.8),
+              ),
             ),
           ),
         ],
@@ -338,200 +417,203 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
 
   Widget _buildPromoCodeSection(
     ThemeData theme,
-    SubscriptionProvider subscriptionProvider,
+    SubscriptionProvider provider,
+    bool isDark,
   ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Hai un codice sconto?',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: theme.colorScheme.onSurface,
-          ),
-        ),
-        const SizedBox(height: 12),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: TextField(
-                controller: _promoCodeController,
-                textCapitalization: TextCapitalization.characters,
-                decoration: InputDecoration(
-                  hintText: 'Inserisci codice',
-                  prefixIcon: Icon(
-                    Icons.local_offer_outlined,
-                    color: theme.colorScheme.primary,
-                  ),
-                  filled: true,
-                  fillColor: theme.colorScheme.surface,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide.none,
-                  ),
-                  suffixIcon: subscriptionProvider.appliedPromoCode != null
-                      ? IconButton(
-                          icon: const Icon(Icons.close, color: Colors.red),
-                          onPressed: () {
-                            subscriptionProvider.removePromoCode();
-                            _promoCodeController.clear();
-                          },
-                        )
-                      : null,
-                ),
+            Text(
+              'CODICE PROMOZIONALE',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1,
+                color: theme.colorScheme.onSurface.withOpacity(0.5),
               ),
             ),
-            const SizedBox(width: 12),
-            SizedBox(
-              height: 56,
-              child: ElevatedButton(
-                onPressed: _isValidatingPromo ? null : _applyPromoCode,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.primary,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+            if (provider.appliedPromoCode != null)
+              GestureDetector(
+                onTap: () {
+                  provider.removePromoCode();
+                  _promoCodeController.clear();
+                },
+                child: Text(
+                  'RIMUOVI',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.error,
                   ),
                 ),
-                child: _isValidatingPromo
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          color: Colors.white,
-                        ),
-                      )
-                    : const Text('Applica'),
               ),
-            ),
           ],
         ),
-        if (subscriptionProvider.appliedPromoCode != null) ...[
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
+        const SizedBox(height: 12),
+        Container(
+          height: 64,
+          decoration: BoxDecoration(
+            color: isDark
+                ? Colors.white.withOpacity(0.05)
+                : Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: provider.error != null
+                  ? theme.colorScheme.error.withOpacity(0.5)
+                  : Colors.transparent,
             ),
-            child: Row(
-              children: [
-                const Icon(Icons.check_circle, color: Colors.green, size: 20),
-                const SizedBox(width: 8),
-                Text(
-                  '${subscriptionProvider.appliedPromoCode!.discountText} applicato!',
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            children: [
+              Icon(
+                Icons.local_offer_rounded,
+                color: Colors.amber.shade700,
+                size: 24,
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: TextField(
+                  controller: _promoCodeController,
+                  textCapitalization: TextCapitalization.characters,
                   style: const TextStyle(
-                    color: Colors.green,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    letterSpacing: 2,
+                  ),
+                  decoration: const InputDecoration(
+                    hintText: 'COUPON20',
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                      letterSpacing: 0,
+                    ),
+                    border: InputBorder.none,
                   ),
                 ),
-              ],
-            ),
-          ),
-        ],
-        if (subscriptionProvider.hasReferral) ...[
-          const SizedBox(height: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Row(
-              children: [
-                Icon(Icons.person_add, color: Colors.blue, size: 20),
-                SizedBox(width: 8),
-                Text(
-                  '20% sconto referral applicato!',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
+              ),
+              if (_isValidatingPromo)
+                const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              else if (provider.appliedPromoCode == null)
+                TextButton(
+                  onPressed: _applyPromoCode,
+                  child: Text(
+                    'APPLICA',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      color: Colors.amber.shade800,
+                    ),
                   ),
+                )
+              else
+                Icon(
+                  Icons.check_circle_rounded,
+                  color: Colors.green.shade600,
+                  size: 28,
                 ),
-              ],
+            ],
+          ),
+        ),
+        if (provider.error != null && _promoCodeController.text.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 8, left: 8),
+            child: Text(
+              provider.error!,
+              style: TextStyle(color: theme.colorScheme.error, fontSize: 13),
             ),
           ),
-        ],
       ],
     );
   }
 
   Widget _buildSubscribeButton(
     ThemeData theme,
-    SubscriptionProvider subscriptionProvider,
+    SubscriptionProvider provider,
     double finalPrice,
   ) {
-    return SizedBox(
-      height: 60,
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.amber.withOpacity(0.4),
+            blurRadius: 25,
+            offset: const Offset(0, 10),
+            spreadRadius: -5,
+          ),
+        ],
+      ),
       child: ElevatedButton(
-        onPressed: subscriptionProvider.isLoading ? null : _startCheckout,
+        onPressed: provider.isLoading ? null : _startCheckout,
         style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 20),
           backgroundColor: Colors.amber.shade600,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(24),
           ),
-          elevation: 8,
-          shadowColor: Colors.amber.withOpacity(0.4),
+          elevation: 0,
         ),
-        child: subscriptionProvider.isLoading
+        child: provider.isLoading
             ? const SizedBox(
-                width: 24,
-                height: 24,
+                width: 28,
+                height: 28,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2,
                   color: Colors.white,
+                  strokeWidth: 3,
                 ),
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.lock_open, size: 24),
-                  const SizedBox(width: 12),
-                  Text(
-                    'Abbonati a €${finalPrice.toStringAsFixed(2)}/mese',
-                    style: const TextStyle(
+                  const Text(
+                    'ATTIVA ORA',
+                    style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1,
                     ),
                   ),
+                  const SizedBox(width: 12),
+                  const Icon(Icons.arrow_forward_rounded, size: 24),
                 ],
               ),
       ),
     );
   }
 
-  Widget _buildGuaranteeInfo(ThemeData theme) {
+  Widget _buildGuaranteeInfo(ThemeData theme, bool isDark) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.2)),
+        color: isDark ? Colors.white.withOpacity(0.03) : Colors.grey.shade50,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: theme.colorScheme.outline.withOpacity(0.1)),
       ),
       child: Row(
         children: [
-          Icon(Icons.verified_user, color: Colors.green.shade600, size: 40),
-          const SizedBox(width: 16),
+          Icon(Icons.security_rounded, color: Colors.green.shade400, size: 40),
+          const SizedBox(width: 20),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Garanzia soddisfatti o rimborsati',
-                  style: TextStyle(
+                  'Pagamento Sicuro',
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.onSurface,
                   ),
                 ),
-                const SizedBox(height: 4),
                 Text(
-                  'Puoi cancellare in qualsiasi momento. Nessun vincolo.',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: theme.colorScheme.onSurface.withOpacity(0.6),
+                  'Criptografia a 256bit. Annulla in ogni momento.',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurface.withOpacity(0.5),
                   ),
                 ),
               ],
@@ -542,55 +624,59 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
     );
   }
 
-  Widget _buildComparisonTable(ThemeData theme) {
+  Widget _buildComparisonSection(ThemeData theme, bool isDark) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Confronto piani',
+          'CONFRONTO PIANI',
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: theme.colorScheme.onSurface,
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1,
+            color: theme.colorScheme.onSurface.withOpacity(0.5),
           ),
         ),
-        const SizedBox(height: 16),
-        Container(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: theme.colorScheme.outline.withOpacity(0.2),
-            ),
-          ),
-          child: Column(
-            children: [
-              _buildComparisonRow(
-                theme,
-                'Quiz',
-                'Limitati',
-                'Illimitati',
-                true,
-              ),
-              _buildComparisonRow(
-                theme,
-                'Lezioni teoria',
-                'Prime 5',
-                'Tutte 30',
-                true,
-              ),
-              _buildComparisonRow(
-                theme,
-                'Simulazioni esame',
-                '1 al giorno',
-                'Illimitate',
-                true,
-              ),
-              _buildComparisonRow(theme, 'Audio multilingua', 'No', 'Sì', true),
-              _buildComparisonRow(theme, 'Modalità offline', 'No', 'Sì', true),
-              _buildComparisonRow(theme, 'Pubblicità', 'Sì', 'No', false),
-            ],
-          ),
+        const SizedBox(height: 20),
+        _buildComparisonRow(
+          theme,
+          'Quiz Ministeriali',
+          'Limitati',
+          'ILLIMITATI',
+          true,
+          isDark,
+        ),
+        _buildComparisonRow(
+          theme,
+          'Traduzione multilingua',
+          'No',
+          'SÌ (URDU/PUNJABI...)',
+          true,
+          isDark,
+        ),
+        _buildComparisonRow(
+          theme,
+          'Audio Teoria & Quiz',
+          'No',
+          'SÌ',
+          true,
+          isDark,
+        ),
+        _buildComparisonRow(
+          theme,
+          'Simulazioni Esame',
+          '1/giorno',
+          'ILLIMITATE',
+          true,
+          isDark,
+        ),
+        _buildComparisonRow(
+          theme,
+          'Statistiche Avanzate',
+          'No',
+          'SÌ',
+          false,
+          isDark,
         ),
       ],
     );
@@ -598,48 +684,52 @@ class _SubscriptionPlansScreenState extends State<SubscriptionPlansScreen> {
 
   Widget _buildComparisonRow(
     ThemeData theme,
-    String feature,
+    String title,
     String free,
     String premium,
-    bool isLast,
+    bool hasBorder,
+    bool isDark,
   ) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        border: isLast
-            ? null
-            : Border(
+        border: hasBorder
+            ? Border(
                 bottom: BorderSide(
-                  color: theme.colorScheme.outline.withOpacity(0.1),
+                  color: theme.colorScheme.outline.withOpacity(0.05),
                 ),
-              ),
+              )
+            : null,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Text(
-              feature,
-              style: TextStyle(color: theme.colorScheme.onSurface),
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w500),
             ),
           ),
           Expanded(
             child: Text(
               free,
               style: TextStyle(
-                color: theme.colorScheme.onSurface.withOpacity(0.6),
+                color: theme.colorScheme.onSurface.withOpacity(0.4),
+                fontSize: 11,
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.right,
             ),
           ),
           Expanded(
             child: Text(
               premium,
               style: TextStyle(
-                color: Colors.amber.shade600,
-                fontWeight: FontWeight.bold,
+                color: Colors.amber.shade700,
+                fontWeight: FontWeight.w900,
+                fontSize: 11,
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.right,
             ),
           ),
         ],

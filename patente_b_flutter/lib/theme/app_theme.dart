@@ -64,34 +64,41 @@ class AppTheme {
     end: Alignment.bottomRight,
   );
 
+  // ═══════════════════════════════════════════════════════════════════════════
+  // THEMES
+  // ═══════════════════════════════════════════════════════════════════════════
+
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      colorScheme: ColorScheme.light(
+      primaryColor: primaryColor,
+      colorScheme: const ColorScheme.light(
         primary: primaryColor,
         secondary: accentGreen,
-        surface: Colors.white, // Slate 100
+        surface: Colors.white,
+        background: Color(0xFFF5F5F5), // User requested #F5F5F5
         error: accentRed,
         onPrimary: Colors.white,
-        onSurface: const Color(0xFF1E293B), // Slate 800
+        onSurface: Color(0xFF212121), // User requested #212121
       ),
-      scaffoldBackgroundColor: const Color(0xFFF8FAFC), // Slate 50
+      scaffoldBackgroundColor: const Color(0xFFF5F5F5),
       cardColor: Colors.white,
-      dividerColor: const Color(0xFFE2E8F0), // Slate 200
+      shadowColor: Colors.black.withOpacity(0.05), // Light shadow
+      dividerColor: const Color(0xFFE0E0E0),
       textTheme: GoogleFonts.interTextTheme(ThemeData.light().textTheme).apply(
-        bodyColor: const Color(0xFF1E293B), // Slate 800
-        displayColor: const Color(0xFF0F172A), // Slate 900
+        bodyColor: const Color(0xFF212121),
+        displayColor: const Color(0xFF212121),
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
+        backgroundColor: primaryColor, // User requested Blue
         elevation: 0,
         centerTitle: true,
-        iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
+        iconTheme: const IconThemeData(color: Colors.white),
         titleTextStyle: GoogleFonts.inter(
           fontSize: 20,
           fontWeight: FontWeight.w600,
-          color: const Color(0xFF1E293B),
+          color: Colors.white,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -111,7 +118,7 @@ class AppTheme {
       cardTheme: const CardThemeData(
         color: Colors.white,
         elevation: 2,
-        shadowColor: Color(0x1A000000), // Black with low opacity
+        shadowColor: Color(0x1A000000),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
@@ -123,31 +130,35 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      colorScheme: ColorScheme.dark(
+      primaryColor: const Color(0xFF1E1E1E), // Darker header
+      colorScheme: const ColorScheme.dark(
         primary: primaryColor,
-        secondary: accentGreen,
-        surface: surfaceColor,
-        error: accentRed,
+        secondary: Color(0xFF388E3C), // Dark Mode Green
+        surface: Color(0xFF1E1E1E),
+        background: Color(0xFF121212), // User requested #121212
+        error: Color(0xFFD32F2F), // Dark Mode Red
       ),
-      scaffoldBackgroundColor: backgroundColor,
-      cardColor: cardColor,
+      scaffoldBackgroundColor: const Color(0xFF121212),
+      cardColor: const Color(0xFF1E1E1E),
+      dividerColor: const Color(0xFF333333),
       textTheme: GoogleFonts.interTextTheme(
         ThemeData.dark().textTheme,
-      ).apply(bodyColor: textPrimary, displayColor: textPrimary),
+      ).apply(bodyColor: Colors.white, displayColor: Colors.white),
       appBarTheme: AppBarTheme(
-        backgroundColor: backgroundColor,
+        backgroundColor: const Color(0xFF1E1E1E),
         elevation: 0,
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         titleTextStyle: GoogleFonts.inter(
           fontSize: 20,
           fontWeight: FontWeight.w600,
-          color: textPrimary,
+          color: Colors.white,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
-          foregroundColor: textPrimary,
+          foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
@@ -159,7 +170,7 @@ class AppTheme {
         ),
       ),
       cardTheme: const CardThemeData(
-        color: cardColor,
+        color: Color(0xFF1E1E1E),
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16)),
