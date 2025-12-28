@@ -1,0 +1,132 @@
+{
+    "name": "Patente Quiz Business",
+    "short_name": "PQ Business",
+    "description": "Dashboard per autoscuole - Gestisci studenti, monitora progressi, aumenta il tasso di successo",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4F46E5",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "it",
+    "categories": [
+        "education",
+        "business",
+        "productivity"
+    ],
+    "icons": [
+        {
+            "src": "/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Studenti",
+            "short_name": "Studenti",
+            "description": "Vai alla lista studenti",
+            "url": "/students",
+            "icons": [
+                {
+                    "src": "/icons/students-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Report",
+            "short_name": "Report",
+            "description": "Vedi i report",
+            "url": "/reports",
+            "icons": [
+                {
+                    "src": "/icons/reports-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Messaggi",
+            "short_name": "Messaggi",
+            "description": "Invia messaggi agli studenti",
+            "url": "/messages",
+            "icons": [
+                {
+                    "src": "/icons/messages-96x96.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/dashboard.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Dashboard principale"
+        },
+        {
+            "src": "/screenshots/students.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Gestione studenti"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.patentequiz.app"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://apps.apple.com/app/patente-quiz/id123456789"
+        }
+    ],
+    "prefer_related_applications": false
+}
