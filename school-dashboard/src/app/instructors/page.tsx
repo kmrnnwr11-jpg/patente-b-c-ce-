@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     Plus,
     MoreHorizontal,
@@ -99,6 +100,7 @@ const roleLabels: Record<string, { label: string; color: string }> = {
 };
 
 export default function InstructorsPage() {
+    const router = useRouter();
     const [instructors, setInstructors] = useState(mockInstructors);
     const [showInviteModal, setShowInviteModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState<string | null>(null);
@@ -153,7 +155,10 @@ export default function InstructorsPage() {
                 {instructors.map((instructor) => (
                     <div
                         key={instructor.id}
-                        className={`bg-white rounded-xl p-6 shadow-sm border ${instructor.isActive ? 'border-gray-100' : 'border-dashed border-gray-300'
+                        onClick={() => instructor.isActive && router.push(`/instructors/${instructor.id}`)}
+                        className={`bg-white rounded-xl p-6 shadow-sm border transition-all ${instructor.isActive
+                                ? 'border-gray-100 hover:border-indigo-200 hover:shadow-md cursor-pointer'
+                                : 'border-dashed border-gray-300'
                             }`}
                     >
                         {/* Header */}
