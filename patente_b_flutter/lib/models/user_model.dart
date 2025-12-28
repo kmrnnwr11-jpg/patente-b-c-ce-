@@ -16,6 +16,19 @@ class AppUser {
   final DateTime lastLogin;
   final String role; // 'user', 'creator', 'admin'
 
+  // Gamification Fields
+  final int totalXp;
+  final int currentLevel;
+  final int currentStreak;
+  final int longestStreak;
+  final DateTime? lastActivityDate;
+  final int streakFreezeAvailable;
+
+  // Referral Fields
+  final String? referralCode;
+  final int referralCount;
+  final int referralRewardsEarned; // Giorni premium guadagnati
+
   AppUser({
     required this.uid,
     required this.email,
@@ -30,6 +43,17 @@ class AppUser {
     required this.createdAt,
     required this.lastLogin,
     this.role = 'user',
+
+    // Defaults
+    this.totalXp = 0,
+    this.currentLevel = 1,
+    this.currentStreak = 0,
+    this.longestStreak = 0,
+    this.lastActivityDate,
+    this.streakFreezeAvailable = 0,
+    this.referralCode,
+    this.referralCount = 0,
+    this.referralRewardsEarned = 0,
   });
 
   /// Crea AppUser da Firestore document
@@ -55,6 +79,19 @@ class AppUser {
           ? (data['lastLogin'] as Timestamp).toDate()
           : DateTime.now(),
       role: data['role'] ?? 'user',
+
+      // Load Gamification
+      totalXp: data['totalXp'] ?? 0,
+      currentLevel: data['currentLevel'] ?? 1,
+      currentStreak: data['currentStreak'] ?? 0,
+      longestStreak: data['longestStreak'] ?? 0,
+      lastActivityDate: data['lastActivityDate'] != null
+          ? (data['lastActivityDate'] as Timestamp).toDate()
+          : null,
+      streakFreezeAvailable: data['streakFreezeAvailable'] ?? 0,
+      referralCode: data['referralCode'],
+      referralCount: data['referralCount'] ?? 0,
+      referralRewardsEarned: data['referralRewardsEarned'] ?? 0,
     );
   }
 
@@ -76,6 +113,19 @@ class AppUser {
       'createdAt': Timestamp.fromDate(createdAt),
       'lastLogin': Timestamp.fromDate(lastLogin),
       'role': role,
+
+      // Save Gamification
+      'totalXp': totalXp,
+      'currentLevel': currentLevel,
+      'currentStreak': currentStreak,
+      'longestStreak': longestStreak,
+      'lastActivityDate': lastActivityDate != null
+          ? Timestamp.fromDate(lastActivityDate!)
+          : null,
+      'streakFreezeAvailable': streakFreezeAvailable,
+      'referralCode': referralCode,
+      'referralCount': referralCount,
+      'referralRewardsEarned': referralRewardsEarned,
     };
   }
 
@@ -101,6 +151,17 @@ class AppUser {
     DateTime? createdAt,
     DateTime? lastLogin,
     String? role,
+
+    // Gamification
+    int? totalXp,
+    int? currentLevel,
+    int? currentStreak,
+    int? longestStreak,
+    DateTime? lastActivityDate,
+    int? streakFreezeAvailable,
+    String? referralCode,
+    int? referralCount,
+    int? referralRewardsEarned,
   }) {
     return AppUser(
       uid: uid ?? this.uid,
@@ -116,6 +177,19 @@ class AppUser {
       createdAt: createdAt ?? this.createdAt,
       lastLogin: lastLogin ?? this.lastLogin,
       role: role ?? this.role,
+
+      // Gamification
+      totalXp: totalXp ?? this.totalXp,
+      currentLevel: currentLevel ?? this.currentLevel,
+      currentStreak: currentStreak ?? this.currentStreak,
+      longestStreak: longestStreak ?? this.longestStreak,
+      lastActivityDate: lastActivityDate ?? this.lastActivityDate,
+      streakFreezeAvailable:
+          streakFreezeAvailable ?? this.streakFreezeAvailable,
+      referralCode: referralCode ?? this.referralCode,
+      referralCount: referralCount ?? this.referralCount,
+      referralRewardsEarned:
+          referralRewardsEarned ?? this.referralRewardsEarned,
     );
   }
 }

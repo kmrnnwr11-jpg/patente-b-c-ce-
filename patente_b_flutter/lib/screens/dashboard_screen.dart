@@ -9,12 +9,14 @@ import '../models/translation.dart';
 import '../theme/app_theme.dart';
 import '../theme/apple_glass_theme.dart';
 import '../widgets/glass/glass_card.dart';
-import '../widgets/glass/progress_ring.dart';
 // Removed: import '../widgets/core/progress_circle.dart';
 import '../providers/theme_provider.dart';
 import '../providers/auth_provider.dart';
 import '../widgets/common/theme_toggle_button.dart';
 import '../widgets/user_avatar_widget.dart';
+import '../widgets/gamification/xp_bar_widget.dart';
+import '../widgets/gamification/streak_widget.dart';
+import '../services/gamification_service.dart';
 import 'quiz/quiz_screen.dart';
 import 'quiz/topic_selection_screen.dart';
 import 'theory/theory_screen.dart';
@@ -261,124 +263,48 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // PROGRESSO con cerchio animato
-  // PROGRESSO con cerchio animato
+  // PROGRESSO con Gamification (XP & Streak)
   // ═══════════════════════════════════════════════════════════════════════════
   Widget _buildProgressSection(BuildContext context, bool isDarkMode) {
-    final statsService = context.watch<StatsService>();
-    final stats = statsService.stats;
+    final authProvider = context.watch<AuthProvider>();
+    final user = authProvider.appUser;
 
-    // Accuracy usually 0-100, normalize to 0-1 for progress ring
-    // Or use quiz completion as progress?
-    // Let's use quiz completed ratio if available, otherwise accuracy
-    // Assuming 500 questions total for now roughly? No, let's use accuracy/100 as proxy for skill mastery
-    // Or just 0 if new.
-    final double uiProgress = stats.totalQuizzes > 0
-        ? (stats.correctAnswers /
-              (stats.totalQuestions > 0 ? stats.totalQuestions : 1))
-        : 0.0;
+    if (user == null) {
+      return const SizedBox.shrink(); // O mostra invito al login
+    }
 
-    return GlassCard(
-      isDarkMode: isDarkMode,
-      child: Padding(
-        padding: const EdgeInsets.all(
-          4,
-        ), // GlassCard has padding, adding nice internal spacing
-        child: Row(
-          children: [
-            // Progress Circle using new ProgressRing
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ProgressRing(
-                progress: uiProgress,
-                size: 90,
-                strokeWidth: 8,
-                color: AppleGlassTheme.accentBlue,
-                textColor: isDarkMode
-                    ? AppleGlassTheme.textPrimary
-                    : Colors.black,
-              ),
-            ),
-            const SizedBox(width: 16),
-            // Stats
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Il Tuo Progresso',
-                    style: isDarkMode
-                        ? AppleGlassTheme.titleMedium
-                        : AppleGlassTheme.titleMedium.copyWith(
-                            color: AppleGlassTheme.textPrimaryDark,
-                          ),
-                  ),
-                  const SizedBox(height: 8),
-                  _buildStatRowWithIcon(
-                    Icons.edit_note_rounded,
-                    'Quiz completati',
-                    '${stats.totalQuizzes}',
-                    isDarkMode,
-                    AppleGlassTheme.accentBlue,
-                  ),
-                  const SizedBox(height: 4),
-                  _buildStatRowWithIcon(
-                    Icons.gps_fixed_rounded,
-                    'Precisione',
-                    '${stats.accuracy.toStringAsFixed(1)}%',
-                    isDarkMode,
-                    AppleGlassTheme.success,
-                  ),
-                  const SizedBox(height: 4),
-                  _buildStatRowWithIcon(
-                    Icons.menu_book_rounded,
-                    'Teoria letta',
-                    '0%',
-                    isDarkMode,
-                    AppleGlassTheme.accentPurple,
-                  ), // Placeholder
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+    final levelInfo = GamificationService.getLevelInfo(user.currentLevel);
 
-  Widget _buildStatRowWithIcon(
-    IconData icon,
-    String label,
-    String value,
-    bool isDarkMode,
-    Color iconColor,
-  ) {
-    return Row(
+    return Column(
       children: [
-        Icon(icon, size: 18, color: iconColor),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: isDarkMode
-                  ? Colors.white70
-                  : AppleGlassTheme.textSecondaryDark,
-            ),
-          ),
+        XPBarWidget(
+          currentXP: user.totalXp,
+          levelMinXP: levelInfo['min_xp'] as int,
+          levelMaxXP: levelInfo['max_xp'] as int,
+          level: user.currentLevel,
+          levelName: levelInfo['name'] as String,
+          levelIcon: levelInfo['icon'] as String,
         ),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            color: isDarkMode ? Colors.white : AppleGlassTheme.textPrimaryDark,
-          ),
+        const SizedBox(height: 16),
+        StreakWidget(
+          currentStreak: user.currentStreak,
+          todayCompleted:
+              user.lastActivityDate != null &&
+              DateTime.now().difference(user.lastActivityDate!).inHours < 24 &&
+              user.lastActivityDate!.day == DateTime.now().day,
+          multiplier: _getStreakMultiplier(user.currentStreak),
         ),
       ],
     );
+  }
+
+  double _getStreakMultiplier(int streak) {
+    if (streak >= 100) return 3.0;
+    if (streak >= 60) return 2.5;
+    if (streak >= 30) return 2.0;
+    if (streak >= 14) return 1.75;
+    if (streak >= 7) return 1.5;
+    return 1.0;
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
