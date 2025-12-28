@@ -1063,3 +1063,14 @@ exports.sendSchoolMessage = b2bSchools.sendSchoolMessage;
 
 // Trigger
 exports.onQuizCompleted = b2bSchools.onQuizCompleted;
+
+// ============================================
+// PUSH NOTIFICATIONS
+// ============================================
+const pushNotifications = require("./push-notifications");
+
+// Trigger quando viene creato un messaggio scuola
+exports.onSchoolMessageCreated = pushNotifications.onSchoolMessageCreated;
+
+// Scheduled job per promemoria studenti inattivi (ogni giorno 10:00)
+exports.sendInactiveStudentReminders = pushNotifications.sendInactiveStudentReminders;
