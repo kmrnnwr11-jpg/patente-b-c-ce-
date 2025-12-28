@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 import 'package:provider/provider.dart';
 import '../services/course_service.dart';
 import '../theme/apple_glass_theme.dart';
-import 'main_navigation_screen.dart';
+import 'role_based_home_screen.dart';
 import 'course_selection_screen.dart';
 
 /// Schermata di selezione licenza (B, C, CE)
@@ -374,7 +374,7 @@ class _LicenseSelectionScreenState extends State<LicenseSelectionScreen>
       Navigator.of(context).pushReplacement(
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) =>
-              const MainNavigationScreen(),
+              const AdminModeSwitch(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,

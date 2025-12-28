@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'theme/app_theme.dart';
-import 'screens/main_navigation_screen.dart';
+import 'screens/role_based_home_screen.dart';
 
 import 'screens/italian_dashboard_screen.dart';
 import 'screens/course_selection_screen.dart';
@@ -121,7 +121,7 @@ class PatenteBApp extends StatelessWidget {
         if (!service.hasSelectedLicense) {
           return const LicenseSelectionScreen();
         }
-        return const MainNavigationScreen();
+        return const AdminModeSwitch();
       case CourseType.italiano:
         return const ItalianDashboardScreen();
     }

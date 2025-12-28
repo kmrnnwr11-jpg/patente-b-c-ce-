@@ -25,6 +25,9 @@ class AuthProvider extends ChangeNotifier {
   bool get isLoggedIn => _firebaseUser != null && !_firebaseUser!.isAnonymous;
   bool get isAnonymous => _firebaseUser?.isAnonymous ?? false;
   bool get isPremium => _appUser?.isPremiumActive ?? false;
+  bool get isAdmin => _appUser?.role == 'admin';
+  bool get isCreator => _appUser?.role == 'creator';
+  String get userRole => _appUser?.role ?? 'user';
   String get displayName =>
       _appUser?.displayName ?? _firebaseUser?.displayName ?? 'Ospite';
 
