@@ -1037,3 +1037,29 @@ exports.getAdminStats = functions.https.onRequest((req, res) => {
         }
     });
 });
+
+// ============================================
+// B2B AUTOSCUOLE - ESPORTA FUNZIONI
+// ============================================
+// Le funzioni B2B sono definite in b2b-schools.js
+const b2bSchools = require("./b2b-schools");
+
+// Registrazione autoscuola
+exports.registerSchool = b2bSchools.registerSchool;
+
+// Gestione studenti
+exports.addStudent = b2bSchools.addStudent;
+exports.joinSchool = b2bSchools.joinSchool;
+
+// Dashboard
+exports.schoolDashboard = b2bSchools.schoolDashboard;
+
+// Abbonamenti
+exports.createSchoolCheckout = b2bSchools.createSchoolCheckout;
+exports.schoolStripeWebhook = b2bSchools.schoolStripeWebhook;
+
+// Messaggi
+exports.sendSchoolMessage = b2bSchools.sendSchoolMessage;
+
+// Trigger
+exports.onQuizCompleted = b2bSchools.onQuizCompleted;
