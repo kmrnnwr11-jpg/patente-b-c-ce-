@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'dart:ui' as ui;
 
 /// Schermata per iscriversi a un'autoscuola tramite codice
 /// Lo studente inserisce il codice e ottiene accesso Premium gratuito
@@ -19,7 +18,6 @@ class _JoinSchoolScreenState extends State<JoinSchoolScreen> {
 
   bool _isLoading = false;
   String? _error;
-  Map<String, dynamic>? _schoolData;
 
   @override
   void dispose() {
@@ -191,7 +189,6 @@ class _JoinSchoolScreenState extends State<JoinSchoolScreen> {
 
     // Mostra successo
     setState(() {
-      _schoolData = schoolData;
       _isLoading = false;
     });
 

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
 import 'registration_screen.dart';
 import 'password_reset_screen.dart';
+import '../school/join_school_screen.dart';
 
 /// Schermata di Login con Email/Password e Google Sign-In
 class LoginScreen extends StatefulWidget {
@@ -231,6 +232,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // Continua come ospite
                 _buildGuestButton(theme),
+                const SizedBox(height: 16),
+
+                // Bottone codice autoscuola
+                _buildSchoolCodeButton(theme),
                 const SizedBox(height: 40),
 
                 // Link registrazione
@@ -414,6 +419,81 @@ class _LoginScreenState extends State<LoginScreen> {
         style: TextStyle(
           fontSize: 16,
           color: theme.colorScheme.onSurface.withOpacity(0.6),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSchoolCodeButton(ThemeData theme) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.indigo.withOpacity(0.1),
+            Colors.purple.withOpacity(0.1),
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Colors.indigo.withOpacity(0.3)),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (_) => const JoinSchoolScreen()));
+          },
+          borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.indigo.withOpacity(0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    Icons.school,
+                    color: Colors.indigo.shade600,
+                    size: 24,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hai un codice autoscuola?',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Accedi GRATIS con la tua autoscuola',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.indigo.shade400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: Colors.indigo.shade400,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
