@@ -1,0 +1,13 @@
+{
+    "name": "store-assets-generator",
+    "version": "1.0.0",
+    "description": "Generatore assets per Play Store e App Store - Patente B Quiz",
+    "scripts": {
+        "generate-icons": "node scripts/generate-icons.js",
+        "generate-screenshots": "node scripts/generate-screenshots.js",
+        "generate-all": "npm run generate-icons && npm run generate-screenshots"
+    },
+    "dependencies": {
+        "sharp": "^0.33.5"
+    }
+}
