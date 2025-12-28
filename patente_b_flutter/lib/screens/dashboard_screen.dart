@@ -12,6 +12,7 @@ import '../widgets/glass/glass_card.dart';
 import '../widgets/glass/progress_ring.dart';
 // Removed: import '../widgets/core/progress_circle.dart';
 import '../providers/theme_provider.dart';
+import '../providers/auth_provider.dart';
 import '../widgets/common/theme_toggle_button.dart';
 import '../widgets/user_avatar_widget.dart';
 import 'quiz/quiz_screen.dart';
@@ -57,6 +58,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
+    final authProvider = context.watch<AuthProvider>();
     final isDarkMode = themeProvider.isDarkMode;
 
     return Scaffold(
@@ -79,8 +81,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildQuickActions(
                   context,
                 ), // Actions usually have their own colored cards, check text inside
-                const SizedBox(height: 24),
-                _buildExternalLinks(context, isDarkMode),
+                if (authProvider.isAdmin) ...[
+                  const SizedBox(height: 24),
+                  _buildExternalLinks(context, isDarkMode),
+                ],
                 const SizedBox(height: 24),
                 _buildStudySection(context, isDarkMode),
                 const SizedBox(height: 24),
