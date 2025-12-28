@@ -24,50 +24,84 @@ const stripe = require("stripe")(
 );
 
 // ============================================
-// PIANI E PREZZI
+// PIANI E PREZZI - 4 Tier come da prompt
 // ============================================
 const SCHOOL_PLANS = {
     starter: {
         name: "Starter",
-        monthlyPrice: 49,
-        yearlyPrice: 490,
-        maxStudents: 30,
+        monthlyPrice: 99,
+        yearlyPrice: 990,
+        maxStudents: 20,
         maxInstructors: 1,
+        pricePerStudent: 4.95,
+        discountVsB2C: 75,
+        extraStudentCost: 4,
         features: {
             customLogo: false,
             advancedReports: false,
+            exportReports: false,
             apiAccess: false,
             prioritySupport: false,
+            videoLessons: "base",
         },
-        extraStudentCost: 2,
+        support: "email",
     },
     pro: {
         name: "Pro",
-        monthlyPrice: 99,
-        yearlyPrice: 990,
-        maxStudents: 100,
-        maxInstructors: 5,
+        monthlyPrice: 199,
+        yearlyPrice: 1990,
+        maxStudents: 50,
+        maxInstructors: 3,
+        pricePerStudent: 3.98,
+        discountVsB2C: 80,
+        extraStudentCost: 3,
         features: {
             customLogo: true,
             advancedReports: true,
+            exportReports: true,
             apiAccess: false,
             prioritySupport: false,
+            videoLessons: "all",
         },
-        extraStudentCost: 1.5,
+        support: "email_chat",
+    },
+    business: {
+        name: "Business",
+        monthlyPrice: 349,
+        yearlyPrice: 3490,
+        maxStudents: 100,
+        maxInstructors: 10,
+        pricePerStudent: 3.49,
+        discountVsB2C: 83,
+        extraStudentCost: 2.5,
+        features: {
+            customLogo: true,
+            advancedReports: true,
+            exportReports: true,
+            apiAccess: false,
+            prioritySupport: true,
+            videoLessons: "all",
+        },
+        support: "priority",
     },
     enterprise: {
         name: "Enterprise",
-        monthlyPrice: 199,
-        yearlyPrice: 1990,
+        monthlyPrice: 599,
+        yearlyPrice: 5990,
         maxStudents: -1, // Illimitati
         maxInstructors: -1,
+        pricePerStudent: 0,
+        discountVsB2C: 100,
+        extraStudentCost: 0,
         features: {
             customLogo: true,
             advancedReports: true,
+            exportReports: true,
             apiAccess: true,
             prioritySupport: true,
+            videoLessons: "all_custom",
         },
-        extraStudentCost: 0,
+        support: "dedicated",
     },
 };
 

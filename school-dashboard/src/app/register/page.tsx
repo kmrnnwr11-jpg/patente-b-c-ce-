@@ -3,23 +3,41 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { School, Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import {
+    Building2,
+    User,
+    CreditCard,
+    Check,
+    ArrowRight,
+    ArrowLeft,
+    Star,
+    Users,
+    BarChart3,
+    MessageSquare,
+    Shield,
+    Zap,
+} from 'lucide-react';
 import { SCHOOL_PLANS } from '@/types';
 
-type Plan = 'starter' | 'pro' | 'enterprise';
+type Step = 'plan' | 'school' | 'owner' | 'payment';
 type BillingCycle = 'monthly' | 'yearly';
 
-export default function RegisterSchoolPage() {
+const STEPS: { id: Step; title: string; icon: React.ComponentType<{ className?: string }> }[] = [
+    { id: 'plan', title: 'Piano', icon: Star },
+    { id: 'school', title: 'Autoscuola', icon: Building2 },
+    { id: 'owner', title: 'Account', icon: User },
+    { id: 'payment', title: 'Pagamento', icon: CreditCard },
+];
+
+export default function RegisterPage() {
     const router = useRouter();
-    const [step, setStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState<Step>('plan');
     const [isLoading, setIsLoading] = useState(false);
 
-    const [formData, setFormData] = useState({
-        // Step 1: Piano
-        plan: 'pro' as Plan,
-        billingCycle: 'yearly' as BillingCycle,
-
-        // Step 2: Info autoscuola
+    // Form data
+    const [selectedPlan, setSelectedPlan] = useState<string>('pro');
+    const [billingCycle, setBillingCycle] = useState<BillingCycle>('yearly');
+    const [schoolData, setSchoolData] = useState({
         name: '',
         businessName: '',
         vatNumber: '',
@@ -29,13 +47,33 @@ export default function RegisterSchoolPage() {
         city: '',
         province: '',
         postalCode: '',
-
-        // Step 3: Account owner
-        ownerName: '',
-        ownerEmail: '',
-        ownerPassword: '',
-        ownerPasswordConfirm: '',
     });
+    const [ownerData, setOwnerData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
+    const currentStepIndex = STEPS.findIndex(s => s.id === currentStep);
+
+    const goToStep = (step: Step) => {
+        setCurrentStep(step);
+    };
+
+    const nextStep = () => {
+        const nextIndex = currentStepIndex + 1;
+        if (nextIndex < STEPS.length) {
+            setCurrentStep(STEPS[nextIndex].id);
+        }
+    };
+
+    const prevStep = () => {
+        const prevIndex = currentStepIndex - 1;
+        if (prevIndex >= 0) {
+            setCurrentStep(STEPS[prevIndex].id);
+        }
+    };
 
     const handleSubmit = async () => {
         setIsLoading(true);
@@ -43,72 +81,92 @@ export default function RegisterSchoolPage() {
         // Simula registrazione
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        // Redirect a dashboard
+        // Redirect to dashboard
         router.push('/');
     };
 
-    const getPrice = (plan: Plan, cycle: BillingCycle) => {
-        return cycle === 'monthly'
-            ? SCHOOL_PLANS[plan].monthlyPrice
-            : SCHOOL_PLANS[plan].yearlyPrice;
-    };
-
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-800 flex items-center justify-center p-4">
-            <div className="w-full max-w-4xl">
-                {/* Header */}
-                <div className="text-center mb-8">
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <School className="w-10 h-10 text-white" />
-                        <h1 className="text-3xl font-bold text-white">Patente Quiz Business</h1>
-                    </div>
-                    <p className="text-indigo-200">
-                        La soluzione completa per la tua autoscuola
-                    </p>
-                </div>
-
-                {/* Progress */}
-                <div className="flex items-center justify-center gap-4 mb-8">
-                    {[1, 2, 3].map((s) => (
-                        <div key={s} className="flex items-center">
-                            <div className={`
-                w-10 h-10 rounded-full flex items-center justify-center font-bold
-                ${step >= s ? 'bg-white text-indigo-900' : 'bg-indigo-700 text-indigo-300'}
-              `}>
-                                {step > s ? <Check className="w-5 h-5" /> : s}
-                            </div>
-                            {s < 3 && (
-                                <div className={`w-16 h-1 mx-2 rounded ${step > s ? 'bg-white' : 'bg-indigo-700'}`} />
-                            )}
+        <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
+            {/* Header */}
+            <div className="bg-white border-b">
+                <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                            <span className="text-white font-bold text-sm">PQ</span>
                         </div>
-                    ))}
+                        <span className="font-bold text-xl">Patente Quiz Business</span>
+                    </Link>
+                    <Link href="/login" className="text-sm text-gray-600 hover:text-indigo-600">
+                        Hai già un account? Accedi
+                    </Link>
+                </div>
+            </div>
+
+            <div className="max-w-5xl mx-auto px-4 py-8">
+                {/* Progress Steps */}
+                <div className="mb-10">
+                    <div className="flex items-center justify-between">
+                        {STEPS.map((step, index) => {
+                            const isActive = index === currentStepIndex;
+                            const isCompleted = index < currentStepIndex;
+                            const StepIcon = step.icon;
+
+                            return (
+                                <div key={step.id} className="flex items-center flex-1">
+                                    <button
+                                        onClick={() => isCompleted && goToStep(step.id)}
+                                        disabled={!isCompleted}
+                                        className={`
+                      flex items-center gap-3 p-3 rounded-lg transition-colors
+                      ${isActive ? 'bg-indigo-100 text-indigo-700' : ''}
+                      ${isCompleted ? 'cursor-pointer hover:bg-gray-100' : ''}
+                    `}
+                                    >
+                                        <div className={`
+                      w-10 h-10 rounded-full flex items-center justify-center
+                      ${isCompleted ? 'bg-green-500 text-white' : ''}
+                      ${isActive ? 'bg-indigo-600 text-white' : ''}
+                      ${!isActive && !isCompleted ? 'bg-gray-200 text-gray-500' : ''}
+                    `}>
+                                            {isCompleted ? <Check className="w-5 h-5" /> : <StepIcon className="w-5 h-5" />}
+                                        </div>
+                                        <span className={`font-medium hidden sm:block ${isActive ? 'text-indigo-700' : 'text-gray-600'}`}>
+                                            {step.title}
+                                        </span>
+                                    </button>
+                                    {index < STEPS.length - 1 && (
+                                        <div className={`flex-1 h-1 mx-4 rounded ${isCompleted ? 'bg-green-500' : 'bg-gray-200'
+                                            }`} />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
 
-                {/* Card */}
-                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                    {/* Step 1: Scegli Piano */}
-                    {step === 1 && (
-                        <div className="p-8">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Scegli il tuo piano</h2>
-                            <p className="text-gray-500 mb-6">14 giorni di prova gratuita, nessuna carta richiesta</p>
+                {/* Step Content */}
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                    {/* Step 1: Plan Selection */}
+                    {currentStep === 'plan' && (
+                        <div className="space-y-8">
+                            <div className="text-center">
+                                <h2 className="text-2xl font-bold text-gray-900">Scegli il tuo Piano</h2>
+                                <p className="text-gray-500 mt-2">Tutti i piani includono 14 giorni di prova gratuita</p>
+                            </div>
 
-                            {/* Billing toggle */}
-                            <div className="flex justify-center mb-8">
+                            {/* Billing Toggle */}
+                            <div className="flex justify-center">
                                 <div className="bg-gray-100 rounded-lg p-1 flex">
                                     <button
-                                        onClick={() => setFormData({ ...formData, billingCycle: 'monthly' })}
-                                        className={`px-4 py-2 rounded-lg transition-colors ${formData.billingCycle === 'monthly'
-                                                ? 'bg-white shadow text-gray-900'
-                                                : 'text-gray-500'
+                                        onClick={() => setBillingCycle('monthly')}
+                                        className={`px-6 py-2 rounded-lg transition-colors ${billingCycle === 'monthly' ? 'bg-white shadow text-gray-900' : 'text-gray-500'
                                             }`}
                                     >
                                         Mensile
                                     </button>
                                     <button
-                                        onClick={() => setFormData({ ...formData, billingCycle: 'yearly' })}
-                                        className={`px-4 py-2 rounded-lg transition-colors ${formData.billingCycle === 'yearly'
-                                                ? 'bg-white shadow text-gray-900'
-                                                : 'text-gray-500'
+                                        onClick={() => setBillingCycle('yearly')}
+                                        className={`px-6 py-2 rounded-lg transition-colors ${billingCycle === 'yearly' ? 'bg-white shadow text-gray-900' : 'text-gray-500'
                                             }`}
                                     >
                                         Annuale
@@ -117,82 +175,76 @@ export default function RegisterSchoolPage() {
                                 </div>
                             </div>
 
-                            {/* Plans */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                {(['starter', 'pro', 'enterprise'] as Plan[]).map((plan) => {
-                                    const planData = SCHOOL_PLANS[plan];
-                                    const isSelected = formData.plan === plan;
-                                    const price = getPrice(plan, formData.billingCycle);
+                            {/* Plans Grid */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {Object.entries(SCHOOL_PLANS).map(([planId, plan]) => {
+                                    const isSelected = selectedPlan === planId;
+                                    const price = billingCycle === 'monthly' ? plan.monthlyPrice : plan.yearlyPrice;
 
                                     return (
                                         <div
-                                            key={plan}
-                                            onClick={() => setFormData({ ...formData, plan })}
+                                            key={planId}
+                                            onClick={() => setSelectedPlan(planId)}
                                             className={`
-                        border-2 rounded-xl p-6 cursor-pointer transition-all
-                        ${isSelected
-                                                    ? 'border-indigo-600 bg-indigo-50'
-                                                    : 'border-gray-200 hover:border-gray-300'}
-                        ${plan === 'pro' ? 'ring-2 ring-indigo-200' : ''}
+                        relative border-2 rounded-xl p-5 cursor-pointer transition-all
+                        ${isSelected ? 'border-indigo-600 bg-indigo-50' : 'border-gray-200 hover:border-gray-300'}
+                        ${'popular' in plan && plan.popular ? 'ring-2 ring-indigo-600 ring-offset-2' : ''}
                       `}
                                         >
-                                            {plan === 'pro' && (
-                                                <div className="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded-full inline-block mb-2">
-                                                    PIÙ POPOLARE
+                                            {'popular' in plan && plan.popular && (
+                                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full">
+                                                    Più Scelto
                                                 </div>
                                             )}
 
-                                            <h3 className="text-xl font-bold text-gray-900">{planData.name}</h3>
+                                            <h3 className="text-lg font-bold text-gray-900">{plan.name}</h3>
+                                            <p className="text-sm text-gray-500 mt-1">{plan.description}</p>
 
-                                            <div className="mt-4 mb-4">
+                                            <div className="mt-4">
                                                 <span className="text-3xl font-bold text-gray-900">€{price}</span>
-                                                <span className="text-gray-500">
-                                                    /{formData.billingCycle === 'monthly' ? 'mese' : 'anno'}
-                                                </span>
+                                                <span className="text-gray-500">/{billingCycle === 'monthly' ? 'mese' : 'anno'}</span>
                                             </div>
 
-                                            <ul className="space-y-2 text-sm">
+                                            {'pricePerStudent' in plan && plan.pricePerStudent > 0 && (
+                                                <p className="text-sm text-green-600 mt-1">
+                                                    €{plan.pricePerStudent}/studente
+                                                </p>
+                                            )}
+
+                                            <ul className="mt-4 space-y-2 text-sm">
                                                 <li className="flex items-center gap-2">
-                                                    <Check className="w-4 h-4 text-green-600" />
-                                                    <span>
-                                                        {planData.maxStudents === -1 ? 'Studenti illimitati' : `Max ${planData.maxStudents} studenti`}
-                                                    </span>
+                                                    <Users className="w-4 h-4 text-indigo-600" />
+                                                    {plan.maxStudents === -1 ? 'Studenti illimitati' : `${plan.maxStudents} studenti`}
                                                 </li>
                                                 <li className="flex items-center gap-2">
-                                                    <Check className="w-4 h-4 text-green-600" />
-                                                    <span>
-                                                        {planData.maxInstructors === -1 ? 'Istruttori illimitati' : `${planData.maxInstructors} istruttori`}
-                                                    </span>
+                                                    <User className="w-4 h-4 text-indigo-600" />
+                                                    {plan.maxInstructors === -1 ? 'Istruttori illimitati' : `${plan.maxInstructors} istruttori`}
                                                 </li>
-                                                {planData.features.customLogo && (
+                                                {plan.features.customLogo && (
                                                     <li className="flex items-center gap-2">
                                                         <Check className="w-4 h-4 text-green-600" />
-                                                        <span>Logo personalizzato</span>
+                                                        Logo personalizzato
                                                     </li>
                                                 )}
-                                                {planData.features.advancedReports && (
+                                                {plan.features.advancedReports && (
                                                     <li className="flex items-center gap-2">
                                                         <Check className="w-4 h-4 text-green-600" />
-                                                        <span>Report avanzati</span>
+                                                        Report avanzati
                                                     </li>
                                                 )}
-                                                {planData.features.apiAccess && (
+                                                {plan.features.apiAccess && (
                                                     <li className="flex items-center gap-2">
                                                         <Check className="w-4 h-4 text-green-600" />
-                                                        <span>Accesso API</span>
-                                                    </li>
-                                                )}
-                                                {planData.features.prioritySupport && (
-                                                    <li className="flex items-center gap-2">
-                                                        <Check className="w-4 h-4 text-green-600" />
-                                                        <span>Supporto dedicato</span>
+                                                        Accesso API
                                                     </li>
                                                 )}
                                             </ul>
 
                                             {isSelected && (
-                                                <div className="mt-4 text-center">
-                                                    <span className="text-indigo-600 font-medium">✓ Selezionato</span>
+                                                <div className="absolute top-3 right-3">
+                                                    <div className="w-6 h-6 bg-indigo-600 rounded-full flex items-center justify-center">
+                                                        <Check className="w-4 h-4 text-white" />
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
@@ -200,10 +252,10 @@ export default function RegisterSchoolPage() {
                                 })}
                             </div>
 
-                            <div className="mt-8 flex justify-end">
+                            <div className="flex justify-end">
                                 <button
-                                    onClick={() => setStep(2)}
-                                    className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
+                                    onClick={nextStep}
+                                    className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
                                 >
                                     Continua
                                     <ArrowRight className="w-5 h-5" />
@@ -212,127 +264,128 @@ export default function RegisterSchoolPage() {
                         </div>
                     )}
 
-                    {/* Step 2: Info Autoscuola */}
-                    {step === 2 && (
-                        <div className="p-8">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Informazioni Autoscuola</h2>
-                            <p className="text-gray-500 mb-6">Inserisci i dati della tua autoscuola</p>
+                    {/* Step 2: School Info */}
+                    {currentStep === 'school' && (
+                        <div className="space-y-6">
+                            <div className="text-center">
+                                <h2 className="text-2xl font-bold text-gray-900">Dati Autoscuola</h2>
+                                <p className="text-gray-500 mt-2">Inserisci le informazioni della tua autoscuola</p>
+                            </div>
 
-                            <div className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Nome Autoscuola *
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                            placeholder="Autoscuola Roma Centro"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Ragione Sociale
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={formData.businessName}
-                                            onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                            placeholder="Autoscuola Roma Centro SRL"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Partita IVA
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={formData.vatNumber}
-                                            onChange={(e) => setFormData({ ...formData, vatNumber: e.target.value })}
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                            placeholder="IT12345678901"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Telefono
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                            placeholder="+39 06 1234567"
-                                        />
-                                    </div>
-                                </div>
-
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                                        Email Aziendale *
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Nome Autoscuola *
                                     </label>
                                     <input
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        type="text"
+                                        value={schoolData.name}
+                                        onChange={(e) => setSchoolData({ ...schoolData, name: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                        placeholder="info@autoscuolaroma.it"
+                                        placeholder="Autoscuola Roma Centro"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Ragione Sociale
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={schoolData.businessName}
+                                        onChange={(e) => setSchoolData({ ...schoolData, businessName: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="Autoscuola Roma Centro SRL"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Partita IVA
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={schoolData.vatNumber}
+                                        onChange={(e) => setSchoolData({ ...schoolData, vatNumber: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="IT12345678901"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Email Autoscuola *
+                                    </label>
+                                    <input
+                                        type="email"
+                                        value={schoolData.email}
+                                        onChange={(e) => setSchoolData({ ...schoolData, email: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="info@autoscuola.it"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Telefono
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        value={schoolData.phone}
+                                        onChange={(e) => setSchoolData({ ...schoolData, phone: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="+39 06 1234567"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Indirizzo
                                     </label>
                                     <input
                                         type="text"
-                                        value={formData.address}
-                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                        value={schoolData.address}
+                                        onChange={(e) => setSchoolData({ ...schoolData, address: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
                                         placeholder="Via Roma 123"
                                     />
                                 </div>
 
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <div className="col-span-2">
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Città
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={formData.city}
-                                            onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                            className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                            placeholder="Roma"
-                                        />
-                                    </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                        Città *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value={schoolData.city}
+                                        onChange={(e) => setSchoolData({ ...schoolData, city: e.target.value })}
+                                        className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="Roma"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">
                                             Provincia
                                         </label>
                                         <input
                                             type="text"
-                                            value={formData.province}
-                                            onChange={(e) => setFormData({ ...formData, province: e.target.value })}
+                                            value={schoolData.province}
+                                            onChange={(e) => setSchoolData({ ...schoolData, province: e.target.value })}
                                             className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
                                             placeholder="RM"
                                             maxLength={2}
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">
                                             CAP
                                         </label>
                                         <input
                                             type="text"
-                                            value={formData.postalCode}
-                                            onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
+                                            value={schoolData.postalCode}
+                                            onChange={(e) => setSchoolData({ ...schoolData, postalCode: e.target.value })}
                                             className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
                                             placeholder="00100"
                                             maxLength={5}
@@ -341,18 +394,18 @@ export default function RegisterSchoolPage() {
                                 </div>
                             </div>
 
-                            <div className="mt-8 flex justify-between">
+                            <div className="flex justify-between pt-4">
                                 <button
-                                    onClick={() => setStep(1)}
-                                    className="flex items-center gap-2 text-gray-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                                    onClick={prevStep}
+                                    className="flex items-center gap-2 px-6 py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50"
                                 >
                                     <ArrowLeft className="w-5 h-5" />
                                     Indietro
                                 </button>
                                 <button
-                                    onClick={() => setStep(3)}
-                                    disabled={!formData.name || !formData.email}
-                                    className="flex items-center gap-2 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    onClick={nextStep}
+                                    disabled={!schoolData.name || !schoolData.email || !schoolData.city}
+                                    className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
                                 >
                                     Continua
                                     <ArrowRight className="w-5 h-5" />
@@ -361,120 +414,184 @@ export default function RegisterSchoolPage() {
                         </div>
                     )}
 
-                    {/* Step 3: Account Owner */}
-                    {step === 3 && (
-                        <div className="p-8">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-2">Crea il tuo account</h2>
-                            <p className="text-gray-500 mb-6">Account amministratore per gestire l'autoscuola</p>
+                    {/* Step 3: Owner Account */}
+                    {currentStep === 'owner' && (
+                        <div className="space-y-6">
+                            <div className="text-center">
+                                <h2 className="text-2xl font-bold text-gray-900">Crea il tuo Account</h2>
+                                <p className="text-gray-500 mt-2">Questo sarà l'account amministratore principale</p>
+                            </div>
 
-                            <div className="space-y-4">
+                            <div className="max-w-md mx-auto space-y-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Nome Completo *
                                     </label>
                                     <input
                                         type="text"
-                                        value={formData.ownerName}
-                                        onChange={(e) => setFormData({ ...formData, ownerName: e.target.value })}
+                                        value={ownerData.name}
+                                        onChange={(e) => setOwnerData({ ...ownerData, name: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
                                         placeholder="Mario Rossi"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Email *
                                     </label>
                                     <input
                                         type="email"
-                                        value={formData.ownerEmail}
-                                        onChange={(e) => setFormData({ ...formData, ownerEmail: e.target.value })}
+                                        value={ownerData.email}
+                                        onChange={(e) => setOwnerData({ ...ownerData, email: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                        placeholder="mario@autoscuolaroma.it"
+                                        placeholder="mario@autoscuola.it"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Password *
                                     </label>
                                     <input
                                         type="password"
-                                        value={formData.ownerPassword}
-                                        onChange={(e) => setFormData({ ...formData, ownerPassword: e.target.value })}
+                                        value={ownerData.password}
+                                        onChange={(e) => setOwnerData({ ...ownerData, password: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
                                         placeholder="Minimo 8 caratteri"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">
                                         Conferma Password *
                                     </label>
                                     <input
                                         type="password"
-                                        value={formData.ownerPasswordConfirm}
-                                        onChange={(e) => setFormData({ ...formData, ownerPasswordConfirm: e.target.value })}
+                                        value={ownerData.confirmPassword}
+                                        onChange={(e) => setOwnerData({ ...ownerData, confirmPassword: e.target.value })}
                                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500"
-                                        placeholder="Ripeti la password"
+                                        placeholder="Ripeti password"
                                     />
-                                </div>
-
-                                {/* Summary */}
-                                <div className="bg-gray-50 rounded-xl p-4 mt-6">
-                                    <h4 className="font-medium text-gray-900 mb-3">Riepilogo</h4>
-                                    <div className="space-y-2 text-sm">
-                                        <div className="flex justify-between">
-                                            <span className="text-gray-500">Piano</span>
-                                            <span className="font-medium">{SCHOOL_PLANS[formData.plan].name}</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="text-gray-500">Fatturazione</span>
-                                            <span className="font-medium">
-                                                {formData.billingCycle === 'monthly' ? 'Mensile' : 'Annuale'}
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="text-gray-500">Autoscuola</span>
-                                            <span className="font-medium">{formData.name || '-'}</span>
-                                        </div>
-                                        <hr className="my-2" />
-                                        <div className="flex justify-between text-lg">
-                                            <span className="font-medium text-gray-900">Totale dopo prova</span>
-                                            <span className="font-bold text-indigo-600">
-                                                €{getPrice(formData.plan, formData.billingCycle)}
-                                                /{formData.billingCycle === 'monthly' ? 'mese' : 'anno'}
-                                            </span>
-                                        </div>
-                                        <p className="text-xs text-gray-400 mt-2">
-                                            14 giorni di prova gratuita. Nessun addebito oggi.
-                                        </p>
-                                    </div>
+                                    {ownerData.confirmPassword && ownerData.password !== ownerData.confirmPassword && (
+                                        <p className="text-sm text-red-600 mt-1">Le password non coincidono</p>
+                                    )}
                                 </div>
                             </div>
 
-                            <div className="mt-8 flex justify-between">
+                            <div className="flex justify-between pt-4">
                                 <button
-                                    onClick={() => setStep(2)}
-                                    className="flex items-center gap-2 text-gray-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
+                                    onClick={prevStep}
+                                    className="flex items-center gap-2 px-6 py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50"
+                                >
+                                    <ArrowLeft className="w-5 h-5" />
+                                    Indietro
+                                </button>
+                                <button
+                                    onClick={nextStep}
+                                    disabled={
+                                        !ownerData.name ||
+                                        !ownerData.email ||
+                                        !ownerData.password ||
+                                        ownerData.password !== ownerData.confirmPassword
+                                    }
+                                    className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                                >
+                                    Continua
+                                    <ArrowRight className="w-5 h-5" />
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Step 4: Payment/Confirmation */}
+                    {currentStep === 'payment' && (
+                        <div className="space-y-6">
+                            <div className="text-center">
+                                <h2 className="text-2xl font-bold text-gray-900">Conferma e Inizia</h2>
+                                <p className="text-gray-500 mt-2">14 giorni di prova gratuita, nessun addebito ora</p>
+                            </div>
+
+                            {/* Summary */}
+                            <div className="bg-gray-50 rounded-xl p-6 space-y-4">
+                                <h3 className="font-semibold text-gray-900">Riepilogo</h3>
+
+                                <div className="flex justify-between py-2 border-b">
+                                    <span className="text-gray-600">Autoscuola</span>
+                                    <span className="font-medium">{schoolData.name}</span>
+                                </div>
+
+                                <div className="flex justify-between py-2 border-b">
+                                    <span className="text-gray-600">Piano</span>
+                                    <span className="font-medium">{SCHOOL_PLANS[selectedPlan as keyof typeof SCHOOL_PLANS].name}</span>
+                                </div>
+
+                                <div className="flex justify-between py-2 border-b">
+                                    <span className="text-gray-600">Fatturazione</span>
+                                    <span className="font-medium">{billingCycle === 'monthly' ? 'Mensile' : 'Annuale'}</span>
+                                </div>
+
+                                <div className="flex justify-between py-2 border-b">
+                                    <span className="text-gray-600">Amministratore</span>
+                                    <span className="font-medium">{ownerData.email}</span>
+                                </div>
+
+                                <div className="flex justify-between py-4 text-lg">
+                                    <span className="font-semibold">Totale dopo il trial</span>
+                                    <span className="font-bold text-indigo-600">
+                                        €{billingCycle === 'monthly'
+                                            ? SCHOOL_PLANS[selectedPlan as keyof typeof SCHOOL_PLANS].monthlyPrice
+                                            : SCHOOL_PLANS[selectedPlan as keyof typeof SCHOOL_PLANS].yearlyPrice}
+                                        /{billingCycle === 'monthly' ? 'mese' : 'anno'}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Trial Banner */}
+                            <div className="bg-green-50 border border-green-200 rounded-xl p-6 flex items-start gap-4">
+                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Zap className="w-6 h-6 text-green-600" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-green-800">14 Giorni Gratis</h4>
+                                    <p className="text-green-700 text-sm mt-1">
+                                        Non ti verrà addebitato nulla oggi. Dopo il periodo di prova potrai decidere se continuare.
+                                        Puoi cancellare in qualsiasi momento.
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Terms */}
+                            <label className="flex items-start gap-3">
+                                <input type="checkbox" className="w-4 h-4 mt-1 text-indigo-600 rounded" />
+                                <span className="text-sm text-gray-600">
+                                    Accetto i <Link href="/terms" className="text-indigo-600 hover:underline">Termini di Servizio</Link> e
+                                    la <Link href="/privacy" className="text-indigo-600 hover:underline">Privacy Policy</Link>
+                                </span>
+                            </label>
+
+                            <div className="flex justify-between pt-4">
+                                <button
+                                    onClick={prevStep}
+                                    className="flex items-center gap-2 px-6 py-3 border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50"
                                 >
                                     <ArrowLeft className="w-5 h-5" />
                                     Indietro
                                 </button>
                                 <button
                                     onClick={handleSubmit}
-                                    disabled={isLoading || !formData.ownerName || !formData.ownerEmail || !formData.ownerPassword}
-                                    className="flex items-center gap-2 bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={isLoading}
+                                    className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
                                 >
                                     {isLoading ? (
                                         <>
                                             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                            Creando...
+                                            Creazione in corso...
                                         </>
                                     ) : (
                                         <>
+                                            <Zap className="w-5 h-5" />
                                             Inizia la Prova Gratuita
-                                            <ArrowRight className="w-5 h-5" />
                                         </>
                                     )}
                                 </button>
@@ -483,14 +600,28 @@ export default function RegisterSchoolPage() {
                     )}
                 </div>
 
-                {/* Footer */}
-                <div className="text-center mt-6">
-                    <p className="text-indigo-200">
-                        Hai già un account?{' '}
-                        <Link href="/login" className="text-white font-medium hover:underline">
-                            Accedi
-                        </Link>
-                    </p>
+                {/* Footer Benefits */}
+                <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div>
+                        <Shield className="w-8 h-8 text-indigo-600 mx-auto mb-2" />
+                        <p className="text-sm font-medium text-gray-900">Sicuro e Affidabile</p>
+                        <p className="text-xs text-gray-500">Dati protetti e criptati</p>
+                    </div>
+                    <div>
+                        <Users className="w-8 h-8 text-indigo-600 mx-auto mb-2" />
+                        <p className="text-sm font-medium text-gray-900">Studenti Illimitati</p>
+                        <p className="text-xs text-gray-500">Con piano Enterprise</p>
+                    </div>
+                    <div>
+                        <BarChart3 className="w-8 h-8 text-indigo-600 mx-auto mb-2" />
+                        <p className="text-sm font-medium text-gray-900">Report Dettagliati</p>
+                        <p className="text-xs text-gray-500">Monitora i progressi</p>
+                    </div>
+                    <div>
+                        <MessageSquare className="w-8 h-8 text-indigo-600 mx-auto mb-2" />
+                        <p className="text-sm font-medium text-gray-900">Supporto Dedicato</p>
+                        <p className="text-xs text-gray-500">Sempre disponibile</p>
+                    </div>
                 </div>
             </div>
         </div>

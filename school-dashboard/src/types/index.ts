@@ -258,48 +258,94 @@ export interface PlanUsage {
     instructorsLimit: number;
 }
 
-// Pricing
+// Pricing - 4 piani come da prompt
 export const SCHOOL_PLANS = {
     starter: {
+        id: 'starter',
         name: 'Starter',
-        monthlyPrice: 49,
-        yearlyPrice: 490,
-        maxStudents: 30,
+        monthlyPrice: 99,
+        yearlyPrice: 990,
+        maxStudents: 20,
         maxInstructors: 1,
+        pricePerStudent: 4.95,
+        discountVsB2C: 75,
+        extraStudentCost: 4,
         features: {
             customLogo: false,
             advancedReports: false,
+            exportReports: false,
             apiAccess: false,
             prioritySupport: false,
+            videoLessons: 'base',
         },
-        extraStudentCost: 2,
+        support: 'email',
+        description: 'Ideale per piccole autoscuole',
     },
     pro: {
+        id: 'pro',
         name: 'Pro',
-        monthlyPrice: 99,
-        yearlyPrice: 990,
-        maxStudents: 100,
-        maxInstructors: 5,
-        features: {
-            customLogo: true,
-            advancedReports: true,
-            apiAccess: false,
-            prioritySupport: false,
-        },
-        extraStudentCost: 1.5,
-    },
-    enterprise: {
-        name: 'Enterprise',
         monthlyPrice: 199,
         yearlyPrice: 1990,
-        maxStudents: -1, // Illimitati
-        maxInstructors: -1, // Illimitati
+        maxStudents: 50,
+        maxInstructors: 3,
+        pricePerStudent: 3.98,
+        discountVsB2C: 80,
+        extraStudentCost: 3,
         features: {
             customLogo: true,
             advancedReports: true,
+            exportReports: true,
+            apiAccess: false,
+            prioritySupport: false,
+            videoLessons: 'all',
+        },
+        support: 'email_chat',
+        popular: true,
+        description: 'Il più scelto dalle autoscuole',
+    },
+    business: {
+        id: 'business',
+        name: 'Business',
+        monthlyPrice: 349,
+        yearlyPrice: 3490,
+        maxStudents: 100,
+        maxInstructors: 10,
+        pricePerStudent: 3.49,
+        discountVsB2C: 83,
+        extraStudentCost: 2.5,
+        features: {
+            customLogo: true,
+            advancedReports: true,
+            exportReports: true,
+            apiAccess: false,
+            prioritySupport: true,
+            videoLessons: 'all',
+        },
+        support: 'priority',
+        description: 'Per autoscuole in crescita',
+    },
+    enterprise: {
+        id: 'enterprise',
+        name: 'Enterprise',
+        monthlyPrice: 599,
+        yearlyPrice: 5990,
+        maxStudents: -1, // Illimitati
+        maxInstructors: -1, // Illimitati
+        pricePerStudent: 0,
+        discountVsB2C: 100,
+        extraStudentCost: 0,
+        features: {
+            customLogo: true,
+            advancedReports: true,
+            exportReports: true,
             apiAccess: true,
             prioritySupport: true,
+            videoLessons: 'all_custom',
         },
-        extraStudentCost: 0,
+        support: 'dedicated',
+        description: 'Soluzione completa per grandi realtà',
     },
 };
+
+export type SchoolPlanId = keyof typeof SCHOOL_PLANS;
+
