@@ -75,6 +75,9 @@ export function formatRelativeTime(date: Date | string | null | undefined): stri
     return `${Math.floor(days / 365)} anni fa`;
 }
 
+// Alias for compatibility
+export const formatTimeAgo = formatRelativeTime;
+
 // Days since date
 export function daysSince(date: Date | string | null | undefined): number | null {
     if (!date) return null;
@@ -262,6 +265,13 @@ export function getScoreBadgeColor(score: number): string {
     if (score >= 80) return 'bg-green-100 text-green-700';
     if (score >= 60) return 'bg-yellow-100 text-yellow-700';
     return 'bg-red-100 text-red-700';
+}
+
+// Trend color helper
+export function getTrendColor(trend: number): string {
+    if (trend > 0) return 'text-green-600';
+    if (trend < 0) return 'text-red-600';
+    return 'text-gray-600';
 }
 
 // Plan helpers

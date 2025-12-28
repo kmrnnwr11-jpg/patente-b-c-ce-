@@ -9,7 +9,7 @@ import {
     ReactNode,
 } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth, db } from '@/lib/firebase';
+import { auth, db, isFirebaseConfigured } from '@/lib/firebase';
 import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
@@ -24,6 +24,7 @@ interface SchoolContextType {
     user: User | null;
     isAuthenticated: boolean;
     isLoading: boolean;
+    isFirebaseConfigured: boolean;
 
     // School data
     school: DrivingSchool | null;
@@ -43,6 +44,45 @@ interface SchoolContextType {
 
 const SchoolContext = createContext<SchoolContextType | undefined>(undefined);
 
+// Mock data for demo mode (when Firebase is not configured)
+const MOCK_SCHOOL: DrivingSchool = {
+    id: 'demo-school',
+    name: 'Autoscuola Demo',
+    email: 'demo@autoscuola.it',
+    phone: '+39 02 1234567',
+    address: 'Via Roma 123',
+    city: 'Milano',
+    province: 'MI',
+    postalCode: '20121',
+    plan: 'pro',
+    planStatus: 'active',
+    maxStudents: 50,
+    maxInstructors: 3,
+    primaryColor: '#4F46E5',
+    schoolCode: 'DEMO-SCHOOL-123',
+    isActive: true,
+    createdAt: new Date().toISOString() as any,
+    updatedAt: new Date().toISOString() as any,
+};
+
+const MOCK_INSTRUCTOR: SchoolInstructor = {
+    id: 'demo-instructor',
+    userId: 'demo-user',
+    name: 'Mario Rossi',
+    email: 'mario@autoscuola.it',
+    role: 'owner',
+    permissions: {
+        manageStudents: true,
+        sendMessages: true,
+        viewReports: true,
+        manageInstructors: true,
+        manageBilling: true,
+        manageSettings: true,
+    },
+    isActive: true,
+    createdAt: new Date().toISOString() as any,
+};
+
 export function SchoolProvider({ children }: { children: ReactNode }) {
     const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
@@ -53,6 +93,8 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
 
     // Load school data
     const loadSchoolData = useCallback(async (userId: string) => {
+        if (!db) return;
+
         try {
             // Get user document to find schoolId
             const userDoc = await getDoc(doc(db, 'users', userId));
@@ -100,8 +142,18 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    // Auth state listener
+    // Auth state listener or demo mode
     useEffect(() => {
+        if (!isFirebaseConfigured || !auth) {
+            // Demo mode - use mock data
+            console.log('🎭 Demo mode - using mock data');
+            setSchool(MOCK_SCHOOL);
+            setInstructor(MOCK_INSTRUCTOR);
+            setSchoolId('demo-school');
+            setIsLoading(false);
+            return;
+        }
+
         const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
             setUser(firebaseUser);
 
@@ -121,6 +173,10 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
 
     // Login
     const login = async (email: string, password: string) => {
+        if (!auth) {
+            throw new Error('Firebase non configurato');
+        }
+
         setIsLoading(true);
         try {
             const result = await signInWithEmailAndPassword(auth, email, password);
@@ -136,6 +192,8 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
 
     // Logout
     const logout = async () => {
+        if (!auth) return;
+
         try {
             await signOut(auth);
             setSchool(null);
@@ -163,8 +221,9 @@ export function SchoolProvider({ children }: { children: ReactNode }) {
 
     const value: SchoolContextType = {
         user,
-        isAuthenticated: !!user,
+        isAuthenticated: !!user || !isFirebaseConfigured,
         isLoading,
+        isFirebaseConfigured,
         school,
         instructor,
         schoolId,
