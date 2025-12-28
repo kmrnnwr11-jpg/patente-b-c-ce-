@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/translation.dart';
 import '../../services/stats_service.dart';
 import '../../services/bookmark_service.dart';
@@ -244,6 +245,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _buildSectionHeader('ℹ️', 'Info'),
                       _buildInfoTile('Versione', '1.0.0'),
                       _buildInfoTile('Build', 'Flutter'),
+                      const Divider(height: 32),
+
+                      // Dashboard Links section
+                      _buildSectionHeader('🔗', 'Dashboard Web'),
+                      _buildDashboardLink(
+                        'School Dashboard',
+                        'Gestisci la tua autoscuola',
+                        Icons.school_outlined,
+                        'http://localhost:3001',
+                        const Color(0xFF4F46E5),
+                      ),
+                      const SizedBox(height: 8),
+                      _buildDashboardLink(
+                        'Admin Dashboard',
+                        'Pannello amministrativo',
+                        Icons.admin_panel_settings_outlined,
+                        'http://localhost:3000',
+                        const Color(0xFF7C3AED),
+                      ),
 
                       const SizedBox(height: 20),
                     ],
@@ -355,6 +375,55 @@ class _SettingsScreenState extends State<SettingsScreen> {
       title: Text(label),
       trailing: Text(value, style: TextStyle(color: Colors.grey[600])),
     );
+  }
+
+  Widget _buildDashboardLink(
+    String title,
+    String subtitle,
+    IconData icon,
+    String url,
+    Color color,
+  ) {
+    return Container(
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
+      ),
+      child: ListTile(
+        leading: Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(icon, color: Colors.white, size: 20),
+        ),
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.w600, color: color),
+        ),
+        subtitle: Text(subtitle, style: const TextStyle(fontSize: 12)),
+        trailing: Icon(Icons.open_in_new, size: 18, color: color),
+        onTap: () => _openDashboard(url),
+      ),
+    );
+  }
+
+  Future<void> _openDashboard(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Impossibile aprire: $url'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
   }
 
   void _showExportDialog() {
