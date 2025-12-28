@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:provider/provider.dart';
 import '../models/translation.dart';
 import '../services/language_preference_service.dart';
@@ -123,6 +124,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         onPressed: _showLanguageSelector,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      drawer: const _ExternalDashboardDrawer(),
     );
   }
 
@@ -175,6 +177,85 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             ],
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _ExternalDashboardDrawer extends StatelessWidget {
+  const _ExternalDashboardDrawer();
+
+  Future<void> _launchUrl(BuildContext context, String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      if (context.mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Impossibile aprire: $url')));
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF4AA9D0), Color(0xFF3B9ED9)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  '🚗 Patente Quiz',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'Menu Navigazione',
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.school, color: Color(0xFF4F46E5)),
+            title: const Text('School Dashboard'),
+            subtitle: const Text('Per autoscuole'),
+            trailing: const Icon(Icons.open_in_new, size: 16),
+            onTap: () => _launchUrl(context, 'http://localhost:3001'),
+          ),
+          ListTile(
+            leading: const Icon(
+              Icons.admin_panel_settings,
+              color: Color(0xFF7C3AED),
+            ),
+            title: const Text('Admin Dashboard'),
+            subtitle: const Text('Pannello gestione'),
+            trailing: const Icon(Icons.open_in_new, size: 16),
+            onTap: () => _launchUrl(context, 'http://localhost:3000'),
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.close),
+            title: const Text('Chiudi menu'),
+            onTap: () => Navigator.pop(context),
+          ),
+        ],
       ),
     );
   }

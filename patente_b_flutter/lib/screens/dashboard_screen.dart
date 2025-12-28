@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:provider/provider.dart';
 
 import '../services/language_preference_service.dart';
@@ -78,6 +79,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildQuickActions(
                   context,
                 ), // Actions usually have their own colored cards, check text inside
+                const SizedBox(height: 24),
+                _buildExternalLinks(context, isDarkMode),
                 const SizedBox(height: 24),
                 _buildStudySection(context, isDarkMode),
                 const SizedBox(height: 24),
@@ -414,6 +417,66 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ],
     );
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // LINK ESTERNI
+  // ═══════════════════════════════════════════════════════════════════════════
+  Widget _buildExternalLinks(BuildContext context, bool isDarkMode) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Web Dashboard',
+          style: isDarkMode
+              ? AppleGlassTheme.titleLarge
+              : AppleGlassTheme.titleLarge.copyWith(
+                  color: AppleGlassTheme.textPrimaryDark,
+                ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: _StudyCard(
+                assetPath: 'assets/images/dashboard/school.png',
+                fallbackEmoji: '🏫',
+                title: 'School',
+                subtitle: 'Dashboard',
+                color: Colors.indigo,
+                isDarkMode: isDarkMode,
+                onTap: () => _launchUrl('http://localhost:3001'),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: _StudyCard(
+                assetPath: 'assets/images/dashboard/admin.png',
+                fallbackEmoji: '🔧',
+                title: 'Admin',
+                subtitle: 'Pannello',
+                color: Colors.deepPurple,
+                isDarkMode: isDarkMode,
+                onTap: () => _launchUrl('http://localhost:3000'),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Impossibile aprire: $url')));
+      }
+    }
   }
 
   // ═══════════════════════════════════════════════════════════════════════════
